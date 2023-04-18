@@ -3,14 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/03/15 12:22:39 by dopeyrat         ###   ########.fr        #
+#    Updated: 2023/04/18 18:03:12 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	main.c
+EXEC_DIR = exec/
+
+SRCS	=	main.c \
+			$(EXEC_DIR)chained_list.c \
+			$(EXEC_DIR)error.c \
+			$(EXEC_DIR)exec.c \
+			$(EXEC_DIR)fork.c \
+			$(EXEC_DIR)fork_utils.c \
+			$(EXEC_DIR)free.c \
+			$(EXEC_DIR)here_doc.c \
+			$(EXEC_DIR)init.c \
+			$(EXEC_DIR)init_utils.c \
+			$(EXEC_DIR)parsing.c \
+			$(EXEC_DIR)pipe.c \
+			$(EXEC_DIR)utils.c \
+
 
 OBJS	=	${SRCS:.c=.o}
 
@@ -26,11 +41,11 @@ CFLAGS	= -Wall -Wextra -Werror
 
 all:	${NAME}
 
-${NAME}:	${OBJS} ${LIBFT}
-	${CC} -o ${NAME} ${OBJS} ${CFLAGS} ${READL}
+${NAME}:	libft ${OBJS}
+	${CC} -o ${NAME} ${OBJS} ${CFLAGS} -Iincludes -LLIBFT -lft ${READL}
 
-${LIBFT}:
-	make -C LIBFT
+libft:
+	make -C LIBFT/
 
 clean:
 	rm -f ${OBJS}
@@ -42,4 +57,4 @@ fclean:	clean
 
 re:	fclean all
 
-.PHONY:	re clean fclean all
+.PHONY:	re clean fclean all libft

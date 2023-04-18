@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/03/27 14:27:31 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:03:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ t_shell	*init_shell(void)
 int	main(void)
 {
 	t_shell	*sh;
-
 	sh = init_shell();
 	if (!sh || init_signals())
 		return (0);//ft_exit(sh, EXIT_FAILURE));
