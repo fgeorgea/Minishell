@@ -46,10 +46,28 @@ typedef struct s_cmd
 	struct s_cmd	*next;
 }			t_cmd;
 
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}			t_env;
+
+typedef struct s_arg
+{
+	char			*key;
+	char			*value;
+	struct s_arg	*next;	
+}			t_arg;
+
+
 typedef struct s_shell
 {
 	t_cmd	*cmd;
 	char	*str;
+
+	t_env	*env;
+	t_arg	*arg;
 }			t_shell;
 
 t_shell	*g_sh = NULL;
