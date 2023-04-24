@@ -53,12 +53,12 @@ typedef struct s_env
 	struct s_env	*next;
 }			t_env;
 
-typedef struct s_arg
+typedef struct s_var
 {
 	char			*key;
 	char			*value;
-	struct s_arg	*next;	
-}			t_arg;
+	struct s_var	*next;	
+}			t_var;
 
 
 typedef struct s_shell
@@ -67,7 +67,7 @@ typedef struct s_shell
 	char	*str;
 
 	t_env	*env;
-	t_arg	*arg;
+	t_var	*var;
 }			t_shell;
 
 t_shell	*g_sh = NULL;
