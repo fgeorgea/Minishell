@@ -34,24 +34,6 @@ int	skip_quotes(char *str, int i, int max)
 	return (i);
 }
 
-int	count_cmds(char *str)
-{
-	int	i;
-	int	c;
-
-	c = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '"' || str[i] == '\'')
-			i = skip_quotes(str, i, -1);
-		if (str[i] == '|')
-			c++;
-		i++;
-	}
-	return (c);
-}
-
 int	get_next_pipe(char *str)
 {
 	int	i;
@@ -68,31 +50,31 @@ int	get_next_pipe(char *str)
 	return (i);
 }
 
-int	count_redir(char *str, int n)
+void	ft_free_cmd(t_cmd *cmd)
 {
-	int	i;
-	int	c;
+	t_redir	*tmp;
 
-	i = 0;
-	c = 0;
-	while (i < n)
+	if (cmd)
 	{
-		if (str[i] == '"' || str[i] == '\'')
-			i = skip_quotes(str, i, -1);
-		if (str[i] == '>')
+		if (cmd->cmd[0])
 		{
-			c++;
-			if (str[i + 1] == '>')
-				i++;
+			free(cmd->cmd[0])
+			cmd->cmd[0] = NULL;
 		}
-		else if (str[i] == '<')
+		if (cmd->cmd[1])
 		{
-			c++;
-			if (str[i + 1] == '<')
-				i++;
+			free(cmd->cmd[1])
+			cmd->cmd[1] = NULL;
 		}
-		i++;
+		while (cmd->redir)
+		{
+			if (cmd->redir->key)
+				free(cmd->redir->key)
+			tmp = cmd->redir->next;
+			free(cmd->redir);
+			cmd->redir = tmp;
+		}
+		free(cmd);
 	}
-	return (c);
 }
 
