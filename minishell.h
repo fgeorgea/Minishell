@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/18 18:04:58 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:53:44 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <signal.h>
 # include <termios.h>
 # include "LIBFT/libft.h"
+# include "exec/pipex.h"
 
 # define EXIT_SUCESS 0
 # define EXIT_FAILURE 1
@@ -70,7 +71,7 @@ typedef struct s_shell
 	t_var	*var;
 }			t_shell;
 
-t_shell	*g_sh = NULL;
+t_shell	*g_sh;
 
 char	*readline(const char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);

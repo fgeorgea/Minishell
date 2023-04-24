@@ -6,11 +6,11 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:37:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/18 14:57:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:25:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../minishell.h"
 
 void	ft_lstadd_back_pipex(t_pipex **lst, t_pipex *new)
 {

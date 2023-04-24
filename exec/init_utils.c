@@ -6,11 +6,11 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 16:27:39 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/18 17:36:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:25:05 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../minishell.h"
 
 void	ft_check_here_doc(int argc, char **argv, t_global *g)
 {
