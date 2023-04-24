@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../minishell.h"
+#include "../minishell.h"
 
 int	skip_quotes(char *str, int i, int max)
 {
@@ -19,22 +19,22 @@ int	skip_quotes(char *str, int i, int max)
 	j = i;
 	if (str[i] == '"')
 	{
-		while (str[j] && (i < max || max == -1) && str[j] != '"')
+		while (str[j] && str[j] != '"')
 			j++;
-		if (str[j] == '"' && (j < max || max == -1))
+		if (str[j] == '"')
 			return (j);
 	}
 	else if (str[i] == '\'')
 	{
-		while (str[j] && (i < max || max == -1) && str[j] != '\'')
+		while (str[j] && str[j] != '\'')
 			j++;
-		if (str[j] == '\'' && (j < max || max == -1))
+		if (str[j] == '\'')
 			return (j);
 	}
 	return (i);
 }
 
-int	get_next_pipe(char *str)
+int	get_next_pipe(char *str, int i)
 {
 	int	i;
 
@@ -49,32 +49,3 @@ int	get_next_pipe(char *str)
 	}
 	return (i);
 }
-
-void	ft_free_cmd(t_cmd *cmd)
-{
-	t_redir	*tmp;
-
-	if (cmd)
-	{
-		if (cmd->cmd[0])
-		{
-			free(cmd->cmd[0])
-			cmd->cmd[0] = NULL;
-		}
-		if (cmd->cmd[1])
-		{
-			free(cmd->cmd[1])
-			cmd->cmd[1] = NULL;
-		}
-		while (cmd->redir)
-		{
-			if (cmd->redir->key)
-				free(cmd->redir->key)
-			tmp = cmd->redir->next;
-			free(cmd->redir);
-			cmd->redir = tmp;
-		}
-		free(cmd);
-	}
-}
-

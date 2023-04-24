@@ -48,39 +48,51 @@ t_shell	*init_shell(void)
 	return (sh);
 }
 
-/*void	ft_free_cmd(t_cmd *cmd, int n)
+void	ft_free_cmd(void)
 {
-	int	i;
+	void	*tmp;
+	int		i;
 
-	i = 0;
-	while (i < n)
+	while (g_sh->cmd)
 	{
-		if (cmd[i].cmd)
-			free(cmd[i].cmd);
-		if (cmd[i].arg)
-			free(cmd[i].arg);
-		if (cmd[i].redir_d)
-			free(cmd[i].redir_r);
-		i++;
+		i = 0;
+		if (g_sh->cmd->cmd)
+		{
+			while (g_sh->cmd->cmd[i])
+			{
+				free(g_sh->cmd->cmd[i]);
+				i++;
+			}
+			free(g_sh->cmd->cmd);
+		}
+		while (g_sh->cmd->redir)
+		{
+			if (g_sh->cmd->redir->key)
+				free(g_sh->cmd->redir->key);
+			tmp = g_sh->cmd->redir->next;
+			free(g_sh->cmd->redir);
+			g_sh->cmd->redir = tmp;
+		}
+		tmp = g_sh->cmd->next;
+		free(g_sh->cmd);
+		g_sh->cmd = tmp;
 	}
-	free(cmd);
-}*/
+}
 
 int	main(void)
 {
-	t_shell	*sh;
-	sh = init_shell();
-	if (!sh || init_signals())
+	g_sh = init_shell();
+	if (!g_sh || init_signals())
 		return (0);//ft_exit(sh, EXIT_FAILURE));
 	while (1)
 	{
-		sh->str = readline("$>");
-		if (!sh->str)
+		g_sh->str = readline("$>");
+		if (!g_sh->str)
 			exit(0);
-		if (*sh->str)
-			add_history(sh->str);
-		//lexer(sh, sh->str);
-		free(sh->str);
+		if (*g_sh->str)
+			add_history(g_sh->str);
+		//lexer(g_sh->str);
+		free(g_sh->str);
 	}
 	return (0);
 }

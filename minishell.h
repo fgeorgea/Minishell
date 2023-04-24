@@ -32,16 +32,16 @@
 # define IN 2
 # define HEREDOC 3
 
-typedef struct	s_redir
+typedef struct s_redir
 {
 	char			*key;
 	int				mode;
 	struct s_redir	*next;
 }			t_redir;
 
-typedef struct	s_cmd
+typedef struct s_cmd
 {
-	char			*cmd[2];
+	char			**cmd;
 	t_redir			*redir;
 	struct s_cmd	*next;
 }			t_cmd;
@@ -52,7 +52,9 @@ typedef struct s_shell
 	char	*str;
 }			t_shell;
 
+t_shell	*g_sh = NULL;
+
 char	*readline(const char *prompt);
-void 	rl_replace_line (const char *text, int clear_undo);
+void	rl_replace_line(const char *text, int clear_undo);
 
 #endif
