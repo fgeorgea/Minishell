@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/18 18:03:12 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/24 19:08:03 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRCS	=	main.c \
 			$(EXEC_DIR)parsing.c \
 			$(EXEC_DIR)pipe.c \
 			$(EXEC_DIR)utils.c \
-
 
 OBJS	=	${SRCS:.c=.o}
 

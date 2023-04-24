@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/24 17:33:53 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:08:17 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include "LIBFT/libft.h"
 # include "exec/pipex.h"
 
-# define EXIT_SUCESS 0
-# define EXIT_FAILURE 1
 # define EXIT_MALLOC_FAILURE 2
 
 # define OUT 0
