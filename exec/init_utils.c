@@ -6,51 +6,51 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 16:27:39 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/24 15:25:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:15:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_check_here_doc(int argc, char **argv, t_global *g)
+void	ft_check_here_doc(int argc, char **argv, t_pipex *p)
 {
 	if ((ft_strncmp(argv[1], "here_doc", 8) == 0) && (ft_strlen(argv[1]) == 8))
-		g->is_heredoc = 1;
-	if (g->is_heredoc && (argc < 6))
-		ft_error(g, "Program executes here_doc but does not have enough args\n");
+		p->is_heredoc = 1;
+	if (p->is_heredoc && (argc < 6))
+		ft_error(p, "Program executes here_doc but does not have enough args\n", 0);
 }
 
-static void	ft_init_heredoc(char **argv, t_global *g)
+static void	ft_init_heredoc(char **argv, t_pipex *p)
 {
-	g->nbr_cmds = g->argc - 4;
-	g->nbr_pipe = g->nbr_cmds - 1;
-	g->nbr_fork = g->nbr_cmds;
-	g->end_token = argv[2];
-	g->infile = open(TMP_FILE, O_WRONLY | O_CREAT, 0644);
-	if (g->infile == -1)
-		ft_error(g, "Failed to open infile of here_doc\n");
+	p->nbr_cmds = p->argc - 4;
+	p->nbr_pipe = p->nbr_cmds - 1;
+	p->nbr_fork = p->nbr_cmds;
+	p->end_token = argv[2];
+	p->infile = open(TMP_FILE, O_WRONLY | O_CREAT, 0644);
+	if (p->infile == -1)
+		ft_error(p, "Failed to open infile of here_doc\n", -1);
 }
 
-void	ft_init_struct_vars(int argc, char **argv, t_global *g)
+void	ft_init_struct_vars(int argc, char **argv, t_pipex *p)
 {
-	g->paths = NULL;
-	g->lst = NULL;
-	g->pids = NULL;
-	g->pipefd = NULL;
-	g->end_token = NULL;
-	g->argc = argc;
-	g->nbr_cmds = g->argc - 3;
-	g->nbr_pipe = g->nbr_cmds - 1;
-	g->nbr_fork = g->nbr_cmds;
-	g->outfile = open(argv[g->argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
-	if (g->outfile == -1)
-		ft_error(g, "Failed to open outfile\n");
-	if (g->is_heredoc)
-		ft_init_heredoc(argv, g);
+	p->paths = NULL;
+	p->lst = NULL;
+	p->pids = NULL;
+	p->pipefd = NULL;
+	p->end_token = NULL;
+	p->argc = argc;
+	p->nbr_cmds = p->argc - 3;
+	p->nbr_pipe = p->nbr_cmds - 1;
+	p->nbr_fork = p->nbr_cmds;
+	p->outfile = open(argv[p->argc - 1], O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	if (p->outfile == -1)
+		ft_error(p, "Failed to open outfile\n", -1);
+	if (p->is_heredoc)
+		ft_init_heredoc(argv, p);
 	else
 	{
-		g->infile = open(argv[1], O_RDONLY);
-		if (g->infile == -1)
-			ft_error(g, argv[1]);
+		p->infile = open(argv[1], O_RDONLY);
+		if (p->infile == -1)
+			ft_error(p, argv[1], 0);
 	}
 }

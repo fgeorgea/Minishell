@@ -6,80 +6,78 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/24 15:26:16 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:32:35 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	ft_add_slash(t_global *g)
+static void	ft_add_slash(t_pipex *p)
 {
 	int		i;
 	char	*tmp;
 
 	i = 0;
 	tmp = NULL;
-	while (g->paths[i])
+	while (p->paths[i])
 	{
-		tmp = ft_strjoin(g->paths[i], "/");
+		tmp = ft_strjoin(p->paths[i], "/");
 		if (!tmp)
-			ft_error(g, "Failed to add '/' to cmd path\n");
-		free(g->paths[i]);
-		g->paths[i] = ft_strdup(tmp);
-		if (!g->paths[i])
-			ft_error(g, NULL);
+			ft_error(p, "Failed to add '/' to cmd path\n", -1);
+		free(p->paths[i]);
+		p->paths[i] = ft_strdup(tmp);
+		if (!p->paths[i])
+			ft_error(p, NULL, -1);
 		free(tmp);
 		i++;
 	}
 }
 
-static void	ft_init_paths(char **env, t_global *g)
+static void	ft_init_paths(t_pipex *p)
 {
-	int	i;
+	char *paths;
 
-	i = 0;
-	while (env[i] && (ft_strncmp(env[i], "PATH=", 5) != 0))
-		i++;
-	if (ft_strncmp(env[i], "PATH=", 5) != 0)
-		ft_error(g, "Did not find any PATH line in the env\n");
-	g->paths = ft_split(&env[i][5], ':');
-	if (!g->paths)
-		ft_error(g, "Failed to create paths array with split\n");
-	g->nbr_paths = ft_tablen(g->paths, g);
+	paths = getenv("PATH");
+	if (!paths)
+		ft_error(p, "Did not find any string with PATH in env\n", 0);
+	p->paths = ft_split(paths, ':');
+	if (!p->paths)
+		ft_error(p, "Failed to create paths array with split\n", -1);
+	p->nbr_paths = ft_tablen(p->paths, p);
 }
 
-static void	ft_init_cmds(char **argv, t_global *g)
+static void	ft_init_cmds(char **argv, t_pipex *p)
 {
 	int		i;
 	int		cmd_offset;
 	char	**tmp;
-	t_pipex	*previous;
+	t_pcmd	*previous;
 
 	i = 0;
 	cmd_offset = 2;
 	tmp = NULL;
 	previous = NULL;
-	if (g->is_heredoc)
+	if (p->is_heredoc)
 		cmd_offset = 3;
-	while (i < g->nbr_cmds)
+	while (i < p->nbr_cmds)
 	{
 		tmp = ft_split(argv[i + cmd_offset], ' ');
 		if (!tmp)
-			ft_error(g, "Failed to create commands array with split\n");
-		ft_lstadd_back_pipex(&g->lst, ft_lstnew_pipex(tmp, previous, g));
-		previous = g->lst;
+			ft_error(p, "Failed to create commands array with split\n", -1);
+		ft_lstadd_back_pipex(&p->lst, ft_lstnew_pipex(tmp, previous, p));
+		previous = p->lst;
 		i++;
 	}
 }
 
-void	ft_init_struct(int argc, char **argv, char **env, t_global *g)
+void	ft_init_struct(int argc, char **argv, t_pipex *p)
 {
-	g->is_heredoc = 0;
-	ft_check_here_doc(argc, argv, g);
-	ft_init_struct_vars(argc, argv, g);
-	ft_init_paths(env, g);
-	ft_add_slash(g);
-	ft_init_cmds(argv, g);
-	g->pipefd = ft_createpipe_array(g);
-	g->pids = ft_createfork_array(g);
+	p->is_heredoc = 0;
+	ft_check_here_doc(argc, argv, p);
+	ft_init_struct_vars(argc, argv, p);
+	ft_init_paths(p);
+	ft_add_slash(p);
+	ft_init_cmds(argv, p);
+	p->pipefd = ft_createpipe_array(p);
+	p->pids = ft_createfork_array(p);
 }

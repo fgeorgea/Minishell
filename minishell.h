@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/24 15:53:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:33:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,8 @@ typedef struct s_var
 {
 	char			*key;
 	char			*value;
-	struct s_var	*next;	
+	struct s_var	*next;
 }			t_var;
-
 
 typedef struct s_shell
 {
