@@ -15,8 +15,7 @@
 int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
-	(void)argv;
-	init_shell(env);
+	init_shell(argv, env);
 	if (init_signals())
 		return (0);//ft_exit(sh, EXIT_FAILURE));
 	while (1)

@@ -58,6 +58,8 @@ typedef struct s_env
 
 typedef struct s_shell
 {
+	char	*name;
+
 	t_cmd	*cmd;
 	char	*str;
 	t_env	*env;
@@ -73,7 +75,7 @@ t_shell	*g_sh;
 
 char	*readline(const char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
-void	init_shell(char **env);
-int	init_signals(void);
+void	init_shell(char **argv, char **env);
+int		init_signals(void);
 void	ft_free_env(void);
 #endif

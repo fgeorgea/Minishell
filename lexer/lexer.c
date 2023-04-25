@@ -18,7 +18,8 @@ t_cmd	*get_cmd(char *str, int i, int j)
 
 	if (i == j)
 	{
-		syntax_error("syntax error near unexpected token `|\'");
+		syntax_error("syntax error near unexpected token `|'");
+		ft_free_cmd();
 		return (0);
 	}
 	cmd = malloc(sizeof(t_cmd));
@@ -57,8 +58,14 @@ void	lexer(char *str)
 	{
 		while (ft_iswhitespace(str[i]))
 			i++;
-		if (!str[i])
-			break ;
+		if (!str[i] && !g_sh->cmd)
+			return ;
+		else if (!str[i])
+		{
+			ft_free_cmd();
+			syntax_error("syntax error near unexpected token `|'");
+			return ;
+		}
 		j = get_next_pipe(str, i);
 		tmp = get_cmd(str, i, j);
 		if (!tmp)
