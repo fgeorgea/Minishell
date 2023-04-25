@@ -66,9 +66,9 @@ void	init_shell(char **env)
 	g_sh = malloc(sizeof(t_shell));
 	if (!g_sh)
 		exit(0);
-	g_sh->cmd = NULL;
-	g_sh->str = NULL;
-	g_sh->pipex = NULL;
+	g_sh->cmd = 0;
+	g_sh->str = 0;
+	g_sh->pipex = 0;
 	init_env(env);
 	if (!g_sh->env)
 	{
