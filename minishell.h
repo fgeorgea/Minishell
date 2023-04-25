@@ -52,20 +52,13 @@ typedef struct s_env
 	struct s_env	*next;
 }			t_env;
 
-typedef struct s_var
-{
-	char			*key;
-	char			*value;
-	struct s_var	*next;
-}			t_var;
-
 typedef struct s_shell
 {
 	t_cmd	*cmd;
 	char	*str;
-
 	t_env	*env;
-	t_var	*var;
+
+	t_pipex	*pipex;
 }			t_shell;
 
 t_shell	*g_sh;
