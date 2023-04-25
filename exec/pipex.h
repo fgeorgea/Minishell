@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/24 17:10:38 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:32:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,55 +56,58 @@ typedef struct s_pipex
 /*********************    FUNCTIONS    ************************/
 /**************************************************************/
 
+// PIPEX.C
+void	ft_pipex(int argc, char **argv, char **env);
+
 // INIT.C
-void	ft_init_struct(int argc, char **argv, t_pipex *p);
-
-// ERROR.C
-void	ft_error(t_pipex *p, const char *custom_perror, int does_exit);
-
-// PARSING.C
-void	ft_parse_cmds(t_pipex *p);
-
-// CHAINED_LIST.C
-void	ft_lstadd_back_pipex(t_pcmd **lst, t_pcmd *new);
-t_pcmd	*ft_lstlast_pipex(t_pcmd *lst);
-void	ft_lstclear_pipex(t_pcmd **lst);
-t_pcmd	*ft_lstnew_pipex(char **content, t_pcmd *previous, t_pipex *p);
-void	ft_set_lst_head(t_pcmd **lst);
-
-// UTILS.C
-int		ft_tablen(char **tab, t_pipex *p);
-void	ft_close(int *fd, t_pipex *p);
-void	ft_dup2(int file1, int file2, t_pipex *p);
-void	ft_waitpid(t_pipex *p);
-
-// FORK.C
-void	ft_fork(int pos, t_pipex *p);
-pid_t	*ft_createfork_array(t_pipex *p);
-void	ft_first_child(char **env, t_pipex *p);
-void	ft_last_child(int pos, char **env, t_pipex *p);
-void	ft_middle_child(int pos, char **env, t_pipex *p);
-
-// EXEC.C
-void	ft_exec(char **env, t_pipex *p);
-
-// PIPE.C
-void	ft_pipe(int pos, t_pipex *p);
-int		**ft_createpipe_array(t_pipex *p);
-
-// FORK_UTILS.C
-void	ft_parent_close(int pos, t_pipex *p);
+void	ft_init_struct(int argc, char **argv);
 
 // INIT_UTILS_BONUS.C
 void	ft_init_struct_vars(int argc, char **argv, t_pipex *p);
 void	ft_check_here_doc(int argc, char **argv, t_pipex *p);
 
-// HERE_DOC_BONUS.C
-void	ft_here_doc(t_pipex *p);
+// ERROR.C
+void	ft_error(const char *custom_perror, int does_exit);
 
-// FREE_BONUS.C
+// PARSING.C
+void	ft_parse_cmds(void);
+
+// CHAINED_LIST.C
+void	ft_lstadd_back_pipex(t_pcmd **lst, t_pcmd *new);
+t_pcmd	*ft_lstlast_pipex(t_pcmd *lst);
+void	ft_lstclear_pipex(t_pcmd **lst);
+t_pcmd	*ft_lstnew_pipex(char **content, t_pcmd *previous);
+void	ft_set_lst_head(t_pcmd **lst);
+
+// FORK.C
+void	ft_fork(int pos);
+pid_t	*ft_createfork_array(t_pipex *p);
+void	ft_first_child(char **env, t_pipex *p);
+void	ft_last_child(int pos, char **env, t_pipex *p);
+void	ft_middle_child(int pos, char **env, t_pipex *p);
+
+// FORK_UTILS.C
+void	ft_parent_close(int pos);
+
+// EXEC.C
+void	ft_exec(char **env);
+
+// PIPE.C
+void	ft_pipe(int pos);
+int		**ft_createpipe_array(t_pipex *p);
+
+// HERE_DOC.C
+void	ft_here_doc(void);
+
+// FREE.C
 void	ft_free_int_array(int **array, int len);
 void	ft_free_array(char **tab);
 void	ft_unlink_tmp(void);
+
+// UTILS.C
+int		ft_tablen(char **tab);
+void	ft_close(int *fd);
+void	ft_dup2(int file1, int file2);
+void	ft_waitpid(void);
 
 #endif

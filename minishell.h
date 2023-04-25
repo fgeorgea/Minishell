@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/24 19:08:17 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:28:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define OUT_APP 1
 # define IN 2
 # define HEREDOC 3
+
+/**************************************************************/
+/*********************      STRUCTS    ************************/
+/**************************************************************/
 
 typedef struct s_redir
 {
@@ -63,7 +67,13 @@ typedef struct s_shell
 
 t_shell	*g_sh;
 
+/**************************************************************/
+/*********************    FUNCTIONS    ************************/
+/**************************************************************/
+
 char	*readline(const char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
-
+void	init_shell(char **env);
+int	init_signals(void);
+void	ft_free_env(void);
 #endif

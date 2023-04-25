@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/24 17:16:25 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:50:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ static int	does_cmd_exist(char *str)
 		return (0);
 }
 
-static void	put_path_cmd(char **cmd, t_pcmd *head, t_pipex *p)
+static void	put_path_cmd(char **cmd)
 {
 	int		i;
 	char	*tmp;
+	t_pipex	*p;
 
 	i = 0;
 	tmp = NULL;
+	p = g_sh->pipex;
 	while (p->paths[i])
 	{
 		tmp = ft_strjoin(p->paths[i], *cmd);
@@ -39,23 +41,22 @@ static void	put_path_cmd(char **cmd, t_pcmd *head, t_pipex *p)
 		}
 		free(tmp);
 		if (i == p->nbr_paths - 1)
-		{
-			p->lst = head;
-			ft_error(p, "Command was not found\n", 0);
-		}
+			ft_error("Command was not found\n", 0);
 		i++;
 	}
 }
 
-void	ft_parse_cmds(t_pipex *p)
+void	ft_parse_cmds(void)
 {
+	t_pipex	*p;
 	t_pcmd	*head;
-
+	
+	p = g_sh->pipex;
 	head = p->lst;
 	while (p->lst)
 	{
 		if (!does_cmd_exist(p->lst->content[0]))
-			put_path_cmd(&p->lst->content[0], head, p);
+			put_path_cmd(&p->lst->content[0]);
 		p->lst = p->lst->next;
 	}
 	p->lst = head;

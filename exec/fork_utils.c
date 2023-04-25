@@ -6,27 +6,30 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:42:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/24 17:01:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:30:28 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_parent_close(int pos, t_pipex *p)
+void	ft_parent_close(int pos)
 {
+	t_pipex	*p;
+
+	p = g_sh->pipex;
 	if (pos == 0)
 	{
-		ft_close(&p->infile, p);
-		ft_close(&p->pipefd[0][1], p);
+		ft_close(&p->infile);
+		ft_close(&p->pipefd[0][1]);
 	}
 	else if (pos == p->nbr_fork - 1)
 	{
-		ft_close(&p->pipefd[pos - 1][0], p);
-		ft_close(&p->outfile, p);
+		ft_close(&p->pipefd[pos - 1][0]);
+		ft_close(&p->outfile);
 	}
 	else
 	{
-		ft_close(&p->pipefd[pos - 1][0], p);
-		ft_close(&p->pipefd[pos][1], p);
+		ft_close(&p->pipefd[pos - 1][0]);
+		ft_close(&p->pipefd[pos][1]);
 	}
 }
