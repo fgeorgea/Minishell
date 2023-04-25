@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/25 14:28:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:12:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,14 @@ int		init_signals(void);
 void	ft_free_env(void);
 void	ft_free_global(void);
 void	ft_exit(int status);
+
+
+
+
+
+// ENV.C
+int		lstsize_env(t_env **lst);
+char	**lst_to_array(t_env **lst);
+
+
 #endif
