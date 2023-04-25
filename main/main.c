@@ -22,10 +22,12 @@ int	main(int argc, char **argv, char **env)
 	{
 		g_sh->str = readline("$>");
 		if (!g_sh->str)
-			exit(0);
+			ft_exit(EXIT_SUCCESS);
 		if (*g_sh->str)
 			add_history(g_sh->str);
 		//lexer(g_sh->str);
+		//if (g_sh->cmd)
+		//	exec();
 		free(g_sh->str);
 	}
 	return (0);
