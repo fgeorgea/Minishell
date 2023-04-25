@@ -12,23 +12,43 @@
 
 #include "../minishell.h"
 
-t_cmd	*split_cmd(char *str, int i, int j)
+t_cmd	*get_cmd(char *str, int i, int j)
 {
 	t_cmd	*cmd;
 
 	if (i == j)
+	{
+		syntax_error("syntax error near unexpected token `|\'");
 		return (0);
+	}
 	cmd = malloc(sizeof(t_cmd));
 	//if (!cmd)
 	//	ft_exit(EXIT_MALLOC_FAILURE);
+	cmd->cmd = 0;
+	cmd->redir = 0;
+	cmd->next = 0;
+}
 
+void	add_cmd(t_cmd *cmd)
+{
+	t_cmd	*tmp;
+
+	if (g_sh->cmd == 0)
+		g_sh->cmd = cmd;
+	else
+	{
+		tmp = g_sh->cmd;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = cmd;
+	}
 }
 
 void	lexer(char *str)
 {
 	int		i;
 	int		j;
-	t_cmd	*cmd;
+	t_cmd	*tmp;
 
 	if (g_sh->cmd)
 		ft_free_cmd();
@@ -37,19 +57,14 @@ void	lexer(char *str)
 	{
 		while (ft_iswhitespace(str[i]))
 			i++;
+		if (!str[i])
+			break ;
 		j = get_next_pipe(str, i);
-		if (g_sh->cmd == 0)
-		{
-			g_sh->cmd = split_cmd(str, i, j);
-			cmd = g_sh->cmd;
-		}
-		else
-		{
-			cmd->next = split_cmd(str, i, j);
-			cmd = cmd->next;
-		}
+		tmp = get_cmd(str, i, j);
+		if (!tmp)
+			return ;
+		add_cmd(tmp);
 		i = j;
 	}
-	//if (g_sh->cmd)
-	//	expander(void);
+	//expander(void);
 }
