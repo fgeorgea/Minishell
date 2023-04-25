@@ -17,7 +17,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	init_shell(argv, env);
 	if (init_signals())
-		return (0);//ft_exit(sh, EXIT_FAILURE));
+		ft_exit(EXIT_FAILURE);
 	while (1)
 	{
 		g_sh->str = readline("$>");

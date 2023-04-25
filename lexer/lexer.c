@@ -23,8 +23,8 @@ t_cmd	*get_cmd(char *str, int i, int j)
 		return (0);
 	}
 	cmd = malloc(sizeof(t_cmd));
-	//if (!cmd)
-	//	ft_exit(EXIT_MALLOC_FAILURE);
+	if (!cmd)
+		ft_exit(EXIT_MALLOC_FAILURE);
 	cmd->cmd = 0;
 	cmd->redir = 0;
 	cmd->next = 0;

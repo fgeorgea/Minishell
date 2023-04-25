@@ -78,4 +78,6 @@ void	rl_replace_line(const char *text, int clear_undo);
 void	init_shell(char **argv, char **env);
 int		init_signals(void);
 void	ft_free_env(void);
+void	ft_free_global(void);
+void	ft_exit(int status);
 #endif
