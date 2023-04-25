@@ -16,13 +16,6 @@ void	ft_exit(int status)
 {
 	ft_free_global();
 	if (status != EXIT_SUCCESS)
-	{
-		ft_putstr_fd(g_sh->name, 2);
-		write(2, ": ", 2);
-	}
-	if (status == EXIT_FAILURE)
-		ft_putstr_fd("unexpedected error occured\n", 2);
-	if (status == EXIT_MALLOC_FAILURE)
-		ft_putstr_fd("malloc failure\n", 2);
+		perror(g_sh->name);
 	exit(status);
 }

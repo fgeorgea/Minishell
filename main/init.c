@@ -65,17 +65,14 @@ void	init_shell(char **argv, char **env)
 {
 	g_sh = malloc(sizeof(t_shell));
 	if (!g_sh)
-		exit(0);
+		ft_exit(EXIT_MALLOC_FAILURE);
 	g_sh->cmd = 0;
 	g_sh->str = 0;
 	g_sh->pipex = 0;
 	g_sh->name = argv[0];
 	init_env(env);
 	if (!g_sh->env)
-	{
-		free(g_sh);
-		exit(0);
-	}
+		ft_exit(EXIT_MALLOC_FAILURE);
 }
 
 void	catch_kill(int sig)

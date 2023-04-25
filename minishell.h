@@ -25,6 +25,7 @@
 # include "exec/pipex.h"
 
 # define EXIT_MALLOC_FAILURE 2
+# define EXIT_SIGNAL_FAILURE 3
 
 # define OUT 0
 # define OUT_APP 1

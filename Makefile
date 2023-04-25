@@ -16,6 +16,7 @@ MAIN_DIR = main/
 SRCS	=	$(MAIN_DIR)main.c \
 			$(MAIN_DIR)free.c \
 			$(MAIN_DIR)init.c \
+			$(MAIN_DIR)error.c \
 			$(EXEC_DIR)chained_list.c \
 			$(EXEC_DIR)error.c \
 			$(EXEC_DIR)exec.c \
