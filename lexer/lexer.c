@@ -18,16 +18,22 @@ t_cmd	*get_cmd(char *str, int i, int j)
 
 	if (i == j)
 	{
-		syntax_error("syntax error near unexpected token `|'");
+		ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
 		ft_free_cmd();
 		return (0);
 	}
 	cmd = malloc(sizeof(t_cmd));
 	if (!cmd)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	cmd->cmd = 0;
 	cmd->redir = 0;
 	cmd->next = 0;
+	cmd->cmd = shell_split(&str[i], j - i);
+	if (!cmd->cmd)
+	{
+		free(cmd);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	return (cmd);
 }
 
 void	add_cmd(t_cmd *cmd)
@@ -63,7 +69,7 @@ void	lexer(char *str)
 		else if (!str[i])
 		{
 			ft_free_cmd();
-			syntax_error("syntax error near unexpected token `|'");
+			ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
 			return ;
 		}
 		j = get_next_pipe(str, i);
