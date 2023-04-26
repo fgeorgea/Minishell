@@ -6,55 +6,55 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/25 18:05:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:16:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static t_env	*ft_lstlast_env(t_env *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+// static t_env	*ft_lstlast_env(t_env *lst)
+// {
+// 	if (!lst)
+// 		return (NULL);
+// 	while (lst->next)
+// 		lst = lst->next;
+// 	return (lst);
+// }
 
-static void	ft_lstadd_back_env(t_env **lst, t_env *new)
-{
-	t_env	*last;
+// static void	ft_lstadd_back_env(t_env **lst, t_env *new)
+// {
+// 	t_env	*last;
 
-	if (!new || !lst)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	else
-	{
-		last = ft_lstlast_env(*lst);
-		last->next = new;
-	}
-}
+// 	if (!new || !lst)
+// 		return ;
+// 	if (!*lst)
+// 	{
+// 		*lst = new;
+// 		return ;
+// 	}
+// 	else
+// 	{
+// 		last = ft_lstlast_env(*lst);
+// 		last->next = new;
+// 	}
+// }
 
-static t_env	*ft_lstnew_env(char *key, char *value)
-{
-	t_env	*lst;
+// static t_env	*ft_lstnew_env(char *key, char *value)
+// {
+// 	t_env	*lst;
 
-	lst = malloc(sizeof(t_env));
-	if (!lst)
-	{
-		free(key);
-		free(value);
-		ft_error("Failed to create new struct in chained list\n", -1);
-	}
-	lst->key = key;
-	lst->value = value;
-	lst->next = NULL;
-	return (lst);
-}
+// 	lst = malloc(sizeof(t_env));
+// 	if (!lst)
+// 	{
+// 		free(key);
+// 		free(value);
+// 		ft_error("Failed to create new struct in chained list\n", -1);
+// 	}
+// 	lst->key = key;
+// 	lst->value = value;
+// 	lst->next = NULL;
+// 	return (lst);
+// }
 
 int	lstsize_env(t_env **lst)
 {

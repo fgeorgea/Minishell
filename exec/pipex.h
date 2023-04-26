@@ -6,13 +6,14 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/25 16:42:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/26 19:41:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
+# include "../minishell.h"
 /**************************************************************/
 /*********************      MACROS     ************************/
 /**************************************************************/
@@ -47,9 +48,9 @@ typedef struct s_pipex
 	int		is_heredoc;
 	char	*end_token;
 	char	**paths;
+	char	**env_array;
 	int		**pipefd;
 	pid_t	*pids;
-	t_pcmd	*lst;
 }		t_pipex;
 
 /**************************************************************/
@@ -57,7 +58,7 @@ typedef struct s_pipex
 /**************************************************************/
 
 // PIPEX.C
-void	ft_pipex(int argc, char **argv, char **env);
+void	ft_pipex(int argc, char **argv);
 
 // INIT.C
 void	ft_init_struct(int argc, char **argv);
@@ -82,15 +83,15 @@ void	ft_set_lst_head(t_pcmd **lst);
 // FORK.C
 void	ft_fork(int pos);
 pid_t	*ft_createfork_array(t_pipex *p);
-void	ft_first_child(char **env, t_pipex *p);
-void	ft_last_child(int pos, char **env, t_pipex *p);
-void	ft_middle_child(int pos, char **env, t_pipex *p);
+void	ft_first_child(t_cmd *cmd, t_pipex *p);
+void	ft_last_child(int pos, t_cmd *cmd, t_pipex *p);
+void	ft_middle_child(int pos, t_cmd *cmd, t_pipex *p);
 
 // FORK_UTILS.C
 void	ft_parent_close(int pos);
 
 // EXEC.C
-void	ft_exec(char **env);
+void	ft_exec(void);
 
 // PIPE.C
 void	ft_pipe(int pos);
@@ -109,7 +110,5 @@ int		ft_tablen(char **tab);
 void	ft_close(int *fd);
 void	ft_dup2(int file1, int file2);
 void	ft_waitpid(void);
-
-
 
 #endif
