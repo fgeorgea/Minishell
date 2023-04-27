@@ -9,17 +9,9 @@
 #    Updated: 2023/04/27 15:22:27 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-<<<<<<< HEAD
 EXEC_DIR	= exec/
 MAIN_DIR	= main/
 LEX_DIR		= lexer/
-=======
-NAME	= minishell
-
-EXEC_DIR = exec/
-MAIN_DIR = main/
->>>>>>> 2eda31ccfa8eccd915d18e3fe9fa196d1411dfce
 
 SRCS	=	$(MAIN_DIR)main.c \
 			$(MAIN_DIR)free.c \
