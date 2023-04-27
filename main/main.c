@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/26 17:43:36 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:48:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	main(int argc, char **argv, char **env)
 	init_shell(argv, env);
 	if (init_signals())
 		ft_exit(EXIT_SIGNAL_FAILURE);
-	ft_pipex(argc, argv);
-	exit(0);
 	while (1)
 	{
 		g_sh->str = readline("$>");

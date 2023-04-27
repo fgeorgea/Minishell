@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/27 14:45:32 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/27 14:48:31 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ CFLAGS	= -Wall -Wextra -Werror
 all:	${NAME}
 
 ${NAME}:	libft ${OBJS}
-	${CC} -o ${NAME} ${OBJS} ${CFLAGS} -LLIBFT -lft ${READL}
+	${CC} -o ${NAME} ${OBJS} ${CFLAGS} -LLIBFT -lft 
 
 libft:
 	make -C LIBFT/
