@@ -23,6 +23,7 @@
 # include <termios.h>
 # include "LIBFT/libft.h"
 # include "exec/pipex.h"
+# include "lexer/lexer.h"
 
 # define EXIT_MALLOC_FAILURE 2
 # define EXIT_SIGNAL_FAILURE 3
@@ -60,9 +61,9 @@ typedef struct s_env
 typedef struct s_shell
 {
 	char	*name;
+	char	*str;
 
 	t_cmd	*cmd;
-	char	*str;
 	t_env	*env;
 
 	t_pipex	*pipex;
