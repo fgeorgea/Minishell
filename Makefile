@@ -6,13 +6,20 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/25 17:08:12 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/27 15:22:27 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+<<<<<<< HEAD
 EXEC_DIR	= exec/
 MAIN_DIR	= main/
 LEX_DIR		= lexer/
+=======
+NAME	= minishell
+
+EXEC_DIR = exec/
+MAIN_DIR = main/
+>>>>>>> 2eda31ccfa8eccd915d18e3fe9fa196d1411dfce
 
 SRCS	=	$(MAIN_DIR)main.c \
 			$(MAIN_DIR)free.c \
@@ -38,7 +45,6 @@ SRCS	=	$(MAIN_DIR)main.c \
 
 OBJS	=	${SRCS:.c=.o}
 
-NAME	= minishell
 
 LIBFT	= LIBFT/libft.a
 
@@ -50,19 +56,19 @@ CFLAGS	= -Wall -Wextra -Werror
 
 all:	${NAME}
 
-${NAME}:	libft ${OBJS}
-	${CC} -o ${NAME} ${OBJS} ${CFLAGS} -Iincludes -LLIBFT -lft ${READL}
-
-libft:
+$(LIBFT):
 	make -C LIBFT/
+
+${NAME}:	$(LIBFT) ${OBJS}
+	${CC} ${CFLAGS} -o ${NAME} -ILIBFT -LLIBFT -lft ${READL} ${OBJS}
 
 clean:
 	rm -f ${OBJS}
-	make clean -C LIBFT
+	make -C LIBFT/ clean
 
 fclean:	clean
 	rm -f ${NAME}
-	make fclean -C LIBFT
+	make -C LIBFT/ fclean
 
 re:	fclean all
 

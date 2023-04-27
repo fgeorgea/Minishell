@@ -6,12 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/25 18:05:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:33:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+<<<<<<< HEAD
 /*static t_env	*ft_lstlast_env(t_env *lst)
 {
 	if (!lst)
@@ -20,41 +21,51 @@
 		lst = lst->next;
 	return (lst);
 }
+=======
+// static t_env	*ft_lstlast_env(t_env *lst)
+// {
+// 	if (!lst)
+// 		return (NULL);
+// 	while (lst->next)
+// 		lst = lst->next;
+// 	return (lst);
+// }
+>>>>>>> 2eda31ccfa8eccd915d18e3fe9fa196d1411dfce
 
-static void	ft_lstadd_back_env(t_env **lst, t_env *new)
-{
-	t_env	*last;
+// static void	ft_lstadd_back_env(t_env **lst, t_env *new)
+// {
+// 	t_env	*last;
 
-	if (!new || !lst)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	else
-	{
-		last = ft_lstlast_env(*lst);
-		last->next = new;
-	}
-}
+// 	if (!new || !lst)
+// 		return ;
+// 	if (!*lst)
+// 	{
+// 		*lst = new;
+// 		return ;
+// 	}
+// 	else
+// 	{
+// 		last = ft_lstlast_env(*lst);
+// 		last->next = new;
+// 	}
+// }
 
-static t_env	*ft_lstnew_env(char *key, char *value)
-{
-	t_env	*lst;
+// static t_env	*ft_lstnew_env(char *key, char *value)
+// {
+// 	t_env	*lst;
 
-	lst = malloc(sizeof(t_env));
-	if (!lst)
-	{
-		free(key);
-		free(value);
-		ft_error("Failed to create new struct in chained list\n", -1);
-	}
-	lst->key = key;
-	lst->value = value;
-	lst->next = NULL;
-	return (lst);
-}*/
+// 	lst = malloc(sizeof(t_env));
+// 	if (!lst)
+// 	{
+// 		free(key);
+// 		free(value);
+// 		ft_error("Failed to create new struct in chained list\n", -1);
+// 	}
+// 	lst->key = key;
+// 	lst->value = value;
+// 	lst->next = NULL;
+// 	return (lst);
+// }
 
 int	lstsize_env(t_env **lst)
 {
@@ -63,6 +74,33 @@ int	lstsize_env(t_env **lst)
 	
 	i = 1;
 	tmp = *lst;
+	if (!lst)
+		ft_error("There are no environments\n", 0);
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+<<<<<<< HEAD
+	lst->key = key;
+	lst->value = value;
+	lst->next = NULL;
+	return (lst);
+}*/
+=======
+	return (i);
+}
+>>>>>>> 2eda31ccfa8eccd915d18e3fe9fa196d1411dfce
+
+int	lstsize_cmd(t_cmd **lst)
+{
+	int		i;
+	t_cmd	*tmp;
+	
+	i = 1;
+	tmp = *lst;
+	if (!lst)
+		ft_error("There are no commands\n", 0);
 	while (tmp)
 	{
 		i++;
