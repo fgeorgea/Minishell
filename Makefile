@@ -37,6 +37,7 @@ SRCS	=	$(MAIN_DIR)main.c \
 
 OBJS	=	${SRCS:.c=.o}
 
+NAME	= minishell
 
 LIBFT	= LIBFT/libft.a
 

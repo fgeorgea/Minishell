@@ -12,16 +12,6 @@
 
 #include "../minishell.h"
 
-<<<<<<< HEAD
-/*static t_env	*ft_lstlast_env(t_env *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-=======
 // static t_env	*ft_lstlast_env(t_env *lst)
 // {
 // 	if (!lst)
@@ -30,7 +20,6 @@
 // 		lst = lst->next;
 // 	return (lst);
 // }
->>>>>>> 2eda31ccfa8eccd915d18e3fe9fa196d1411dfce
 
 // static void	ft_lstadd_back_env(t_env **lst, t_env *new)
 // {
@@ -81,16 +70,8 @@ int	lstsize_env(t_env **lst)
 		i++;
 		tmp = tmp->next;
 	}
-<<<<<<< HEAD
-	lst->key = key;
-	lst->value = value;
-	lst->next = NULL;
-	return (lst);
-}*/
-=======
 	return (i);
 }
->>>>>>> 2eda31ccfa8eccd915d18e3fe9fa196d1411dfce
 
 int	lstsize_cmd(t_cmd **lst)
 {
