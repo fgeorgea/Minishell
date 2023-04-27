@@ -20,6 +20,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	if (lst == 0 || del == 0)
 		return ;
 	current = *lst;
+	if (!current)
+		return ;
 	while (current->next)
 	{
 		nextclear = current->next;

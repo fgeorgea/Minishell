@@ -12,24 +12,6 @@
 
 #include "../minishell.h"
 
-t_cmd	*get_cmd(char *str)
-{
-	t_cmd	*cmd;
-
-	cmd = malloc(sizeof(t_cmd));
-	if (!cmd)
-		return (0);
-	cmd->next = 0;
-	cmd->redir = 0;
-	cmd->cmd = shell_split(str, "\040\011\012\013\014\015");
-	if (!cmd->cmd)
-	{
-		free(cmd);
-		return (0);
-	}
-	return (cmd);
-}
-
 void	add_cmd(t_cmd *cmd)
 {
 	t_cmd	*tmp;
@@ -45,39 +27,60 @@ void	add_cmd(t_cmd *cmd)
 	}
 }
 
-/*
-Split into words -> tokenization -> expander -> split into words -> quotes
-*/
-
-void	lexer(char *str)
+t_list	*pre_token(char *str)
 {
 	int		i;
-	int		m_fail;
-	t_cmd	*tmp;
+	t_token	*tmp;
+	t_list	*temp;
+	t_list	*head;
 	char	**arr;
 
 	if (g_sh->cmd)
 		ft_free_cmd();
-	arr = shell_split(str, "|");
+	arr = shell_split(str, "\040\011\012\013\014\015");
 	if (!arr)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	i = 0;
-	m_fail = 0;
+	head = 0;
 	while (arr[i])
 	{
-		if (!m_fail)
+		tmp = malloc(sizeof(t_token));
+		if (!tmp)
 		{
-			tmp = get_cmd(arr[i]);
-			if (!tmp)
-				m_fail = 1;
-			else
-				add_cmd(tmp);
+			ft_lstclear(&head, &free);
+			ft_free_array(arr);
+			ft_exit(EXIT_MALLOC_FAILURE);
 		}
-		free(arr[i]);
+		tmp->word = arr[i];
+		temp = ft_lstnew(tmp);
+		if (!temp)
+		{
+			ft_lstclear(&head, &free);
+			ft_free_array(arr);
+			free(tmp);
+			ft_exit(EXIT_MALLOC_FAILURE);
+		}
+		ft_lstadd_back(&head, temp);
 		i++;
 	}
 	free(arr);
-	if (m_fail)
-		ft_exit(EXIT_MALLOC_FAILURE);
+	return (head);
+}
+
+/*
+Split into words -> pre_token
+tokenization -> tokenize
+expander -> expander
+split into words -> post_token
+remove quotes
+*/
+
+void	lexer(char *str)
+{
+	t_list	*words;
+	t_token	*temp;
+
+	words = pre_token(str);
+	tokenize(words);
 	//expander(void);
 }
