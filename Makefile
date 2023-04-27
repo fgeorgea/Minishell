@@ -6,9 +6,11 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/27 14:48:31 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/27 15:22:27 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME	= minishell
 
 EXEC_DIR = exec/
 MAIN_DIR = main/
@@ -32,10 +34,8 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(EXEC_DIR)pipex.c \
 			$(EXEC_DIR)env.c \
 
-
 OBJS	=	${SRCS:.c=.o}
 
-NAME	= minishell
 
 LIBFT	= LIBFT/libft.a
 
@@ -44,22 +44,22 @@ CC		= gcc
 READL	= -L/usr/local/lib -I/usr/local/include -lreadline -L $(shell brew --prefix readline)/lib -I $(shell brew --prefix readline)/include
 
 CFLAGS	= -Wall -Wextra -Werror
-	
+
 all:	${NAME}
 
-${NAME}:	libft ${OBJS}
-	${CC} -o ${NAME} ${OBJS} ${CFLAGS} -LLIBFT -lft 
-
-libft:
+$(LIBFT):
 	make -C LIBFT/
+
+${NAME}:	$(LIBFT) ${OBJS}
+	${CC} ${CFLAGS} -o ${NAME} -ILIBFT -LLIBFT -lft ${READL} ${OBJS}
 
 clean:
 	rm -f ${OBJS}
-	make clean -C LIBFT
+	make -C LIBFT/ clean
 
 fclean:	clean
 	rm -f ${NAME}
-	make fclean -C LIBFT
+	make -C LIBFT/ fclean
 
 re:	fclean all
 
