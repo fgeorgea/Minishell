@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 14:32:50 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 20:07:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_pcmd
 
 typedef struct s_pipex
 {
+	int		infile;
+	int		outfile;
 	int		nbr_cmds;
 	int		nbr_pipe;
 	int		nbr_fork;
@@ -66,7 +68,8 @@ void	ft_init_struct_vars(t_pipex *p);
 void	ft_error(const char *custom_perror, int does_exit);
 
 // PARSING.C
-int		check_cmd(char **cmd);
+void	check_cmd(char **cmd);
+int		file_exist(char *str);
 
 // CHAINED_LIST.C
 void	ft_lstadd_back_pipex(t_pcmd **lst, t_pcmd *new);
@@ -103,5 +106,6 @@ int		ft_tablen(char **tab);
 void	ft_close(int *fd);
 void	ft_dup2(int file1, int file2);
 void	ft_waitpid(void);
+int		ft_open(char *file, int flags, int perm);
 
 #endif

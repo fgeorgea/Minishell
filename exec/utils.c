@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/25 13:46:25 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 20:03:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,17 @@ void	ft_waitpid(void)
 			ft_error(WAITPID_ERR, -1);
 		i++;
 	}
+}
+
+int	ft_open(char *file, int flags, int perm)
+{
+	int	fd;
+
+	if (perm == -1)
+		fd = open(file, flags);
+	else
+		fd = open(file, flags, perm);
+	if (fd == -1)
+		ft_error("Open failed\n", -1);
+	return (fd);
 }
