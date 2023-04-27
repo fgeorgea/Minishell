@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 14:33:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:41:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,9 @@ char	**lst_to_array(t_env **lst)
 	i = 0;
 	lstsize = lstsize_env(lst);
 	tmp = *lst;
-	array = NULL;
 	array = malloc(sizeof(char *) * (lstsize + 1));
 	if (!array)
-		ft_error("Failed to convert t_env list to array\n", -1);
+		ft_error("Failed to convert env lst to array\n", -1);
 	while (tmp)
 	{
 		array[i] = join_key_value(tmp);

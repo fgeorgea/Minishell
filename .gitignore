@@ -3,3 +3,5 @@ minishell
 */*.o
 *.dSYM
 .vscode
+*/*.dSYM
+*/*.vscode
