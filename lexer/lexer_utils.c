@@ -12,11 +12,11 @@
 
 #include "../minishell.h"
 
-int	skip_quotes(char *str, int i, int max)
+int	skip_quotes(char *str, int i)
 {
 	int	j;
 
-	j = i;
+	j = i + 1;
 	if (str[i] == '"')
 	{
 		while (str[j] && str[j] != '"')
@@ -36,13 +36,10 @@ int	skip_quotes(char *str, int i, int max)
 
 int	get_next_pipe(char *str, int i)
 {
-	int	i;
-
-	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '"' || str[i] == '\'')
-			i = skip_quotes(str, i, -1);
+			i = skip_quotes(str, i);
 		if (str[i] == '|')
 			return (i);
 		i++;

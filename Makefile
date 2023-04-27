@@ -10,8 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-EXEC_DIR = exec/
-MAIN_DIR = main/
+EXEC_DIR	= exec/
+MAIN_DIR	= main/
+LEX_DIR		= lexer/
 
 SRCS	=	$(MAIN_DIR)main.c \
 			$(MAIN_DIR)free.c \
@@ -31,6 +32,9 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(EXEC_DIR)utils.c \
 			$(EXEC_DIR)pipex.c \
 			$(EXEC_DIR)env.c \
+			$(LEX_DIR)lexer_utils.c \
+			$(LEX_DIR)lexer.c \
+			$(LEX_DIR)shell_split.c \
 
 OBJS	=	${SRCS:.c=.o}
 

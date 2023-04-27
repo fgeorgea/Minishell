@@ -12,26 +12,20 @@
 
 #include "../minishell.h"
 
-t_cmd	*get_cmd(char *str, int i, int j)
+t_cmd	*get_cmd(char *str)
 {
 	t_cmd	*cmd;
 
-	if (i == j)
-	{
-		ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
-		ft_free_cmd();
-		return (0);
-	}
 	cmd = malloc(sizeof(t_cmd));
 	if (!cmd)
-		ft_exit(EXIT_MALLOC_FAILURE);
-	cmd->redir = 0;
+		return (0);
 	cmd->next = 0;
-	cmd->cmd = shell_split(&str[i], j - i);
+	cmd->redir = 0;
+	cmd->cmd = shell_split(str, "\040\011\012\013\014\015");
 	if (!cmd->cmd)
 	{
 		free(cmd);
-		ft_exit(EXIT_MALLOC_FAILURE);
+		return (0);
 	}
 	return (cmd);
 }
@@ -54,30 +48,31 @@ void	add_cmd(t_cmd *cmd)
 void	lexer(char *str)
 {
 	int		i;
-	int		j;
+	int		m_fail;
 	t_cmd	*tmp;
 
 	if (g_sh->cmd)
 		ft_free_cmd();
+	g_sh->cmd_arr = shell_split(str, "|");
+	if (!g_sh->cmd_arr)
+		ft_exit(EXIT_MALLOC_FAILURE);
 	i = 0;
-	while (str[i])
+	m_fail = 0;
+	while (g_sh->cmd_arr[i])
 	{
-		while (ft_iswhitespace(str[i]))
-			i++;
-		if (!str[i] && !g_sh->cmd)
-			return ;
-		else if (!str[i])
+		if (!m_fail)
 		{
-			ft_free_cmd();
-			ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
-			return ;
+			tmp = get_cmd(g_sh->cmd_arr[i]);
+			if (!tmp)
+				m_fail = 1;
+			else
+				add_cmd(tmp);
 		}
-		j = get_next_pipe(str, i);
-		tmp = get_cmd(str, i, j);
-		if (!tmp)
-			return ;
-		add_cmd(tmp);
-		i = j;
+		free(g_sh->cmd_arr[i]);
+		i++;
 	}
+	free(g_sh->cmd_arr);
+	if (m_fail)
+		ft_exit(EXIT_MALLOC_FAILURE);
 	//expander(void);
 }

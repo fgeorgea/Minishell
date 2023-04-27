@@ -12,6 +12,30 @@
 
 #include "../minishell.h"
 
+void	print_cmd(void)
+{
+	t_cmd	*tmp;
+	int		i;
+
+	tmp = g_sh->cmd;
+	if (!tmp)
+	{
+		printf("No CMD\n");
+		return ;
+	}
+	while (tmp)
+	{
+		i = 0;
+		while (tmp->cmd[i])
+		{
+			printf("word: \"%s\", ", tmp->cmd[i]);
+			i++;
+		}
+		printf("\n");
+		tmp = tmp->next;
+	}
+}
+
 int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
@@ -25,7 +49,8 @@ int	main(int argc, char **argv, char **env)
 			ft_exit(EXIT_SUCCESS);
 		if (*g_sh->str)
 			add_history(g_sh->str);
-		//lexer(g_sh->str);
+		lexer(g_sh->str);
+		print_cmd();
 		//if (g_sh->cmd)
 		//	exec();
 		free(g_sh->str);

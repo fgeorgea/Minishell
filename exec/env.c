@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-static t_env	*ft_lstlast_env(t_env *lst)
+/*static t_env	*ft_lstlast_env(t_env *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -54,7 +54,7 @@ static t_env	*ft_lstnew_env(char *key, char *value)
 	lst->value = value;
 	lst->next = NULL;
 	return (lst);
-}
+}*/
 
 int	lstsize_env(t_env **lst)
 {

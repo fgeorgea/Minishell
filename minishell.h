@@ -62,6 +62,7 @@ typedef struct s_shell
 	char	*name;
 
 	t_cmd	*cmd;
+	char	**cmd_arr;
 	char	*str;
 	t_env	*env;
 
@@ -81,7 +82,11 @@ int		init_signals(void);
 void	ft_free_env(void);
 void	ft_free_global(void);
 void	ft_exit(int status);
-
+void	lexer(char *str);
+int		skip_quotes(char *str, int i);
+int		get_next_pipe(char *str, int i);
+char	**shell_split(char *str, char *sep);
+void	ft_free_cmd(void);
 
 
 
