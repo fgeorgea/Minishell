@@ -45,33 +45,38 @@ void	add_cmd(t_cmd *cmd)
 	}
 }
 
+/*
+Split into words -> tokenization -> expander -> split into words -> quotes
+*/
+
 void	lexer(char *str)
 {
 	int		i;
 	int		m_fail;
 	t_cmd	*tmp;
+	char	**arr;
 
 	if (g_sh->cmd)
 		ft_free_cmd();
-	g_sh->cmd_arr = shell_split(str, "|");
-	if (!g_sh->cmd_arr)
+	arr = shell_split(str, "|");
+	if (!arr)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	i = 0;
 	m_fail = 0;
-	while (g_sh->cmd_arr[i])
+	while (arr[i])
 	{
 		if (!m_fail)
 		{
-			tmp = get_cmd(g_sh->cmd_arr[i]);
+			tmp = get_cmd(arr[i]);
 			if (!tmp)
 				m_fail = 1;
 			else
 				add_cmd(tmp);
 		}
-		free(g_sh->cmd_arr[i]);
+		free(arr[i]);
 		i++;
 	}
-	free(g_sh->cmd_arr);
+	free(arr);
 	if (m_fail)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	//expander(void);

@@ -62,7 +62,6 @@ typedef struct s_shell
 	char	*name;
 
 	t_cmd	*cmd;
-	char	**cmd_arr;
 	char	*str;
 	t_env	*env;
 
