@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/26 17:48:16 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:26:44 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_exec(void)
 	i = 0;
 	p = g_sh->pipex;
 	cmd = g_sh->cmd;
-	while (i < p->nbr_fork)
+	while (cmd)
 	{
 		ft_pipe(i);
 		ft_fork(i);

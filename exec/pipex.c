@@ -6,13 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/26 17:44:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:32:41 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_pipex(int argc, char **argv)
+void	ft_pipex(void)
 {
 	t_pipex	*p;
 	
@@ -21,8 +21,7 @@ void	ft_pipex(int argc, char **argv)
 	if (!g_sh->pipex)
 		ft_error("Failed to malloc pipex struct\n", -1);
 	p = g_sh->pipex;
-	ft_init_struct(argc, argv);
-	ft_parse_cmds();
+	ft_init_struct();
 	ft_here_doc();
 	ft_exec();
 	ft_waitpid();

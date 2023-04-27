@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/26 17:16:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:33:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,25 @@ int	lstsize_env(t_env **lst)
 	
 	i = 1;
 	tmp = *lst;
+	if (!lst)
+		ft_error("There are no environments\n", 0);
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
+int	lstsize_cmd(t_cmd **lst)
+{
+	int		i;
+	t_cmd	*tmp;
+	
+	i = 1;
+	tmp = *lst;
+	if (!lst)
+		ft_error("There are no commands\n", 0);
 	while (tmp)
 	{
 		i++;

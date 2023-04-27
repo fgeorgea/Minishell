@@ -6,14 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/26 19:41:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:32:50 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "../minishell.h"
 /**************************************************************/
 /*********************      MACROS     ************************/
 /**************************************************************/
@@ -38,13 +37,10 @@ typedef struct s_pcmd
 
 typedef struct s_pipex
 {
-	int		argc;
 	int		nbr_cmds;
 	int		nbr_pipe;
 	int		nbr_fork;
 	int		nbr_paths;
-	int		infile;
-	int		outfile;
 	int		is_heredoc;
 	char	*end_token;
 	char	**paths;
@@ -58,20 +54,19 @@ typedef struct s_pipex
 /**************************************************************/
 
 // PIPEX.C
-void	ft_pipex(int argc, char **argv);
+void	ft_pipex(void);
 
 // INIT.C
-void	ft_init_struct(int argc, char **argv);
+void	ft_init_struct(void);
 
 // INIT_UTILS_BONUS.C
-void	ft_init_struct_vars(int argc, char **argv, t_pipex *p);
-void	ft_check_here_doc(int argc, char **argv, t_pipex *p);
+void	ft_init_struct_vars(t_pipex *p);
 
 // ERROR.C
 void	ft_error(const char *custom_perror, int does_exit);
 
 // PARSING.C
-void	ft_parse_cmds(void);
+int		check_cmd(char **cmd);
 
 // CHAINED_LIST.C
 void	ft_lstadd_back_pipex(t_pcmd **lst, t_pcmd *new);
@@ -83,9 +78,7 @@ void	ft_set_lst_head(t_pcmd **lst);
 // FORK.C
 void	ft_fork(int pos);
 pid_t	*ft_createfork_array(t_pipex *p);
-void	ft_first_child(t_cmd *cmd, t_pipex *p);
-void	ft_last_child(int pos, t_cmd *cmd, t_pipex *p);
-void	ft_middle_child(int pos, t_cmd *cmd, t_pipex *p);
+
 
 // FORK_UTILS.C
 void	ft_parent_close(int pos);

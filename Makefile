@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/25 17:08:12 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/27 14:45:32 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(EXEC_DIR)pipex.c \
 			$(EXEC_DIR)env.c \
 
+
 OBJS	=	${SRCS:.c=.o}
 
 NAME	= minishell
@@ -43,11 +44,11 @@ CC		= gcc
 READL	= -L/usr/local/lib -I/usr/local/include -lreadline -L $(shell brew --prefix readline)/lib -I $(shell brew --prefix readline)/include
 
 CFLAGS	= -Wall -Wextra -Werror
-
+	
 all:	${NAME}
 
 ${NAME}:	libft ${OBJS}
-	${CC} -o ${NAME} ${OBJS} ${CFLAGS} -Iincludes -LLIBFT -lft ${READL}
+	${CC} -o ${NAME} ${OBJS} ${CFLAGS} -LLIBFT -lft ${READL}
 
 libft:
 	make -C LIBFT/
