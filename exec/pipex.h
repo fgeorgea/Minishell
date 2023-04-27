@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 20:07:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 00:54:35 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_error(const char *custom_perror, int does_exit);
 void	check_cmd(char **cmd);
 int		file_exist(char *str);
 
-// CHAINED_LIST.C
+// LINKED_LIST.C
 void	ft_lstadd_back_pipex(t_pcmd **lst, t_pcmd *new);
 t_pcmd	*ft_lstlast_pipex(t_pcmd *lst);
 void	ft_lstclear_pipex(t_pcmd **lst);
@@ -97,9 +97,10 @@ int		**ft_createpipe_array(t_pipex *p);
 void	ft_here_doc(void);
 
 // FREE.C
-void	ft_free_int_array(int **array, int len);
 void	ft_free_array(char **tab);
-void	ft_unlink_tmp(void);
+void 	ft_free_void_array(void **array, int len);
+void	delete_tmp_file(void);
+void	ft_free_pipex(void);
 
 // UTILS.C
 int		ft_tablen(char **tab);

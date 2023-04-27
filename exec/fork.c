@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 20:33:01 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 00:49:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,11 @@ void	ft_fork(int pos)
 
 pid_t	*ft_createfork_array(t_pipex *p)
 {
-	int		i;
 	pid_t	*array;
 
-	i = 0;
-	array = NULL;
 	array = malloc(sizeof(pid_t) * (p->nbr_fork));
 	if (!array)
-		ft_error("Failed to create the fork array\n", -1);
+		ft_exit(EXIT_MALLOC_FAILURE);
 	return (array);
 }
 

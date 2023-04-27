@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 17:41:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 00:33:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ char	**lst_to_array(t_env **lst)
 	tmp = *lst;
 	array = malloc(sizeof(char *) * (lstsize + 1));
 	if (!array)
-		ft_error("Failed to convert env lst to array\n", -1);
+		ft_exit(EXIT_MALLOC_FAILURE);
 	while (tmp)
 	{
 		array[i] = join_key_value(tmp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:21:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/24 15:26:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 00:54:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,23 @@ void	ft_free_array(char **tab)
 	free(tab);
 }
 
-void	ft_free_int_array(int **array, int len)
+void ft_free_void_array(void **array, int len)
 {
 	int	i;
 
 	i = 0;
 	if (!array)
 		return ;
+	if (len == -1)
+	{
+		while (array[i])
+		{
+			free(array[i]);
+			i++;
+		}
+		free(array);
+		return ;
+	}
 	while (i < len)
 	{
 		if (array[i])
@@ -43,7 +53,7 @@ void	ft_free_int_array(int **array, int len)
 	free(array);
 }
 
-void	ft_unlink_tmp(void)
+void	delete_tmp_file(void)
 {
 	if (access(TMP_FILE, F_OK) != -1)
 		unlink(TMP_FILE);
