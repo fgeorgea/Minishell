@@ -6,11 +6,22 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 00:35:28 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:13:46 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	ft_pipe(int pos)
+{
+	t_pipex	*p;
+
+	p = g_sh->pipex;
+	if (pos == p->nbr_fork - 1)
+		return ;
+	if (pipe(p->pipefd[pos]) == -1)
+		ft_exit(EXIT_PIPE_FAILURE);
+}
 
 static int	*ft_createmini_tab(void)
 {
@@ -39,16 +50,4 @@ int	**ft_createpipe_array(t_pipex *p)
 		i++;
 	}
 	return (array);
-}
-
-void	ft_pipe(int pos)
-{
-	t_pipex	*p;
-
-	p = g_sh->pipex;
-	if (pos != p->nbr_fork - 1)
-	{
-		if (pipe(p->pipefd[pos]) == -1)
-			ft_error(PIPE_ERR, -1);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 00:49:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:11:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_fork(int pos)
 	p = g_sh->pipex;
 	p->pids[pos] = fork();
 	if (p->pids[pos] == -1)
-		ft_error(FORK_ERR, -1);
+		ft_exit(EXIT_FORK_FAILURE);
 }
 
 pid_t	*ft_createfork_array(t_pipex *p)

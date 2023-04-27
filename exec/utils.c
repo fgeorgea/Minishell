@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 20:03:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:16:18 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_close(int *fd)
 	if (*fd == -1)
 		return ;
 	if (close(*fd) == -1)
-		ft_error(CLOSE_ERR, -1);
+		ft_exit(EXIT_CLOSE_FAILURE);
 	*fd = -1;
 }
 
@@ -39,7 +39,7 @@ void	ft_dup2(int file1, int file2)
 
 	success = dup2(file1, file2);
 	if (success == -1)
-		ft_error(DUP2_ERR, -1);
+		ft_exit(EXIT_DUP2_FAILURE);
 }
 
 void	ft_waitpid(void)
@@ -55,7 +55,7 @@ void	ft_waitpid(void)
 	{
 		success = waitpid(p->pids[i], &status, 0);
 		if (success == -1)
-			ft_error(WAITPID_ERR, -1);
+			ft_exit(EXIT_WAITPID_FAILURE);
 		i++;
 	}
 }
@@ -69,6 +69,6 @@ int	ft_open(char *file, int flags, int perm)
 	else
 		fd = open(file, flags, perm);
 	if (fd == -1)
-		ft_error("Open failed\n", -1);
+		ft_exit(EXIT_OPEN_FAILURE);
 	return (fd);
 }
