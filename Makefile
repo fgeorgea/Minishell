@@ -6,18 +6,18 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/27 15:22:27 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/27 17:29:01 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-EXEC_DIR	= exec/
+
 MAIN_DIR	= main/
 LEX_DIR		= lexer/
+EXEC_DIR	= exec/
 
 SRCS	=	$(MAIN_DIR)main.c \
 			$(MAIN_DIR)free.c \
 			$(MAIN_DIR)init.c \
 			$(MAIN_DIR)error.c \
-			$(EXEC_DIR)chained_list.c \
 			$(EXEC_DIR)error.c \
 			$(EXEC_DIR)exec.c \
 			$(EXEC_DIR)fork.c \
