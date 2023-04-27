@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   fork_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:42:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 14:27:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:23:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	check_exit_signal(int EXIT_MACRO)
+{
+	if (EXIT_MACRO != 0)
+		ft_exit(EXIT_MACRO);	
+}
 
 void	ft_parent_close(int pos)
 {
 	t_pipex	*p;
 
 	p = g_sh->pipex;
+	check_exit_signal(p->exit_macro);
 	if (pos == 0)
 	{
 		//ft_close(&p->infile);

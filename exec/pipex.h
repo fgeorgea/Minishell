@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 00:54:35 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 01:22:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_pipex
 	int		nbr_fork;
 	int		nbr_paths;
 	int		is_heredoc;
+	int		exit_macro;
 	char	*end_token;
 	char	**paths;
 	char	**env_array;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/27 18:38:47 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/28 01:35:24 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(EXEC_DIR)pipex.c \
 			$(EXEC_DIR)env.c \
 			$(EXEC_DIR)redir.c \
+			$(EXEC_DIR)protections.c \
 			$(LEX_DIR)lexer_utils.c \
 			$(LEX_DIR)lexer.c \
 			$(LEX_DIR)shell_split.c \
