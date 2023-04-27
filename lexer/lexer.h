@@ -13,4 +13,11 @@
 #ifndef LEXER_H
 # define LEXER_H
 
+typedef struct s_token
+{
+	char	*word;
+	int		token;
+}			t_token;
+
+
 #endif
