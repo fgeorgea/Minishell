@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 00:33:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:42:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@
 // 	lst->next = NULL;
 // 	return (lst);
 // }
+
+char	*get_env_value(char *key, int size)
+{
+	t_env	*tmp;
+	
+	tmp = g_sh->env;
+	while (tmp && (ft_strncmp(tmp->key, key, size) != 0))
+		tmp = tmp->next;
+	if (ft_strncmp(tmp->key, key, size) != 0)
+		return (NULL);
+	return (tmp->value);
+}
 
 int	lstsize_env(t_env **lst)
 {

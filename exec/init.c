@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 14:29:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:53:18 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@ static void	ft_add_slash(t_pipex *p)
 static void	ft_init_paths(t_pipex *p)
 {
 	t_env	*tmp;
+	char	*paths;
 	
 	tmp = g_sh->env;
-	while (tmp && (ft_strncmp(tmp->key, "PATH", 4) != 0))
-		tmp = tmp->next;
-	if (ft_strncmp(tmp->key, "PATH", 4) != 0)
-		ft_error("Did not find any PATH in the env\n", 0);
+	paths = get_env_value("PATH", 4);
 	p->paths = ft_split(tmp->value, ':');
 	if (!p->paths)
 		ft_error("Did not find any string with PATH in env\n", -1);

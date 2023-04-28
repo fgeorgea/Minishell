@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/28 01:35:24 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/28 19:09:28 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAIN_DIR	= main/
-LEX_DIR		= lexer/
-EXEC_DIR	= exec/
+MAIN_DIR		= main/
+LEX_DIR			= lexer/
+EXEC_DIR		= exec/
+BUILTINS_DIR 	= builtins/
 
 SRCS	=	$(MAIN_DIR)main.c \
 			$(MAIN_DIR)free.c \
@@ -33,6 +34,10 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(EXEC_DIR)env.c \
 			$(EXEC_DIR)redir.c \
 			$(EXEC_DIR)protections.c \
+			$(BUILTINS_DIR)echo.c \
+			$(BUILTINS_DIR)env.c \
+			$(BUILTINS_DIR)pwd.c \
+			$(BUILTINS_DIR)cd.c \
 			$(LEX_DIR)lexer_utils.c \
 			$(LEX_DIR)lexer.c \
 			$(LEX_DIR)shell_split.c \

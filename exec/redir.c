@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 03:26:23 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:33:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	open_infile(t_cmd *cmd)
 	int		fd;
 
 	redir = get_in_redir(&cmd->redir);
-	if (!redir)
+	if (!redir && !redir->key)
 		return (-1);
 	if (!access(redir->key, F_OK))
 	{
@@ -69,7 +69,7 @@ int	open_outfile(t_cmd *cmd)
 	int		fd;
 
 	redir = get_out_redir(&cmd->redir);
-	if (!redir)
+	if (!redir && !redir->key)
 		return (-1);
 	if (redir->mode == OUT)
 	{

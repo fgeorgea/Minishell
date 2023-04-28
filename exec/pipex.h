@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 03:30:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:00:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define EXIT_PIPE_FAILURE 7
 # define EXIT_DUP2_FAILURE 8
 # define EXIT_WAITPID_FAILURE 9
+# define EXIT_GETCWD_FAILURE 10
 
 /**************************************************************/
 /*********************      STRUCTS    ************************/
@@ -115,5 +116,14 @@ void	ft_close(int *fd);
 void	ft_dup2(int file1, int file2);
 void	ft_waitpid(void);
 int		ft_open(char *file, int flags, int perm);
+
+/**************************************************************/
+/*********************    BUILTINS     ************************/
+/**************************************************************/
+
+void	ft_echo(char **strs);
+void	ft_env(void);
+void	ft_export(void);
+char	*ft_pwd(void);
 
 #endif

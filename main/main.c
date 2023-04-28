@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/27 17:40:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:22:46 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv, char **env)
 			ft_exit(EXIT_SUCCESS);
 		if (*g_sh->str)
 			add_history(g_sh->str);
-		lexer(g_sh->str);
+		//lexer(g_sh->str);
 		print_cmd();
 		//if (g_sh->cmd)
 		//	exec();
