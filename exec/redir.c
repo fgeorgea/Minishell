@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 20:11:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 03:26:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	open_infile(t_cmd *cmd)
 		fd = ft_open(redir->key, O_RDONLY, -1);
 		return (fd);
 	}
-	return (0);	
+	fd = ft_open(TMP_FILE, O_RDONLY, -1);
+		return (fd);
 }
 
 int	open_outfile(t_cmd *cmd)

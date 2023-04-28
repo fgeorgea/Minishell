@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 00:53:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 03:29:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_pipex(void)
 	if (!g_sh->pipex)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	ft_init_struct();
-	ft_here_doc();
 	ft_exec();
 	ft_waitpid();
 	ft_free_pipex();

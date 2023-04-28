@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/28 01:15:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 03:30:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@
 
 # define EXIT_MALLOC_FAILURE 2
 # define EXIT_SIGNAL_FAILURE 3
-# define EXIT_OPEN_FAILURE 4
-# define EXIT_CLOSE_FAILURE 5
-# define EXIT_FORK_FAILURE 6
-# define EXIT_PIPE_FAILURE 7
-# define EXIT_DUP2_FAILURE 8
-# define EXIT_WAITPID_FAILURE 9
+
 
 # define OUT 0
 # define OUT_APP 1

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 01:22:01 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/28 03:30:12 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@
 # define DUP2_ERR "An error occured on dup2 function\n"
 # define CLOSE_ERR "An error occured on close function\n"
 # define FORK_ERR "An error occured on the fork function\n"
-# define TMP_FILE "/Users/fgeorgea/.here_doc_tmp"
+# define TMP_FILE "../.here_doc_tmp"
+# define EXIT_OPEN_FAILURE 4
+# define EXIT_CLOSE_FAILURE 5
+# define EXIT_FORK_FAILURE 6
+# define EXIT_PIPE_FAILURE 7
+# define EXIT_DUP2_FAILURE 8
+# define EXIT_WAITPID_FAILURE 9
 
 /**************************************************************/
 /*********************      STRUCTS    ************************/
