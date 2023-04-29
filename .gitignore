@@ -1,7 +1,0 @@
-minishell
-*.o
-*/*.o
-*.dSYM
-.vscode
-*/*.dSYM
-*/*.vscode
