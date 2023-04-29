@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 19:37:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:07:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,3 @@ void	check_cmd(char **cmd)
 		i++;
 	}
 }
-
-// void	ft_parse_cmds(void)
-// {
-// 	t_pipex	*p;
-// 	t_pcmd	*head;
-	
-// 	p = g_sh->pipex;
-// 	head = p->lst;
-// 	while (p->lst)
-// 	{
-// 		if (!does_cmd_exist(p->lst->content[0]))
-// 			put_path_cmd(&p->lst->content[0]);
-// 		p->lst = p->lst->next;
-// 	}
-// 	p->lst = head;
-// }

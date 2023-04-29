@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 01:35:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:05:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_open(char *file, int flags, int perm)
 		fd = open(file, flags, perm);
 	if (fd == -1)
 	{
-		g_sh->pipex->exit_macro = EXIT_OPEN_FAILURE;	
+		g_sh->pipex->exit_macro = EXIT_OPEN_FAILURE;
 		ft_exit(EXIT_OPEN_FAILURE);
 	}
 	return (fd);

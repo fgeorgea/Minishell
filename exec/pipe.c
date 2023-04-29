@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 01:13:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:06:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	**ft_createpipe_array(t_pipex *p)
 {
 	int		i;
 	int		**array;
-	
+
 	i = 0;
 	array = NULL;
 	array = malloc(sizeof(int *) * (p->nbr_pipe));

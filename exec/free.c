@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:21:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 00:54:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:02:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_free_array(char **tab)
 	free(tab);
 }
 
-void ft_free_void_array(void **array, int len)
+void	ft_free_void_array(void **array, int len)
 {
 	int	i;
 

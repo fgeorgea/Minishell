@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:28:56 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 00:54:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:02:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(const char *custom_perror, int does_exit)
 {
 	t_pipex	*p;
-	
+
 	p = g_sh->pipex;
 	ft_free_array(p->paths);
 	free(p->pids);

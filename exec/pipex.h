@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 01:35:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:05:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define EXIT_PIPE_FAILURE 7
 # define EXIT_DUP2_FAILURE 8
 # define EXIT_WAITPID_FAILURE 9
-
 
 /*********************      STRUCTS    ************************/
 
@@ -84,7 +83,6 @@ void	ft_set_lst_head(t_pcmd **lst);
 void	ft_fork(int pos);
 pid_t	*ft_createfork_array(t_pipex *p);
 
-
 // FORK_UTILS.C
 void	ft_parent_close(int pos);
 
@@ -100,7 +98,7 @@ void	ft_here_doc(void);
 
 // FREE.C
 void	ft_free_array(char **tab);
-void 	ft_free_void_array(void **array, int len);
+void	ft_free_void_array(void **array, int len);
 void	delete_tmp_file(void);
 void	ft_free_pipex(void);
 

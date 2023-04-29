@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:42:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 01:23:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:07:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_exit_signal(int EXIT_MACRO)
 {
 	if (EXIT_MACRO != 0)
-		ft_exit(EXIT_MACRO);	
+		ft_exit(EXIT_MACRO);
 }
 
 void	ft_parent_close(int pos)

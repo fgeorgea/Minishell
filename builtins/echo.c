@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:08:51 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 17:05:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:09:03 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	ft_echo(char **strs)
 	}
 	while (strs[i])
 	{
-		printf("%s", strs[i]);	
-		i++;	
+		printf("%s", strs[i]);
+		i++;
 	}
 	if (print_nl)
 		printf("\n");
