@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 02:05:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:40:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,14 @@ static void	ft_add_slash(t_pipex *p)
 static void	ft_init_paths(t_pipex *p)
 {
 	char	*paths;
-
-	paths = get_env_value("PATH", 4);
+	char	*tmp;
+	
+	tmp = get_env_value("PATH", 4);
+	paths = ft_strtrim(tmp, "\"");
+	free(tmp);
 	p->paths = ft_split_exit(paths, ':');
 	if (!p->paths)
-		ft_error("Did not find any string with PATH in env\n", -1);
+		ft_putstr_fd("No such file or directory\n", 2);
 	p->nbr_paths = ft_tablen(p->paths);
 }
 

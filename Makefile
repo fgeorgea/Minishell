@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/29 01:48:26 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/29 02:48:14 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(MAIN_DIR)free.c \
 			$(MAIN_DIR)init.c \
 			$(MAIN_DIR)error.c \
-			$(EXEC_DIR)error.c \
 			$(EXEC_DIR)exec.c \
 			$(EXEC_DIR)fork.c \
 			$(EXEC_DIR)fork_utils.c \
@@ -41,6 +40,9 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(BUILTINS_DIR)cd.c \
 			$(UTILS_DIR)string_utils.c \
 			$(UTILS_DIR)split_exit.c \
+			$(LEX_DIR)lexer.c \
+			$(LEX_DIR)lexer_utils.c \
+			$(LEX_DIR)shell_split.c \
 
 OBJS	=	${SRCS:.c=.o}
 

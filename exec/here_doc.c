@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/27 14:27:50 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:21:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,17 @@ void	ft_here_doc(void)
 	if (!p->is_heredoc)
 		return ;
 	end_token_len = ft_strlen(p->end_token);
-	str = get_next_line(STDIN_FILENO);
-	if (!str)
-		ft_error("get_next_line failed to read here_doc\n", -1);
-	while (*str)
+	while (1)
 	{
+		str = get_next_line(STDIN_FILENO);
+		if (!str)
+			ft_exit(EXIT_GNL_FAILURE);
 		if (ft_exit_here_doc(str, end_token_len, p))
 			break ;
 		//ft_putstr_fd(str, p->infile);
 		free(str);
-		str = get_next_line(STDIN_FILENO);
-		if (!str)
-			ft_error("get_next_line failed to read here_doc\n", -1);
 	}
 	free(str);
 	//ft_close(&p->infile);
-	//p->infile = open(TMP_FILE, O_RDONLY, 0644);
-	//if (p->infile == -1)
-		ft_error("Failed to open infile\n", -1);
+	//p->infile = ft_open(TMP_FILE, O_RDONLY, 0644);
 }

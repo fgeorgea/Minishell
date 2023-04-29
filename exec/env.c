@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 02:03:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:27:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	lstsize_env(t_env **lst)
 	i = 1;
 	tmp = *lst;
 	if (!lst)
-		ft_error("There are no environments\n", 0);
+		return (0);
 	while (tmp)
 	{
 		i++;
@@ -48,8 +48,8 @@ int	lstsize_cmd(t_cmd **lst)
 
 	i = 1;
 	tmp = *lst;
-	if (!lst)
-		ft_error("There are no commands\n", 0);
+	if (!lst || !tmp->cmd)
+		return (0);
 	while (tmp)
 	{
 		i++;
@@ -88,7 +88,10 @@ char	**lst_to_array(t_env **lst)
 	{
 		array[i] = join_key_value(tmp);
 		if (!array[i])
+		{
+			ft_free_array(array);
 			ft_exit(EXIT_MALLOC_FAILURE);
+		}
 		tmp = tmp->next;
 		i++;
 	}

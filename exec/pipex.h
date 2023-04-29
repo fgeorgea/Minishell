@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 02:05:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:21:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define EXIT_PIPE_FAILURE 7
 # define EXIT_DUP2_FAILURE 8
 # define EXIT_WAITPID_FAILURE 9
+# define EXIT_GNL_FAILURE 12
 
 /*********************      STRUCTS    ************************/
 
@@ -65,19 +66,9 @@ void	ft_init_struct(void);
 // INIT_UTILS_BONUS.C
 void	ft_init_struct_vars(t_pipex *p);
 
-// ERROR.C
-void	ft_error(const char *custom_perror, int does_exit);
-
 // PARSING.C
 void	check_cmd(char **cmd);
 int		file_exist(char *str);
-
-// LINKED_LIST.C
-void	ft_lstadd_back_pipex(t_pcmd **lst, t_pcmd *new);
-t_pcmd	*ft_lstlast_pipex(t_pcmd *lst);
-void	ft_lstclear_pipex(t_pcmd **lst);
-t_pcmd	*ft_lstnew_pipex(char **content, t_pcmd *previous);
-void	ft_set_lst_head(t_pcmd **lst);
 
 // FORK.C
 void	ft_fork(int pos);
