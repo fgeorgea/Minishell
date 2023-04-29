@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 11:53:41 by dpeyrat           #+#    #+#             */
-/*   Updated: 2023/04/29 01:21:33 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/04/29 01:28:46 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/04/29 01:53:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-char	*ft_strdup(const char *str)
-{
-	char	*dup;
-	int		i;
+char	*ft_strdup_exit(const char *str);
+char	*ft_strjoin_exit(char const *s1, char const *s2);
+char	**ft_split_exit(char const *str, char c);
 
-	i = 0;
-	if (str == 0)
-		return (0);
-	while (str[i])
-		i++;
-	dup = malloc(i + 1);
-	if (!dup)
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = 0;
-	return (dup);
-}
+#endif

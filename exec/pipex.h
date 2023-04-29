@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 19:00:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:35:02 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-/**************************************************************/
 /*********************      MACROS     ************************/
-/**************************************************************/
 
 # define PIPE_ERR "An error occured on the pipe function\n"
 # define WAITPID_ERR "An error occured on waitpid function\n"
@@ -29,11 +27,9 @@
 # define EXIT_PIPE_FAILURE 7
 # define EXIT_DUP2_FAILURE 8
 # define EXIT_WAITPID_FAILURE 9
-# define EXIT_GETCWD_FAILURE 10
 
-/**************************************************************/
+
 /*********************      STRUCTS    ************************/
-/**************************************************************/
 
 typedef struct s_pcmd
 {
@@ -59,9 +55,7 @@ typedef struct s_pipex
 	pid_t	*pids;
 }		t_pipex;
 
-/**************************************************************/
 /*********************    FUNCTIONS    ************************/
-/**************************************************************/
 
 // PIPEX.C
 void	ft_pipex(void);
@@ -116,14 +110,5 @@ void	ft_close(int *fd);
 void	ft_dup2(int file1, int file2);
 void	ft_waitpid(void);
 int		ft_open(char *file, int flags, int perm);
-
-/**************************************************************/
-/*********************    BUILTINS     ************************/
-/**************************************************************/
-
-void	ft_echo(char **strs);
-void	ft_env(void);
-void	ft_export(void);
-char	*ft_pwd(void);
 
 #endif

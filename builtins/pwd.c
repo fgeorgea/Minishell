@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:17:30 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 19:00:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:15:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_pwd(void)
 	
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
-		ft_exit(EXIT_GETCWD_FAILURE);
+		ft_exit(EXIT_PWD_FAILURE);
 	printf("%s", pwd);
 	return (pwd);
 }

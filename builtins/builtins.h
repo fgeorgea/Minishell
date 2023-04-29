@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/18 11:53:41 by dpeyrat           #+#    #+#             */
-/*   Updated: 2023/04/29 01:21:33 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/04/29 01:34:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
-char	*ft_strdup(const char *str)
-{
-	char	*dup;
-	int		i;
+/*********************      MACROS     ************************/
 
-	i = 0;
-	if (str == 0)
-		return (0);
-	while (str[i])
-		i++;
-	dup = malloc(i + 1);
-	if (!dup)
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = 0;
-	return (dup);
-}
+# define EXIT_PWD_FAILURE 10
+# define EXIT_CHDIR_FAILURE 11
+
+/*********************     FUNCTION    ************************/
+
+// ECHO.C
+void	ft_echo(char **strs);
+
+// ENV.C
+void	ft_env(void);
+
+// EXPORT.C
+void	ft_export(void);
+
+// PWD.C
+char	*ft_pwd(void);
+
+#endif

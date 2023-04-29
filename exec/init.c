@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 18:53:18 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:56:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,11 @@ static void	ft_add_slash(t_pipex *p)
 	char	*tmp;
 
 	i = 0;
-	tmp = NULL;
 	while (p->paths[i])
 	{
-		tmp = ft_strjoin(p->paths[i], "/");
-		if (!tmp)
-			ft_error("Failed to add '/' to cmd path\n", -1);
+		tmp = ft_strjoin_exit(p->paths[i], "/");
 		free(p->paths[i]);
-		p->paths[i] = ft_strdup(tmp);
-		if (!p->paths[i])
-			ft_error(NULL, -1);
+		p->paths[i] = ft_strdup_exit(tmp);
 		free(tmp);
 		i++;
 	}
@@ -35,32 +30,14 @@ static void	ft_add_slash(t_pipex *p)
 
 static void	ft_init_paths(t_pipex *p)
 {
-	t_env	*tmp;
 	char	*paths;
 	
-	tmp = g_sh->env;
 	paths = get_env_value("PATH", 4);
-	p->paths = ft_split(tmp->value, ':');
+	p->paths = ft_split_exit(paths, ':');
 	if (!p->paths)
 		ft_error("Did not find any string with PATH in env\n", -1);
 	p->nbr_paths = ft_tablen(p->paths);
 }
-
-// static void	ft_init_cmds(char **argv, t_pipex *p)
-// {
-// 	int		i;
-// 	int		cmd_offset;
-
-// 	i = 0;
-// 	cmd_offset = 2;
-// 	if (p->is_heredoc)
-// 		cmd_offset = 3;
-// 	while (i < p->nbr_cmds)
-// 	{
-// 		ft_lstadd_back_env(&p->lst, ft_lstnew_env(tmp));
-// 		i++;
-// 	}
-// }
 
 void	ft_init_struct(void)
 {
@@ -70,7 +47,6 @@ void	ft_init_struct(void)
 	ft_init_struct_vars(p);
 	ft_init_paths(p);
 	ft_add_slash(p);
-	//ft_init_cmds(argv, p);
 	p->env_array = lst_to_array(&g_sh->env);
 	p->pipefd = ft_createpipe_array(p);
 	p->pids = ft_createfork_array(p);

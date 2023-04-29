@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/28 18:42:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:34:35 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+/*********************    INCLUDES    ************************/
 
 # include <stdio.h>
 # include <readline/readline.h>
@@ -24,19 +26,21 @@
 # include "LIBFT/libft.h"
 # include "exec/pipex.h"
 # include "lexer/lexer.h"
+# include "builtins/builtins.h"
+# include "utils/utils.h"
+
+/*********************    MACROS       ************************/
 
 # define EXIT_MALLOC_FAILURE 2
 # define EXIT_SIGNAL_FAILURE 3
 
-
+// PIPE MODE
 # define OUT 0
 # define OUT_APP 1
 # define IN 2
 # define HEREDOC 3
 
-/**************************************************************/
 /*********************      STRUCTS    ************************/
-/**************************************************************/
 
 typedef struct s_redir
 {
@@ -72,9 +76,7 @@ typedef struct s_shell
 
 t_shell	*g_sh;
 
-/**************************************************************/
 /*********************    FUNCTIONS    ************************/
-/**************************************************************/
 
 char	*readline(const char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
@@ -89,11 +91,8 @@ int		get_next_pipe(char *str, int i);
 char	**shell_split(char *str, char *sep);
 void	ft_free_cmd(void);
 
-
-
-/**************************************************************/
 /*********************    PIPEX        ************************/
-/**************************************************************/
+
 // FORK.C
 void	ft_first_child(t_cmd *cmd, t_pipex *p);
 void	ft_last_child(int pos, t_cmd *cmd, t_pipex *p);

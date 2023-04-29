@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 18:42:08 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/04/29 01:51:45 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@
 // 	return (lst);
 // }
 
-char	*get_env_value(char *key, int size)
+char	*get_env_value(char *key_to_find, int size)
 {
-	t_env	*tmp;
+	t_env	*env;
 	
-	tmp = g_sh->env;
-	while (tmp && (ft_strncmp(tmp->key, key, size) != 0))
-		tmp = tmp->next;
-	if (ft_strncmp(tmp->key, key, size) != 0)
+	env = g_sh->env;
+	while (env && (ft_strncmp(env->key, key_to_find, size) != 0))
+		env = env->next;
+	if (ft_strncmp(env->key, key_to_find, size) != 0)
 		return (NULL);
-	return (tmp->value);
+	return (env->value);
 }
 
 int	lstsize_env(t_env **lst)
@@ -131,6 +131,8 @@ char	**lst_to_array(t_env **lst)
 	while (tmp)
 	{
 		array[i] = join_key_value(tmp);
+		if (!array[i])
+			ft_exit(EXIT_MALLOC_FAILURE);
 		tmp = tmp->next;
 		i++;
 	}

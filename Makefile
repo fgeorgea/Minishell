@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/04/28 19:09:28 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/04/29 01:48:26 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ MAIN_DIR		= main/
 LEX_DIR			= lexer/
 EXEC_DIR		= exec/
 BUILTINS_DIR 	= builtins/
+UTILS_DIR		= utils/
 
 SRCS	=	$(MAIN_DIR)main.c \
 			$(MAIN_DIR)free.c \
@@ -38,9 +39,8 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(BUILTINS_DIR)env.c \
 			$(BUILTINS_DIR)pwd.c \
 			$(BUILTINS_DIR)cd.c \
-			$(LEX_DIR)lexer_utils.c \
-			$(LEX_DIR)lexer.c \
-			$(LEX_DIR)shell_split.c \
+			$(UTILS_DIR)string_utils.c \
+			$(UTILS_DIR)split_exit.c \
 
 OBJS	=	${SRCS:.c=.o}
 
