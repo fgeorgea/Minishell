@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/29 01:34:35 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/01 23:58:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,6 @@ char	**shell_split(char *str, char *sep);
 void	ft_free_cmd(void);
 
 /*********************    PIPEX        ************************/
-
-// FORK.C
-void	ft_first_child(t_cmd *cmd, t_pipex *p);
-void	ft_last_child(int pos, t_cmd *cmd, t_pipex *p);
-void	ft_middle_child(int pos, t_cmd *cmd, t_pipex *p);
 
 // ENV.C
 int		lstsize_env(t_env **lst);

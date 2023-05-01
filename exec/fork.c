@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/01 17:02:08 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/01 23:56:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,75 +32,36 @@ pid_t	*ft_createfork_array(t_pipex *p)
 	return (array);
 }
 
-void	ft_first_child(t_cmd *cmd, t_pipex *p)
+void	ft_first_child(t_pipex *p)
 {
 	ft_close(&p->pipefd[0][0]);
-	p->outfile = open_outfile(cmd);
-	p->infile = open_infile(cmd);
 	if (p->infile > 0)
-	{
-		ft_dup2(p->infile, STDIN_FILENO);
-		ft_close(&p->infile);
-	}
+		link_files(p->infile, STDIN_FILENO);
 	if (p->outfile > 0)
-	{
-		ft_dup2(p->outfile, STDOUT_FILENO);
-		ft_close(&p->outfile);
-	}
+		link_files(p->outfile, STDOUT_FILENO);
 	else
-		ft_dup2(p->pipefd[0][1], STDOUT_FILENO);
+		link_files(p->pipefd[0][1], STDOUT_FILENO);
 	ft_close(&p->pipefd[0][1]);
-	check_cmd(cmd->cmd);
-	ft_execve(cmd->cmd[0], cmd->cmd, p->env_array);
 }
 
-void	ft_last_child(int pos, t_cmd *cmd, t_pipex *p)
+void	ft_last_child(int pos, t_pipex *p)
 {
-	p->outfile = open_outfile(cmd);
-	p->infile = open_infile(cmd);
 	if (p->infile > 0)
-	{
-		ft_dup2(p->infile, STDIN_FILENO);
-		ft_close(&p->infile);
-	}
+		link_files(p->infile, STDIN_FILENO);
 	else
-	{
-		ft_dup2(p->pipefd[pos - 1][0], STDIN_FILENO);
-		ft_close(&p->pipefd[pos - 1][0]);
-	}
+		link_files(p->pipefd[pos - 1][0], STDIN_FILENO);
 	if (p->outfile > 0)
-	{
-		ft_dup2(p->outfile, STDOUT_FILENO);
-		ft_close(&p->outfile);
-	}
-	check_cmd(cmd->cmd);
-	ft_execve(cmd->cmd[0], cmd->cmd, p->env_array);
+		link_files(p->outfile, STDOUT_FILENO);
 }
 
-void	ft_middle_child(int pos, t_cmd *cmd, t_pipex *p)
+void	ft_middle_child(int pos, t_pipex *p)
 {
-	p->outfile = open_outfile(cmd);
-	p->infile = open_infile(cmd);
 	if (p->infile > 0)
-	{
-		ft_dup2(p->infile, STDIN_FILENO);
-		ft_close(&p->infile);
-	}
+		link_files(p->infile, STDIN_FILENO);
 	else
-	{
-		ft_dup2(p->pipefd[pos - 1][0], STDIN_FILENO);
-		ft_close(&p->pipefd[pos - 1][0]);
-	}
+		link_files(p->pipefd[pos - 1][0], STDIN_FILENO);
 	if (p->outfile > 0)
-	{
-		ft_dup2(p->outfile, STDOUT_FILENO);
-		ft_close(&p->outfile);
-	}
+		link_files(p->outfile, STDOUT_FILENO);
 	else
-	{
-		ft_dup2(p->pipefd[pos][1], STDOUT_FILENO);
-		ft_close(&p->pipefd[pos][1]);	
-	}
-	check_cmd(cmd->cmd);
-	ft_execve(cmd->cmd[0], cmd->cmd, p->env_array);
+		link_files(p->pipefd[pos][1], STDOUT_FILENO);
 }

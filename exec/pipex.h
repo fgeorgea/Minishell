@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/01 18:24:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/01 23:58:32 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,13 @@ int		file_exist(char *str);
 // FORK.C
 void	ft_fork(int pos);
 pid_t	*ft_createfork_array(t_pipex *p);
+void	ft_first_child(t_pipex *p);
+void	ft_last_child(int pos, t_pipex *p);
+void	ft_middle_child(int pos, t_pipex *p);
 
 // FORK_UTILS.C
 void	ft_parent_close(int pos);
+void	link_files(int fildes, int fildes2);
 
 // EXEC.C
 void	ft_exec(void);

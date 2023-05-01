@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/01 17:19:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/01 23:51:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	ft_execve(const char *path, char *const argv[], char *const envp[])
 {
 	int	success;
 
+	check_cmd((char **)argv);
 	success = execve(path, argv, envp);
 	if (!success)
 		ft_exit(EXIT_EXECVE_FAILURE);
