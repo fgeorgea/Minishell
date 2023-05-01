@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/28 03:29:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:26:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	ft_child(int pos, t_cmd *cmd, t_pipex *p)
 {
-	ft_here_doc();
 	if (pos == 0)
 		ft_first_child(cmd, p);
 	else if (pos == p->nbr_fork - 1)

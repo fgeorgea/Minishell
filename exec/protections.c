@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 02:05:51 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/01 17:19:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_open(char *file, int flags, int perm)
 		fd = open(file, flags);
 	else
 		fd = open(file, flags, perm);
-	if (fd == -1)
+	if (!fd)
 	{
 		g_sh->pipex->exit_macro = EXIT_OPEN_FAILURE;
 		ft_exit(EXIT_OPEN_FAILURE);
@@ -30,14 +30,14 @@ int	ft_open(char *file, int flags, int perm)
 
 void	ft_close(int *fd)
 {
-	if (*fd == -1)
+	if (*fd == -2)
 		return ;
-	if (close(*fd) == -1)
+	if (close(*fd) == -2)
 	{
 		g_sh->pipex->exit_macro = EXIT_CLOSE_FAILURE;
 		ft_exit(EXIT_CLOSE_FAILURE);
 	}
-	*fd = -1;
+	*fd = -2;
 }
 
 void	ft_dup2(int file1, int file2)
@@ -45,7 +45,7 @@ void	ft_dup2(int file1, int file2)
 	int	success;
 
 	success = dup2(file1, file2);
-	if (success == -1)
+	if (!success)
 	{
 		g_sh->pipex->exit_macro = EXIT_DUP2_FAILURE;
 		ft_exit(EXIT_DUP2_FAILURE);
@@ -64,8 +64,17 @@ void	ft_waitpid(void)
 	while (i < p->nbr_fork)
 	{
 		success = waitpid(p->pids[i], &status, 0);
-		if (success == -1)
+		if (!success)
 			ft_exit(EXIT_WAITPID_FAILURE);
 		i++;
 	}
+}
+
+void	ft_execve(const char *path, char *const argv[], char *const envp[])
+{
+	int	success;
+
+	success = execve(path, argv, envp);
+	if (!success)
+		ft_exit(EXIT_EXECVE_FAILURE);
 }
