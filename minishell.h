@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/01 23:58:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 00:52:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,8 @@ void	ft_free_cmd(void);
 
 // ENV.C
 int		lstsize_env(t_env **lst);
-int		lstsize_cmd(t_cmd **lst);
+int		lstsize_cmd(void);
 char	**lst_to_array(t_env **lst);
-void	ft_lstadd_back_env(t_env **lst, t_env *new);
-t_env	*ft_lstnew_env(char *key, char *value);
 char	*get_env_value(char *key, int size);
 
 // REDIR.C
@@ -106,5 +104,8 @@ t_redir	*get_out_redir(t_redir **redirection);
 t_redir	*get_in_redir(t_redir **redirection);
 int		open_outfile(t_cmd *cmd);
 int		open_infile(t_cmd *cmd);
+
+// DEBUG.C
+void    fill_linked_lists();
 
 #endif

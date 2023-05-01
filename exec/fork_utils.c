@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:42:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/01 23:51:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 01:13:04 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_parent_close(int pos)
 	check_exit_signal(p->exit_macro);
 	ft_close(&p->infile);
 	ft_close(&p->outfile);
+	if (p->nbr_cmds < 2)
+		return ;
 	if (pos == 0)
 		ft_close(&p->pipefd[0][1]);
 	else if (pos == p->nbr_fork - 1)

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 02:27:23 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 00:21:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ int	lstsize_env(t_env **lst)
 	return (i);
 }
 
-int	lstsize_cmd(t_cmd **lst)
+int	lstsize_cmd(void)
 {
 	int		i;
 	t_cmd	*tmp;
 
 	i = 1;
-	tmp = *lst;
-	if (!lst || !tmp->cmd)
+	tmp = g_sh->cmd;
+	if (!tmp || !tmp->cmd)
 		return (0);
 	while (tmp)
 	{

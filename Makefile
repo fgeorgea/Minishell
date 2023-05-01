@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/01 18:46:50 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/02 01:37:49 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS	=	$(MAIN_DIR)main.c \
 			$(EXEC_DIR)env.c \
 			$(EXEC_DIR)redir.c \
 			$(EXEC_DIR)protections.c \
+			$(EXEC_DIR)debug.c \
 			$(BUILTINS_DIR)echo.c \
 			$(BUILTINS_DIR)env.c \
 			$(BUILTINS_DIR)pwd.c \

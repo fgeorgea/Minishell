@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/01 23:56:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 01:36:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ pid_t	*ft_createfork_array(t_pipex *p)
 
 void	ft_first_child(t_pipex *p)
 {
-	ft_close(&p->pipefd[0][0]);
+	//ft_close(&p->pipefd[0][0]);
 	if (p->infile > 0)
 		link_files(p->infile, STDIN_FILENO);
 	if (p->outfile > 0)
 		link_files(p->outfile, STDOUT_FILENO);
 	else
 		link_files(p->pipefd[0][1], STDOUT_FILENO);
-	ft_close(&p->pipefd[0][1]);
+	//ft_close(&p->pipefd[0][1]);
 }
 
 void	ft_last_child(int pos, t_pipex *p)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/01 18:25:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 01:26:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	open_outfile(t_cmd *cmd)
 	int		fd;
 
 	redir = get_out_redir(&cmd->redir);
-	if (!redir && !redir->key)
+	if (!redir)
 		return (-1);
 	if (redir->mode == OUT)
 	{
@@ -80,7 +80,7 @@ int	open_infile(t_cmd *cmd)
 	redir = get_in_redir(&cmd->redir);
 	if (!redir && !redir->key)
 		return (0);
-	if (!file_exist(redir->key))
+	if (!file_exist(redir->key) && redir->mode != HEREDOC)
 	{
 		ft_putstr_fd(redir->key, 2);
 		ft_putstr_fd(": file not found\n", 2);
