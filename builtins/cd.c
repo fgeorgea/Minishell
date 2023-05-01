@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 01:08:41 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:52:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static void	ft_chdir(char *dir)
 	env->value = oldpwd;
 	if (!chdir(dir))
 		ft_exit(EXIT_CHDIR_FAILURE);
+	ft_free_array(g_sh->pipex->env_array);
+	g_sh->pipex->env_array = lst_to_array(&g_sh->env);
 }
 
 void	ft_cd(char *str)
