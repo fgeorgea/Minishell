@@ -22,5 +22,6 @@ typedef struct s_token
 void	tokenize(t_list *head);
 int		is_in_sep(char c, char *sep);
 char	**free_split(char **tab);
+void	expander(t_list *head);
 
 #endif

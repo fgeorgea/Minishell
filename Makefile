@@ -50,6 +50,7 @@ SRCS	=	$(MAIN)main.c \
 			$(LEX)lexer_utils.c \
 			$(LEX)shell_split.c \
 			$(LEX)tokenize.c \
+			$(LEX)expander.c \
 
 OBJS	=	${SRCS:.c=.o}
 
