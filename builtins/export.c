@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 14:57:51 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:35:04 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ static void	add_var_to_env(char *str)
 	g_sh->pipex->env_array = lst_to_array(g_sh->env);
 }
 
-void	ft_export(char *str)
+void	ft_export(char **strs)
 {
     int     i;
 	char    **env;
 	
     i = 0;
     env = g_sh->pipex->env_array;
-	if (!str)
+	if (!strs)
 	{
 		while (env[i])
 		{
@@ -59,6 +59,10 @@ void	ft_export(char *str)
 			i++;
 		}
 	}
-	if (check_valid_export(str))
-		add_var_to_env(str);
+	while (strs[i])
+	{
+		if (check_valid_export(strs[i]))
+			add_var_to_env(strs[i]);
+		i++;
+	}
 }
