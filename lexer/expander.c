@@ -37,6 +37,7 @@ void	expand(t_token *t, t_list *head)
 	int		len;
 
 	i = 0;
+	len = 0;
 	while (t->word[i])
 	{
 		if (t->word[i] == '\'')
@@ -103,7 +104,7 @@ void	expander(t_list *head)
 	while (curr)
 	{
 		tmp = curr->content;
-		if (has_variable(tmp->word))
+		if (has_variable(tmp))
 			expand(tmp, head);
 		else
 			curr = curr->next;
