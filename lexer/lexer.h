@@ -19,5 +19,8 @@ typedef struct s_token
 	int		token;
 }			t_token;
 
+void	tokenize(t_list *head);
+int		is_in_sep(char c, char *sep);
+char	**free_split(char **tab);
 
 #endif

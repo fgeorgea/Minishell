@@ -49,7 +49,7 @@ int	main(int argc, char **argv, char **env)
 			ft_exit(EXIT_SUCCESS);
 		if (*g_sh->str)
 			add_history(g_sh->str);
-		//lexer(g_sh->str);
+		lexer(g_sh->str);
 		print_cmd();
 		//if (g_sh->cmd)
 		//	exec();
