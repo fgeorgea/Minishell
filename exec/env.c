@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 00:21:25 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:08:12 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ char	*get_env_value(char *key_to_find, int size)
 	t_env	*env;
 
 	env = g_sh->env;
-	while (env && (ft_strncmp(env->key, key_to_find, size) != 0))
+	while (env)
+	{
+		if (ft_strlen(key_to_find) == ft_strlen(env->key) && ft_strncmp(key_to_find, env->key, size) == 0)
+			return (env->value);
 		env = env->next;
-	if (ft_strncmp(env->key, key_to_find, size) != 0)
-		return (NULL);
-	return (env->value);
+	}
+	return (NULL);
 }
 
 int	lstsize_env(t_env **lst)

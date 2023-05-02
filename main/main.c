@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/02 01:36:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:11:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ int	main(int argc, char **argv, char **env)
 	init_shell(argv, env);
 	if (init_signals())
 		ft_exit(EXIT_SIGNAL_FAILURE);
+	t_env	*tmp;
+	tmp = g_sh->env;
+	while (tmp)
+	{
+		printf("%s == %s\n", tmp->key, tmp->value);
+		tmp = tmp->next;
+	}
 	while (1)
 	{
 		g_sh->str = readline("$>");

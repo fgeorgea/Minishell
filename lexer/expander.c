@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:23:31 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/02 14:23:42 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:08:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	expand(t_token *t, t_list *head)
 		ft_lstclear(&head, &free);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
+	printf("%s\n", tmp);
 	value = get_env_value(tmp, ft_strlen(tmp));
 	free(tmp);
 	tmp = malloc(sizeof(char) * (ft_strlen(value) + i + len + 1));
@@ -78,7 +79,7 @@ void	expand(t_token *t, t_list *head)
 		i++;
 	}
 	j[0] = 0;
-	while (value[j[0]])
+	while (value && value[j[0]])
 	{
 		tmp[i + j[0]] = value[j[0]];
 		j[0]++;
