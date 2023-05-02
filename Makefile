@@ -3,49 +3,51 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/02 01:37:49 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/02 15:00:45 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAIN_DIR		= main/
-LEX_DIR			= lexer/
-EXEC_DIR		= exec/
-BUILTINS_DIR 	= builtins/
-UTILS_DIR		= utils/
+MAIN			= main/
+LEX				= lexer/
+EXEC			= exec/
+BUILTINS 		= builtins/
+UTILS			= utils/
+LINKED_LISTS	= linked_lists/
 
-SRCS	=	$(MAIN_DIR)main.c \
-			$(MAIN_DIR)free.c \
-			$(MAIN_DIR)init.c \
-			$(MAIN_DIR)error.c \
-			$(EXEC_DIR)exec.c \
-			$(EXEC_DIR)fork.c \
-			$(EXEC_DIR)fork_utils.c \
-			$(EXEC_DIR)free.c \
-			$(EXEC_DIR)here_doc.c \
-			$(EXEC_DIR)init.c \
-			$(EXEC_DIR)init_utils.c \
-			$(EXEC_DIR)parsing.c \
-			$(EXEC_DIR)pipe.c \
-			$(EXEC_DIR)utils.c \
-			$(EXEC_DIR)pipex.c \
-			$(EXEC_DIR)env.c \
-			$(EXEC_DIR)redir.c \
-			$(EXEC_DIR)protections.c \
-			$(EXEC_DIR)debug.c \
-			$(BUILTINS_DIR)echo.c \
-			$(BUILTINS_DIR)env.c \
-			$(BUILTINS_DIR)pwd.c \
-			$(BUILTINS_DIR)cd.c \
-			$(BUILTINS_DIR)unset.c \
-			$(UTILS_DIR)string_utils.c \
-			$(UTILS_DIR)split_exit.c \
-			$(LEX_DIR)lexer.c \
-			$(LEX_DIR)lexer_utils.c \
-			$(LEX_DIR)shell_split.c \
-			$(LEX_DIR)tokenize.c \
+SRCS	=	$(MAIN)main.c \
+			$(MAIN)free.c \
+			$(MAIN)init.c \
+			$(MAIN)error.c \
+			$(EXEC)exec.c \
+			$(EXEC)fork.c \
+			$(EXEC)fork_utils.c \
+			$(EXEC)free.c \
+			$(EXEC)here_doc.c \
+			$(EXEC)init.c \
+			$(EXEC)init_utils.c \
+			$(EXEC)parsing.c \
+			$(EXEC)pipe.c \
+			$(EXEC)utils.c \
+			$(EXEC)pipex.c \
+			$(EXEC)env.c \
+			$(EXEC)redir.c \
+			$(EXEC)protections.c \
+			$(EXEC)debug.c \
+			$(LINKED_LISTS)linked_list_env.c \
+			$(BUILTINS)echo.c \
+			$(BUILTINS)env.c \
+			$(BUILTINS)pwd.c \
+			$(BUILTINS)cd.c \
+			$(BUILTINS)unset.c \
+			$(UTILS)string_utils.c \
+			$(UTILS)split_exit.c \
+			$(LEX)lexer.c \
+			$(LEX)lexer_utils.c \
+			$(LEX)shell_split.c \
+			$(LEX)tokenize.c \
 
 OBJS	=	${SRCS:.c=.o}
 

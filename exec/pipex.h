@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/01 23:58:32 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:16:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@
 # define EXIT_EXECVE_FAILURE 13
 
 /*********************      STRUCTS    ************************/
-
-typedef struct s_pcmd
-{
-	char			**content;
-	struct s_pcmd	*previous;
-	struct s_pcmd	*next;
-}		t_pcmd;
 
 typedef struct s_pipex
 {
@@ -106,5 +99,20 @@ void	ft_dup2(int file1, int file2);
 void	ft_waitpid(void);
 int		ft_open(char *file, int flags, int perm);
 void	ft_execve(const char *path, char *const argv[], char *const envp[]);
+
+// ENV.C
+int		lstsize_env(t_env **lst);
+int		lstsize_cmd(void);
+char	**lst_to_array(t_env **lst);
+char	*get_env_value(char *key, int size);
+
+// REDIR.C
+t_redir	*get_out_redir(t_redir **redirection);
+t_redir	*get_in_redir(t_redir **redirection);
+int		open_outfile(t_cmd *cmd);
+int		open_infile(t_cmd *cmd);
+
+// DEBUG.C
+void    fill_linked_lists();
 
 #endif

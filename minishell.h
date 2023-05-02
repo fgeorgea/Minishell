@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/02 00:52:23 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:11:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@
 # include <signal.h>
 # include <termios.h>
 # include "LIBFT/libft.h"
+# include "structs.h"
 # include "exec/pipex.h"
 # include "lexer/lexer.h"
 # include "builtins/builtins.h"
+# include "linked_lists/linked_lists.h"
 # include "utils/utils.h"
 
 /*********************    MACROS       ************************/
@@ -41,38 +43,6 @@
 # define HEREDOC 3
 
 /*********************      STRUCTS    ************************/
-
-typedef struct s_redir
-{
-	char			*key;
-	int				mode;
-	struct s_redir	*next;
-}			t_redir;
-
-typedef struct s_cmd
-{
-	char			**cmd;
-	t_redir			*redir;
-	struct s_cmd	*next;
-}			t_cmd;
-
-typedef struct s_env
-{
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}			t_env;
-
-typedef struct s_shell
-{
-	char	*name;
-	char	*str;
-
-	t_cmd	*cmd;
-	t_env	*env;
-
-	t_pipex	*pipex;
-}			t_shell;
 
 t_shell	*g_sh;
 
@@ -90,22 +60,5 @@ int		skip_quotes(char *str, int i);
 int		get_next_pipe(char *str, int i);
 char	**shell_split(char *str, char *sep);
 void	ft_free_cmd(void);
-
-/*********************    PIPEX        ************************/
-
-// ENV.C
-int		lstsize_env(t_env **lst);
-int		lstsize_cmd(void);
-char	**lst_to_array(t_env **lst);
-char	*get_env_value(char *key, int size);
-
-// REDIR.C
-t_redir	*get_out_redir(t_redir **redirection);
-t_redir	*get_in_redir(t_redir **redirection);
-int		open_outfile(t_cmd *cmd);
-int		open_infile(t_cmd *cmd);
-
-// DEBUG.C
-void    fill_linked_lists();
 
 #endif
