@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:16:09 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/03/31 15:16:11 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:30:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,21 @@ void	lexer(char *str)
 {
 	t_list	*words;
 	t_token	*tmp;
+	t_list	*temp;
 
 	ft_free_cmd();
 	words = pre_token(str);
 	if (!words)
 		return ;
 	tokenize(words);
+	temp = words;
+	while (temp)
+	{
+		tmp = temp->content;
+		printf("%s\n", tmp->word);
+		temp = temp->next;
+	}
+	printf("EXPANDER\n");
 	expander(words);
 	while (words)
 	{
