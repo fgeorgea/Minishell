@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/02 15:00:45 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/02 15:28:19 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ SRCS	=	$(MAIN)main.c \
 			$(EXEC)protections.c \
 			$(EXEC)debug.c \
 			$(LINKED_LISTS)linked_list_env.c \
+			$(LINKED_LISTS)linked_list_cmd.c \
+			$(LINKED_LISTS)linked_list_redir.c \
 			$(BUILTINS)echo.c \
 			$(BUILTINS)env.c \
 			$(BUILTINS)pwd.c \

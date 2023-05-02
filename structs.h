@@ -6,13 +6,12 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:08:00 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 15:16:21 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:20:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
-
 
 typedef struct s_redir
 {
@@ -44,7 +43,6 @@ typedef struct s_shell
 
 	t_cmd	*cmd;
 	t_env	*env;
-
 	t_pipex	*pipex;
 }			t_shell;
 
