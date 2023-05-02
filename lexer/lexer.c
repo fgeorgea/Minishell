@@ -85,5 +85,5 @@ void	lexer(char *str)
 	if (!words)
 		return ;
 	tokenize(words);
-	//expander(void);
+	//expander(word);
 }
