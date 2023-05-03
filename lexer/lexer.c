@@ -86,10 +86,11 @@ void	lexer(char *str)
 		return ;
 	tokenize(words);
 	expander(words);
+	post_expander(words);
 	while (words)
 	{
 		tmp = words->content;
-		printf("%s\n", tmp->word);
+		printf("%s -> token %d\n", tmp->word, tmp->token);
 		words = words->next;
 	}
 }

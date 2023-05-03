@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/02 15:28:19 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/03 14:15:10 by dopeyrat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS	=	$(MAIN)main.c \
 			$(LEX)shell_split.c \
 			$(LEX)tokenize.c \
 			$(LEX)expander.c \
+			$(LEX)post_expander.c \
 
 OBJS	=	${SRCS:.c=.o}
 

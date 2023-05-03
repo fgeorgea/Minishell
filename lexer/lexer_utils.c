@@ -33,16 +33,3 @@ int	skip_quotes(char *str, int i)
 	}
 	return (i);
 }
-
-int	get_next_pipe(char *str, int i)
-{
-	while (str[i])
-	{
-		if (str[i] == '"' || str[i] == '\'')
-			i = skip_quotes(str, i);
-		if (str[i] == '|')
-			return (i);
-		i++;
-	}
-	return (i);
-}

@@ -87,6 +87,8 @@ char	**shell_split(char *str, char *sep)
 			i++;
 		if (str[i])
 			j = i;
+		else
+			break ;
 		while (!is_in_sep(str[i], sep) && str[i])
 		{
 			if (str[i] == '"' || str[i] == '\'')
