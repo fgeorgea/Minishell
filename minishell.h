@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/03 14:40:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:48:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,13 @@
 # define OUT_APP 1
 # define IN 2
 # define HEREDOC 3
-# define NULL 0
+
+# ifdef NULL
+#  undef NULL  
+#  define NULL 0
+# else
+#  define NULL 0
+# endif
 
 /*********************      STRUCTS    ************************/
 
