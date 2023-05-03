@@ -42,6 +42,8 @@ typedef struct s_shell
 	int		pipe_exit;
 	char	*str;
 
+	int		s_err;
+
 	t_cmd	*cmd;
 	t_env	*env;
 	t_pipex	*pipex;

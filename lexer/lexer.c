@@ -12,21 +12,6 @@
 
 #include "../minishell.h"
 
-void	add_cmd(t_cmd *cmd)
-{
-	t_cmd	*tmp;
-
-	if (g_sh->cmd == 0)
-		g_sh->cmd = cmd;
-	else
-	{
-		tmp = g_sh->cmd;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = cmd;
-	}
-}
-
 t_list	*pre_token(char *str)
 {
 	int		i;
