@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 16:08:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/03 13:57:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*get_env_value(char *key_to_find, int size)
 	env = g_sh->env;
 	while (env)
 	{
-		if (ft_strlen(key_to_find) == ft_strlen(env->key) && ft_strncmp(key_to_find, env->key, size) == 0)
+		if (ft_strlen(key_to_find) == ft_strlen(env->key)
+			&& ft_strncmp(key_to_find, env->key, size) == 0)
 			return (env->value);
 		env = env->next;
 	}
