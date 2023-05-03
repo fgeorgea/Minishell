@@ -34,8 +34,11 @@ int	skip_quotes(char *str, int i)
 	return (i);
 }
 
-void	free_token(t_token *t)
+void	free_token(void *t)
 {
-	free(t->word);
-	free(t);
+	t_token	*token;
+
+	token = t;
+	free(token->word);
+	free(token);
 }

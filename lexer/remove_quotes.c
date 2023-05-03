@@ -63,6 +63,7 @@ void	trim_quotes(t_token *t, t_list *head)
 				tmp[k] = t->word[k + 2];
 				k++;
 			}
+			tmp[k] = 0;
 			free(t->word);
 			t->word = tmp;
 			i = j - 2;

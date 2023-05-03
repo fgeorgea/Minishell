@@ -78,7 +78,6 @@ remove quotes
 void	lexer(char *str)
 {
 	t_list	*words;
-	t_token	*tmp;
 
 	ft_free_cmd();
 	words = pre_token(str);
