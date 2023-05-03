@@ -47,7 +47,7 @@ t_list	*pre_token(char *str)
 		tmp = malloc(sizeof(t_token));
 		if (!tmp)
 		{
-			ft_lstclear(&head, &free);
+			ft_lstclear(&head, &free_token);
 			ft_free_array(arr);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -55,7 +55,7 @@ t_list	*pre_token(char *str)
 		temp = ft_lstnew(tmp);
 		if (!temp)
 		{
-			ft_lstclear(&head, &free);
+			ft_lstclear(&head, &free_token);
 			ft_free_array(arr);
 			free(tmp);
 			ft_exit(EXIT_MALLOC_FAILURE);
@@ -87,10 +87,6 @@ void	lexer(char *str)
 	tokenize(words);
 	expander(words);
 	post_expander(words);
-	while (words)
-	{
-		tmp = words->content;
-		printf("%s -> token %d\n", tmp->word, tmp->token);
-		words = words->next;
-	}
+	remove_quotes(words);
+	//parser(words);
 }

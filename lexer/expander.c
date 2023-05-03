@@ -42,7 +42,7 @@ char	*get_var_key(char *str, int *i, t_list *head)
 	tmp = ft_strndup(&str[i[1] + 1], i[2] - i[1] - 1);
 	if (!tmp)
 	{
-		ft_lstclear(&head, &free);
+		ft_lstclear(&head, &free_token);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	return (tmp);
@@ -118,7 +118,7 @@ void	expand(t_token *t, t_list *head)
 				if (!value)
 				{
 					free(tmp);
-					ft_lstclear(&head, &free);
+					ft_lstclear(&head, &free_token);
 					ft_exit(EXIT_MALLOC_FAILURE);
 				}
 			}
@@ -129,7 +129,7 @@ void	expand(t_token *t, t_list *head)
 			}
 			if (insert_value(t, tmp, value, i))
 			{
-				ft_lstclear(&head, &free);
+				ft_lstclear(&head, &free_token);
 				ft_exit(EXIT_MALLOC_FAILURE);
 			}
 		}

@@ -40,7 +40,7 @@ t_list	*split_space(t_list *curr, t_list *head)
 	arr = shell_split(tmp->word, "\040\011\012\013\014\015");
 	if (!arr)
 	{
-		ft_lstclear(&head, &free);
+		ft_lstclear(&head, &free_token);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	i = 1;
@@ -50,7 +50,7 @@ t_list	*split_space(t_list *curr, t_list *head)
 	tmp = malloc(sizeof(t_token));
 	if (!tmp)
 	{
-		ft_lstclear(&head, &free);
+		ft_lstclear(&head, &free_token);
 		ft_free_array(arr);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
@@ -61,7 +61,7 @@ t_list	*split_space(t_list *curr, t_list *head)
 		tmp = malloc(sizeof(t_token));
 		if (!tmp)
 		{
-			ft_lstclear(&head, &free);
+			ft_lstclear(&head, &free_token);
 			ft_free_array(arr);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -70,7 +70,7 @@ t_list	*split_space(t_list *curr, t_list *head)
 		temp = ft_lstnew(tmp);
 		if (!temp)
 		{
-			ft_lstclear(&head, &free);
+			ft_lstclear(&head, &free_token);
 			ft_free_array(arr);
 			free(tmp);
 			ft_exit(EXIT_MALLOC_FAILURE);

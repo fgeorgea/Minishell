@@ -33,3 +33,9 @@ int	skip_quotes(char *str, int i)
 	}
 	return (i);
 }
+
+void	free_token(t_token *t)
+{
+	free(t->word);
+	free(t);
+}

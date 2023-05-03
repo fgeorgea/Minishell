@@ -121,7 +121,7 @@ t_list	*split_token(t_list *current, t_list *head)
 	arr = shell_split_token(tmp->word, "|<>");
 	if (!arr)
 	{
-		ft_lstclear(&head, &free);
+		ft_lstclear(&head, &free_token);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	i = 1;
@@ -131,7 +131,7 @@ t_list	*split_token(t_list *current, t_list *head)
 	tmp = malloc(sizeof(t_token));
 	if (!tmp)
 	{
-		ft_lstclear(&head, &free);
+		ft_lstclear(&head, &free_token);
 		ft_free_array(arr);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
@@ -142,7 +142,7 @@ t_list	*split_token(t_list *current, t_list *head)
 		tmp = malloc(sizeof(t_token));
 		if (!tmp)
 		{
-			ft_lstclear(&head, &free);
+			ft_lstclear(&head, &free_token);
 			ft_free_array(arr);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -150,7 +150,7 @@ t_list	*split_token(t_list *current, t_list *head)
 		temp = ft_lstnew(tmp);
 		if (!temp)
 		{
-			ft_lstclear(&head, &free);
+			ft_lstclear(&head, &free_token);
 			ft_free_array(arr);
 			free(tmp);
 			ft_exit(EXIT_MALLOC_FAILURE);
