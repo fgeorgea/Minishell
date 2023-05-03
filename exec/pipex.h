@@ -105,6 +105,7 @@ int		lstsize_env(t_env **lst);
 int		lstsize_cmd(void);
 char	**lst_to_array(t_env **lst);
 char	*get_env_value(char *key, int size);
+t_env	*get_env_struct(char *needle, int size);
 
 // REDIR.C
 t_redir	*get_out_redir(t_redir **redirection);

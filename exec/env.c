@@ -6,11 +6,26 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/03 13:57:01 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:13:17 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+t_env	*get_env_struct(char *needle, int size)
+{
+	t_env	*env;
+
+	env = g_sh->env;
+	while (env)
+	{
+		if (ft_strlen(needle) == ft_strlen(env->key)
+			&& ft_strncmp(needle, env->key, size) == 0)
+			return (env);
+		env = env->next;
+	}
+	return (NULL);
+}
 
 char	*get_env_value(char *key_to_find, int size)
 {

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/03 14:42:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:39:18 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	ft_env(void);
 
 // EXPORT.C
 void	ft_export(char **strs);
+
+// EXPORT_UTILS.C
+void	sort_env_ascii(void);
 
 // PWD.C
 char	*ft_pwd(void);
