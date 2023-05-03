@@ -79,21 +79,12 @@ void	lexer(char *str)
 {
 	t_list	*words;
 	t_token	*tmp;
-	t_list	*temp;
 
 	ft_free_cmd();
 	words = pre_token(str);
 	if (!words)
 		return ;
 	tokenize(words);
-	temp = words;
-	while (temp)
-	{
-		tmp = temp->content;
-		printf("%s\n", tmp->word);
-		temp = temp->next;
-	}
-	printf("EXPANDER\n");
 	expander(words);
 	while (words)
 	{

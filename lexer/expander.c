@@ -39,7 +39,7 @@ char	*get_var_key(char *str, int *i, t_list *head)
 	while (str[i[0]] != ' ' && str[i[0]] != '\'' && str[i[0]] && str[i[0]] != '"')
 		i[0]++;
 	i[2] = i[0];
-	tmp = ft_strndup(&str[i[1]], i[2] - i[1]);
+	tmp = ft_strndup(&str[i[1] + 1], i[2] - i[1] - 1);
 	if (!tmp)
 	{
 		ft_lstclear(&head, &free);
@@ -48,10 +48,56 @@ char	*get_var_key(char *str, int *i, t_list *head)
 	return (tmp);
 }
 
+int	insert_value(t_token *t, char *key, char *value, int *i)
+{
+	char	*tmp;
+	int		j;
+	int		k;
+
+	tmp = malloc(sizeof(char) * (ft_strlen(t->word) + ft_strlen(value) - ft_strlen(key)));
+	free(key);
+	if (!tmp)
+	{
+		if (i[4])
+			free(value);
+		return (EXIT_MALLOC_FAILURE);
+	}
+	j = 0;
+	while (j < i[1])
+	{
+		tmp[j] = t->word[j];
+		j++;
+	}
+	k = 0;
+	while (value && value[k])
+	{
+		tmp[j + k] = value[k];
+		k++;
+	}
+	i[0] = j + k - 1;
+	while (t->word[i[2]])
+	{
+		tmp[j + k] = t->word[i[2]];
+		k++;
+		i[2]++;
+	}
+	if (i[4])
+		free(value);
+	free(t->word);
+	t->word = tmp;
+	return (0);
+}
+
+/*
+i[0] is main index, i[1] is index of $ being expanded,
+i[2] is index of character right after $key, i[3] is whether inside ",
+i[4] is whether to free value
+*/
+
 void	expand(t_token *t, t_list *head)
 {
 	char	*tmp;
-	int		i[4];
+	int		i[5];
 	char	*value;
 
 	i[0] = 0;
@@ -67,9 +113,25 @@ void	expand(t_token *t, t_list *head)
 			tmp = get_var_key(t->word, i, head);
 			if (tmp[0] == '?' && tmp[1] == '\0')
 			{
-				value = ft_itoa(g_sh->exit);
-			} 
-			value = get_env_value(tmp, ft_strlen(tmp));
+				i[4] = 1;
+				value = ft_itoa(g_sh->pipe_exit);
+				if (!value)
+				{
+					free(tmp);
+					ft_lstclear(&head, &free);
+					ft_exit(EXIT_MALLOC_FAILURE);
+				}
+			}
+			else
+			{
+				i[4] = 0;
+				value = get_env_value(tmp, ft_strlen(tmp));
+			}
+			if (insert_value(t, tmp, value, i))
+			{
+				ft_lstclear(&head, &free);
+				ft_exit(EXIT_MALLOC_FAILURE);
+			}
 		}
 		i[0]++;
 	}
@@ -86,7 +148,6 @@ void	expander(t_list *head)
 		tmp = curr->content;
 		if (has_variable(tmp))
 			expand(tmp, head);
-		else
-			curr = curr->next;
+		curr = curr->next;
 	}
 }
