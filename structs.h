@@ -39,6 +39,7 @@ typedef struct s_env
 typedef struct s_shell
 {
 	char	*name;
+	int		pipe_exit;
 	char	*str;
 
 	t_cmd	*cmd;

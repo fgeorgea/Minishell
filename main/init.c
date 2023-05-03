@@ -70,6 +70,7 @@ void	init_shell(char **argv, char **env)
 	g_sh->str = 0;
 	g_sh->pipex = 0;
 	g_sh->name = argv[0];
+	g_sh->pipe_exit = 0;
 	init_env(env);
 	if (!g_sh->env)
 		ft_exit(EXIT_MALLOC_FAILURE);

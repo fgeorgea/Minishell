@@ -15,8 +15,10 @@
 int	has_variable(t_token *t)
 {
 	int	i;
+	int	vc;
 
 	i = 0;
+	vc = 0;
 	while (t->word[i])
 	{
 		if (t->word[i] == '\'')
@@ -28,76 +30,49 @@ int	has_variable(t_token *t)
 	return (0);
 }
 
+char	*get_var_key(char *str, int *i, t_list *head)
+{
+	char	*tmp;
+
+	i[1] = i[0];
+	i[0]++;
+	while (str[i[0]] != ' ' && str[i[0]] != '\'' && str[i[0]] && str[i[0]] != '"')
+		i[0]++;
+	i[2] = i[0];
+	tmp = ft_strndup(&str[i[1]], i[2] - i[1]);
+	if (!tmp)
+	{
+		ft_lstclear(&head, &free);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	return (tmp);
+}
+
 void	expand(t_token *t, t_list *head)
 {
-	char	*value;
 	char	*tmp;
-	int		i;
-	int		j[3];
-	int		len;
+	int		i[4];
+	char	*value;
 
-	i = 0;
-	len = 0;
-	j[2] = 0;
-	while (t->word[i])
+	i[0] = 0;
+	i[3] = 0;
+	while (t->word[i[0]])
 	{
-		if (t->word[i] == '"')
-			j[2] = !j[2];
-		if (t->word[i] == '\'' && !j[2])
-			i = skip_quotes(t->word, i);
-		if (t->word[i] == '$' && t->word[i + 1] && t->word[i + 1] != ' ')
+		if (t->word[i[0]] == '\'' && !i[3])
+			i[0] = skip_quotes(t->word, i[0]);
+		if (t->word[i[0]] == '"')
+			i[3] = !i[3];
+		if (t->word[i[0]] == '$' && t->word[i[0] + 1] != ' ' && t->word[i[0] + 1])
 		{
-			j[0] = i;
-			while (t->word[i] && t->word[i] != ' ')
+			tmp = get_var_key(t->word, i, head);
+			if (tmp[0] == '?' && tmp[1] == '\0')
 			{
-				if ((t->word[i] == '\'' || t->word[i] == '"') && !j[2])
-					i = skip_quotes(t->word, i);
-				else if (t->word[i] == '"')
-					j[2] = !j[2];
-				i++;
-			}
-			j[1] = i;
-			len = ft_strlen(&t->word[i]);
-			break ;
+				value = ft_itoa(g_sh->exit);
+			} 
+			value = get_env_value(tmp, ft_strlen(tmp));
 		}
-		i++;
+		i[0]++;
 	}
-	tmp = ft_strndup(&t->word[j[0] + 1], j[1] - j[0]);
-	if (!tmp)
-	{
-		ft_lstclear(&head, &free);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	value = get_env_value(tmp, ft_strlen(tmp));
-	free(tmp);
-	tmp = malloc(sizeof(char) * (ft_strlen(value) + i + len + 1));
-	if (!tmp)
-	{
-		ft_lstclear(&head, &free);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	i = 0;
-	while (i < j[0])
-	{
-		tmp[i] = t->word[i];
-		i++;
-	}
-	j[0] = 0;
-	while (value && value[j[0]])
-	{
-		tmp[i + j[0]] = value[j[0]];
-		j[0]++;
-	}
-	i += j[0];
-	j[0] = 0;
-	while (j[0] < len)
-	{
-		tmp[i + j[0]] = t->word[j[1] + j[0]];
-		j[0]++;
-	}
-	tmp[i + j[0]] = 0;
-	free(t->word);
-	t->word = tmp;
 }
 
 void	expander(t_list *head)
