@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 14:20:14 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:22:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_open(char *file, int flags, int perm)
 		fd = open(file, flags);
 	else
 		fd = open(file, flags, perm);
-	if (!fd)
+	if (fd == -1)
 	{
 		g_sh->pipex->exit_macro = EXIT_OPEN_FAILURE;
 		ft_exit(EXIT_OPEN_FAILURE);
@@ -45,7 +45,7 @@ void	ft_dup2(int file1, int file2)
 	int	success;
 
 	success = dup2(file1, file2);
-	if (!success)
+	if (success == -1)
 	{
 		g_sh->pipex->exit_macro = EXIT_DUP2_FAILURE;
 		ft_exit(EXIT_DUP2_FAILURE);

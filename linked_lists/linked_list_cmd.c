@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:22:41 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 14:17:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:44:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	lstsize_cmd(void)
 	int		i;
 	t_cmd	*tmp;
 
-	i = 1;
+	i = 0;
 	tmp = g_sh->cmd;
 	if (!tmp || !tmp->cmd)
 		return (0);

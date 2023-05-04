@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 14:17:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:45:06 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	lstsize_env(t_env **lst)
 	int		i;
 	t_env	*tmp;
 
-	i = 1;
+	i = 0;
 	tmp = *lst;
 	if (!lst)
 		return (0);

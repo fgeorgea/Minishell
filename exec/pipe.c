@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 02:06:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:25:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ static int	*ft_createmini_tab(void)
 {
 	int	*tab;
 
-	tab = NULL;
 	tab = malloc(sizeof(int) * 2);
 	if (!tab)
 		ft_exit(EXIT_MALLOC_FAILURE);
+	tab[0] = 0;
+	tab[1] = 0;
 	return (tab);
 }
 
@@ -40,7 +41,6 @@ int	**ft_createpipe_array(t_pipex *p)
 	int		**array;
 
 	i = 0;
-	array = NULL;
 	array = malloc(sizeof(int *) * (p->nbr_pipe));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);

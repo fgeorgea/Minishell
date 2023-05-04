@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 01:26:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:09:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,27 @@ t_redir	*get_out_redir(t_redir **redirection)
 {
 	int		tmp_fd;
 	t_redir	*redir;
+	t_redir	*last;
 
-	if (!redirection)
+	if (!redirection || !*redirection)
 		return (NULL);
 	redir = *redirection;
-	while (redir && (redir->mode != OUT || redir->mode != OUT_APP))
-		redir = redir->next;
-	if (!redir || redir->mode != OUT || redir->mode != OUT_APP)
-		return (NULL);
-	while (redir->next)
+	last = NULL;
+	while (redir)
 	{
-		tmp_fd = ft_open(redir->key, O_WRONLY | O_CREAT, 0644);
-		ft_close(&tmp_fd);
+		if (last && (redir->mode == OUT || redir->mode == OUT_APP))
+		{
+			if (last->mode == OUT)
+				tmp_fd = ft_open(last->key, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+			else
+				tmp_fd = ft_open(last->key, O_WRONLY | O_APPEND | O_CREAT, 0644);
+			ft_close(&tmp_fd);
+		}
+		if ((redir->mode == OUT || redir->mode == OUT_APP))
+			last = redir;
 		redir = redir->next;
 	}
-	return (redir);
+	return (last);
 }
 
 int	open_outfile(t_cmd *cmd)
@@ -53,23 +59,21 @@ int	open_outfile(t_cmd *cmd)
 t_redir	*get_in_redir(t_redir **redirection)
 {
 	t_redir	*redir;
+	t_redir	*last;
 
-	if (!redirection)
+	if (!redirection || !*redirection)
 		return (NULL);
 	redir = *redirection;
-	while (redir->next && (redir->next->mode == IN || redir->next->mode == HEREDOC))
+	last = NULL;
+	while (redir)
 	{
-		if (redir->mode == IN && !file_exist(redir->key))
-			exit(1);
 		if (redir->mode == HEREDOC)
 			ft_here_doc(redir->key);
+		if (redir->mode == HEREDOC || redir->mode == IN)
+			last = redir;
 		redir = redir->next;
 	}
-	if (!redir || (redir->mode != IN && redir->mode != HEREDOC))
-		return (NULL);
-	if (redir->mode == HEREDOC)
-		ft_here_doc(redir->key);
-	return (redir);
+	return (last);
 }
 
 int	open_infile(t_cmd *cmd)
@@ -78,10 +82,11 @@ int	open_infile(t_cmd *cmd)
 	int		fd;
 
 	redir = get_in_redir(&cmd->redir);
-	if (!redir && !redir->key)
+	if (!redir || !redir->key)
 		return (0);
 	if (!file_exist(redir->key) && redir->mode != HEREDOC)
 	{
+		ft_putstr_fd(g_sh->name, 2);
 		ft_putstr_fd(redir->key, 2);
 		ft_putstr_fd(": file not found\n", 2);
 		exit(1);

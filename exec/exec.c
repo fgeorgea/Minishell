@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 13:42:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:27:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	ft_child(int pos, t_cmd *cmd, t_pipex *p)
 {
 	p->outfile = open_outfile(cmd);
+	printf("%d\n", p->outfile);
 	p->infile = open_infile(cmd);
 	if (pos == 0)
 		ft_first_child(p);

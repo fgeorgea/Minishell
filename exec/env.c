@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 15:41:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:15:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ static int	join_key_value(t_env *lst, char **array)
 			return (-1);
 		array[i] = ft_strjoin(tmp, lst->value);
 		if (!array[i])
+		{	
+			free(tmp);
 			return (-1);
+		}
 		free(tmp);
 		lst = lst->next;
 		i++;
@@ -82,14 +85,12 @@ static int	join_key_value(t_env *lst, char **array)
 
 void	lst_to_array(t_env **lst)
 {
-	int		i;
 	char	**array;
 	int		lstsize;
 	t_env	*tmp;
 
 	if (!lst)
 		return ;
-	i = 0;
 	lstsize = lstsize_env(lst);
 	tmp = *lst;
 	array = malloc(sizeof(char *) * (lstsize + 1));

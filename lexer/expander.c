@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:23:31 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/02 16:28:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:15:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int	has_variable(t_token *t)
 {
 	int	i;
-	int	vc;
 
 	i = 0;
-	vc = 0;
 	while (t->word[i])
 	{
 		if (t->word[i] == '\'')
