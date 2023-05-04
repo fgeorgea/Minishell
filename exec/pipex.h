@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 15:16:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:20:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,17 @@ void	delete_tmp_file(void);
 void	ft_free_pipex(void);
 
 // PROTECTIONS.C
-int		ft_tablen(char **tab);
 void	ft_close(int *fd);
 void	ft_dup2(int file1, int file2);
 void	ft_waitpid(void);
 int		ft_open(char *file, int flags, int perm);
-void	ft_execve(const char *path, char *const argv[], char *const envp[]);
+void	ft_execve(char **argv, char **envp);
 
 // ENV.C
-int		lstsize_env(t_env **lst);
-int		lstsize_cmd(void);
 char	**lst_to_array(t_env **lst);
 char	*get_env_value(char *key, int size);
 t_env	*get_env_struct(char *needle, int size);
+void	change_env_value(char *key, char *new_value);
 
 // REDIR.C
 t_redir	*get_out_redir(t_redir **redirection);
@@ -115,5 +113,8 @@ int		open_infile(t_cmd *cmd);
 
 // DEBUG.C
 void    fill_linked_lists();
+
+// UTILS.C
+int		ft_arraylen(char **tab);
 
 #endif

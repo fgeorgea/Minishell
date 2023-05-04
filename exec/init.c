@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 00:29:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:10:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	ft_init_paths(t_pipex *p)
 	p->paths = ft_split_exit(paths, ':');
 	if (!p->paths)
 		ft_putstr_fd("No such file or directory\n", 2);
-	p->nbr_paths = ft_tablen(p->paths);
+	p->nbr_paths = ft_arraylen(p->paths);
 }
 
 void	ft_init_struct(void)

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/03 16:39:18 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:23:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ char	*ft_pwd(void);
 
 // UNSET.C
 void	ft_unset(char **vars);
+
+// EXIT.C
+void	ft_exit_builtin(void);
 
 #endif

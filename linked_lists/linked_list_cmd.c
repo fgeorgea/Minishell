@@ -6,11 +6,28 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:22:41 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 15:29:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:17:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	lstsize_cmd(void)
+{
+	int		i;
+	t_cmd	*tmp;
+
+	i = 1;
+	tmp = g_sh->cmd;
+	if (!tmp || !tmp->cmd)
+		return (0);
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
 
 static t_cmd	*ft_lstlast_cmd(t_cmd *lst)
 {

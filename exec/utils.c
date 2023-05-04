@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/04/29 02:24:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:07:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_tablen(char **tab)
+int	ft_arraylen(char **tab)
 {
 	int	i;
 
 	i = 0;
 	if (!tab)
-		return (-1);
+		return (0);
 	while (tab[i])
 		i++;
 	return (i);

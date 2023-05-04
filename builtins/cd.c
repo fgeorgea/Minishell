@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/01 18:52:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:35:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ static void	ft_chdir(char *dir)
 {
 	t_env	*env;
 	char	*oldpwd;
-	char	*oldoldpwd;
+	char	*oldtmp;
 
 	env = g_sh->env;
 	oldpwd = ft_pwd();
-	oldoldpwd = get_env_value("OLDPWD", 6);
-	if (!oldoldpwd)
+	oldtmp = get_env_value("OLDPWD", 6);
+	if (!oldtmp)
 	{
 		if (!chdir(dir))
 			ft_exit(EXIT_CHDIR_FAILURE);
 		return ;
 	}
-	free(oldoldpwd);
+	free(oldtmp);
 	env->value = oldpwd;
 	if (!chdir(dir))
 		ft_exit(EXIT_CHDIR_FAILURE);

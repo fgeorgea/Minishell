@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/03 13:57:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:20:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,15 @@ void	ft_waitpid(void)
 	}
 }
 
-void	ft_execve(const char *path, char *const argv[], char *const envp[])
+void	ft_execve(char **argv, char **envp)
 {
 	int	success;
+	int	array_len;
 
-	check_cmd((char **)argv);
-	success = execve(path, argv, envp);
+	array_len = ft_arraylen(argv);
+	check_cmd(argv);
+	change_env_value("-", argv[array_len - 1]);
+	success = execve(argv[0], argv, envp);
 	if (!success)
 		ft_exit(EXIT_EXECVE_FAILURE);
 }

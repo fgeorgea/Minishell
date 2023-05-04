@@ -6,11 +6,28 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 15:13:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:17:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	lstsize_env(t_env **lst)
+{
+	int		i;
+	t_env	*tmp;
+
+	i = 1;
+	tmp = *lst;
+	if (!lst)
+		return (0);
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
 
 static t_env	*ft_lstlast_env(t_env *lst)
 {

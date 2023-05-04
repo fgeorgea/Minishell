@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 01:33:28 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 13:42:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_child(int pos, t_cmd *cmd, t_pipex *p)
 		ft_last_child(pos, p);
 	else
 		ft_middle_child(pos, p);
-	ft_execve(cmd->cmd[0], cmd->cmd, p->env_array);
+	ft_execve(cmd->cmd, p->env_array);
 }
 
 void	ft_exec(void)
