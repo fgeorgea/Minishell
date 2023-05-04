@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 16:59:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:19:19 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	print_cmd(void)
 					printf("IN ");
 				else if (temp->mode == OUT_APP)
 					printf("OUT_APP ");
-				else
+				else if (temp->mode == HEREDOC)
 					printf("HEREDOC ");
+				else
+					printf("HEREDOC_EXP ");
 				printf("%s, ", temp->key);
 				temp = temp->next;
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:14:55 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/03 15:15:07 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:25:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,14 @@ void	check_token_syntax(t_token *curr, t_token *next)
 		set_token_err(&curr->word[1]);
 }
 
-int	get_redir_mode(t_token *token)
+int	get_redir_mode(t_token *token, t_token *next)
 {
 	if (token->word[0] == '>' && token->word[1] == '>')
 		return (OUT_APP);
-	if (token->word[0] == '<' && token->word[1] == '<')
+	if (token->word[0] == '<' && token->word[1] == '<' && next->quotes)
 		return (HEREDOC);
+	if (token->word[0] == '<' && token->word[1] == '<')
+		return (HEREDOC_EXP);
 	if (token->word[0] == '>')
 		return (OUT);
 	return (IN);
@@ -118,7 +120,7 @@ t_list	*new_redir(t_list *curr, t_list **prev, t_list **head)
 	}
 	new->next = 0;
 	new->key = content->word;
-	new->mode = get_redir_mode(curr->content);
+	new->mode = get_redir_mode(curr->content, curr->next->content);
 	add_redir(new);
 	if (curr == *prev)
 	{

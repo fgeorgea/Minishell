@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 19:09:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:29:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_redir	*get_in_redir(t_redir **redirection)
 	{
 		if (redir->mode == HEREDOC)
 			ft_here_doc(redir->key);
+		//if (redir->mode == HEREDOC_EXP)
+		//	ft_here_doc_exp(redir->key);
 		if (redir->mode == HEREDOC || redir->mode == IN)
 			last = redir;
 		redir = redir->next;

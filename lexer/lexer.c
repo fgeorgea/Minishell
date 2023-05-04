@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:16:09 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/02 16:30:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:20:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	lexer(char *str)
 	tokenize(words);
 	expander(words);
 	post_expander(words);
-	remove_quotes(words);
-	/*t_token	*t;
+	t_token	*t;
 	t_list	*tmp;
 	tmp = words;
 	while (tmp)
@@ -80,6 +79,7 @@ void	lexer(char *str)
 		t = tmp->content;
 		printf("%s\n", t->word);
 		tmp = tmp->next;
-	}*/
+	}
+	remove_quotes(words);
 	parser(words);
 }

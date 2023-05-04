@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:42:11 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/27 17:42:28 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:16:50 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_token
 {
 	char	*word;
 	int		token;
+	int		quotes;
 }			t_token;
 
 void	tokenize(t_list *head);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/03 14:23:51 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:24:33 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,12 @@ void	remove_quotes(t_list *head)
 	{
 		tmp = current->content;
 		if (has_quotes(tmp))
+		{
+			tmp->quotes = 1;
 			trim_quotes(tmp, head);
+		}
+		else
+			tmp->quotes = 0;
 		current = current->next;
 	}
 }
