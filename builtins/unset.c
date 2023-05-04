@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 14:39:21 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:43:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ void	ft_unset(char **vars)
 		delete_var_env(vars[i]);
 		i++;
 	}
-	ft_free_array(g_sh->pipex->env_array);
-	g_sh->pipex->env_array = lst_to_array(&g_sh->env);
+	lst_to_array(&g_sh->env);
 }

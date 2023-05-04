@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 15:40:18 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:41:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char	*get_env_value(char *key_to_find, int size)
 static int	join_key_value(t_env *lst, char **array)
 {
 	int		i;
-	char	*str;
 	char	*tmp;
 
 	i = 0;

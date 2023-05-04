@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 14:33:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:42:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,5 @@ void	ft_export(char **strs)
 			check_append(strs[i]);
 		i++;
 	}
-	ft_free_array(g_sh->pipex->env_array);
-	g_sh->pipex->env_array = lst_to_array(g_sh->env);
+	lst_to_array(g_sh->env);
 }

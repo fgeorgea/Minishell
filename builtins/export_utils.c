@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/03 16:39:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:42:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ void	sort_env_ascii(void)
 		else
 			env = env->next;
 	}
-	ft_free_array(g_sh->pipex->env_array);
-	g_sh->pipex->env_array = lst_to_array(&g_sh->env);
+	lst_to_array(&g_sh->env);
 }
