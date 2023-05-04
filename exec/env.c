@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 14:17:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:40:18 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,30 @@ char	*get_env_value(char *key_to_find, int size)
 	return (NULL);
 }
 
-static char	*join_key_value(t_env *lst)
+static int	join_key_value(t_env *lst, char **array)
 {
+	int		i;
 	char	*str;
 	char	*tmp;
 
-	tmp = ft_strjoin(lst->key, "=");
-	str = ft_strjoin(tmp, lst->value);
-	free(tmp);
-	return (str);
+	i = 0;
+	while (lst)
+	{
+		tmp = ft_strjoin(lst->key, "=");
+		if (!tmp)
+			return (-1);
+		array[i] = ft_strjoin(tmp, lst->value);
+		if (!array[i])
+			return (-1);
+		free(tmp);
+		lst = lst->next;
+		i++;
+	}
+	array[i] = NULL;
+	return (1);
 }
 
-char	**lst_to_array(t_env **lst)
+void	lst_to_array(t_env **lst)
 {
 	int		i;
 	char	**array;
@@ -77,24 +89,19 @@ char	**lst_to_array(t_env **lst)
 	t_env	*tmp;
 
 	if (!lst)
-		return (NULL);
+		return ;
 	i = 0;
 	lstsize = lstsize_env(lst);
 	tmp = *lst;
 	array = malloc(sizeof(char *) * (lstsize + 1));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	while (tmp)
+	if (!join_key_value(tmp, array))
 	{
-		array[i] = join_key_value(tmp);
-		if (!array[i])
-		{
-			ft_free_array(array);
-			ft_exit(EXIT_MALLOC_FAILURE);
-		}
-		tmp = tmp->next;
-		i++;
+		ft_free_array(array);
+		ft_exit(EXIT_MALLOC_FAILURE);
 	}
-	array[i] = NULL;
-	return (array);
+	if (g_sh->pipex->env_array)
+		ft_free_array(g_sh->pipex->env_array);
+	g_sh->pipex->env_array = array;
 }
