@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 18:22:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 01:43:17 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_waitpid(void)
 	while (i < p->nbr_fork)
 	{
 		success = waitpid(p->pids[i], &g_sh->pipe_exit, 0);
-		if (!success)
+		if (success == -1)
 			ft_exit(EXIT_WAITPID_FAILURE);
 		i++;
 	}

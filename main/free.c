@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/28 00:55:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 01:23:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_free_pipex(void)
 		return ;
 	ft_free_array(p->paths);
 	ft_free_array(p->env_array);
-	ft_free_void_array((void **)p->pipefd, p->nbr_pipe);
+	ft_free_array_pos((void **)p->pipefd, -1);
 	if (p->pids)
 		free(p->pids);
 	delete_tmp_file();

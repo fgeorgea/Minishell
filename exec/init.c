@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 17:27:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 01:42:03 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,24 @@ static void	ft_add_slash(t_pipex *p)
 	char	*tmp;
 
 	i = 0;
+	if (!p->paths)
+		return ;
 	while (p->paths[i])
 	{
-		tmp = ft_strjoin_exit(p->paths[i], "/");
+		tmp = ft_strjoin(p->paths[i], "/");
+		if (!tmp)
+		{
+			ft_free_array_pos((void **)p->paths, i);
+			return ;
+		}
 		free(p->paths[i]);
-		p->paths[i] = ft_strdup_exit(tmp);
+		p->paths[i] = ft_strdup(tmp);
+		if (!p->paths[i])
+		{
+			ft_free_array_pos((void **)p->paths, i);
+			free(tmp);
+			return ;
+		}
 		free(tmp);
 		i++;
 	}
@@ -31,14 +44,14 @@ static void	ft_add_slash(t_pipex *p)
 static void	ft_init_paths(t_pipex *p)
 {
 	char	*paths;
-	char	*tmp;
 	
-	tmp = get_env_value("PATH", 4);
-	paths = ft_strtrim(tmp, "\"");
-	//free(tmp);
+	p->nbr_paths = 0;
+	paths = get_env_value("PATH", 4);
+	if (!paths)
+		return ;
 	p->paths = ft_split(paths, ':');
 	if (!p->paths)
-		ft_putstr_fd("No such file or directory\n", 2);
+		ft_exit(EXIT_MALLOC_FAILURE);
 	p->nbr_paths = ft_arraylen(p->paths);
 }
 

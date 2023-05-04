@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 15:41:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 01:48:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ int		**ft_createpipe_array(t_pipex *p);
 void	ft_here_doc(char *end_token);
 
 // FREE.C
-void	ft_free_array(char **tab);
-void	ft_free_void_array(void **array, int len);
+void	ft_free_array(char **array);
+void	ft_free_array_pos(void **array, int pos);
 void	delete_tmp_file(void);
 void	ft_free_pipex(void);
 
@@ -115,6 +115,6 @@ int		open_infile(t_cmd *cmd);
 void    fill_linked_lists();
 
 // UTILS.C
-int		ft_arraylen(char **tab);
+int		ft_arraylen(char **array);
 
 #endif

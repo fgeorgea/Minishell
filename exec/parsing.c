@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 19:06:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 01:26:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,14 @@ void	check_cmd(char **cmd)
 	while (p->paths[i])
 	{
 		tmp = ft_strjoin(p->paths[i], cmd[0]);
+		if (!tmp)
+			ft_exit(EXIT_MALLOC_FAILURE);
 		if (does_cmd_exist(tmp))
 		{
 			free(cmd[0]);
 			cmd[0] = ft_strdup(tmp);
+			if (!cmd[0])
+				ft_exit(EXIT_MALLOC_FAILURE);
 			free(tmp);
 			return ;
 		}

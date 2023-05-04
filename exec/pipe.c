@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 18:25:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 01:23:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ void	ft_pipe(int pos)
 
 static int	*ft_createmini_tab(void)
 {
-	int	*tab;
+	int	*array;
 
-	tab = malloc(sizeof(int) * 2);
-	if (!tab)
-		ft_exit(EXIT_MALLOC_FAILURE);
-	tab[0] = 0;
-	tab[1] = 0;
-	return (tab);
+	array = ft_calloc(2, sizeof(int));
+	if (!array)
+		return (NULL);
+	return (array);
 }
 
 int	**ft_createpipe_array(t_pipex *p)
@@ -41,13 +39,19 @@ int	**ft_createpipe_array(t_pipex *p)
 	int		**array;
 
 	i = 0;
-	array = malloc(sizeof(int *) * (p->nbr_pipe));
+	array = ft_calloc(p->nbr_pipe + 1, sizeof(int *));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	while (i < p->nbr_pipe)
 	{
 		array[i] = ft_createmini_tab();
+		if (!array[i])
+		{
+			ft_free_array_pos((void **)array, i);
+			ft_exit(EXIT_MALLOC_FAILURE);
+		}
 		i++;
 	}
+	array[i] = NULL;
 	return (array);
 }
