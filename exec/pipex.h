@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 01:48:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 01:51:36 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,6 @@ t_redir	*get_out_redir(t_redir **redirection);
 t_redir	*get_in_redir(t_redir **redirection);
 int		open_outfile(t_cmd *cmd);
 int		open_infile(t_cmd *cmd);
-
-// DEBUG.C
-void    fill_linked_lists();
 
 // UTILS.C
 int		ft_arraylen(char **array);

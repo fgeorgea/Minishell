@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/04 19:07:45 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/05 01:51:24 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ SRCS	=	$(MAIN)main.c \
 			$(EXEC)env.c \
 			$(EXEC)redir.c \
 			$(EXEC)protections.c \
-			$(EXEC)debug.c \
 			$(LINKED_LISTS)linked_list_env.c \
 			$(LINKED_LISTS)linked_list_cmd.c \
 			$(LINKED_LISTS)linked_list_redir.c \
