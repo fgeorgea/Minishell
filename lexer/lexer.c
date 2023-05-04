@@ -72,5 +72,14 @@ void	lexer(char *str)
 	expander(words);
 	post_expander(words);
 	remove_quotes(words);
-	//parser(words);
+	/*t_token	*t;
+	t_list	*tmp;
+	tmp = words;
+	while (tmp)
+	{
+		t = tmp->content;
+		printf("%s\n", t->word);
+		tmp = tmp->next;
+	}*/
+	parser(words);
 }

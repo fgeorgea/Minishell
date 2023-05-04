@@ -13,6 +13,15 @@
 #ifndef LEXER_H
 # define LEXER_H
 
+# define NO_S_ERR 0
+# define S_ERR_NL 1
+# define S_ERR_OUT 2
+# define S_ERR_IN 3
+# define S_ERR_APP 4
+# define S_ERR_HERE 5
+# define S_ERR_RW 6
+# define S_ERR_PIPE 7
+
 typedef struct s_token
 {
 	char	*word;
@@ -26,5 +35,7 @@ void	expander(t_list *head);
 void	post_expander(t_list *head);
 void	free_token(void *t);
 void	remove_quotes(t_list *head);
+void	display_syntax_err(void);
+void	parser(t_list *head);
 
 #endif
