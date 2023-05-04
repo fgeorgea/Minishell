@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:53:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/03/31 17:54:01 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:41:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	free_token(void *t)
 
 	token = t;
 	free(token->word);
+	free(token->pre_exp);
 	free(token);
 }
 

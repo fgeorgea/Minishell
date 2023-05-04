@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:16:09 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:20:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:40:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_list	*pre_token(char *str)
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
 		tmp->word = arr[i];
+		tmp->pre_exp = 0;
 		temp = ft_lstnew(tmp);
 		if (!temp)
 		{

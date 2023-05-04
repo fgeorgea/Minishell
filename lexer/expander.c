@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:23:31 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:14:08 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:43:33 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,12 @@ void	expand(t_token *t, t_list *head)
 
 	i[0] = 0;
 	i[3] = 0;
+	t->pre_exp = ft_strdup(t->word);
+	if (!t->pre_exp)
+	{
+		ft_lstclear(&head, &free_token);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
 	while (t->word[i[0]])
 	{
 		if (t->word[i[0]] == '\'' && !i[3])

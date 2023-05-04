@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:14:55 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:25:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:46:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,17 @@ t_list	*new_redir(t_list *curr, t_list **prev, t_list **head)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	new->next = 0;
-	new->key = content->word;
 	new->mode = get_redir_mode(curr->content, curr->next->content);
+	if (new->mode == HEREDOC)
+	{
+		new->key = content->pre_exp;
+		free(content->word);
+	}
+	else
+	{
+		new->key = content->word;
+		free(content->pre_exp);
+	}
 	add_redir(new);
 	if (curr == *prev)
 	{

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:24:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:49:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	remove_quotes(t_list *head)
 {
 	t_list	*current;
 	t_token	*tmp;
+	char	*hold;
 
 	current = head;
 	while (current)
@@ -85,6 +86,11 @@ void	remove_quotes(t_list *head)
 		{
 			tmp->quotes = 1;
 			trim_quotes(tmp, head);
+			if (tmp->pre_exp)
+			{
+				hold = tmp->word;
+				
+			}
 		}
 		else
 			tmp->quotes = 0;
