@@ -52,7 +52,8 @@ SRCS	=	$(MAIN)main.c \
 			$(LEX)tokenize.c \
 			$(LEX)expander.c \
 			$(LEX)post_expander.c \
-			$(LEX)remove_quotes.c\
+			$(LEX)remove_quotes.c \
+			$(LEX)parser.c \
 
 OBJS	=	${SRCS:.c=.o}
 

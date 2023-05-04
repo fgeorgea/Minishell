@@ -42,3 +42,24 @@ void	free_token(void *t)
 	free(token->word);
 	free(token);
 }
+
+void	display_syntax_err(void)
+{
+	ft_putstr_fd(g_sh->name, 2);
+	if (g_sh->s_err == S_ERR_NL)
+		ft_putstr_fd(": syntax error near unexpected token `newline'\n", 2);
+	else if (g_sh->s_err == S_ERR_IN)
+		ft_putstr_fd(": syntax error near unexpected token `<'\n", 2);
+	else if (g_sh->s_err == S_ERR_OUT)
+		ft_putstr_fd(": syntax error near unexpected token `>'\n", 2);
+	else if (g_sh->s_err == S_ERR_APP)
+		ft_putstr_fd(": syntax error near unexpected token `>>'\n", 2);
+	else if (g_sh->s_err == S_ERR_HERE)
+		ft_putstr_fd(": syntax error near unexpected token `<<'\n", 2);
+	else if (g_sh->s_err == S_ERR_RW)
+		ft_putstr_fd(": syntax error near unexpected token `<>'\n", 2);
+	else if (g_sh->s_err == S_ERR_PIPE)
+		ft_putstr_fd(": syntax error near unexpected token `|'\n", 2);
+	else
+		ft_putstr_fd(": unknown syntax error\n", 2);
+}

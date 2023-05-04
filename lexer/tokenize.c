@@ -37,11 +37,10 @@ int	get_token_wc(char *str, char *sep)
 	i = 0;
 	while (str[i])
 	{
-		while (is_in_sep(str[i], sep))
-		{
-			i++;
+		if (is_in_sep(str[i], sep))
 			wc++;
-		}
+		while (is_in_sep(str[i], sep))
+			i++;
 		if (str[i])
 			wc++;
 		while (!is_in_sep(str[i], sep) && str[i])
@@ -50,11 +49,10 @@ int	get_token_wc(char *str, char *sep)
 				i = skip_quotes(str, i);
 			i++;
 		}
-		while (is_in_sep(str[i], sep))
-		{
+		if (is_in_sep(str[i], sep))
 			wc++;
+		while (is_in_sep(str[i], sep))
 			i++;
-		}
 	}
 	return (wc);
 }
@@ -74,13 +72,15 @@ char	**shell_split_token(char *str, char *sep)
 	wc = 0;
 	while (str[i])
 	{
-		while (is_in_sep(str[i], sep) && str[i])
+		if (is_in_sep(str[i], sep))
 		{
-			arr[wc] = ft_strndup(&str[i], 1);
+			j = i;
+			while (is_in_sep(str[i], sep) && str[i])
+				i++;
+			arr[wc] = ft_strndup(&str[j], i - j);
 			if (!arr[wc])
 				return (free_split(arr));
 			wc++;
-			i++;
 		}
 		if (str[i])
 			j = i;
@@ -96,13 +96,15 @@ char	**shell_split_token(char *str, char *sep)
 		if (!arr[wc])
 			return (free_split(arr));
 		wc++;
-		while (is_in_sep(str[i], sep))
+		if (is_in_sep(str[i], sep))
 		{
-			arr[wc] = ft_strndup(&str[i], 1);
+			j = i;
+			while (is_in_sep(str[i], sep) && str[i])
+				i++;
+			arr[wc] = ft_strndup(&str[j], i - j);
 			if (!arr[wc])
 				return (free_split(arr));
 			wc++;
-			i++;
 		}
 	}
 	arr[wc] = 0;
