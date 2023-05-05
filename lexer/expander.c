@@ -12,22 +12,6 @@
 
 #include "../minishell.h"
 
-int	has_variable(t_token *t)
-{
-	int	i;
-
-	i = 0;
-	while (t->word[i])
-	{
-		if (t->word[i] == '\'')
-			i = skip_quotes(t->word, i);
-		if (t->word[i] == '$' && t->word[i + 1] && t->word[i + 1] != ' ')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 char	*get_var_key(char *str, int *i, t_list *head)
 {
 	char	*tmp;
@@ -87,8 +71,10 @@ int	insert_value(t_token *t, char *key, char *value, int *i)
 }
 
 /*
-i[0] is main index, i[1] is index of $ being expanded,
-i[2] is index of character right after $key, i[3] is whether inside ",
+i[0] is main index
+i[1] is index of $ being expanded
+i[2] is index of character right after $key
+i[3] is whether inside ""
 i[4] is whether to free value
 */
 
@@ -100,12 +86,6 @@ void	expand(t_token *t, t_list *head)
 
 	i[0] = 0;
 	i[3] = 0;
-	t->pre_exp = ft_strdup(t->word);
-	if (!t->pre_exp)
-	{
-		ft_lstclear(&head, &free_token);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
 	while (t->word[i[0]])
 	{
 		if (t->word[i[0]] == '\'' && !i[3])
@@ -138,20 +118,5 @@ void	expand(t_token *t, t_list *head)
 			}
 		}
 		i[0]++;
-	}
-}
-
-void	expander(t_list *head)
-{
-	t_list	*curr;
-	t_token	*tmp;
-
-	curr = head;
-	while (curr)
-	{
-		tmp = curr->content;
-		if (has_variable(tmp))
-			expand(tmp, head);
-		curr = curr->next;
 	}
 }

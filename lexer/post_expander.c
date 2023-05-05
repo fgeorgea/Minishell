@@ -12,22 +12,6 @@
 
 #include "../minishell.h"
 
-int	has_space(t_token *t)
-{
-	int	i;
-
-	i = 0;
-	while (t->word[i])
-	{
-		if (t->word[i] == '\'' || t->word[i] =='"')
-			i = skip_quotes(t->word, i);
-		if (ft_iswhitespace(t->word[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 t_list	*split_space(t_list *curr, t_list *head)
 {
 	char	**arr;

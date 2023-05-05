@@ -25,7 +25,6 @@
 typedef struct s_token
 {
 	char	*word;
-	char	*pre_exp;
 	int		token;
 	int		quotes;
 }			t_token;
@@ -39,5 +38,7 @@ void	free_token(void *t);
 void	remove_quotes(t_list *head);
 void	display_syntax_err(void);
 void	parser(t_list *head);
+int		has_variable(char *str);
+int		has_quotes(char *str);
 
 #endif

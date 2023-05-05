@@ -12,20 +12,6 @@
 
 #include "../minishell.h"
 
-int	has_quotes(t_token *t)
-{
-	int	i;
-
-	i = 0;
-	while (t->word[i])
-	{
-		if (t->word[i] == '\'' || t->word[i] == '"')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 void	trim_quotes(t_token *t, t_list *head)
 {
 	int		i;
@@ -69,31 +55,5 @@ void	trim_quotes(t_token *t, t_list *head)
 			i = j - 2;
 		}
 		i++;
-	}
-}
-
-void	remove_quotes(t_list *head)
-{
-	t_list	*current;
-	t_token	*tmp;
-	char	*hold;
-
-	current = head;
-	while (current)
-	{
-		tmp = current->content;
-		if (has_quotes(tmp))
-		{
-			tmp->quotes = 1;
-			trim_quotes(tmp, head);
-			if (tmp->pre_exp)
-			{
-				hold = tmp->word;
-				
-			}
-		}
-		else
-			tmp->quotes = 0;
-		current = current->next;
 	}
 }

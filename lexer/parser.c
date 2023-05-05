@@ -120,16 +120,7 @@ t_list	*new_redir(t_list *curr, t_list **prev, t_list **head)
 	}
 	new->next = 0;
 	new->mode = get_redir_mode(curr->content, curr->next->content);
-	if (new->mode == HEREDOC)
-	{
-		new->key = content->pre_exp;
-		free(content->word);
-	}
-	else
-	{
-		new->key = content->word;
-		free(content->pre_exp);
-	}
+	new->key = content->word;
 	add_redir(new);
 	if (curr == *prev)
 	{

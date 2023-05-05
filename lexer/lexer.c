@@ -37,7 +37,6 @@ t_list	*pre_token(char *str)
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
 		tmp->word = arr[i];
-		tmp->pre_exp = 0;
 		temp = ft_lstnew(tmp);
 		if (!temp)
 		{
