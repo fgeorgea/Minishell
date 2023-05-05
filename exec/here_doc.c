@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 20:24:31 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:19:46 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_here_doc(char *end_token)
 
 	p = g_sh->pipex;
 	end_token_len = ft_strlen(end_token);
-	p->here_doc = ft_open(TMP_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	p->here_doc = ft_open(TMP_FILE, HEREDOC_FLAGS, 0644);
 	while (1)
 	{
 		str = get_next_line(STDIN_FILENO);

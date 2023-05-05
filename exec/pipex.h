@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 01:51:36 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:29:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@
 # define EXIT_WAITPID_FAILURE 9
 # define EXIT_GNL_FAILURE 12
 # define EXIT_EXECVE_FAILURE 13
+
+# define IN_FLAGS O_RDONLY
+# define HEREDOC_FLAGS (O_WRONLY | O_CREAT | O_TRUNC)
+# define OUT_FLAGS (O_WRONLY | O_TRUNC | O_CREAT)
+# define OUT_APP_FLAGS (O_WRONLY | O_APPEND | O_CREAT)
 
 /*********************      STRUCTS    ************************/
 
@@ -73,8 +78,9 @@ void	ft_last_child(int pos, t_pipex *p);
 void	ft_middle_child(int pos, t_pipex *p);
 
 // FORK_UTILS.C
-void	ft_parent_close(int pos);
+void	ft_parent_close(int pos, t_pipex *p);
 void	link_files(int fildes, int fildes2);
+void	ft_close_pipes(int pos, t_pipex *p);
 
 // EXEC.C
 void	ft_exec(void);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 01:42:03 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:47:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,22 @@ static void	ft_add_slash(t_pipex *p)
 	char	*tmp;
 
 	i = 0;
-	if (!p->paths)
-		return ;
 	while (p->paths[i])
 	{
-		tmp = ft_strjoin(p->paths[i], "/");
+		tmp = ft_strjoin_free(p->paths[i], "/");
 		if (!tmp)
 		{
 			ft_free_array_pos((void **)p->paths, i);
+			ft_exit(EXIT_MALLOC_FAILURE);
 			return ;
 		}
-		free(p->paths[i]);
-		p->paths[i] = ft_strdup(tmp);
+		p->paths[i] = ft_strdup_free(tmp);
 		if (!p->paths[i])
 		{
 			ft_free_array_pos((void **)p->paths, i);
-			free(tmp);
+			ft_exit(EXIT_MALLOC_FAILURE);
 			return ;
 		}
-		free(tmp);
 		i++;
 	}
 }

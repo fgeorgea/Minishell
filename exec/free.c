@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:21:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 01:22:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:47:58 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free_array_pos(void **array, int pos)
 	int	i;
 
 	i = 0;
-	if (!array)
+	if (!array || !*array)
 		return ;
 	while (array[i] && pos == -1)
 	{
@@ -38,7 +38,7 @@ void	ft_free_array(char **array)
 	int	i;
 
 	i = 0;
-	if (!array)
+	if (!array || !*array)
 		return ;
 	while (array[i])
 	{

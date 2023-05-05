@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 01:44:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:19:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_redir	*get_out_redir(t_redir **redirection)
 		if (last && (redir->mode == OUT || redir->mode == OUT_APP))
 		{
 			if (last->mode == OUT)
-				tmp_fd = ft_open(last->key, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+				tmp_fd = ft_open(last->key, OUT_FLAGS, 0644);
 			else
-				tmp_fd = ft_open(last->key, O_WRONLY | O_APPEND | O_CREAT, 0644);
+				tmp_fd = ft_open(last->key, OUT_APP_FLAGS, 0644);
 			ft_close(&tmp_fd);
 		}
 		if ((redir->mode == OUT || redir->mode == OUT_APP))
@@ -49,10 +49,10 @@ int	open_outfile(t_cmd *cmd)
 		return (-1);
 	if (redir->mode == OUT)
 	{
-		fd = ft_open(redir->key, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+		fd = ft_open(redir->key, OUT_FLAGS, 0644);
 		return (fd);
 	}
-	fd = ft_open(redir->key, O_WRONLY | O_APPEND | O_CREAT, 0644);
+	fd = ft_open(redir->key, OUT_APP_FLAGS, 0644);
 	return (fd);
 }
 
@@ -94,8 +94,8 @@ int	open_infile(t_cmd *cmd)
 		exit(1);
 	}
 	if (redir->mode == IN)
-		fd = ft_open(redir->key, O_RDONLY, -1);
+		fd = ft_open(redir->key, IN_FLAGS, -1);
 	else
-		fd = ft_open(TMP_FILE, O_RDONLY, -1);
+		fd = ft_open(TMP_FILE, IN_FLAGS, -1);
 	return (fd);
 }

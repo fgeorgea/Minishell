@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   fork_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:42:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/02 01:13:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:43:50 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	ft_close_pipes(int pos, t_pipex *p)
+{
+	if (pos == 0 && p->nbr_pipe > 0)
+		ft_close(&p->pipefd[0][0]);
+	if (pos == 0 && p->outfile > 0 && p->nbr_pipe > 0)
+		ft_close(&p->pipefd[0][1]);
+	if (pos == p->nbr_pipe && p->infile > 0)
+		ft_close(&p->pipefd[pos - 1][0]);
+	if (pos < p->nbr_pipe && pos > 0 && p->infile > 0)
+		ft_close(&p->pipefd[pos - 1][0]);
+	if (pos < p->nbr_pipe && pos > 0 && p->outfile > 0)
+		ft_close(&p->pipefd[pos][1]);
+}
 
 void	check_exit_signal(int EXIT_MACRO)
 {
@@ -18,24 +32,36 @@ void	check_exit_signal(int EXIT_MACRO)
 		ft_exit(EXIT_MACRO);
 }
 
-void	ft_parent_close(int pos)
+void	ft_parent_close(int pos, t_pipex *p)
 {
-	t_pipex	*p;
-
-	p = g_sh->pipex;
-	check_exit_signal(p->exit_macro);
-	ft_close(&p->infile);
-	ft_close(&p->outfile);
-	if (p->nbr_cmds < 2)
-		return ;
 	if (pos == 0)
-		ft_close(&p->pipefd[0][1]);
-	else if (pos == p->nbr_fork - 1)
-		ft_close(&p->pipefd[pos - 1][0]);
-	else
 	{
-		ft_close(&p->pipefd[pos - 1][0]);
-		ft_close(&p->pipefd[pos][1]);
+		if (p->infile > 0)
+			ft_close(&p->infile);
+		if (p->outfile > 0)
+			ft_close(&p->outfile);
+		else if (p->nbr_pipe > 0)
+			ft_close(&p->pipefd[0][1]);
+	}
+	if (pos == p->nbr_pipe && pos != 0)
+	{
+		if (p->infile > 0)
+			ft_close(&p->infile);
+		else
+			ft_close(&p->pipefd[pos - 1][0]);
+		if (p->outfile > 0)
+			ft_close(&p->outfile);
+	}
+	if (pos > 0 && pos < p->nbr_pipe)
+	{
+		if (p->infile > 0)
+			ft_close(&p->infile);
+		else
+			ft_close(&p->pipefd[pos - 1][0]);
+		if (p->outfile > 0)
+			ft_close(&p->outfile);
+		else
+			ft_close(&p->pipefd[pos][1]);
 	}
 }
 

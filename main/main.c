@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:47:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/04 20:30:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int	main(int argc, char **argv, char **env)
 			add_history(g_sh->str);
 		lexer(g_sh->str);
 		print_cmd();
-		//if (g_sh->cmd)
-		//	ft_pipex();
+		if (g_sh->cmd)
+			ft_pipex();
 		free(g_sh->str);
 	}
 	return (0);
