@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 16:22:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/07 19:01:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_close(int *fd)
 {
 	if (*fd == -2)
 		return ;
-	if (close(*fd) == -2)
+	if (close(*fd) == -1)
 	{
 		g_sh->pipex->exit_macro = EXIT_CLOSE_FAILURE;
 		ft_exit(EXIT_CLOSE_FAILURE);
@@ -73,10 +73,14 @@ void	ft_execve(char **argv, char **envp)
 {
 	int	success;
 	int	array_len;
-
+	int	builtin;
+	
 	array_len = ft_arraylen(argv);
 	check_cmd(argv);
+	builtin = is_builtin(argv[0], argv);
 	change_env_value("-", argv[array_len - 1]);
+	if (builtin)
+		exit(0);
 	success = execve(argv[0], argv, envp);
 	if (!success)
 		ft_exit(EXIT_EXECVE_FAILURE);

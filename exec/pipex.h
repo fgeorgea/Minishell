@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 17:29:22 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:39:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,13 @@
 typedef struct s_pipex
 {
 	int		infile;
-	int		here_doc;
 	int		outfile;
+	int		here_doc;
 	int		nbr_cmds;
 	int		nbr_pipe;
 	int		nbr_fork;
 	int		nbr_paths;
-	int		is_heredoc;
 	int		exit_macro;
-	char	*end_token;
 	char	**paths;
 	char	**env_array;
 	int		**pipefd;
@@ -62,9 +60,6 @@ void	ft_pipex(void);
 
 // INIT.C
 void	ft_init_struct(void);
-
-// INIT_UTILS_BONUS.C
-void	ft_init_struct_vars(t_pipex *p);
 
 // PARSING.C
 void	check_cmd(char **cmd);

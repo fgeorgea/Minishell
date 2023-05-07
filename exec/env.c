@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 17:15:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:23:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	lst_to_array(t_env **lst)
 	int		lstsize;
 	t_env	*tmp;
 
-	if (!lst)
+	if (!lst || !*lst)
 		return ;
 	lstsize = lstsize_env(lst);
 	tmp = *lst;

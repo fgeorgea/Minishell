@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 14:23:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:59:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,9 @@ void	ft_unset(char **vars);
 // EXIT.C
 void	ft_exit_builtin(void);
 
+// CD.C
+void    ft_cd(char *str);
+
+// IS_BUILTIN.C
+int     is_builtin(char *cmd, char **arg);
 #endif
