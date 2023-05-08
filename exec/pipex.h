@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/07 18:39:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/08 19:05:41 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_pipex(void);
 void	ft_init_struct(void);
 
 // PARSING.C
-void	check_cmd(char **cmd);
+int	found_cmd(char **cmd);
 int		file_exist(char *str);
 
 // FORK.C
@@ -79,6 +79,9 @@ void	ft_close_pipes(int pos, t_pipex *p);
 
 // EXEC.C
 void	ft_exec(void);
+
+// EXEC_UTILS.C
+void	check_cmd(char **cmd);
 
 // PIPE.C
 void	ft_pipe(int pos);

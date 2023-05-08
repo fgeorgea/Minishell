@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/07 18:38:47 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/08 19:06:36 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS	=	$(MAIN)main.c \
 			$(MAIN)init.c \
 			$(MAIN)error.c \
 			$(EXEC)exec.c \
+			$(EXEC)exec_utils.c \
 			$(EXEC)fork.c \
 			$(EXEC)fork_utils.c \
 			$(EXEC)free.c \

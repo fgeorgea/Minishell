@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 13:06:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/08 19:06:02 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	file_exist(char *str)
 		return (0);
 }
 
-void	check_cmd(char **cmd)
+int	found_cmd(char **cmd)
 {
 	int		i;
 	char	*tmp;
@@ -49,16 +49,17 @@ void	check_cmd(char **cmd)
 			if (!cmd[0])
 				ft_exit(EXIT_MALLOC_FAILURE);
 			free(tmp);
-			return ;
+			return (1);
 		}
 		free(tmp);
 		if (i == p->nbr_paths - 1)
 		{
 			if (does_cmd_exist(cmd[0]))
-				return ;
+				return (1);
 			ft_putstr_fd("Command was not found\n", 2);
-			exit(EXIT_SUCCESS);
+			return (0);
 		}
 		i++;
 	}
+	return (0);
 }

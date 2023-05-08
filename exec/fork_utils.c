@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:42:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 17:43:50 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:53:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_close_pipes(int pos, t_pipex *p)
 		ft_close(&p->pipefd[0][0]);
 	if (pos == 0 && p->outfile > 0 && p->nbr_pipe > 0)
 		ft_close(&p->pipefd[0][1]);
-	if (pos == p->nbr_pipe && p->infile > 0)
+	if (pos == p->nbr_pipe && p->nbr_pipe > 0 && p->infile > 0)
 		ft_close(&p->pipefd[pos - 1][0]);
 	if (pos < p->nbr_pipe && pos > 0 && p->infile > 0)
 		ft_close(&p->pipefd[pos - 1][0]);
