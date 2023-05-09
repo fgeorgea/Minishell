@@ -70,7 +70,6 @@ void	lexer(char *str)
 		return ;
 	tokenize(words);
 	expander(words);
-	post_expander(words);
 	t_token	*t;
 	t_list	*tmp;
 	tmp = words;
@@ -80,6 +79,5 @@ void	lexer(char *str)
 		printf("%s\n", t->word);
 		tmp = tmp->next;
 	}
-	remove_quotes(words);
 	parser(words);
 }
