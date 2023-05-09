@@ -63,6 +63,7 @@ int	insert_value(t_token *t, char *key, char *value, int *i)
 		k++;
 		i[2]++;
 	}
+	tmp[j + k] = 0;
 	if (i[4])
 		free(value);
 	free(t->word);
