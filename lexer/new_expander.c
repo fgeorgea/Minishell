@@ -23,7 +23,59 @@ i[5] is index of first "
 
 int	join_value_split(char *key, char *value, t_list **curr, int *i)
 {
-	
+	t_token	*t;
+	char	**arr;
+	char	*temp;
+	char	*temp2;
+	int		j;
+
+	arr = ft_split(value, ' ');
+	if (!arr)
+		return (EXIT_MALLOC_FAILURE);
+	t = (*curr)->content;
+	temp = ft_strndup(t->word, i[1]);
+	if (!temp)
+	{
+		ft_free_array(arr);
+		return (EXIT_MALLOC_FAILURE);
+	}
+	temp2 = ft_strjoin(temp, arr[0]);
+	free(temp);
+	free(arr[0]);
+	if (!temp2)
+	{
+		ft_free_array(&arr[1]);
+		return (EXIT_MALLOC_FAILURE);
+	}
+	temp = ft_strdup(&t->word[i[2]]);
+	free(t->word);
+	t->word = temp2;
+	if (!temp)
+	{
+		ft_free_array(&arr[1]);
+		return (EXIT_MALLOC_FAILURE);
+	}
+	j = 1;
+	arr[0] = (char *)(*curr)->next;
+	while (arr[j])
+	{
+		t = ft_calloc(1, sizeof(t_token));
+		//if (!t)
+		t->word = arr[j];
+		(*curr)->next = malloc(sizeof(t_list));
+		//if (!(*curr)->next)
+		(*curr) = (*curr)->next;
+		(*curr)->next = (t_list *)arr[0];
+		(*curr)->content = t;
+		j++;
+	}
+	i[0] = ft_strlen(arr[j]);
+	t->word = ft_strjoin(arr[j], temp);
+	free(arr[j]);
+	free(arr);
+	free(temp);
+	//if (!t->word)
+	return (EXIT_SUCCESS);
 }
 
 void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
@@ -52,6 +104,8 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 	{
 		if (insert_value(t, key, value, i))
 		{
+			if (i[4])
+				free(value);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -60,6 +114,8 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 	{
 		if (join_value_split(key, value, curr, i))
 		{
+			if (i[4])
+				free(value);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -81,7 +137,7 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 			if (!i[3])
 				i[5] = i[0];
 			else
-				i[0] = skip_trim(t->word, i[0]);
+				i[0] = skip_trim(t->word, i[5]);
 			i[3] = !i[3];
 		}
 		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1]) && t->word[i[0] + 1])

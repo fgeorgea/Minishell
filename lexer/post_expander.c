@@ -66,7 +66,7 @@ t_list	*split_space(t_list *curr, t_list *head)
 		i++;
 	}
 	free(arr);
-	return (curr->next);
+	return (curr);
 }
 
 void	post_expander(t_list *head)
