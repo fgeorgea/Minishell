@@ -21,7 +21,7 @@ t_list	*split_space(t_list *curr, t_list *head)
 	int		i;
 
 	tmp = curr->content;
-	arr = shell_split(tmp->word, "\040\011\012\013\014\015");
+	arr = shell_split(tmp->word, "\040\011\012\013\014\015", 0);
 	if (!arr)
 	{
 		ft_lstclear(&head, &free_token);
@@ -39,6 +39,7 @@ t_list	*split_space(t_list *curr, t_list *head)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	tmp->word = arr[0];
+	tmp->token = 0;
 	curr->content = tmp;
 	while (arr[i])
 	{

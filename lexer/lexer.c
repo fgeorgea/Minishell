@@ -22,7 +22,7 @@ t_list	*pre_token(char *str)
 
 	if (g_sh->cmd)
 		ft_free_cmd();
-	arr = shell_split(str, "\040\011\012\013\014\015");
+	arr = shell_split(str, "\040\011\012\013\014\015", 1);
 	if (!arr)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	i = 0;
@@ -70,7 +70,7 @@ void	lexer(char *str)
 		return ;
 	tokenize(words);
 	expander(words);
-	t_token	*t;
+	/*t_token	*t;
 	t_list	*tmp;
 	tmp = words;
 	while (tmp)
@@ -78,6 +78,6 @@ void	lexer(char *str)
 		t = tmp->content;
 		printf("%s\n", t->word);
 		tmp = tmp->next;
-	}
+	}*/
 	parser(words);
 }

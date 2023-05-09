@@ -29,7 +29,7 @@ int	join_value_split(char *value, t_list **curr, int *i)
 	char	*temp2;
 	int		j;
 
-	arr = ft_split(value, ' ');
+	arr = shell_split(value, "\040\011\012\013\014\015", 0);
 	if (!arr)
 		return (EXIT_MALLOC_FAILURE);
 	t = (*curr)->content;

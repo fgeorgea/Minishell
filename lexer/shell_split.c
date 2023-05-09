@@ -43,7 +43,7 @@ char	**free_split(char **tab)
 	return (0);
 }
 
-int	get_shell_wc(char *str, char *sep)
+int	get_shell_wc(char *str, char *sep, int s)
 {
 	int	i;
 	int	wc;
@@ -58,7 +58,7 @@ int	get_shell_wc(char *str, char *sep)
 			wc++;
 		while (!is_in_sep(str[i], sep) && str[i])
 		{
-			if (str[i] == '"' || str[i] == '\'')
+			if (s &&(str[i] == '"' || str[i] == '\''))
 				i = skip_quotes(str, i);
 			i++;
 		}
@@ -68,14 +68,14 @@ int	get_shell_wc(char *str, char *sep)
 	return (wc);
 }
 
-char	**shell_split(char *str, char *sep)
+char	**shell_split(char *str, char *sep, int s)
 {
 	char	**tab;
 	int		wc;
 	int		i;
 	int		j;
 
-	wc = get_shell_wc(str, sep);
+	wc = get_shell_wc(str, sep, s);
 	tab = malloc((wc + 1) * sizeof(char *));
 	if (!tab)
 		return (0);
@@ -91,7 +91,7 @@ char	**shell_split(char *str, char *sep)
 			break ;
 		while (!is_in_sep(str[i], sep) && str[i])
 		{
-			if (str[i] == '"' || str[i] == '\'')
+			if (s && (str[i] == '"' || str[i] == '\''))
 				i = skip_quotes(str, i);
 			i++;
 		}

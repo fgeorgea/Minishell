@@ -66,7 +66,7 @@ void	ft_exit(int status);
 void	lexer(char *str);
 int		skip_quotes(char *str, int i);
 int		get_next_pipe(char *str, int i);
-char	**shell_split(char *str, char *sep);
+char	**shell_split(char *str, char *sep, int s);
 void	ft_free_cmd(void);
 
 #endif
