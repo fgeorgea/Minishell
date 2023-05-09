@@ -21,7 +21,7 @@ i[4] is whether to free value
 i[5] is index of first "
 */
 
-int	join_value_split(char *key, char *value, t_list **curr, int *i)
+int	join_value_split(char *value, t_list **curr, int *i)
 {
 	t_token	*t;
 	char	**arr;
@@ -112,7 +112,7 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 	}
 	else
 	{
-		if (join_value_split(key, value, curr, i))
+		if (join_value_split(value, curr, i))
 		{
 			if (i[4])
 				free(value);
@@ -156,7 +156,6 @@ void	expander(t_list *head)
 	t_list	*last;
 	t_token	*content;
 	int		v;
-	char	*hold;
 
 	curr = head;
 	last = 0;
@@ -168,7 +167,7 @@ void	expander(t_list *head)
 		if (v && content->quotes)
 		{
 			if (is_heredoc(last))
-				trim_quote(content, head);
+				trim_quotes(content, head);
 			else
 				curr = ex_trim_split(curr, content, head);
 		}
@@ -176,10 +175,10 @@ void	expander(t_list *head)
 		{
 			expand(content, head);
 			if (has_space(content->word))
-				curr = split_splace(curr, head);
+				curr = split_space(curr, head);
 		}
 		else if (content->quotes)
-			trim_quote(content, head);
+			trim_quotes(content, head);
 		last = curr;
 		curr = curr->next;
 	}
