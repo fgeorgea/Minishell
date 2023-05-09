@@ -43,7 +43,7 @@ int		has_quotes(char *str);
 int		has_space(char *str);
 char	*get_var_key(char *str, int *i, t_list *head);
 int		insert_value(t_token *t, char *key, char *value, int *i);
-int		skip_trim(char *str, int i);
+int		skip_trim(char *str, int *i);
 int		is_heredoc(t_list *last);
 void	trim_quotes(t_token *t, t_list *head);
 void	expand(t_token *t, t_list *head);

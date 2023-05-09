@@ -122,26 +122,23 @@ int	is_heredoc(t_list *last)
 	return (0);
 }
 
-int	skip_trim(char *str, int i)
+int	skip_trim(char *str, int *i)
 {
 	int	j;
-	int	k;
 
-	k = skip_quotes(str, i);
-	if (k == i)
-		return (i);
-	j = i;
+	if (i[5] == i[0])
+		return (i[0]);
+	j = i[5];
 	while (str[j])
 	{
 		str[j] = str[j + 1];
 		j++;
 	}
-	i = k - 2;
-	j = k - 1;
+	j = i[0] - 1;
 	while (str[j])
 	{
 		str[j] = str[j + 1];
 		j++;
 	}
-	return (i);
+	return (i[0] - 2);
 }

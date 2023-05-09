@@ -69,9 +69,9 @@ int	join_value_split(char *value, t_list **curr, int *i)
 		(*curr)->content = t;
 		j++;
 	}
-	i[0] = ft_strlen(arr[j]);
-	t->word = ft_strjoin(arr[j], temp);
-	free(arr[j]);
+	i[0] = ft_strlen(arr[j - 1]);
+	t->word = ft_strjoin(arr[j - 1], temp);
+	free(arr[j - 1]);
 	free(arr);
 	free(temp);
 	//if (!t->word)
@@ -131,13 +131,17 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 	while (t->word[i[0]])
 	{
 		if (t->word[i[0]] == '\'' && !i[3])
-			i[0] = skip_trim(t->word, i[0]);
+		{
+			i[5] = i[0];
+			i[0] = skip_quotes(t->word, i[0]);
+			i[0] = skip_trim(t->word, i);
+		}
 		else if (t->word[i[0]] == '"')
 		{
 			if (!i[3])
 				i[5] = i[0];
 			else
-				i[0] = skip_trim(t->word, i[5]);
+				i[0] = skip_trim(t->word, i);
 			i[3] = !i[3];
 		}
 		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1]) && t->word[i[0] + 1])
