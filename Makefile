@@ -54,6 +54,7 @@ SRCS	=	$(MAIN)main.c \
 			$(LEX)post_expander.c \
 			$(LEX)remove_quotes.c \
 			$(LEX)parser.c \
+			$(LEX)new_expander.c \
 
 OBJS	=	${SRCS:.c=.o}
 

@@ -140,7 +140,7 @@ int	skip_trim(char *str, int i)
 	j = k - 1;
 	while (str[j])
 	{
-		str[j] == str[j + 1];
+		str[j] = str[j + 1];
 		j++;
 	}
 	return (i);

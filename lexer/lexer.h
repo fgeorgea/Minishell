@@ -40,5 +40,6 @@ void	display_syntax_err(void);
 void	parser(t_list *head);
 int		has_variable(char *str);
 int		has_quotes(char *str);
+int		has_space(char *str);
 
 #endif

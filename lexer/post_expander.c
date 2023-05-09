@@ -68,19 +68,3 @@ t_list	*split_space(t_list *curr, t_list *head)
 	free(arr);
 	return (curr);
 }
-
-void	post_expander(t_list *head)
-{
-	t_list	*curr;
-	t_token	*token;
-
-	curr = head;
-	while (curr)
-	{
-		token = curr->content;
-		if (has_space(token))
-			curr = split_space(curr, head);
-		else
-			curr = curr->next;
-	}
-}
