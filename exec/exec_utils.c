@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/08 19:04:28 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:32:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 void	check_cmd(char **cmd)
 {
-	int	is_cmd_builtin;
-	int	does_cmd_exist;
 	int	nbr_arg;
+	int	does_cmd_exist;
+	int	is_cmd_builtin;
 
-	nbr_arg = ft_arraylen(cmd);
+	nbr_arg = arraylen(cmd);
+	does_cmd_exist = 0;
 	is_cmd_builtin = is_builtin(cmd[0], cmd);
-	if (is_cmd_builtin)
-	{
-		change_env_value("-", cmd[nbr_arg - 1]);
-		exit(EXIT_SUCCESS);
-	}
-	does_cmd_exist = found_cmd(cmd);
+	if (!is_cmd_builtin)
+		does_cmd_exist = found_cmd(cmd);
 	change_env_value("-", cmd[nbr_arg - 1]);
-	if (!does_cmd_exist)
+	if (!does_cmd_exist || is_cmd_builtin)
 		exit(EXIT_SUCCESS);
 }

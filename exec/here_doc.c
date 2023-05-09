@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/05 16:19:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:38:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_exit_here_doc(char *str, int end_token_len, char *end_token)
 	return (0);
 }
 
-void	ft_here_doc(char *end_token)
+void	here_doc(char *end_token)
 {
 	t_pipex	*p;
 	char	*str;

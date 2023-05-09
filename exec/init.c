@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/07 18:38:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:58:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	ft_add_slash(t_pipex *p)
+static void	add_slash(t_pipex *p)
 {
 	int		i;
 	char	*tmp;
@@ -37,10 +37,10 @@ static void	ft_add_slash(t_pipex *p)
 	}
 }
 
-static void	ft_init_paths(t_pipex *p)
+static void	init_paths(t_pipex *p)
 {
 	char	*paths;
-	
+
 	p->nbr_paths = 0;
 	paths = get_env_value("PATH", 4);
 	if (!paths)
@@ -48,10 +48,10 @@ static void	ft_init_paths(t_pipex *p)
 	p->paths = ft_split(paths, ':');
 	if (!p->paths)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	p->nbr_paths = ft_arraylen(p->paths);
+	p->nbr_paths = arraylen(p->paths);
 }
 
-void	ft_init_struct(void)
+void	init_struct_pipex(void)
 {
 	t_pipex	*p;
 
@@ -64,9 +64,9 @@ void	ft_init_struct(void)
 	p->nbr_cmds = lstsize_cmd();
 	p->nbr_pipe = p->nbr_cmds - 1;
 	p->nbr_fork = p->nbr_cmds;
-	ft_init_paths(p);
-	ft_add_slash(p);
+	init_paths(p);
+	add_slash(p);
 	lst_to_array(&g_sh->env);
-	p->pipefd = ft_createpipe_array(p);
-	p->pids = ft_createfork_array(p);
+	p->pipefd = create_pipe_array(p);
+	p->pids = create_fork_array(p);
 }

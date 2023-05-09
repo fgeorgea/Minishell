@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/08 19:05:41 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 12:14:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,42 +59,44 @@ typedef struct s_pipex
 void	ft_pipex(void);
 
 // INIT.C
-void	ft_init_struct(void);
+void	init_struct_pipex(void);
 
 // PARSING.C
-int	found_cmd(char **cmd);
+int		found_cmd(char **cmd);
 int		file_exist(char *str);
 
 // FORK.C
 void	ft_fork(int pos);
-pid_t	*ft_createfork_array(t_pipex *p);
-void	ft_first_child(t_pipex *p);
-void	ft_last_child(int pos, t_pipex *p);
-void	ft_middle_child(int pos, t_pipex *p);
+pid_t	*create_fork_array(t_pipex *p);
+void	first_child(t_pipex *p);
+void	last_child(int pos, t_pipex *p);
+void	middle_child(int pos, t_pipex *p);
 
 // FORK_UTILS.C
-void	ft_parent_close(int pos, t_pipex *p);
 void	link_files(int fildes, int fildes2);
-void	ft_close_pipes(int pos, t_pipex *p);
 
 // EXEC.C
-void	ft_exec(void);
+void	exec_cmds(void);
 
 // EXEC_UTILS.C
 void	check_cmd(char **cmd);
 
 // PIPE.C
 void	ft_pipe(int pos);
-int		**ft_createpipe_array(t_pipex *p);
+int		**create_pipe_array(t_pipex *p);
+
+// CLOSE_PIPES.C
+void	close_pipes_children(int pos, t_pipex *p);
+void	close_pipes_parent(int pos, t_pipex *p);
 
 // HERE_DOC.C
-void	ft_here_doc(char *end_token);
+void	here_doc(char *end_token);
 
 // FREE.C
 void	ft_free_array(char **array);
 void	ft_free_array_pos(void **array, int pos);
 void	delete_tmp_file(void);
-void	ft_free_pipex(void);
+void	free_pipex(void);
 
 // PROTECTIONS.C
 void	ft_close(int *fd);
@@ -116,6 +118,6 @@ int		open_outfile(t_cmd *cmd);
 int		open_infile(t_cmd *cmd);
 
 // UTILS.C
-int		ft_arraylen(char **array);
+int		arraylen(char **array);
 
 #endif

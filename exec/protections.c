@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/08 19:05:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:57:43 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_waitpid(void)
 void	ft_execve(char **argv, char **envp)
 {
 	int	success;
-	
+
 	success = execve(argv[0], argv, envp);
 	if (!success)
 		ft_exit(EXIT_EXECVE_FAILURE);

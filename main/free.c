@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/05 01:23:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:37:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,14 @@ void	ft_free_cmd(void)
 	}
 }
 
-void	ft_free_pipex(void)
+void	free_pipex(void)
 {
 	t_pipex	*p;
 
-	p = g_sh->pipex;
-	if (!p)
+	p = NULL;
+	if (!g_sh->pipex)
 		return ;
+	p = g_sh->pipex;
 	ft_free_array(p->paths);
 	ft_free_array(p->env_array);
 	ft_free_array_pos((void **)p->pipefd, -1);
@@ -81,7 +82,7 @@ void	ft_free_global(void)
 	{
 		ft_free_cmd();
 		ft_free_env();
-		ft_free_pipex();
+		free_pipex();
 		free(g_sh);
 	}
 }

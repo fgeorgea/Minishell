@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   choose_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/07 18:59:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:25:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int is_builtin(char *cmd, char **arg)
     else if (ft_strncmp(cmd, "export", 6) == 0 && ft_strlen(cmd) == 6)
         ft_export(&arg[1]);
     else
-        is_builtin -= 1;
+        is_builtin = 0;
     return (is_builtin);
 }

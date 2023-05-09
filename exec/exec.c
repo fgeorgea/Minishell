@@ -6,28 +6,28 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/08 19:04:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 12:13:21 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	ft_child(int pos, t_cmd *cmd, t_pipex *p)
+static void	children(int pos, t_cmd *cmd, t_pipex *p)
 {
 	p->outfile = open_outfile(cmd);
 	p->infile = open_infile(cmd);
-	ft_close_pipes(pos, p);
+	close_pipes_children(pos, p);
 	if (pos == 0)
-		ft_first_child(p);
+		first_child(p);
 	else if (pos == p->nbr_pipe)
-		ft_last_child(pos, p);
+		last_child(pos, p);
 	else
-		ft_middle_child(pos, p);
+		middle_child(pos, p);
 	check_cmd(cmd->cmd);
 	ft_execve(cmd->cmd, p->env_array);
 }
 
-void	ft_exec(void)
+void	exec_cmds(void)
 {
 	t_pipex	*p;
 	t_cmd	*cmd;
@@ -41,8 +41,8 @@ void	ft_exec(void)
 		ft_pipe(i);
 		ft_fork(i);
 		if (p->pids[i] == 0)
-			ft_child(i, cmd, p);
-		ft_parent_close(i, p);
+			children(i, cmd, p);
+		close_pipes_parent(i, p);
 		cmd = cmd->next;
 		i++;
 	}

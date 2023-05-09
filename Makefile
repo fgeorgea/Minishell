@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/08 19:06:36 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/09 12:15:04 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	=	$(MAIN)main.c \
 			$(EXEC)init.c \
 			$(EXEC)parsing.c \
 			$(EXEC)pipe.c \
+			$(EXEC)close_pipes.c \
 			$(EXEC)utils.c \
 			$(EXEC)pipex.c \
 			$(EXEC)env.c \
