@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 15:42:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:55:58 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ static int	check_valid_export(char *str)
 	return (1);
 }
 
-static void	check_append(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '=')
-		i++;
-	if (str[i - 1] == '+')
-		add_var_to_env_app(str, i);
-	else
-		add_var_to_env(str, i);
-}
 
 static void	add_var_to_env_app(char *str, int pos)
 {
@@ -91,6 +79,19 @@ static void	add_var_to_env(char *str, int pos)
 	free(key);
 }
 
+static void	check_append(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '=')
+		i++;
+	if (str[i - 1] == '+')
+		add_var_to_env_app(str, i);
+	else
+		add_var_to_env(str, i);
+}
+
 void	ft_export(char **strs)
 {
     int     i;
@@ -114,5 +115,5 @@ void	ft_export(char **strs)
 			check_append(strs[i]);
 		i++;
 	}
-	lst_to_array(g_sh->env);
+	lst_to_array(&g_sh->env);
 }
