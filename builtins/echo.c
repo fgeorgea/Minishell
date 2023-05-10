@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:08:51 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 12:43:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:06:41 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void	ft_echo(char **strs)
 	}
 	while (strs[i])
 	{
-		printf("%s ", strs[i]);
+		printf("%s", strs[i]);
+		if (strs[i + 1])
+			printf(" ");
 		i++;
 	}
 	if (print_nl)
