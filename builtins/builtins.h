@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 16:56:23 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:40:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ void    ft_cd(char *str);
 
 // IS_BUILTIN.C
 int     is_builtin(char *cmd, char **arg);
+
+void	print_array(char **array);
 
 #endif
