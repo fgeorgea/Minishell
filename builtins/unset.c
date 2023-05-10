@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 17:08:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 01:22:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@ static void	delete_var_env(char *var)
 	
 	env = g_sh->env;
 	previous = NULL;
-	if (!get_env_value(var, ft_strlen(var)))
+	if (!get_env_value(var))
 		return ;
-	while (env->next && ft_strncmp(var, env->next->key, ft_strlen(var)) != 0)
+	while (env->next)
+	{
+		if (compare_keys(env->next->key, var))
+			break ;
 		env = env->next;
+	}
 	if (!env->next)
 		return ;
 	previous = env;
 	env = env->next;
 	previous->next = env->next;
-	free(env->key);
-	free(env->value);
 }
 
 void	ft_unset(char **vars)

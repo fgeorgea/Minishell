@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_expander.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:49:42 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/05 14:49:52 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/11 01:13:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 	else
 	{
 		i[4] = 0;
-		value = get_env_value(key, ft_strlen(key));
+		value = get_env_value(key);
 	}
 	if (!has_space(value) || i[3])
 	{

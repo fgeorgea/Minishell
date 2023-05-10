@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 12:14:16 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 01:11:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	ft_execve(char **argv, char **envp);
 
 // ENV.C
 void	lst_to_array(t_env **lst);
-char	*get_env_value(char *key, int size);
-t_env	*get_env_struct(char *needle, int size);
+char	*get_env_value(char *key);
+t_env	*get_env_struct(char *needle);
 void	change_env_value(char *key, char *new_value);
 
 // REDIR.C
@@ -119,5 +119,6 @@ int		open_infile(t_cmd *cmd);
 
 // UTILS.C
 int		arraylen(char **array);
+int		compare_keys(char *key, char *needle);
 
 #endif

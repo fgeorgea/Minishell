@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:23:31 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:43:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 01:13:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	expand(t_token *t, t_list *head)
 			else
 			{
 				i[4] = 0;
-				value = get_env_value(tmp, ft_strlen(tmp));
+				value = get_env_value(tmp);
 			}
 			if (insert_value(t, tmp, value, i))
 			{

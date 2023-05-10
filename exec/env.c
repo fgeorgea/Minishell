@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 11:58:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 01:11:41 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	change_env_value(char *key, char *new_value)
 	t_env	*env;
 	char	*tmp;
 
-	env = get_env_struct(key, ft_strlen(key));
+	env = get_env_struct(key);
 	if (!env)
 		return ;
 	tmp = ft_strdup(new_value);
@@ -28,30 +28,28 @@ void	change_env_value(char *key, char *new_value)
 	env->value = tmp;
 }
 
-t_env	*get_env_struct(char *needle, int size)
+t_env	*get_env_struct(char *needle)
 {
 	t_env	*env;
 
 	env = g_sh->env;
 	while (env)
 	{
-		if (ft_strlen(needle) == ft_strlen(env->key)
-			&& ft_strncmp(needle, env->key, size) == 0)
+		if (compare_keys(needle, env->key))
 			return (env);
 		env = env->next;
 	}
 	return (NULL);
 }
 
-char	*get_env_value(char *key_to_find, int size)
+char	*get_env_value(char *key_to_find)
 {
 	t_env	*env;
 
 	env = g_sh->env;
 	while (env)
 	{
-		if (ft_strlen(key_to_find) == ft_strlen(env->key)
-			&& ft_strncmp(key_to_find, env->key, size) == 0)
+		if (compare_keys(key_to_find, env->key))
 			return (env->value);
 		env = env->next;
 	}

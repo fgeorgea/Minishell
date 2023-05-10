@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 23:51:50 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 01:12:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	add_var_to_env_app(char *str, int pos)
 	
 	key = ft_substr(str, 0, pos - 1);
 	value = ft_strdup(&str[pos + 1]);
-	env = get_env_struct(key, ft_strlen(key));
+	env = get_env_struct(key);
 	if (!env)
 	{
 		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, value));
@@ -69,7 +69,7 @@ static void	add_var_to_env(char *str, int pos)
 
 	key = ft_substr(str, 0, pos);
 	value = ft_strdup(&str[pos + 1]);
-	env = get_env_struct(key, ft_strlen(key));
+	env = get_env_struct(key);
 	if (!env)
 	{
 		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, value));
