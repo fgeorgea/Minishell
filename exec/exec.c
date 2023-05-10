@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 12:13:21 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:11:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	exec_cmds(void)
 	i = 0;
 	p = g_sh->pipex;
 	cmd = g_sh->cmd;
+	if (is_builtin(cmd->cmd[0], cmd->cmd) && p->nbr_pipe == 0)
+		return ;
 	while (cmd)
 	{
 		ft_pipe(i);

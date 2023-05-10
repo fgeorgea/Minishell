@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 15:43:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:17:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	delete_var_env(char *var)
 	previous = NULL;
 	if (!get_env_value(var, ft_strlen(var)))
 		return ;
-	while (env->next && env->next->key != var)
+	while (env->next && ft_strncmp(var, env->next->key, ft_strlen(var)) != 0)
 		env = env->next;
 	if (!env->next)
 		return ;
@@ -37,7 +37,7 @@ void	ft_unset(char **vars)
 	int	i;
 
 	i = 0;
-	if (!vars)
+	if (!vars || !*vars)
 		return ;
 	while (vars[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 11:57:43 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:09:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	ft_waitpid(void)
 
 	i = 0;
 	p = g_sh->pipex;
+	if (p->nbr_pipe == 0)
+		return ;
 	while (i < p->nbr_fork)
 	{
 		success = waitpid(p->pids[i], &g_sh->pipe_exit, 0);

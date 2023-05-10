@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 12:51:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:48:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	check_valid_export(char *str)
 	len = 0;
 	if (!ft_isalpha(str[0]))
 		return (0);
-	while (str[len] && (str[len] != '=' || str[len] != '+'))
+	while (str[len] && (str[len] != '=' && str[len] != '+'))
 		len++;
 	if (!str[len] || (str[len] == '+' && str[len + 1] != '='))
 		return (0);
@@ -67,7 +67,7 @@ static void	add_var_to_env(char *str, int pos)
 	char	*key;
 	char	*value;
 
-	key = ft_substr(str, 0, pos - 1);
+	key = ft_substr(str, 0, pos);
 	value = ft_strdup(&str[pos + 1]);
 	env = get_env_struct(key, ft_strlen(key));
 	if (!env)
@@ -76,7 +76,6 @@ static void	add_var_to_env(char *str, int pos)
 		return ;
 	}
 	change_env_value(key, value);
-	free(key);
 }
 
 static void	check_append(char *str)
@@ -101,7 +100,6 @@ void	ft_export(char **strs)
 	env = NULL;
 	if (!*strs)
 	{
-		printf("AHHHHHH\n");
 		sort_env_ascii();
 		env = g_sh->pipex->env_array;
 		while (env[i])
