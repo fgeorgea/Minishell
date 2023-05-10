@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 01:22:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 01:47:32 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	delete_var_env(char *var)
 {
 	t_env	*env;
 	t_env	*previous;
-	
+
 	env = g_sh->env;
 	previous = NULL;
 	if (!get_env_value(var))

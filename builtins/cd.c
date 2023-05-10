@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 01:11:53 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 01:26:46 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ void	ft_cd(char *str)
 {
 	char	*dir;
 
-	if (!str)
+	if (str)
 	{
-		dir = get_env_value("HOME");
-		if (!dir)
-		{
-			ft_putstr_fd("HOME not set\n", 2);
-			return ;
-		}
-		ft_chdir(dir);
+		ft_chdir(str);
 		return ;
 	}
-	ft_chdir(str);
+	dir = get_env_value("HOME");
+	if (!dir)
+	{
+		ft_putstr_fd("HOME not set\n", 2);
+		return ;
+	}
+	ft_chdir(dir);
 }
