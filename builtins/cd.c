@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 16:58:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 23:26:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 static void	ft_chdir(char *dir)
 {
-	t_env	*env;
 	char	*current_dir;
 
-	env = g_sh->env;
 	current_dir = getcwd(NULL, 0);
 	if (!current_dir)
 		ft_exit(EXIT_PWD_FAILURE);

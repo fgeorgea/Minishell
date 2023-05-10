@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 13:48:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 23:51:50 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	add_var_to_env_app(char *str, int pos)
 	char	*value;
 	char	*old_value;
 	
-	key = ft_substr(str, 0, pos - 2);
+	key = ft_substr(str, 0, pos - 1);
 	value = ft_strdup(&str[pos + 1]);
 	env = get_env_struct(key, ft_strlen(key));
 	if (!env)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/09 11:37:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 00:40:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	free_pipex(void)
 {
 	t_pipex	*p;
 
-	p = NULL;
+	delete_tmp_file();
 	if (!g_sh->pipex)
 		return ;
 	p = g_sh->pipex;
@@ -72,8 +72,8 @@ void	free_pipex(void)
 	ft_free_array_pos((void **)p->pipefd, -1);
 	if (p->pids)
 		free(p->pids);
-	delete_tmp_file();
 	free(p);
+	g_sh->pipex = NULL;
 }
 
 void	ft_free_global(void)
