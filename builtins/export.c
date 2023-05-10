@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 16:55:58 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:51:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,9 @@ void	ft_export(char **strs)
 	
     i = 0;
 	env = NULL;
-	if (!strs)
+	if (!*strs)
 	{
+		printf("AHHHHHH\n");
 		sort_env_ascii();
 		env = g_sh->pipex->env_array;
 		while (env[i])
@@ -108,6 +109,7 @@ void	ft_export(char **strs)
 			printf("declare -x %s\n", env[i]);
 			i++;
 		}
+		return ;
 	}
 	while (strs[i])
 	{

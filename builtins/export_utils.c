@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 15:42:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:54:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,20 @@ static int	ft_strcmp(char *s1, char *s2)
 void	sort_env_ascii(void)
 {
 	t_env	*env;
-	char	*tmp;
+	char	*tmp_key;
+	char	*tmp_value;
 
 	env = g_sh->env;
 	while (env->next)
 	{
 		if (ft_strcmp(env->key, env->next->key) > 0)
 		{
-			tmp = env->key;
+			tmp_key = env->key;
+			tmp_value = env->value;
 			env->key = env->next->key;
-			env->next->key = tmp;
+			env->value = env->next->value;
+			env->next->key = tmp_key;
+			env->next->value = tmp_value;
 			env = g_sh->env;
 		}
 		else
