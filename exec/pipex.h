@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 01:11:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:13:19 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	exec_cmds(void);
 
 // EXEC_UTILS.C
 void	check_cmd(char **cmd);
+void	update_last_cmd(char **cmd);
 
 // PIPE.C
 void	ft_pipe(int pos);

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 12:54:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:10:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,16 @@ void	sort_env_ascii(void)
 			env = env->next;
 	}
 	lst_to_array(&g_sh->env);
+}
+
+void	print_export(void)
+{
+	t_env	*env;
+	
+	env = g_sh->env;
+	while (env)
+	{
+		printf("declare -x %s=\"%s\"\n", env->key, env->value);
+		env = env->next;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 01:48:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:10:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_export(char **strs);
 
 // EXPORT_UTILS.C
 void	sort_env_ascii(void);
+void	print_export(void);
 
 // PWD.C
 char	*ft_pwd(void);
@@ -45,7 +46,9 @@ void	ft_exit_builtin(void);
 void	ft_cd(char *str);
 
 // IS_BUILTIN.C
-int		is_builtin(char *cmd, char **arg);
+int		is_builtin(char *cmd);
+void	exec_builtin(char *cmd, char **arg);
+
 void	print_array(char **array);
 
 #endif

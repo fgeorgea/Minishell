@@ -3,20 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   choose_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 01:47:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:32:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	is_builtin(char *cmd, char **arg)
+int	is_builtin(char *cmd)
 {
-	int	is_builtin;
+	if (compare_keys(cmd, "cd") || compare_keys(cmd, "echo")
+		|| compare_keys(cmd, "env") || compare_keys(cmd, "exit")
+		|| compare_keys(cmd, "unset") || compare_keys(cmd, "pwd")
+		|| compare_keys(cmd, "export"))
+		return (1);
+	return (0);
+}
 
-	is_builtin = 1;
+void	exec_builtin(char *cmd, char **arg)
+{
+	update_last_cmd(arg);
 	if (compare_keys(cmd, "cd"))
 		ft_cd(arg[1]);
 	else if (compare_keys(cmd, "echo"))
@@ -31,7 +39,4 @@ int	is_builtin(char *cmd, char **arg)
 		ft_pwd();
 	else if (compare_keys(cmd, "export"))
 		ft_export(&arg[1]);
-	else
-		is_builtin = 0;
-	return (is_builtin);
 }
