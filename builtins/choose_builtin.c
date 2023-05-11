@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 16:32:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:06:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	exec_builtin(char *cmd, char **arg)
 	else if (compare_keys(cmd, "env"))
 		ft_env();
 	else if (compare_keys(cmd, "exit"))
-		ft_exit_builtin();
+		ft_exit_builtin(&arg[1]);
 	else if (compare_keys(cmd, "unset"))
 		ft_unset(&arg[1]);
 	else if (compare_keys(cmd, "pwd"))

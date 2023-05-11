@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 11:30:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:38:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	*createmini_tab(void)
 {
 	int	*array;
 
-	array = ft_calloc(2, sizeof(int));
+	array = malloc(sizeof(int) * 2);
 	if (!array)
 		return (NULL);
 	return (array);
@@ -39,7 +39,7 @@ int	**create_pipe_array(t_pipex *p)
 	int		**array;
 
 	i = 0;
-	array = ft_calloc(p->nbr_pipe + 1, sizeof(int *));
+	array = malloc(sizeof(int *) * (p->nbr_pipe + 1));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	while (i < p->nbr_pipe)
