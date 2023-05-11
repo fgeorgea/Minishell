@@ -6,20 +6,20 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 16:47:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:32:58 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	children(int pos, t_cmd *cmd, t_pipex *p)
+static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 {
 	p->outfile = open_outfile(cmd);
 	p->infile = open_infile(cmd);
 	close_pipes_children(pos, p);
 	if (pos == 0)
 		first_child(p);
-	else if (pos == p->nbr_pipe)
+	else if ((int)pos == p->nbr_pipe)
 		last_child(pos, p);
 	else
 		middle_child(pos, p);
@@ -29,9 +29,9 @@ static void	children(int pos, t_cmd *cmd, t_pipex *p)
 
 void	exec_cmds(void)
 {
+	size_t	i;
 	t_pipex	*p;
 	t_cmd	*cmd;
-	int		i;
 
 	i = 0;
 	p = g_sh->pipex;

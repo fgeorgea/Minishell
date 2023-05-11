@@ -6,18 +6,18 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 18:38:16 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:35:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_pipe(int pos)
+void	ft_pipe(size_t pos)
 {
 	t_pipex	*p;
 
 	p = g_sh->pipex;
-	if (pos == p->nbr_fork - 1)
+	if ((int)pos == p->nbr_fork - 1)
 		return ;
 	if (pipe(p->pipefd[pos]) == -1)
 		ft_exit(EXIT_PIPE_FAILURE);
@@ -35,14 +35,14 @@ static int	*createmini_tab(void)
 
 int	**create_pipe_array(t_pipex *p)
 {
-	int		i;
+	size_t	i;
 	int		**array;
 
 	i = 0;
 	array = malloc(sizeof(int *) * (p->nbr_pipe + 1));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	while (i < p->nbr_pipe)
+	while ((int)i < p->nbr_pipe)
 	{
 		array[i] = createmini_tab();
 		if (!array[i])

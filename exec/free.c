@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:21:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 18:33:03 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:34:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_free_array_pos(void **array, int pos)
 
 void	ft_free_array(char **array)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (!array || !*array)

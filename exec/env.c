@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 16:42:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:28:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,28 @@ void	change_env_value(char *key, char *new_value)
 	env->value = tmp;
 }
 
-t_env	*get_env_struct(char *needle)
+t_env	*get_env_struct(const char *key)
 {
 	t_env	*env;
 
 	env = g_sh->env;
 	while (env)
 	{
-		if (compare_keys(needle, env->key))
+		if (compare_keys(key, env->key))
 			return (env);
 		env = env->next;
 	}
 	return (NULL);
 }
 
-char	*get_env_value(char *key_to_find)
+char	*get_env_value(const char *key)
 {
 	t_env	*env;
 
 	env = g_sh->env;
 	while (env)
 	{
-		if (compare_keys(key_to_find, env->key))
+		if (compare_keys(key, env->key))
 			return (env->value);
 		env = env->next;
 	}

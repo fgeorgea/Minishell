@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 01:11:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:38:44 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	add_slash(t_pipex *p)
 {
-	int		i;
+	size_t	i;
 	char	*tmp;
 
 	i = 0;
@@ -48,7 +48,7 @@ static void	init_paths(t_pipex *p)
 	p->paths = ft_split(paths, ':');
 	if (!p->paths)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	p->nbr_paths = arraylen(p->paths);
+	p->nbr_paths = arraylen((const char **)p->paths);
 }
 
 void	init_struct_pipex(void)

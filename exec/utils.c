@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 01:06:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:28:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	arraylen(char **array)
+int	arraylen(const char **array)
 {
 	int	i;
 
@@ -24,10 +24,10 @@ int	arraylen(char **array)
 	return (i);
 }
 
-int	compare_keys(char *key, char *needle)
+int	compare_keys(const char *key, const char *needle)
 {
-	int	key_len;
-	int	needle_len;
+	size_t	key_len;
+	size_t	needle_len;
 
 	if (!key || !needle)
 		return (0);

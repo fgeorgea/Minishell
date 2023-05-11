@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 16:13:19 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:41:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int		found_cmd(char **cmd);
 int		file_exist(char *str);
 
 // FORK.C
-void	ft_fork(int pos);
+void	ft_fork(size_t pos);
 pid_t	*create_fork_array(t_pipex *p);
 void	first_child(t_pipex *p);
-void	last_child(int pos, t_pipex *p);
-void	middle_child(int pos, t_pipex *p);
+void	last_child(size_t pos, t_pipex *p);
+void	middle_child(size_t pos, t_pipex *p);
 
 // FORK_UTILS.C
 void	link_files(int fildes, int fildes2);
@@ -83,12 +83,12 @@ void	check_cmd(char **cmd);
 void	update_last_cmd(char **cmd);
 
 // PIPE.C
-void	ft_pipe(int pos);
+void	ft_pipe(size_t pos);
 int		**create_pipe_array(t_pipex *p);
 
 // CLOSE_PIPES.C
-void	close_pipes_children(int pos, t_pipex *p);
-void	close_pipes_parent(int pos, t_pipex *p);
+void	close_pipes_children(size_t position, t_pipex *p);
+void	close_pipes_parent(size_t position, t_pipex *p);
 
 // HERE_DOC.C
 void	here_doc(char *end_token);
@@ -108,8 +108,8 @@ void	ft_execve(char **argv, char **envp);
 
 // ENV.C
 void	lst_to_array(t_env **lst);
-char	*get_env_value(char *key);
-t_env	*get_env_struct(char *needle);
+char	*get_env_value(const char *key);
+t_env	*get_env_struct(const char *needle);
 void	change_env_value(char *key, char *new_value);
 
 // REDIR.C
@@ -119,7 +119,7 @@ int		open_outfile(t_cmd *cmd);
 int		open_infile(t_cmd *cmd);
 
 // UTILS.C
-int		arraylen(char **array);
-int		compare_keys(char *key, char *needle);
+int		arraylen(const char **array);
+int		compare_keys(const char *key, const char *needle);
 
 #endif

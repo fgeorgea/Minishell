@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 11:52:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:30:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ t_redir	*get_out_redir(t_redir **redirection)
 
 int	open_outfile(t_cmd *cmd)
 {
-	t_redir	*redir;
 	int		fd;
+	t_redir	*redir;
 
 	redir = get_out_redir(&cmd->redir);
 	if (!redir)
@@ -80,8 +80,8 @@ t_redir	*get_in_redir(t_redir **redirection)
 
 int	open_infile(t_cmd *cmd)
 {
-	t_redir	*redir;
 	int		fd;
+	t_redir	*redir;
 
 	redir = get_in_redir(&cmd->redir);
 	if (!redir || !redir->key)

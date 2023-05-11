@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 16:09:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:39:58 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_dup2(int file1, int file2)
 
 void	ft_waitpid(void)
 {
-	int		i;
+	size_t	i;
 	int		success;
 	t_pipex	*p;
 
@@ -62,7 +62,7 @@ void	ft_waitpid(void)
 	p = g_sh->pipex;
 	if (p->nbr_pipe == 0)
 		return ;
-	while (i < p->nbr_fork)
+	while ((int)i < p->nbr_fork)
 	{
 		success = waitpid(p->pids[i], &g_sh->pipe_exit, 0);
 		if (success == -1)

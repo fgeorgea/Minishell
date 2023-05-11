@@ -6,13 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 12:05:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:34:33 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_fork(int pos)
+void	ft_fork(size_t pos)
 {
 	t_pipex	*p;
 
@@ -42,7 +42,7 @@ void	first_child(t_pipex *p)
 		link_files(p->pipefd[0][1], STDOUT_FILENO);
 }
 
-void	last_child(int pos, t_pipex *p)
+void	last_child(size_t pos, t_pipex *p)
 {
 	if (p->infile > 0)
 		link_files(p->infile, STDIN_FILENO);
@@ -52,7 +52,7 @@ void	last_child(int pos, t_pipex *p)
 		link_files(p->outfile, STDOUT_FILENO);
 }
 
-void	middle_child(int pos, t_pipex *p)
+void	middle_child(size_t pos, t_pipex *p)
 {
 	if (p->infile > 0)
 		link_files(p->infile, STDIN_FILENO);
