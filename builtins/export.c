@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 21:24:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:37:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	check_valid_export(char *str)
+static int	check_valid_export(const char *str)
 {
-	int	i;
-	int	len;
+	size_t	i;
+	size_t	len;
 
+	i = 0;
 	len = 0;
 	if (!ft_isalpha(str[0]))
 		return (0);
@@ -24,7 +25,6 @@ static int	check_valid_export(char *str)
 		len++;
 	if (!str[len] || (str[len] == '+' && str[len + 1] != '='))
 		return (0);
-	i = 0;
 	while (i < len)
 	{
 		if (!ft_isalnum(str[i]))
@@ -34,7 +34,7 @@ static int	check_valid_export(char *str)
 	return (1);
 }
 
-static void	add_var_to_env_app(char *str, int pos)
+static void	add_var_to_env_app(const char *str, size_t pos)
 {
 	t_env	*env;
 	char	*key;
@@ -60,7 +60,7 @@ static void	add_var_to_env_app(char *str, int pos)
 	free(key);
 }
 
-static void	add_var_to_env(char *str, int pos)
+static void	add_var_to_env(const char *str, size_t pos)
 {
 	t_env	*env;
 	char	*key;
@@ -77,9 +77,9 @@ static void	add_var_to_env(char *str, int pos)
 	change_env_value(key, value);
 }
 
-static void	check_append(char *str)
+static void	check_append(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] != '=')
@@ -90,19 +90,17 @@ static void	check_append(char *str)
 		add_var_to_env(str, i);
 }
 
-void	ft_export(char **strs)
+void	export_builtin(const char **strs)
 {
-	int		i;
-	char	**env;
+	size_t	i;
 
-	i = 0;
-	env = NULL;
 	if (!*strs)
 	{
 		sort_env_ascii();
 		print_export();
 		return ;
 	}
+	i = 0;
 	while (strs[i])
 	{
 		if (check_valid_export(strs[i]))

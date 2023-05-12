@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 21:34:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:50:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_fork(size_t pos)
 		ft_exit(EXIT_FORK_FAILURE);
 }
 
-pid_t	*create_fork_array(t_pipex *p)
+pid_t	*create_fork_array(const t_pipex *p)
 {
 	pid_t	*array;
 
@@ -32,7 +32,7 @@ pid_t	*create_fork_array(t_pipex *p)
 	return (array);
 }
 
-void	first_child(t_pipex *p)
+void	first_child(const t_pipex *p)
 {
 	if (p->infile > 0)
 		link_files(p->infile, STDIN_FILENO);
@@ -42,7 +42,7 @@ void	first_child(t_pipex *p)
 		link_files(p->pipefd[0][1], STDOUT_FILENO);
 }
 
-void	last_child(size_t pos, t_pipex *p)
+void	last_child(size_t pos, const t_pipex *p)
 {
 	if (p->infile > 0)
 		link_files(p->infile, STDIN_FILENO);
@@ -52,7 +52,7 @@ void	last_child(size_t pos, t_pipex *p)
 		link_files(p->outfile, STDOUT_FILENO);
 }
 
-void	middle_child(size_t pos, t_pipex *p)
+void	middle_child(size_t pos, const t_pipex *p)
 {
 	if (p->infile > 0)
 		link_files(p->infile, STDIN_FILENO);

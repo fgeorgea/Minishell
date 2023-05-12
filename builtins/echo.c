@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:08:51 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/10 17:06:41 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:37:04 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	is_newline_option(char *str)
+static int	is_newline_option(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (str[0] != '-')
@@ -27,13 +27,13 @@ static int	is_newline_option(char *str)
 	return (0);
 }
 
-void	ft_echo(char **strs)
+void	echo_builtin(const char **strs)
 {
-	int	i;
-	int	print_nl;
+	int		print_nl;
+	size_t	i;
 
-	i = 0;
 	print_nl = 1;
+	i = 0;
 	if (!strs || !strs[0])
 	{
 		printf("\n");

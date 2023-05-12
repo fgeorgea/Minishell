@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 21:24:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:40:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,35 @@
 /*********************     FUNCTION    ************************/
 
 // ECHO.C
-void	ft_echo(char **strs);
+void	echo_builtin(const char **strs);
 
 // ENV.C
-void	ft_env(void);
+void	env_builtin(void);
 
 // EXPORT.C
-void	ft_export(char **strs);
+void	export_builtin(const char **strs);
 
 // EXPORT_UTILS.C
 void	sort_env_ascii(void);
 void	print_export(void);
 
 // PWD.C
-char	*ft_pwd(void);
+void	pwd_builtin(void);
 
 // UNSET.C
-void	ft_unset(char **vars);
+void	unset_builtin(const char **vars);
 
 // EXIT.C
-void	ft_exit_builtin(char **arg);
+void	exit_builtin(const char **arg);
 
 // CD.C
-void	ft_cd(char *str);
+void	cd_builtin(const char *str);
 
-// IS_BUILTIN.C
-int		is_builtin(char *cmd);
-void	exec_builtin(char *cmd, char **arg);
+// CALL_BUILTIN.C
+int		is_builtin(const char *cmd);
+void	exec_builtin(const char *cmd, const char **arg);
 
-void	print_array(char **array);
+
+void	print_array(char **array); // GET RID OF SHAT SHIT !!!
 
 #endif

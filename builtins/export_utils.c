@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 17:10:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:21:12 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	ft_strcmp(char *s1, char *s2)
+static int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s1[i] == s2[i])
@@ -32,6 +32,8 @@ void	sort_env_ascii(void)
 	char	*tmp_key;
 	char	*tmp_value;
 
+	if (!g_sh->env)
+		return ;
 	env = g_sh->env;
 	while (env->next)
 	{
@@ -55,6 +57,8 @@ void	print_export(void)
 {
 	t_env	*env;
 	
+	if (!g_sh->env)
+		return ;
 	env = g_sh->env;
 	while (env)
 	{

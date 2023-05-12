@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 21:32:58 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:29:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	exec_cmds(void)
 	cmd = g_sh->cmd;
 	if (is_builtin(cmd->cmd[0]) && p->nbr_cmds == 1)
 	{
-		exec_builtin(cmd->cmd[0], cmd->cmd);
+		exec_builtin(cmd->cmd[0], (const char **)cmd->cmd);
 		return ;
 	}
 	change_env_value("_", NULL);

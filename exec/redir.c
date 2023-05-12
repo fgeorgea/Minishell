@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 21:30:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:57:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_redir	*get_out_redir(t_redir **redirection)
+static t_redir	*get_out_redir(t_redir **redirection)
 {
-	int		tmp_fd;
+	int				tmp_fd;
 	t_redir	*redir;
 	t_redir	*last;
 
@@ -56,7 +56,7 @@ int	open_outfile(t_cmd *cmd)
 	return (fd);
 }
 
-t_redir	*get_in_redir(t_redir **redirection)
+static t_redir	*get_in_redir(t_redir **redirection)
 {
 	t_redir	*redir;
 	t_redir	*last;

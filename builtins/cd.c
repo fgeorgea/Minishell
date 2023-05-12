@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 17:49:24 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:36:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	ft_chdir(char *dir)
+static void	ft_chdir(const char *dir)
 {
 	char	*current_dir;
 
@@ -26,7 +26,7 @@ static void	ft_chdir(char *dir)
 	lst_to_array(&g_sh->env);
 }
 
-void	ft_cd(char *str)
+void	cd_builtin(const char *str)
 {
 	char	*dir;
 
@@ -38,7 +38,7 @@ void	ft_cd(char *str)
 	dir = get_env_value("HOME");
 	if (!dir)
 	{
-		ft_putstr_fd("HOME not set\n", 2);
+		ft_putstr_fd("Minishell: cd: HOME not set\n", 2);
 		return ;
 	}
 	ft_chdir(dir);

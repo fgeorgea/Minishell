@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/11 18:24:48 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/12 01:40:23 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRCS	=	$(MAIN)main.c \
 			$(BUILTINS)unset.c \
 			$(BUILTINS)export.c \
 			$(BUILTINS)export_utils.c \
-			$(BUILTINS)choose_builtin.c \
+			$(BUILTINS)call_builtin.c \
 			$(BUILTINS)exit.c \
 			$(BUILTINS)debug_builtins.c \
 			$(UTILS)string_utils.c \

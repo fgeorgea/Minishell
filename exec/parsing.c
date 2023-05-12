@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/09 11:52:45 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:48:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	does_cmd_exist(char *str)
+static int	does_cmd_exist(const char *str)
 {
 	if (access(str, F_OK | X_OK) != -1)
 		return (1);
@@ -20,7 +20,7 @@ static int	does_cmd_exist(char *str)
 		return (0);
 }
 
-int	file_exist(char *str)
+int	file_exist(const char *str)
 {
 	if (access(str, F_OK) != -1)
 		return (1);

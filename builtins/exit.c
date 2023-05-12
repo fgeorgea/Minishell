@@ -3,14 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 21:40:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 02:11:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static int	is_valid_exit(const char **args)
+{
+	size_t	i;
+	size_t	array_len;
+
+	array_len = arraylen(args);
+	if (array_len > 1)
+	{
+		ft_putstr_fd("Minishell: exit: too many arguments\n", 2);
+		return (0);
+	}
+	i = 0;
+	while (args[0][i])
+	{
+		if (!ft_isdigit(args[0][i]))
+		{
+			ft_putstr_fd("Minishell: exit: ", 2);
+			ft_putstr_fd((char *)args[0], 2);
+			ft_putstr_fd(": numeric argument required\n", 2);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
 
 static int	ft_isspace(char c)
 {
@@ -59,17 +85,12 @@ static long long int	ft_atolli(const char *str)
 	return (nbr * is_neg);
 }
 
-void	ft_exit_builtin(char **arg)
+void	exit_builtin(const char **arg)
 {
-	int				array_len;
 	long long int	status;
 
-	array_len = arraylen((const char **)arg);
-	if (array_len > 1)
-	{
-		ft_putstr_fd("Minishell: exit: too many arguments\n", 2);
+	if (!is_valid_exit(arg))
 		return ;
-	}
 	status = 0;
 	if (!arg || !*arg)
 		ft_exit(status);

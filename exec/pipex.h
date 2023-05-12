@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 21:41:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:59:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ void	init_struct_pipex(void);
 
 // PARSING.C
 int		found_cmd(char **cmd);
-int		file_exist(char *str);
+int		file_exist(const char *str);
 
 // FORK.C
 void	ft_fork(size_t pos);
-pid_t	*create_fork_array(t_pipex *p);
-void	first_child(t_pipex *p);
-void	last_child(size_t pos, t_pipex *p);
-void	middle_child(size_t pos, t_pipex *p);
+pid_t	*create_fork_array(const t_pipex *p);
+void	first_child(const t_pipex *p);
+void	last_child(size_t pos, const t_pipex *p);
+void	middle_child(size_t pos, const t_pipex *p);
 
 // FORK_UTILS.C
 void	link_files(int fildes, int fildes2);
@@ -80,11 +80,11 @@ void	exec_cmds(void);
 
 // EXEC_UTILS.C
 void	check_cmd(char **cmd);
-void	update_last_cmd(char **cmd);
+void	update_last_cmd(const char **cmd);
 
 // PIPE.C
 void	ft_pipe(size_t pos);
-int		**create_pipe_array(t_pipex *p);
+int		**create_pipe_array(const t_pipex *p);
 
 // CLOSE_PIPES.C
 void	close_pipes_children(size_t position, t_pipex *p);
@@ -104,22 +104,20 @@ void	ft_close(int *fd);
 void	ft_dup2(int file1, int file2);
 void	ft_waitpid(void);
 int		ft_open(char *file, int flags, int perm);
-void	ft_execve(char **argv, char **envp);
+void	ft_execve(char *const *argv, char *const *envp);
 
 // ENV.C
 void	lst_to_array(t_env **lst);
 char	*get_env_value(const char *key);
 t_env	*get_env_struct(const char *needle);
-void	change_env_value(char *key, char *new_value);
+void	change_env_value(const char *key, const char *new_value);
 
 // REDIR.C
-t_redir	*get_out_redir(t_redir **redirection);
-t_redir	*get_in_redir(t_redir **redirection);
 int		open_outfile(t_cmd *cmd);
 int		open_infile(t_cmd *cmd);
 
 // UTILS.C
-int		arraylen(const char **array);
+size_t	arraylen(const char **array);
 int		compare_keys(const char *key, const char *needle);
 
 #endif
