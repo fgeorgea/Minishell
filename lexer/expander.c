@@ -30,20 +30,11 @@ char	*get_var_key(char *str, int *i, t_list *head)
 	return (tmp);
 }
 
-int	insert_value(t_token *t, char *key, char *value, int *i)
+static void	copy_value(t_token *t, char *value, char *tmp, int *i)
 {
-	char	*tmp;
-	int		j;
-	int		k;
+	int	j;
+	int	k;
 
-	tmp = malloc(sizeof(char) * (ft_strlen(t->word) + ft_strlen(value) - ft_strlen(key)));
-	free(key);
-	if (!tmp)
-	{
-		if (i[4])
-			free(value);
-		return (EXIT_MALLOC_FAILURE);
-	}
 	j = 0;
 	while (j < i[1])
 	{
@@ -64,11 +55,55 @@ int	insert_value(t_token *t, char *key, char *value, int *i)
 		i[2]++;
 	}
 	tmp[j + k] = 0;
+}
+
+int	insert_value(t_token *t, char *key, char *value, int *i)
+{
+	char	*tmp;
+
+	tmp = malloc(sizeof(char) * (ft_strlen(t->word) + ft_strlen(value) - ft_strlen(key)));
+	free(key);
+	if (!tmp)
+	{
+		if (i[4])
+			free(value);
+		return (EXIT_MALLOC_FAILURE);
+	}
+	copy_value(t, value, tmp, i);
 	if (i[4])
 		free(value);
 	free(t->word);
 	t->word = tmp;
 	return (0);
+}
+
+void static	expand_var(t_token *t, int *i, t_list *head)
+{
+	char	*tmp;
+	char	*value;
+
+	tmp = get_var_key(t->word, i, head);
+	if (tmp[0] == '?' && tmp[1] == '\0')
+	{
+		i[4] = 1;
+		value = ft_itoa(g_sh->pipe_exit);
+		if (!value)
+		{
+			free(tmp);
+			ft_lstclear(&head, &free_token);
+			ft_exit(EXIT_MALLOC_FAILURE);
+		}
+	}
+	else
+	{
+		i[4] = 0;
+		value = get_env_value(tmp);
+	}
+	if (insert_value(t, tmp, value, i))
+	{
+		ft_lstclear(&head, &free_token);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
 }
 
 /*
@@ -81,9 +116,7 @@ i[4] is whether to free value
 
 void	expand(t_token *t, t_list *head)
 {
-	char	*tmp;
 	int		i[5];
-	char	*value;
 
 	i[0] = 0;
 	i[3] = 0;
@@ -94,30 +127,7 @@ void	expand(t_token *t, t_list *head)
 		if (t->word[i[0]] == '"')
 			i[3] = !i[3];
 		if (t->word[i[0]] == '$' && t->word[i[0] + 1] != ' ' && t->word[i[0] + 1])
-		{
-			tmp = get_var_key(t->word, i, head);
-			if (tmp[0] == '?' && tmp[1] == '\0')
-			{
-				i[4] = 1;
-				value = ft_itoa(g_sh->pipe_exit);
-				if (!value)
-				{
-					free(tmp);
-					ft_lstclear(&head, &free_token);
-					ft_exit(EXIT_MALLOC_FAILURE);
-				}
-			}
-			else
-			{
-				i[4] = 0;
-				value = get_env_value(tmp);
-			}
-			if (insert_value(t, tmp, value, i))
-			{
-				ft_lstclear(&head, &free_token);
-				ft_exit(EXIT_MALLOC_FAILURE);
-			}
-		}
+			expand_var(t, i, head);
 		i[0]++;
 	}
 }

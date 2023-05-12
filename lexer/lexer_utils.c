@@ -64,50 +64,6 @@ void	display_syntax_err(void)
 		ft_putstr_fd(": unknown syntax error\n", 2);
 }
 
-int	has_variable(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\'')
-			i = skip_quotes(str, i);
-		if (str[i] == '$' && str[i + 1] && str[i + 1] != ' ')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	has_quotes(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\'' || str[i] == '"')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	has_space(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (ft_iswhitespace(str[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	is_heredoc(t_list *last)
 {
 	t_token	*content;

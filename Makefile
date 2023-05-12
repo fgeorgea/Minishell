@@ -60,6 +60,7 @@ SRCS	=	$(MAIN)main.c \
 			$(LEX)remove_quotes.c \
 			$(LEX)parser.c \
 			$(LEX)new_expander.c \
+			$(LEX)expander_utils.c \
 
 OBJS	=	${SRCS:.c=.o}
 
