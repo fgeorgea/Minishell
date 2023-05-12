@@ -18,7 +18,8 @@ char	*get_var_key(char *str, int *i, t_list *head)
 
 	i[1] = i[0];
 	i[0]++;
-	while (str[i[0]] != ' ' && str[i[0]] != '\'' && str[i[0]] && str[i[0]] != '"')
+	while (str[i[0]] != ' ' && str[i[0]] != '\''
+		&& str[i[0]] && str[i[0]] != '"')
 		i[0]++;
 	i[2] = i[0];
 	tmp = ft_strndup(&str[i[1] + 1], i[2] - i[1] - 1);
@@ -61,7 +62,8 @@ int	insert_value(t_token *t, char *key, char *value, int *i)
 {
 	char	*tmp;
 
-	tmp = malloc(sizeof(char) * (ft_strlen(t->word) + ft_strlen(value) - ft_strlen(key)));
+	tmp = malloc(sizeof(char) * (ft_strlen(t->word)
+				+ ft_strlen(value) - ft_strlen(key)));
 	free(key);
 	if (!tmp)
 	{
@@ -126,7 +128,8 @@ void	expand(t_token *t, t_list *head)
 			i[0] = skip_quotes(t->word, i[0]);
 		if (t->word[i[0]] == '"')
 			i[3] = !i[3];
-		if (t->word[i[0]] == '$' && t->word[i[0] + 1] != ' ' && t->word[i[0] + 1])
+		if (t->word[i[0]] == '$' && t->word[i[0] + 1] != ' '
+			&& t->word[i[0] + 1])
 			expand_var(t, i, head);
 		i[0]++;
 	}
