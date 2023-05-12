@@ -12,16 +12,36 @@
 
 #include "../minishell.h"
 
+static void	create_token_list(int i, t_list **head, char **arr)
+{
+	t_token	*tmp;
+	t_list	*temp;
+
+	tmp = malloc(sizeof(t_token));
+	if (!tmp)
+	{
+		ft_lstclear(head, &free);
+		ft_free_array(arr);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	tmp->word = arr[i];
+	temp = ft_lstnew(tmp);
+	if (!temp)
+	{
+		ft_lstclear(head, &free);
+		ft_free_array(arr);
+		free(tmp);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	ft_lstadd_back(head, temp);
+}
+
 t_list	*pre_token(char *str)
 {
 	int		i;
-	t_token	*tmp;
-	t_list	*temp;
 	t_list	*head;
 	char	**arr;
 
-	if (g_sh->cmd)
-		ft_free_cmd();
 	arr = shell_split(str, "\040\011\012\013\014\015", 1);
 	if (!arr)
 		ft_exit(EXIT_MALLOC_FAILURE);
@@ -29,36 +49,12 @@ t_list	*pre_token(char *str)
 	head = 0;
 	while (arr[i])
 	{
-		tmp = malloc(sizeof(t_token));
-		if (!tmp)
-		{
-			ft_lstclear(&head, &free_token);
-			ft_free_array(arr);
-			ft_exit(EXIT_MALLOC_FAILURE);
-		}
-		tmp->word = arr[i];
-		temp = ft_lstnew(tmp);
-		if (!temp)
-		{
-			ft_lstclear(&head, &free_token);
-			ft_free_array(arr);
-			free(tmp);
-			ft_exit(EXIT_MALLOC_FAILURE);
-		}
-		ft_lstadd_back(&head, temp);
+		create_token_list(i, &head, arr);
 		i++;
 	}
 	free(arr);
 	return (head);
 }
-
-/*
-Split into words -> pre_token
-tokenization -> tokenize
-expander -> expander
-split into words -> post_token
-remove quotes
-*/
 
 void	lexer(char *str)
 {
@@ -70,14 +66,5 @@ void	lexer(char *str)
 		return ;
 	tokenize(words);
 	expander(words);
-	/*t_token	*t;
-	t_list	*tmp;
-	tmp = words;
-	while (tmp)
-	{
-		t = tmp->content;
-		printf("%s\n", t->word);
-		tmp = tmp->next;
-	}*/
 	parser(words);
 }
