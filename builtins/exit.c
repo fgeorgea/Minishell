@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 02:11:22 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 02:37:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int	is_valid_exit(const char **args)
 			ft_putstr_fd("Minishell: exit: ", 2);
 			ft_putstr_fd((char *)args[0], 2);
 			ft_putstr_fd(": numeric argument required\n", 2);
-			return (0);
+			ft_free_global();
+			exit(255);
 		}
 		i++;
 	}
@@ -89,11 +90,11 @@ void	exit_builtin(const char **arg)
 {
 	long long int	status;
 
-	if (!is_valid_exit(arg))
-		return ;
 	status = 0;
 	if (!arg || !*arg)
 		ft_exit(status);
+	if (!is_valid_exit(arg))
+		return ;
 	status = ft_atolli(arg[0]);
 	ft_free_global();
 	exit((unsigned char)status);
