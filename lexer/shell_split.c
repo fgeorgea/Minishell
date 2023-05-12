@@ -43,7 +43,7 @@ char	**free_split(char **tab)
 	return (0);
 }
 
-int	get_shell_wc(char *str, char *sep, int s)
+static char	**get_shell_wc(char *str, char *sep, int s)
 {
 	int	i;
 	int	wc;
@@ -58,49 +58,51 @@ int	get_shell_wc(char *str, char *sep, int s)
 			wc++;
 		while (!is_in_sep(str[i], sep) && str[i])
 		{
-			if (s &&(str[i] == '"' || str[i] == '\''))
+			if (s && (str[i] == '"' || str[i] == '\''))
 				i = skip_quotes(str, i);
 			i++;
 		}
 		while (is_in_sep(str[i], sep))
 			i++;
 	}
-	return (wc);
+	return (malloc(sizeof(char *) * (wc + 1)));
+}
+
+static int	get_next_sep(char *str, char *sep, int s, int i)
+{
+	while (!is_in_sep(str[i], sep) && str[i])
+	{
+		if (s && (str[i] == '"' || str[i] == '\''))
+			i = skip_quotes(str, i);
+		i++;
+	}
+	return (i);
 }
 
 char	**shell_split(char *str, char *sep, int s)
 {
 	char	**tab;
 	int		wc;
-	int		i;
 	int		j;
+	int		i;
 
-	wc = get_shell_wc(str, sep, s);
-	tab = malloc((wc + 1) * sizeof(char *));
+	tab = get_shell_wc(str, sep, s);
 	if (!tab)
 		return (0);
-	i = 0;
 	wc = 0;
+	i = 0;
 	while (str[i])
 	{
 		while (is_in_sep(str[i], sep))
 			i++;
-		if (str[i])
-			j = i;
-		else
+		if (!str[i])
 			break ;
-		while (!is_in_sep(str[i], sep) && str[i])
-		{
-			if (s && (str[i] == '"' || str[i] == '\''))
-				i = skip_quotes(str, i);
-			i++;
-		}
+		j = i;
+		i = get_next_sep(str, sep, s, i);
 		tab[wc] = ft_strndup(&str[j], i - j);
 		if (!tab[wc])
 			return (free_split(tab));
 		wc++;
-		while (is_in_sep(str[i], sep))
-			i++;
 	}
 	tab[wc] = 0;
 	return (tab);

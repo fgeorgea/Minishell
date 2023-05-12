@@ -12,22 +12,6 @@
 
 #include "../minishell.h"
 
-int	has_token(t_token *t)
-{
-	int	i;
-
-	i = 0;
-	while (t->word[i])
-	{
-		if (t->word[i] == '\'' || t->word[i] == '"')
-			i = skip_quotes(t->word, i);
-		if (t->word[i] == '|' || t->word[i] == '<' || t->word[i] == '>')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	get_token_wc(char *str, char *sep)
 {
 	int	i;

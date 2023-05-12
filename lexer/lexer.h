@@ -48,5 +48,6 @@ int		is_heredoc(t_list *last);
 void	trim_quotes(t_token *t, t_list *head);
 void	expand(t_token *t, t_list *head);
 t_list	*split_space(t_list *curr, t_list *head);
+int		has_token(t_token *t);
 
 #endif

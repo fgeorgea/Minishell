@@ -12,11 +12,46 @@
 
 #include "../minishell.h"
 
+static char	*finish_trim(t_token *t, int k, char *tmp)
+{
+	while (t->word[k + 2])
+	{
+		tmp[k] = t->word[k + 2];
+		k++;
+	}
+	tmp[k] = 0;
+	return (tmp);
+}
+
+static char	*get_trimmed_str(t_token *t, t_list *head, int i, int j)
+{
+	char	*tmp;
+	int		k;
+
+	tmp = malloc(sizeof(char) * (ft_strlen(t->word) - 1));
+	if (!tmp)
+	{
+		ft_lstclear(&head, &free_token);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	k = 0;
+	while (k < i)
+	{
+		tmp[k] = t->word[k];
+		k++;
+	}
+	while (k + 1 < j)
+	{
+		tmp[k] = t->word[k + 1];
+		k++;
+	}
+	return (finish_trim(t, k, tmp));
+}
+
 void	trim_quotes(t_token *t, t_list *head)
 {
 	int		i;
 	int		j;
-	int		k;
 	char	*tmp;
 
 	i = 0;
@@ -25,34 +60,13 @@ void	trim_quotes(t_token *t, t_list *head)
 		if (t->word[i] == '"' || t->word[i] == '\'')
 		{
 			j = skip_quotes(t->word, i);
-			if (i == j)
-				return ;
-			tmp = malloc(sizeof(char) * (ft_strlen(t->word) - 1));
-			if (!tmp)
+			if (i != j)
 			{
-				ft_lstclear(&head, &free_token);
-				ft_exit(EXIT_MALLOC_FAILURE);
+				tmp = get_trimmed_str(t, head, i, j);
+				free(t->word);
+				t->word = tmp;
+				i = j - 2;
 			}
-			k = 0;
-			while (k < i)
-			{
-				tmp[k] = t->word[k];
-				k++;
-			}
-			while (k + 1 < j)
-			{
-				tmp[k] = t->word[k + 1];
-				k++;
-			}
-			while (t->word[k + 2])
-			{
-				tmp[k] = t->word[k + 2];
-				k++;
-			}
-			tmp[k] = 0;
-			free(t->word);
-			t->word = tmp;
-			i = j - 2;
 		}
 		i++;
 	}
