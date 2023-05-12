@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 12:30:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:47:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,5 @@ int		open_infile(t_cmd *cmd);
 // UTILS.C
 size_t	arraylen(const char **array);
 int		compare_keys(const char *key, const char *needle);
-int		compare_strucs(const t_env *st1, const t_env *st2);
 
 #endif

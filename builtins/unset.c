@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 12:31:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:46:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	delete_var_env(const char *var)
 	env = g_sh->env;
 	if (!get_env_value(var))
 		return ;
-	if (compare_strucs(g_sh->env, env))
+	if (compare_keys(var, env->key))
 	{
 		g_sh->env = g_sh->env->next;
 		del_one_env(env);
