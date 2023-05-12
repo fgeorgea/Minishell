@@ -18,6 +18,11 @@ void	init_env(char **env)
 	int		j;
 	t_env	*tmp;
 
+	if (!env)
+	{
+		g_sh->env = 0;
+		return ;
+	}
 	if (env[0])
 	{
 		g_sh->env = malloc(sizeof(t_env));
@@ -61,6 +66,51 @@ void	init_env(char **env)
 	}
 }
 
+void	init_shell_lvl(void)
+{
+	t_env	*tmp;
+	int		v;
+
+	tmp = g_sh->env;
+	while (tmp)
+	{
+		if (ft_strncmp(tmp->key, "SHLVL", 6) == 0)
+		{
+			printf("%s\n", tmp->value);
+			v = ft_atoi(tmp->value);
+			printf("%d\n", v);
+			free(tmp->value);
+			if (v < 0 || v >= 1000)
+				tmp->value = ft_strdup("0");
+			else if (v == 999)
+				tmp->value = ft_strdup("");
+			else
+				tmp->value = ft_itoa(v + 1);
+			if (!tmp->value)
+				ft_exit(EXIT_MALLOC_FAILURE);
+			return ;
+		}
+		tmp = tmp->next;
+	}
+	if (g_sh->env)
+	{
+		tmp->next = malloc(sizeof(t_env));
+		tmp = tmp->next;
+	}
+	else
+	{
+		g_sh->env = malloc(sizeof(t_env));
+		tmp = g_sh->env;
+	}
+	if (!tmp)
+		ft_exit(EXIT_MALLOC_FAILURE);
+	tmp->key = ft_strdup("SHLVL");
+	tmp->value = ft_strdup("1");
+	tmp->next = 0;
+	if (!tmp->key || !tmp->value)
+		ft_exit(EXIT_MALLOC_FAILURE);
+}
+
 void	init_shell(char **argv, char **env)
 {
 	g_sh = malloc(sizeof(t_shell));
@@ -72,6 +122,7 @@ void	init_shell(char **argv, char **env)
 	g_sh->name = argv[0];
 	g_sh->pipe_exit = 0;
 	init_env(env);
+	init_shell_lvl();
 	if (!g_sh->env)
 		ft_exit(EXIT_MALLOC_FAILURE);
 }
