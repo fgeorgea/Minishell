@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 01:03:14 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:30:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ size_t	arraylen(const char **array)
 	while (array[i])
 		i++;
 	return (i);
+}
+
+int	compare_strucs(const t_env *st1, const t_env *st2)
+{
+	if (!st1 || !st2)
+		return (0);
+	if (compare_keys(st1->key, st2->key) && compare_keys(st1->value, st2->value))
+		return (1);
+	return (0);
 }
 
 int	compare_keys(const char *key, const char *needle)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 01:39:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:31:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@ static void	delete_var_env(const char *var)
 	t_env	*previous;
 
 	env = g_sh->env;
-	previous = NULL;
 	if (!get_env_value(var))
 		return ;
+	if (compare_strucs(g_sh->env, env))
+	{
+		g_sh->env = g_sh->env->next;
+		del_one_env(env);
+		return ;
+	}
 	while (env->next)
 	{
 		if (compare_keys(env->next->key, var))
@@ -48,6 +53,7 @@ static void	delete_var_env(const char *var)
 	previous = env;
 	env = env->next;
 	previous->next = env->next;
+	del_one_env(env);
 }
 
 void	unset_builtin(const char **vars)
