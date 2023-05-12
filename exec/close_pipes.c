@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_pipes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 12:11:01 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 01:55:28 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:37:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ static void	close_last_child(t_pipex *p)
 		ft_close(&p->outfile);
 }
 
-static void	close_middle_child(size_t position, t_pipex *p)
+static void	close_middle_child(size_t pos, t_pipex *p)
 {
-	int	pos;
-
-	pos = (int)position;
 	if (p->infile > 0)
 		ft_close(&p->infile);
 	else
@@ -47,11 +44,8 @@ static void	close_middle_child(size_t position, t_pipex *p)
 		ft_close(&p->pipefd[pos][1]);
 }
 
-void	close_pipes_parent(size_t position, t_pipex *p)
+void	close_pipes_parent(size_t pos, t_pipex *p)
 {
-	int	pos;
-
-	pos = (int)position;
 	if (pos == 0)
 		close_first_child(p);
 	else if (pos > 0 && pos == p->nbr_pipe)
@@ -60,11 +54,8 @@ void	close_pipes_parent(size_t position, t_pipex *p)
 		close_middle_child(pos, p);
 }
 
-void	close_pipes_children(size_t position, t_pipex *p)
+void	close_pipes_children(size_t pos, t_pipex *p)
 {
-	int	pos;
-
-	pos = (int)position;
 	if (pos == 0 && p->nbr_pipe > 0)
 		ft_close(&p->pipefd[0][0]);
 	if (pos == 0 && p->outfile > 0 && p->nbr_pipe > 0)

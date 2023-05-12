@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 12:47:14 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:37:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ typedef struct s_pipex
 	int		infile;
 	int		outfile;
 	int		here_doc;
-	int		nbr_cmds;
-	int		nbr_pipe;
-	int		nbr_fork;
-	int		nbr_paths;
+	size_t	nbr_cmds;
+	size_t	nbr_pipe;
+	size_t	nbr_fork;
+	size_t	nbr_paths;
 	int		exit_macro;
 	char	**paths;
 	char	**env_array;
@@ -87,8 +87,8 @@ void	ft_pipe(size_t pos);
 int		**create_pipe_array(const t_pipex *p);
 
 // CLOSE_PIPES.C
-void	close_pipes_children(size_t position, t_pipex *p);
-void	close_pipes_parent(size_t position, t_pipex *p);
+void	close_pipes_children(size_t pos, t_pipex *p);
+void	close_pipes_parent(size_t pos, t_pipex *p);
 
 // HERE_DOC.C
 void	here_doc(char *end_token);

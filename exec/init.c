@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/11 21:38:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:42:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	add_slash(t_pipex *p)
 	size_t	i;
 	char	*tmp;
 
+	if (p->nbr_paths < 1)
+		return ;
 	i = 0;
 	while (p->paths[i])
 	{
