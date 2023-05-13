@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 17:06:43 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:32:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ int	found_cmd(char **cmd)
 		{
 			if (does_cmd_exist(cmd[0]))
 				return (1);
-			ft_putstr_fd("Minishell: ", 2);
-			ft_putstr_fd(cmd[0], 2);
-			ft_putstr_fd(": Command not found\n", 2);
+			ft_printf_fd(2, "Minishell: %s: Command not found\n", cmd[0]);
 			return (0);
 		}
 		i++;

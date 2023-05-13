@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   ft_printnbr_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 17:17:30 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 18:05:06 by fgeorgea         ###   ########.fr       */
+/*   Created: 2022/10/19 17:23:23 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/05/13 17:27:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../libft.h"
 
-void	pwd_builtin(void)
+size_t	ft_printnbr(long int nb, int fd)
 {
-	char	*pwd;
+	size_t		len;
 
-	pwd = getcwd(NULL, 0);
-	if (pwd)
-		printf("%s\n", pwd);
+	if (nb < 0)
+	{
+		ft_printchar('-', fd);
+		ft_printnbr(-nb, fd);
+	}
+	else if (nb > 9)
+	{
+		ft_printnbr(nb / 10, fd);
+		ft_printnbr(nb % 10, fd);
+	}
 	else
-		g_sh->pipe_exit = 1;
+		ft_printchar(nb + 48, fd);
+	len = ft_nbrlen(nb);
+	return (len);
 }

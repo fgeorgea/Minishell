@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 16:34:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:12:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	init_struct_pipex(void)
 	p->env_array = NULL;
 	p->pids = NULL;
 	p->pipefd = NULL;
+	g_sh->pipe_exit = 0;
 	p->nbr_cmds = lstsize_cmd();
 	p->nbr_pipe = p->nbr_cmds - 1;
 	p->nbr_fork = p->nbr_cmds;

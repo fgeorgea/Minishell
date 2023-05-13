@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 16:42:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:28:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_valid_export(const char *str)
 
 	i = 0;
 	len = 0;
-	if (!ft_isalpha(str[0]))
+	if (!ft_isalpha(str[0]) && str[0] != '_')
 		return (0);
 	while (str[len] && (str[len] != '=' && str[len] != '+'))
 		len++;
@@ -27,7 +27,7 @@ static int	check_valid_export(const char *str)
 		return (0);
 	while (i < len)
 	{
-		if (!ft_isalnum(str[i]))
+		if (!ft_isalnum(str[i]) && str[i] != '_')
 			return (0);
 		i++;
 	}
@@ -105,6 +105,12 @@ void	export_builtin(const char **strs)
 	{
 		if (check_valid_export(strs[i]))
 			check_append(strs[i]);
+		else
+		{
+			ft_printf_fd(2, "Minishell: export: '%s': not a valid identifier\n",
+			strs[i]);
+			g_sh->pipe_exit = 1;
+		}
 		i++;
 	}
 	lst_to_array(&g_sh->env);

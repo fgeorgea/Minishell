@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 01:57:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:44:03 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,7 @@ int	open_infile(t_cmd *cmd)
 		return (0);
 	if (!file_exist(redir->key) && redir->mode != HEREDOC)
 	{
-		ft_putstr_fd(g_sh->name, 2);
-		ft_putstr_fd(redir->key, 2);
-		ft_putstr_fd(": file not found\n", 2);
+		ft_printf_fd(2, "%s: %s: file not found\n", g_sh->name, redir->key);
 		exit(1);
 	}
 	if (redir->mode == IN)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 12:46:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:32:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int	is_valid_key(const char *key)
 	size_t	i;
 
 	i = 0;
-	if (!ft_isalpha(key[0]))
+	if (!ft_isalpha(key[0]) && key[0] != '_')
 		return (0);
 	while (key[i])
 	{
-		if (!ft_isalnum(key[i]))
+		if (!ft_isalnum(key[i]) && key[i] != '_')
 			return (0);
 		i++;
 	}
@@ -65,13 +65,13 @@ void	unset_builtin(const char **vars)
 		return ;
 	while (vars[i])
 	{
-		if (is_valid_key(vars[i]))
+		if (is_valid_key(vars[i]) && !compare_keys(vars[i], "_"))
 			delete_var_env(vars[i]);
-		else
+		if (!is_valid_key(vars[i]))
 		{
-			ft_putstr_fd("Minishell: unset: '", 2);
-			ft_putstr_fd((char *)vars[i], 2);
-			ft_putstr_fd("': not a valid identifier\n", 2);
+			ft_printf_fd(2, "Minishell: unset: %s: not a valid identifier\n",
+				vars[i]);
+			g_sh->pipe_exit = 1;
 		}
 		i++;
 	}

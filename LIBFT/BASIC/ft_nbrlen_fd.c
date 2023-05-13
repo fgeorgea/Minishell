@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   ft_nbrlen_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 17:17:30 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 18:05:06 by fgeorgea         ###   ########.fr       */
+/*   Created: 2022/10/21 19:51:26 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/05/13 17:27:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../libft.h"
 
-void	pwd_builtin(void)
+size_t	ft_nbrlen(long int nb)
 {
-	char	*pwd;
+	size_t	len;
+	int		is_neg;
 
-	pwd = getcwd(NULL, 0);
-	if (pwd)
-		printf("%s\n", pwd);
-	else
-		g_sh->pipe_exit = 1;
+	is_neg = 0;
+	len = 1;
+	if (nb < 0)
+	{
+		is_neg = 1;
+		nb *= -1;
+	}
+	while (nb >= 10)
+	{
+		nb /= 10;
+		len++;
+	}
+	return (len + is_neg);
 }

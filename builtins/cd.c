@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 16:48:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:10:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ static void	ft_chdir(const char *dir)
 		ft_exit(EXIT_PWD_FAILURE);
 	if (chdir(dir) == -1)
 	{
-		ft_putstr_fd("Minishell: cd: ", 2);
-		ft_putstr_fd((char *)dir, 2);
-		ft_putstr_fd(": No such file or directory\n", 2);
+		ft_printf_fd(2, "Minishell: cd: %s: No such file or directory\n", dir);
+		g_sh->pipe_exit = 1;
 		return ;
 	}
 	change_env_value("PWD", getcwd(NULL, 0));
@@ -44,6 +43,7 @@ void	cd_builtin(const char *str)
 	if (!dir)
 	{
 		ft_putstr_fd("Minishell: cd: HOME not set\n", 2);
+		g_sh->pipe_exit = 1;
 		return ;
 	}
 	ft_chdir(dir);
