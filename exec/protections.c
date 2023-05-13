@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 16:26:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:47:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_waitpid(void)
 			ft_exit(EXIT_WAITPID_FAILURE);
 		i++;
 	}
+	g_sh->pipe_exit /= 256;
 }
 
 void	ft_execve(char *const *argv, char *const *envp)
