@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 18:42:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:34:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	add_slash(t_pipex *p)
 			ft_free_array_pos((void **)p->paths, i);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
-		free(p->paths[i]);
+		ft_free(p->paths[i]);
 		p->paths[i] = ft_strdup_free(tmp);
 		if (!p->paths[i])
 		{
@@ -62,7 +62,6 @@ void	init_struct_pipex(void)
 	p->env_array = NULL;
 	p->pids = NULL;
 	p->pipefd = NULL;
-	p->exit_macro = 0;
 	p->nbr_cmds = lstsize_cmd();
 	p->nbr_pipe = p->nbr_cmds - 1;
 	p->nbr_fork = p->nbr_cmds;

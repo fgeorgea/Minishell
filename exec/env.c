@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 11:29:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:34:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	change_env_value(const char *key, const char *new_value)
 		return ;
 	if (new_value)
 		tmp = ft_strdup(new_value);
-	if (env->value)
-		free(env->value);
+	ft_free(env->value);
 	env->value = tmp;
 }
 
@@ -74,10 +73,10 @@ static int	join_key_value(t_env *lst, char **array)
 		array[i] = ft_strjoin(tmp, lst->value);
 		if (!array[i])
 		{	
-			free(tmp);
+			ft_free(tmp);
 			return (-1);
 		}
-		free(tmp);
+		ft_free(tmp);
 		lst = lst->next;
 		i++;
 	}

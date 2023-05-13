@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 18:35:17 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:35:19 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,23 @@ static int	try_cat_path_cmd(char **cmd, size_t pos)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	if (does_cmd_exist(str))
 	{
-		free(cmd[0]);
+		ft_free(cmd[0]);
 		cmd[0] = ft_strdup(str);
 		if (!cmd[0])
 			ft_exit(EXIT_MALLOC_FAILURE);
-		free(str);
+		ft_free(str);
 		return (1);
 	}
-	free(str);
+	ft_free(str);
 	return (0);
 }
 
 int	found_cmd(char **cmd)
 {
 	size_t	i;
-	char	*tmp;
 	t_pipex	*p;
 
 	i = 0;
-	tmp = NULL;
 	p = g_sh->pipex;
 	while (p->paths[i])
 	{

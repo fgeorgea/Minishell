@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 18:47:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:26:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ int	ft_open(char *file, int flags, int perm)
 	else
 		fd = open(file, flags, perm);
 	if (fd == -1)
-	{
-		g_sh->pipex->exit_macro = EXIT_OPEN_FAILURE;
 		ft_exit(EXIT_OPEN_FAILURE);
-	}
 	return (fd);
 }
 
@@ -33,10 +30,7 @@ void	ft_close(int *fd)
 	if (*fd == -2)
 		return ;
 	if (close(*fd) == -1)
-	{
-		g_sh->pipex->exit_macro = EXIT_CLOSE_FAILURE;
 		ft_exit(EXIT_CLOSE_FAILURE);
-	}
 	*fd = -2;
 }
 
@@ -46,10 +40,7 @@ void	ft_dup2(int file1, int file2)
 
 	success = dup2(file1, file2);
 	if (success == -1)
-	{
-		g_sh->pipex->exit_macro = EXIT_DUP2_FAILURE;
 		ft_exit(EXIT_DUP2_FAILURE);
-	}
 }
 
 void	ft_waitpid(void)

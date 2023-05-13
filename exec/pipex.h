@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 18:37:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:30:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_pipex
 	size_t	nbr_pipe;
 	size_t	nbr_fork;
 	size_t	nbr_paths;
-	int		exit_macro;
 	char	**paths;
 	char	**env_array;
 	int		**pipefd;
@@ -98,6 +97,7 @@ void	ft_free_array(char **array);
 void	ft_free_array_pos(void **array, int pos);
 void	delete_tmp_file(void);
 void	free_pipex(void);
+void	ft_free(void *ptr);
 
 // PROTECTIONS.C
 void	ft_close(int *fd);

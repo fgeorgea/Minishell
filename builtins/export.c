@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 01:37:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:42:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ static void	add_var_to_env_app(const char *str, size_t pos)
 	else
 	{
 		old_value = ft_strdup(env->value);
-		free(env->value);
+		ft_free(env->value);
 		env->value = ft_strjoin(old_value, value);
 	}
-	free(key);
+	ft_free(key);
 }
 
 static void	add_var_to_env(const char *str, size_t pos)
