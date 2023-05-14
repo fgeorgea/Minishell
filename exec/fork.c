@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 18:43:41 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:44:02 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ pid_t	*create_fork_array(const t_pipex *p)
 {
 	pid_t	*array;
 
-	if (p->nbr_fork < 1)
+	if (p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
 		return (NULL);
 	array = malloc(sizeof(pid_t) * (p->nbr_fork));
 	if (!array)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 18:43:21 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:48:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_pipe(size_t pos)
 	t_pipex	*p;
 
 	p = g_sh->pipex;
-	if (pos == p->nbr_fork - 1)
+	if (pos == p->nbr_pipe)
 		return ;
 	if (pipe(p->pipefd[pos]) == -1)
 		ft_exit(EXIT_PIPE_FAILURE);
@@ -39,7 +39,7 @@ int	**create_pipe_array(const t_pipex *p)
 	int		**array;
 
 	i = 0;
-	if (p->nbr_pipe < 1)
+	if (p->nbr_pipe == 0)
 		return (NULL);
 	array = malloc(sizeof(int *) * (p->nbr_pipe + 1));
 	if (!array)
