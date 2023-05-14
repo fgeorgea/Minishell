@@ -6,11 +6,26 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 20:03:22 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 20:09:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static void	ch_env_dir(char *current_dir, char *new_dir)
+{
+	if (get_env_value("PWD"))
+		change_env_value("PWD", new_dir);
+	else
+		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(ft_strdup("PWD"), new_dir));
+	if (get_env_value("OLDPWD"))
+		change_env_value("OLDPWD", current_dir);
+	else
+	{
+		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(ft_strdup("OLDPWD"),
+			current_dir));
+	}
+}
 
 static void	ft_chdir(const char *dir)
 {
@@ -32,11 +47,7 @@ static void	ft_chdir(const char *dir)
 		ft_free(current_dir);
 		ft_exit(EXIT_PWD_FAILURE);
 	}
-	change_env_value("PWD", new_dir);
-	if (get_env_value("OLDPWD"))
-		change_env_value("OLDPWD", current_dir);
-	else
-		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(ft_strdup("OLDPWD"), current_dir));
+	ch_env_dir(current_dir, new_dir);
 	lst_to_array(&g_sh->env);
 }
 
