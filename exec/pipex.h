@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 02:18:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:26:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	exec_cmds(void);
 // EXEC_UTILS.C
 void	check_cmd(char **cmd);
 void	update_last_cmd(const char **cmd);
+int		check_builtins_n_missing_path(t_pipex *p, t_cmd *cmd);
 
 // PIPE.C
 void	ft_pipe(size_t pos);
