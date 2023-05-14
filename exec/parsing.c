@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 03:02:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:00:21 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,14 @@ static int	try_cat_path_cmd(char **cmd, size_t pos)
 	str = ft_strjoin(p->paths[pos], cmd[0]);
 	if (!str)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	if (does_cmd_exist(str))
+	if (!does_cmd_exist(str))
 	{
-		ft_free(cmd[0]);
-		cmd[0] = ft_strdup(str);
-		if (!cmd[0])
-			ft_exit(EXIT_MALLOC_FAILURE);
 		ft_free(str);
-		return (1);
+		return (0);
 	}
-	ft_free(str);
-	return (0);
+	ft_free(cmd[0]);
+	cmd[0] = str;
+	return (1);
 }
 
 int	found_cmd(char **cmd)
