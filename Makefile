@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/14 16:08:39 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/14 16:47:08 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ MAIN			= main/
 LEX				= lexer/
 EXEC			= exec/
 BUILTINS 		= builtins/
-UTILS			= utils/
 LINKED_LISTS	= linked_lists/
 
 SRCS	=	$(MAIN)main.c \
@@ -49,8 +48,6 @@ SRCS	=	$(MAIN)main.c \
 			$(BUILTINS)call_builtin.c \
 			$(BUILTINS)redirections_builtins.c \
 			$(BUILTINS)exit.c \
-			$(UTILS)string_utils.c \
-			$(UTILS)split_exit.c \
 			$(LEX)lexer.c \
 			$(LEX)lexer_utils.c \
 			$(LEX)shell_split.c \

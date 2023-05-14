@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/14 16:17:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:46:03 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # include "lexer/lexer.h"
 # include "builtins/builtins.h"
 # include "linked_lists/linked_lists.h"
-# include "utils/utils.h"
 
 /*********************    MACROS       ************************/
 
