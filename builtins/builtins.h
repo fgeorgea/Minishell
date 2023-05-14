@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 16:49:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 02:19:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 /*********************      MACROS     ************************/
 
-# define EXIT_PWD_FAILURE 10
+# define EXIT_PWD_FAILURE 12
+# define EXIT_DUP_FAILURE 13
 
 /*********************     FUNCTION    ************************/
 

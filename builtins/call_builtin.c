@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 01:41:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 02:41:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,50 @@ int	is_builtin(const char *cmd)
 	return (0);
 }
 
+static void	builtin_redirection(void)
+{
+	t_pipex	*p;
+	t_cmd	*cmd;
+
+	p = g_sh->pipex;
+	cmd = g_sh->cmd;
+	p->outfile = open_outfile(cmd);
+	p->infile = open_infile(cmd);
+	if (p->infile > 0)
+		ft_close(&p->infile);
+	if (p->outfile > 0)
+		link_files(p->outfile, STDOUT_FILENO);
+	
+}
+
+static int	ft_dup(int fildes)
+{
+	int	dup_stdout;
+
+	if (g_sh->pipex->nbr_cmds > 1)
+		return (-1);
+	dup_stdout = dup(fildes);
+	if (dup_stdout == -1)
+		ft_exit(EXIT_DUP_FAILURE);
+	return (dup_stdout);
+}
+
+static void	restore_stdout(int dup_stdout)
+{
+	if (g_sh->pipex->nbr_cmds > 1)
+		return ;
+	if (close(STDOUT_FILENO) == -1)
+		ft_exit(EXIT_CLOSE_FAILURE);
+	link_files(dup_stdout, STDOUT_FILENO);
+}
+
 void	exec_builtin(const char *cmd, const char **arg)
 {
+	int	dup_stdout;
+
+	dup_stdout = ft_dup(STDOUT_FILENO);
 	update_last_cmd(arg);
+	builtin_redirection();
 	if (compare_keys(cmd, "cd"))
 		cd_builtin(arg[1]);
 	else if (compare_keys(cmd, "echo"))
@@ -39,4 +80,5 @@ void	exec_builtin(const char *cmd, const char **arg)
 		pwd_builtin();
 	else if (compare_keys(cmd, "export"))
 		export_builtin(&arg[1]);
+	restore_stdout(dup_stdout);
 }

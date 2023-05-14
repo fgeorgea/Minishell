@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 16:30:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 02:18:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define EXIT_PIPE_FAILURE 7
 # define EXIT_DUP2_FAILURE 8
 # define EXIT_WAITPID_FAILURE 9
-# define EXIT_GNL_FAILURE 12
-# define EXIT_EXECVE_FAILURE 13
+# define EXIT_GNL_FAILURE 10
+# define EXIT_EXECVE_FAILURE 11
 
 # define IN_FLAGS O_RDONLY
 # define HEREDOC_FLAGS (O_WRONLY | O_CREAT | O_TRUNC)
