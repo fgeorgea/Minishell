@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 03:25:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:56:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	exec_cmds(void)
 	cmd = g_sh->cmd;
 	if (check_builtins_n_missing_path(p, cmd))
 		return ;
-	change_env_value("_", NULL);
+	change_env_value("_", "");
 	while (cmd)
 	{
 		ft_pipe(i);
