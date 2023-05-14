@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 16:10:06 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 23:58:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	change_env_value(const char *key, const char *new_value);
 // REDIR_C
 int		open_outfile(t_cmd *cmd);
 int		open_infile(t_cmd *cmd);
+t_redir	*get_in_redir(t_redir **redirection);
 
 // UTILS_C
 size_t	arraylen(const char **array);

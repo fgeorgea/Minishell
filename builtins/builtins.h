@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 16:08:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 23:49:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	exec_builtin(const char *cmd, const char **arg);
 // REDIRECTIONS_BUILTINS_C
 void	restore_stdout(int dup_stdout);
 int		ft_dup(int fildes);
-void	builtin_redirection(void);
+int		builtin_redirection(void);
 
 #endif
