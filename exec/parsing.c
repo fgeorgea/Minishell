@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 17:32:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:02:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	try_cat_path_cmd(char **cmd, size_t pos)
 {
 	t_pipex	*p;
 	char	*str;
-	
+
 	p = g_sh->pipex;
 	str = ft_strjoin(p->paths[pos], cmd[0]);
 	if (!str)

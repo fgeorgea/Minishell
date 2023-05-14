@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 18:47:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:03:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	ft_waitpid(void)
 
 	i = 0;
 	p = g_sh->pipex;
-	if ((p->nbr_pipe < 1 && is_builtin(g_sh->cmd->cmd[0])) || (p->nbr_paths < 1))
+	if ((p->nbr_pipe < 1 && is_builtin(g_sh->cmd->cmd[0]))
+		|| (p->nbr_paths < 1))
 		return ;
 	while (i < p->nbr_fork)
 	{

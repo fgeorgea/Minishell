@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 01:21:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:04:28 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	sort_env_ascii(void)
 void	print_export(void)
 {
 	t_env	*env;
-	
+
 	if (!g_sh->env)
 		return ;
 	env = g_sh->env;

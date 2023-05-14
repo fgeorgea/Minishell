@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 17:38:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:03:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static int	check_builtins_n_missing_path(t_pipex *p, t_cmd *cmd)
 	}
 	if (!(is_builtin(cmd->cmd[0])) && (p->nbr_paths == 0))
 	{
-		ft_printf_fd(2, "Minishell: %s: No such file or directory\n", cmd->cmd[0]);
+		ft_printf_fd(2, "Minishell: %s: No such file or directory\n",
+			cmd->cmd[0]);
 		return (1);
 	}
 	return (0);

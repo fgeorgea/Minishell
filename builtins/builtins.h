@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 02:19:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:05:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,5 @@ void	cd_builtin(const char *str);
 // CALL_BUILTIN.C
 int		is_builtin(const char *cmd);
 void	exec_builtin(const char *cmd, const char **arg);
-
-
-void	print_array(char **array); // GET RID OF SHAT SHIT !!!
 
 #endif

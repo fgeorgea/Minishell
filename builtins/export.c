@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 18:28:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:03:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	export_builtin(const char **strs)
 		else
 		{
 			ft_printf_fd(2, "Minishell: export: '%s': not a valid identifier\n",
-			strs[i]);
+				strs[i]);
 			g_sh->pipe_exit = 1;
 		}
 		i++;

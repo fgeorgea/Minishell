@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 02:52:51 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:04:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	builtin_redirection(void)
 		ft_close(&p->infile);
 	if (p->outfile > 0)
 		link_files(p->outfile, STDOUT_FILENO);
-	
 }
 
 static int	ft_dup(int fildes)
