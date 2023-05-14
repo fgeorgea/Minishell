@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 03:05:14 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:08:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,38 @@
 
 /*********************     FUNCTION    ************************/
 
-// ECHO.C
+// ECHO_C
 void	echo_builtin(const char **strs);
 
-// ENV.C
+// ENV_C
 void	env_builtin(void);
 
-// EXPORT.C
+// EXPORT_C
 void	export_builtin(const char **strs);
 
-// EXPORT_UTILS.C
+// EXPORT_UTILS_C
 void	sort_env_ascii(void);
 void	print_export(void);
 
-// PWD.C
+// PWD_C
 void	pwd_builtin(void);
 
-// UNSET.C
+// UNSET_C
 void	unset_builtin(const char **vars);
 
-// EXIT.C
+// EXIT_C
 void	exit_builtin(const char **arg);
 
-// CD.C
+// CD_C
 void	cd_builtin(const char *str);
 
-// CALL_BUILTIN.C
+// CALL_BUILTIN_C
 int		is_builtin(const char *cmd);
 void	exec_builtin(const char *cmd, const char **arg);
+
+// REDIRECTIONS_BUILTINS_C
+void	restore_stdout(int dup_stdout);
+int		ft_dup(int fildes);
+void	builtin_redirection(void);
 
 #endif

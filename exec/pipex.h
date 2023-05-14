@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 03:26:24 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:10:06 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,70 +54,70 @@ typedef struct s_pipex
 
 /*********************    FUNCTIONS    ************************/
 
-// PIPEX.C
+// PIPEX_C
 void	ft_pipex(void);
 
-// INIT.C
+// INIT_C
 void	init_struct_pipex(void);
 
-// PARSING.C
+// PARSING_C
 int		found_cmd(char **cmd);
 int		file_exist(const char *str);
 
-// FORK.C
+// FORK_C
 void	ft_fork(size_t pos);
 pid_t	*create_fork_array(const t_pipex *p);
 void	first_child(const t_pipex *p);
 void	last_child(size_t pos, const t_pipex *p);
 void	middle_child(size_t pos, const t_pipex *p);
 
-// FORK_UTILS.C
+// FORK_UTILS_C
 void	link_files(int fildes, int fildes2);
 
-// EXEC.C
+// EXEC_C
 void	exec_cmds(void);
 
-// EXEC_UTILS.C
+// EXEC_UTILS_C
 void	check_cmd(char **cmd);
 void	update_last_cmd(const char **cmd);
 int		check_builtins_n_missing_path(t_pipex *p, t_cmd *cmd);
 
-// PIPE.C
+// PIPE_C
 void	ft_pipe(size_t pos);
 int		**create_pipe_array(const t_pipex *p);
 
-// CLOSE_PIPES.C
+// CLOSE_PIPES_C
 void	close_pipes_children(size_t pos, t_pipex *p);
 void	close_pipes_parent(size_t pos, t_pipex *p);
 
-// HERE_DOC.C
+// HERE_DOC_C
 void	here_doc(char *end_token);
 
-// FREE.C
+// FREE_C
 void	ft_free_array(char **array);
 void	ft_free_array_pos(void **array, int pos);
 void	delete_tmp_file(void);
 void	free_pipex(void);
 void	ft_free(void *ptr);
 
-// PROTECTIONS.C
+// PROTECTIONS_C
 void	ft_close(int *fd);
 void	ft_dup2(int file1, int file2);
 void	ft_waitpid(void);
 int		ft_open(char *file, int flags, int perm);
 void	ft_execve(char *const *argv, char *const *envp);
 
-// ENV.C
+// ENV_C
 void	lst_to_array(t_env **lst);
 char	*get_env_value(const char *key);
 t_env	*get_env_struct(const char *needle);
 void	change_env_value(const char *key, const char *new_value);
 
-// REDIR.C
+// REDIR_C
 int		open_outfile(t_cmd *cmd);
 int		open_infile(t_cmd *cmd);
 
-// UTILS.C
+// UTILS_C
 size_t	arraylen(const char **array);
 int		compare_keys(const char *key, const char *needle);
 
