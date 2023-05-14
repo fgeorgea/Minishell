@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 02:41:38 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 02:52:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	builtin_redirection(void)
 	t_cmd	*cmd;
 
 	p = g_sh->pipex;
+	if (p->nbr_cmds > 1)
+		return ;
 	cmd = g_sh->cmd;
 	p->outfile = open_outfile(cmd);
 	p->infile = open_infile(cmd);
@@ -43,7 +45,7 @@ static int	ft_dup(int fildes)
 	int	dup_stdout;
 
 	if (g_sh->pipex->nbr_cmds > 1)
-		return (-1);
+		return (-2);
 	dup_stdout = dup(fildes);
 	if (dup_stdout == -1)
 		ft_exit(EXIT_DUP_FAILURE);
