@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 16:06:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 20:21:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ void	exec_builtin(const char *cmd, const char **arg)
 	else if (compare_keys(cmd, "export"))
 		export_builtin(&arg[1]);
 	restore_stdout(dup_stdout);
+	if (g_sh->pipex->nbr_cmds > 1)
+		exit(g_sh->pipe_exit);
 }

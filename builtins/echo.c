@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:08:51 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 01:37:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 20:12:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	echo_builtin(const char **strs)
 
 	print_nl = 1;
 	i = 0;
-	if (!strs || !strs[0])
+	if (!strs || !*strs)
 	{
 		printf("\n");
 		return ;
