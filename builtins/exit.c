@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 16:21:23 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 00:33:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	is_valid_exit(const char **args)
 	array_len = arraylen(args);
 	if (array_len > 1)
 	{
+		g_sh->pipe_exit = 1;
 		print_err("exit: ", NULL, "too many arguments\n");
 		return (0);
 	}
