@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/05 16:09:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:17:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		init_signals(void);
 void	ft_free_env(void);
 void	ft_free_global(void);
 void	ft_exit(int status);
+void	print_err(const char *cmd, const char *input, const char *message);
 void	lexer(char *str);
 int		skip_quotes(char *str, int i);
 int		get_next_pipe(char *str, int i);

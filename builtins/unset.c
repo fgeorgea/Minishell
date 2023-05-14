@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 18:32:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:24:17 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ void	unset_builtin(const char **vars)
 			delete_var_env(vars[i]);
 		if (!is_valid_key(vars[i]))
 		{
-			ft_printf_fd(2, "Minishell: unset: %s: not a valid identifier\n",
-				vars[i]);
+			print_err("unset: `", vars[i], "': not a valid identifier\n");
 			g_sh->pipe_exit = 1;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 17:50:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:21:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	is_valid_exit(const char **args)
 	array_len = arraylen(args);
 	if (array_len > 1)
 	{
-		ft_putstr_fd("Minishell: exit: too many arguments\n", 2);
+		print_err("exit: ", NULL, "too many arguments\n");
 		return (0);
 	}
 	i = 0;
@@ -28,8 +28,7 @@ static int	is_valid_exit(const char **args)
 	{
 		if (!ft_isdigit(args[0][i]))
 		{
-			ft_printf_fd(2, "Minishell: exit: %s: numeric argument required\n",
-				args[0]);
+			print_err("exit: ", args[0], ": numeric argument required\n");
 			ft_free_global();
 			exit(255);
 		}
