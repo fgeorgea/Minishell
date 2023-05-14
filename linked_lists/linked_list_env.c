@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 12:14:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:57:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	del_one_env(t_env *env)
 {
 	if (!env)
 		return ;
-	if (env->key)
-		free(env->key);
-	if (env->value)
-		free(env->value);
-	free(env);
+	ft_free(env->key);
+	ft_free(env->value);
+	ft_free(env);
 }
 
 int	lstsize_env(t_env **lst)
@@ -73,7 +71,11 @@ t_env	*ft_lstnew_env(char *key, char *value)
 
 	new = malloc(sizeof(t_env));
 	if (!new)
-		return (0);
+	{
+		ft_free(key);
+		ft_free(value);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
 	new->key = key;
 	new->value = value;
     new->next = NULL;
