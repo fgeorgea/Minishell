@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 20:30:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:30:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv, char **env)
 	}
 	while (1)
 	{
-		g_sh->str = readline("$>");
+		g_sh->str = readline("\033[0;95mDopeorge$>\033[0;39m");
 		if (!g_sh->str)
 			ft_exit(EXIT_SUCCESS);
 		if (*g_sh->str)
