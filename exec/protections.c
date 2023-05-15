@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 15:51:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:39:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_waitpid(void)
 	if ((p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
 		|| (p->nbr_paths < 1))
 		return ;
-	while (i < p->nbr_fork)
+	while ((i < p->nbr_fork) && p->pids[i] && p->pids[i] != -1)
 	{
 		success = waitpid(p->pids[i], &g_sh->pipe_exit, 0);
 		if (success == -1)

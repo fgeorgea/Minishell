@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 16:56:14 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:28:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	exec_cmds(void)
 	while (cmd)
 	{
 		ft_pipe(i);
-		ft_fork(i);
+		if (!ft_fork(i))
+			return ;
 		if (p->pids[i] == 0)
 			children(i, cmd, p);
 		close_pipes_parent(i, p);

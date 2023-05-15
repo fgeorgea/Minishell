@@ -3,23 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 15:44:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:37:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_fork(size_t pos)
+int	ft_fork(size_t pos)
 {
 	t_pipex	*p;
 
 	p = g_sh->pipex;
 	p->pids[pos] = fork();
 	if (p->pids[pos] == -1)
-		ft_exit(EXIT_FORK_FAILURE);
+	{
+		g_sh->pipe_exit = 1;
+		perror(NULL);
+		return (0);
+	}
+	return (1);
 }
 
 pid_t	*create_fork_array(const t_pipex *p)
@@ -28,7 +33,7 @@ pid_t	*create_fork_array(const t_pipex *p)
 
 	if (p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
 		return (NULL);
-	array = malloc(sizeof(pid_t) * (p->nbr_fork));
+	array = calloc(sizeof(pid_t), (p->nbr_fork));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	return (array);
