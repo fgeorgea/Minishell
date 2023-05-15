@@ -127,7 +127,10 @@ void	expand(t_token *t, t_list *head)
 		if (t->word[i[0]] == '\'' && !i[3])
 			i[0] = skip_quotes(t->word, i[0]);
 		if (t->word[i[0]] == '"')
-			i[3] = !i[3];
+		{
+			if (i[3] || i[0] != skip_quotes(t->word, i[0]))
+				i[3] = !i[3];
+		}
 		if (t->word[i[0]] == '$' && t->word[i[0] + 1] != ' '
 			&& t->word[i[0] + 1])
 			expand_var(t, i, head);

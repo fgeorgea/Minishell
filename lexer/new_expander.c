@@ -41,10 +41,9 @@ int	join_value_split(char *value, t_list **curr, int *i)
 	}
 	temp2 = ft_strjoin(temp, arr[0]);
 	free(temp);
-	free(arr[0]);
 	if (!temp2)
 	{
-		ft_free_array(&arr[1]);
+		ft_free_array(arr);
 		return (EXIT_MALLOC_FAILURE);
 	}
 	temp = ft_strdup(&t->word[i[2]]);
@@ -52,10 +51,11 @@ int	join_value_split(char *value, t_list **curr, int *i)
 	t->word = temp2;
 	if (!temp)
 	{
-		ft_free_array(&arr[1]);
+		ft_free_array(arr);
 		return (EXIT_MALLOC_FAILURE);
 	}
 	j = 1;
+	free(arr[0]);
 	arr[0] = (char *)(*curr)->next;
 	while (arr[j])
 	{
@@ -138,11 +138,12 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 		}
 		else if (t->word[i[0]] == '"')
 		{
-			if (!i[3])
-				i[5] = i[0];
-			else
+			if (i[3])
 				i[0] = skip_trim(t->word, i);
-			i[3] = !i[3];
+			else
+				i[5] = i[0];
+			if (i[3] || i[0] != skip_quotes(t->word, i[0]))
+				i[3] = !i[3];
 		}
 		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1]) && t->word[i[0] + 1])
 		{
