@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 13:37:53 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:08:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	ft_fork(size_t pos)
 	if (p->pids[pos] == -1)
 	{
 		g_sh->pipe_exit = 1;
-		perror(NULL);
+		close_all_pipes();
+		perror("Minishell: fork");
 		return (0);
 	}
 	return (1);

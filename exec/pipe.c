@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 15:48:38 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:05:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	*createmini_tab(void)
 	array = malloc(sizeof(int) * 2);
 	if (!array)
 		return (NULL);
+	array[0] = -1;
+	array[1] = -1;
 	return (array);
 }
 
@@ -56,4 +58,21 @@ int	**create_pipe_array(const t_pipex *p)
 	}
 	array[i] = NULL;
 	return (array);
+}
+
+void	close_all_pipes(void)
+{
+	t_pipex	*p;
+	size_t	i;
+	
+	i = 0;
+	p = g_sh->pipex;
+	if (!p->pipefd || !*p->pipefd)
+		return ;
+	while (p->pipefd[i])
+	{
+		ft_close(&p->pipefd[i][0]);
+		ft_close(&p->pipefd[i][1]);
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 13:39:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:10:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_open(char *file, int flags, int perm)
 
 void	ft_close(int *fd)
 {
-	if (*fd == -2)
+	if (*fd < 0 || *fd > OPEN_MAX)
 		return ;
 	if (close(*fd) == -1)
 		ft_exit(EXIT_CLOSE_FAILURE);

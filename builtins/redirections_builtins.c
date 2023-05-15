@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_builtins.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:06:31 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 00:01:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:20:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	get_in_redir_builtin(t_cmd *cmd)
 	if (!file_exist(redir->key) && redir->mode != HEREDOC)
 	{
 		print_err(NULL, redir->key, ": file not found\n");
+		g_sh->pipe_exit = 1;
 		return (-1);
 	}
 	if (redir->mode == IN)
@@ -41,15 +42,12 @@ int	builtin_redirection(void)
 	if (p->nbr_cmds > 1)
 		return (1);
 	cmd = g_sh->cmd;
-	p->outfile = open_outfile(cmd);
 	p->infile = get_in_redir_builtin(cmd);
+	if (p->infile == -1)
+		return (0);
 	if (p->infile > 0)
 		ft_close(&p->infile);
-	if (p->infile == -1)
-	{
-		g_sh->pipe_exit = 1;
-		return (0);
-	}
+	p->outfile = open_outfile(cmd);
 	if (p->outfile > 0)
 		link_files(p->outfile, STDOUT_FILENO);
 	return (1);

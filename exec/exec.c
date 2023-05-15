@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 13:28:22 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:20:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 {
-	p->outfile = open_outfile(cmd);
 	p->infile = open_infile(cmd);
+	p->outfile = open_outfile(cmd);
 	close_pipes_children(pos, p);
 	if (pos == 0)
 		first_child(p);

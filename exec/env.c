@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 13:48:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 14:43:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	change_env_value(const char *key, const char *new_value)
 	tmp = NULL;
 	env = get_env_struct(key);
 	if (!env)
-	{
-		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, new_value));
 		return ;
-	}
 	if (new_value)
 	{
 		tmp = ft_strdup(new_value);

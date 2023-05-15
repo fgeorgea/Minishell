@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 13:28:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 14:58:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int		check_builtins_n_missing_path(t_pipex *p, t_cmd *cmd);
 // PIPE_C
 void	ft_pipe(size_t pos);
 int		**create_pipe_array(const t_pipex *p);
+void	close_all_pipes(void);
 
 // CLOSE_PIPES_C
 void	close_pipes_children(size_t pos, t_pipex *p);
