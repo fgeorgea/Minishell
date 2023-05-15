@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 16:34:38 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:34:21 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ void	change_env_value(const char *key, const char *new_value)
 	if (!env)
 		return ;
 	if (new_value)
+	{
 		tmp = ft_strdup(new_value);
+		if (!tmp)
+			ft_exit(EXIT_MALLOC_FAILURE);
+	}
 	ft_free(env->value);
 	env->value = tmp;
 }
