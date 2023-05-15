@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 23:49:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 01:14:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	export_builtin(const char **strs);
 // EXPORT_UTILS_C
 void	sort_env_ascii(void);
 void	print_export(void);
+void	join_values_app(char *key, char *s1, char *s2);
 
 // PWD_C
 void	pwd_builtin(void);

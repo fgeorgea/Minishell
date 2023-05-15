@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 15:05:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 01:34:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	close_all_pipes(void)
 {
 	t_pipex	*p;
 	size_t	i;
-	
+
 	i = 0;
 	p = g_sh->pipex;
 	if (!p->pipefd || !*p->pipefd)
