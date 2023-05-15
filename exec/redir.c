@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 23:56:17 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 10:52:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_redir	*get_out_redir(t_redir **redirection)
 {
-	int				tmp_fd;
+	int		tmp_fd;
 	t_redir	*redir;
 	t_redir	*last;
 

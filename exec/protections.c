@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 15:24:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 00:33:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_waitpid(void)
 {
 	size_t	i;
 	int		success;
+	int		status;
 	t_pipex	*p;
 
 	i = 0;
@@ -56,11 +57,14 @@ void	ft_waitpid(void)
 		return ;
 	while ((i < p->nbr_fork) && p->pids[i] && p->pids[i] != -1)
 	{
-		success = waitpid(p->pids[i], &g_sh->pipe_exit, 0);
+		success = waitpid(p->pids[i], &status, 0);
 		if (success == -1)
 			ft_exit(EXIT_WAITPID_FAILURE);
 		i++;
 	}
+	if (g_sh->pipe_exit != 0)
+		return ;
+	g_sh->pipe_exit = status;
 	g_sh->pipe_exit /= 256;
 }
 
