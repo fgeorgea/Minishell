@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 12:56:50 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 00:59:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,25 @@ static void	add_var_to_env_app(const char *str, size_t pos)
 	t_env	*env;
 	char	*key;
 	char	*value;
-	char	*old_value;
+	char	*join_value;
 
 	key = ft_substr(str, 0, pos - 1);
 	value = ft_strdup(&str[pos + 1]);
 	env = get_env_struct(key);
 	if (!env)
-	{
 		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, value));
-		return ;
-	}
-	if (!env->value)
+	else if (env && !env->value)
 		env->value = value;
 	else
 	{
-		old_value = ft_strdup(env->value);
-		ft_free(env->value);
-		env->value = ft_strjoin(old_value, value);
+		join_value = ft_strjoin(env->value, value);
+		if (!join_value)
+			ft_exit(EXIT_MALLOC_FAILURE);
+		change_env_value(key, join_value);
+		ft_free(join_value);
 	}
 	ft_free(key);
+	ft_free(value);
 }
 
 static void	add_var_to_env(const char *str, size_t pos)
@@ -77,13 +77,9 @@ static void	add_var_to_env(const char *str, size_t pos)
 	}
 	env = get_env_struct(key);
 	if (!env)
-	{
-		ft_free(key);
-		ft_free(value);
 		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, value));
-		return ;
-	}
-	change_env_value(key, value);
+	else
+		change_env_value(key, value);
 	ft_free(key);
 	ft_free(value);
 }
