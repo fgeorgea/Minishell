@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 14:43:24 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:03:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	lst_to_array(t_env **lst)
 		return ;
 	lstsize = lstsize_env(lst);
 	tmp = *lst;
+	ft_free_array(g_sh->pipex->env_array);
 	array = malloc(sizeof(char *) * (lstsize + 1));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);
@@ -106,7 +107,5 @@ void	lst_to_array(t_env **lst)
 		ft_free_array(array);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
-	if (g_sh->pipex->env_array)
-		ft_free_array(g_sh->pipex->env_array);
 	g_sh->pipex->env_array = array;
 }
