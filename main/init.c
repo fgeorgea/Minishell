@@ -94,6 +94,9 @@ void	init_shell_lvl(void)
 	}
 	if (g_sh->env)
 	{
+		tmp = g_sh->env;
+		while (tmp->next)
+			tmp = tmp->next;
 		tmp->next = malloc(sizeof(t_env));
 		tmp = tmp->next;
 	}
