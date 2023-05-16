@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/15 13:43:31 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:08:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,33 @@ void	init_shell(char **argv, char **env)
 		ft_exit(EXIT_MALLOC_FAILURE);
 }
 
+void	kill_all_children(void)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < g_sh->pipex->nbr_fork)
+	{
+		if (g_sh->pipex->pids[i] && g_sh->pipex->pids[i] != -1)
+			kill(g_sh->pipex->pids[i], SIGINT);
+		i++;
+	}
+}
+
 void	catch_kill(int sig)
 {
 	if (sig == SIGINT)
 	{
+		//if (g_sh->is_in_heredoc)
+			//kill_heredoc
+		g_sh->pipe_exit = 1;
 		write(1, "\n", 1);
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
+		if (!g_sh->pipex || !g_sh->pipex->is_in_child)
+		{
+			rl_on_new_line();
+			rl_replace_line("", 0);
+			rl_redisplay();
+		}
 	}
 }
 

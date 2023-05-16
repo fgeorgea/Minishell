@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:23:31 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/11 01:13:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:13:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ int	insert_value(t_token *t, char *key, char *value, int *i)
 
 	tmp = malloc(sizeof(char) * (ft_strlen(t->word)
 				+ ft_strlen(value) - ft_strlen(key)));
-	free(key);
+	ft_free(key);
 	if (!tmp)
 	{
 		if (i[4])
-			free(value);
+			ft_free(value);
 		return (EXIT_MALLOC_FAILURE);
 	}
 	copy_value(t, value, tmp, i);
 	if (i[4])
-		free(value);
-	free(t->word);
+		ft_free(value);
+	ft_free(t->word);
 	t->word = tmp;
 	return (0);
 }
@@ -91,7 +91,7 @@ void static	expand_var(t_token *t, int *i, t_list *head)
 		value = ft_itoa(g_sh->pipe_exit);
 		if (!value)
 		{
-			free(tmp);
+			ft_free(tmp);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}

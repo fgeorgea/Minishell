@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 01:14:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:30:46 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # define EXIT_PWD_FAILURE 12
 # define EXIT_DUP_FAILURE 13
+# define CD_RM "cd: error retrieving current directory: getcwd: cannot access\
+parent directories"
 
 /*********************     FUNCTION    ************************/
 

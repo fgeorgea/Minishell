@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:53:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:41:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:14:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	free_token(void *t)
 	t_token	*token;
 
 	token = t;
-	free(token->word);
-	free(token);
+	ft_free(token->word);
+	ft_free(token);
 }
 
 void	display_syntax_err(void)

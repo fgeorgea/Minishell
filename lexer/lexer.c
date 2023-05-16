@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:16:09 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:40:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:14:19 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	create_token_list(int i, t_list **head, char **arr)
 	{
 		ft_lstclear(head, &free);
 		ft_free_array(arr);
-		free(tmp);
+		ft_free(tmp);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	ft_lstadd_back(head, temp);
@@ -52,7 +52,7 @@ t_list	*pre_token(char *str)
 		create_token_list(i, &head, arr);
 		i++;
 	}
-	free(arr);
+	ft_free(arr);
 	return (head);
 }
 

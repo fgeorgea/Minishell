@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 14:58:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:55:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_pipex
 	int		infile;
 	int		outfile;
 	int		here_doc;
+	int		is_in_child;
 	size_t	nbr_cmds;
 	size_t	nbr_pipe;
 	size_t	nbr_fork;
@@ -93,6 +94,9 @@ void	close_pipes_parent(size_t pos, t_pipex *p);
 
 // HERE_DOC_C
 void	here_doc(char *end_token);
+void	ft_here_doc_exp(char *end_token);
+
+// EXPAND_HERE_DOC_C
 void	expand_heredoc(char **str);
 
 // FREE_C

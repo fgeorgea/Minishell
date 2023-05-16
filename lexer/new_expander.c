@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:49:42 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/12 18:03:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:14:44 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int	join_value_split(char *value, t_list **curr, int *i)
 		return (EXIT_MALLOC_FAILURE);
 	}
 	temp2 = ft_strjoin(temp, arr[0]);
-	free(temp);
+	ft_free(temp);
 	if (!temp2)
 	{
 		ft_free_array(arr);
 		return (EXIT_MALLOC_FAILURE);
 	}
 	temp = ft_strdup(&t->word[i[2]]);
-	free(t->word);
+	ft_free(t->word);
 	t->word = temp2;
 	if (!temp)
 	{
@@ -55,7 +55,7 @@ int	join_value_split(char *value, t_list **curr, int *i)
 		return (EXIT_MALLOC_FAILURE);
 	}
 	j = 1;
-	free(arr[0]);
+	ft_free(arr[0]);
 	arr[0] = (char *)(*curr)->next;
 	while (arr[j])
 	{
@@ -71,9 +71,9 @@ int	join_value_split(char *value, t_list **curr, int *i)
 	}
 	i[0] = ft_strlen(arr[j - 1]);
 	t->word = ft_strjoin(arr[j - 1], temp);
-	free(arr[j - 1]);
-	free(arr);
-	free(temp);
+	ft_free(arr[j - 1]);
+	ft_free(arr);
+	ft_free(temp);
 	//if (!t->word)
 	return (EXIT_SUCCESS);
 }
@@ -90,7 +90,7 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 		value = ft_itoa(g_sh->pipe_exit);
 		if (!value)
 		{
-			free(key);
+			ft_free(key);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -105,7 +105,7 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 		if (insert_value(t, key, value, i))
 		{
 			if (i[4])
-				free(value);
+				ft_free(value);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -115,7 +115,7 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 		if (join_value_split(value, curr, i))
 		{
 			if (i[4])
-				free(value);
+				ft_free(value);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -158,7 +158,7 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 void	expander(t_list *head)
 {
 	t_list	*curr;
-	t_list	*las
+	t_list	*last;
 	t_token	*content;
 	int		v;
 

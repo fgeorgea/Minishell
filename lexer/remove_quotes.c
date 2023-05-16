@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:23:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:49:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:15:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	trim_quotes(t_token *t, t_list *head)
 			if (i != j)
 			{
 				tmp = get_trimmed_str(t, head, i, j);
-				free(t->word);
+				ft_free(t->word);
 				t->word = tmp;
 				i = j - 2;
 			}

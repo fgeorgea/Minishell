@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:14:55 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:46:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:16:43 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,10 +133,10 @@ t_list	*new_redir(t_list *curr, t_list **prev, t_list **head)
 		(*prev)->next = curr->next->next;
 		ret = (*prev)->next;
 	}
-	free(curr->next->content);
-	free(curr->next);
+	ft_free(curr->next->content);
+	ft_free(curr->next);
 	free_token(curr->content);
-	free(curr);
+	ft_free(curr);
 	return (ret);
 }
 
@@ -167,9 +167,9 @@ void	add_cmd_arg(t_list **head, int n, t_list *curr, t_cmd *cmd)
 		t = (*head)->content;
 		tmp = (*head);
 		*head = (*head)->next;
-		free(tmp);
+		ft_free(tmp);
 		cmd->cmd[i] = t->word;
-		free(t);
+		ft_free(t);
 		i++;
 	}
 	if (*head == NULL)
@@ -180,7 +180,7 @@ void	add_cmd_arg(t_list **head, int n, t_list *curr, t_cmd *cmd)
 	{
 		tmp = (*head);
 		*head = (*head)->next;
-		free(tmp);
+		ft_free(tmp);
 		free_token(t);
 		return ;
 	}
@@ -190,7 +190,7 @@ void	add_cmd_arg(t_list **head, int n, t_list *curr, t_cmd *cmd)
 		ft_lstclear(head, &free_token);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
-	free(t->word);
+	ft_free(t->word);
 	t->word = str;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:09:38 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 13:09:55 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:41:50 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_here_exp_var(char *str, int *i)
 	var = ft_strndup(&str[i[1] + 1], i[0] - i[1] - 1);
 	if (!var)
 	{
-		free(str);
+		ft_free(str);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	return (var);
@@ -37,8 +37,8 @@ char	*get_here_exp_value(char *str, int *i, char *var)
 		value = ft_itoa(g_sh->pipe_exit);
 		if (!value)
 		{
-			free(str);
-			free(var);
+			ft_free(str);
+			ft_free(var);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
 	}
@@ -84,18 +84,18 @@ char	*insert_exp_heredoc(char *str, char *var, char *value, int *i)
 	char	*new;
 
 	new = malloc(sizeof(char) * (ft_strlen(str) + ft_strlen(value) - ft_strlen(var)));
-	free(var);
+	ft_free(var);
 	if (!new)
 	{
-		free(str);
+		ft_free(str);
 		if (i[2])
-			free(value);
+			ft_free(value);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	copy_value_here_exp(str, value, i, new);
-	free(str);
+	ft_free(str);
 	if (i[2])
-		free(value);
+		ft_free(value);
 	return (new);
 }
 
@@ -114,9 +114,6 @@ void	expand_heredoc(char **str)
 			var = get_here_exp_var(*str, i);
 			value = get_here_exp_value(*str, i, var);
 			*str = insert_exp_heredoc(*str, var, value, i);
-			free(var);
-			if (i[2])
-				free(value);
 		}
 		i[0]++;
 	}

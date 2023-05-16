@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:44:22 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/02 15:19:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:16:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ t_list	*split_token(t_list *current, t_list *head)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	i = 1;
-	free(tmp->word);
-	free(tmp);
+	ft_free(tmp->word);
+	ft_free(tmp);
 	current->content = 0;
 	tmp = malloc(sizeof(t_token));
 	if (!tmp)
@@ -138,7 +138,7 @@ t_list	*split_token(t_list *current, t_list *head)
 		{
 			ft_lstclear(&head, &free_token);
 			ft_free_array(arr);
-			free(tmp);
+			ft_free(tmp);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
 		temp2 = current->next;
@@ -147,7 +147,7 @@ t_list	*split_token(t_list *current, t_list *head)
 		current->next = temp2;
 		i++;
 	}
-	free(arr);
+	ft_free(arr);
 	return (current->next);
 }
 

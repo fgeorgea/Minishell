@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 13:15:08 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/04/26 13:15:21 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:15:45 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ char	**free_split(char **tab)
 	{
 		while (tab[i])
 		{
-			free(tab[i]);
+			ft_free(tab[i]);
 			i++;
 		}
-		free(tab);
+		ft_free(tab);
 	}
 	return (0);
 }
