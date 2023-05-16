@@ -35,6 +35,7 @@ SRCS	=	$(MAIN)main.c \
 			$(EXEC)env.c \
 			$(EXEC)redir.c \
 			$(EXEC)protections.c \
+			$(EXEC)expand_heredoc.c \
 			$(LINKED_LISTS)linked_list_env.c \
 			$(LINKED_LISTS)linked_list_cmd.c \
 			$(LINKED_LISTS)linked_list_redir.c \

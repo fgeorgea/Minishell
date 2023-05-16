@@ -93,6 +93,7 @@ void	close_pipes_parent(size_t pos, t_pipex *p);
 
 // HERE_DOC_C
 void	here_doc(char *end_token);
+void	expand_heredoc(char **str);
 
 // FREE_C
 void	ft_free_array(char **array);

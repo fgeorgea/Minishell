@@ -158,7 +158,7 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 void	expander(t_list *head)
 {
 	t_list	*curr;
-	t_list	*last;
+	t_list	*las
 	t_token	*content;
 	int		v;
 
@@ -176,7 +176,7 @@ void	expander(t_list *head)
 			else
 				curr = ex_trim_split(curr, content, head);
 		}
-		else if (v)
+		else if (v && !is_heredoc(last))
 		{
 			expand(content, head);
 			if (has_space(content->word))
