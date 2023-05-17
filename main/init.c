@@ -114,6 +114,9 @@ void	init_shell_lvl(void)
 
 void	init_shell(char **argv, char **env)
 {
+	char	*key;
+	char	*var;
+
 	g_sh = malloc(sizeof(t_shell));
 	if (!g_sh)
 		ft_exit(EXIT_MALLOC_FAILURE);
@@ -123,10 +126,36 @@ void	init_shell(char **argv, char **env)
 	g_sh->name = argv[0];
 	g_sh->pipe_exit = 0;
 	init_env(env);
+	if (!get_env_struct("_"))
+	{
+		key = ft_strdup("_");
+		if (!key)
+			ft_exit(EXIT_MALLOC_FAILURE);
+		var = ft_strdup("minishell");
+		if (!var)
+		{
+			free(key);
+			ft_exit(EXIT_MALLOC_FAILURE);
+		}
+		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, var));
+	}
+	if (!get_env_struct("PWD"))
+	{
+		var = getcwd(NULL, 0);
+		if (!var)
+			ft_exit(EXIT_MALLOC_FAILURE);
+		key = ft_strdup("PWD");
+		if (!key)
+		{
+			free(key);
+			ft_exit(EXIT_MALLOC_FAILURE);
+		}
+		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, var));
+	}
 	init_shell_lvl();
 	if (!g_sh->env)
 		ft_exit(EXIT_MALLOC_FAILURE);
-}\
+}
 
 int	init_signals(void)
 {
