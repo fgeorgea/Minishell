@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 16:55:24 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/17 23:37:32 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 static void	add_slash(t_pipex *p)
 {
 	size_t	i;
-	char	*tmp;
+	char	*new_str;
 
 	if (p->nbr_paths == 0)
 		return ;
 	i = 0;
 	while (p->paths[i])
 	{
-		tmp = ft_strjoin(p->paths[i], "/");
-		if (!tmp)
+		new_str = ft_strjoin(p->paths[i], "/");
+		if (!new_str)
 		{
 			ft_free_array_pos((void **)p->paths, i);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
 		ft_free(p->paths[i]);
-		p->paths[i] = tmp;
+		p->paths[i] = new_str;
 		i++;
 	}
 }

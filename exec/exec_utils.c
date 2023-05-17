@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 20:24:16 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/18 00:00:45 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	update_last_cmd(const char **cmd)
 	array_len = 0;
 	if (!cmd || !*cmd)
 		return ;
+	if (g_sh->pipex->nbr_cmds > 1)
+	{
+		change_env_value("_", "");
+		return ;
+	}
 	array_len = arraylen(cmd);
 	change_env_value("_", cmd[array_len - 1]);
 	lst_to_array(&g_sh->env);

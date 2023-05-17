@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_cmd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:22:41 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/04 17:44:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/17 23:49:18 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 int	lstsize_cmd(void)
 {
 	int		i;
-	t_cmd	*tmp;
+	t_cmd	*cmd;
 
 	i = 0;
-	tmp = g_sh->cmd;
-	if (!tmp || !tmp->cmd)
-		return (0);
-	while (tmp)
+	cmd = g_sh->cmd;
+	while (cmd)
 	{
 		i++;
-		tmp = tmp->next;
+		cmd = cmd->next;
 	}
 	return (i);
 }

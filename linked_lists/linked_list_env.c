@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 13:47:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/17 23:39:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	lstsize_env(t_env **lst)
 
 	i = 0;
 	tmp = *lst;
-	if (!lst)
+	if (!lst || !*lst)
 		return (0);
 	while (tmp)
 	{

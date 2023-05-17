@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 17:43:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/17 23:49:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ t_env	*get_env_struct(const char *key)
 {
 	t_env	*env;
 
-	if (!g_sh->env)
-		return (NULL);
 	env = g_sh->env;
 	while (env)
 	{
@@ -51,8 +49,6 @@ char	*get_env_value(const char *key)
 {
 	t_env	*env;
 
-	if (!g_sh->env)
-		return (NULL);
 	env = g_sh->env;
 	while (env)
 	{
@@ -63,49 +59,41 @@ char	*get_env_value(const char *key)
 	return (NULL);
 }
 
-static int	join_key_value(t_env *lst, char **array)
+static void	join_key_value(t_env *lst, char **array)
 {
-	int		i;
+	size_t	i;
 	char	*tmp;
 
 	i = 0;
 	while (lst)
 	{
 		tmp = ft_strjoin(lst->key, "=");
-		if (!tmp)
-			return (-1);
 		array[i] = ft_strjoin(tmp, lst->value);
 		if (!array[i])
-		{	
+		{
 			ft_free(tmp);
-			return (-1);
+			ft_free_array_pos((void **)array, i);
+			ft_exit(EXIT_MALLOC_FAILURE);
 		}
 		ft_free(tmp);
-		lst = lst->next;
 		i++;
+		lst = lst->next;
 	}
 	array[i] = NULL;
-	return (1);
 }
 
 void	lst_to_array(t_env **lst)
 {
 	char	**array;
 	int		lstsize;
-	t_env	*tmp;
+	t_env	*env;
 
-	if (!lst || !*lst)
-		return ;
 	lstsize = lstsize_env(lst);
-	tmp = *lst;
+	env = *lst;
 	ft_free_array(g_sh->pipex->env_array);
 	array = malloc(sizeof(char *) * (lstsize + 1));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	if (!join_key_value(tmp, array))
-	{
-		ft_free_array(array);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
+	join_key_value(env, array);
 	g_sh->pipex->env_array = array;
 }

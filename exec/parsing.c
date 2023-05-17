@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 17:22:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/17 23:33:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static int	try_cat_path_cmd(char **cmd, size_t pos)
 	return (1);
 }
 
-static int	is_relative_path(char *cmd)
+static int	is_relative_path(const char *cmd)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (cmd[i])
