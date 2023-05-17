@@ -76,9 +76,7 @@ void	init_shell_lvl(void)
 	{
 		if (ft_strncmp(tmp->key, "SHLVL", 6) == 0)
 		{
-			printf("%s\n", tmp->value);
 			v = ft_atoi(tmp->value);
-			printf("%d\n", v);
 			free(tmp->value);
 			if (v < 0 || v >= 1000)
 				tmp->value = ft_strdup("0");
@@ -128,46 +126,13 @@ void	init_shell(char **argv, char **env)
 	init_shell_lvl();
 	if (!g_sh->env)
 		ft_exit(EXIT_MALLOC_FAILURE);
-}
-
-void	kill_all_children(void)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < g_sh->pipex->nbr_fork)
-	{
-		if (g_sh->pipex->pids[i] && g_sh->pipex->pids[i] != -1)
-			kill(g_sh->pipex->pids[i], SIGINT);
-		i++;
-	}
-}
-
-void	catch_kill(int sig)
-{
-	if (sig == SIGINT)
-	{
-		//if (g_sh->is_in_heredoc)
-			//kill_heredoc
-		g_sh->pipe_exit = 1;
-		write(1, "\n", 1);
-		if (!g_sh->pipex || !g_sh->pipex->is_in_child)
-		{
-			rl_on_new_line();
-			rl_replace_line("", 0);
-			rl_redisplay();
-		}
-	}
-}
+}\
 
 int	init_signals(void)
 {
 	struct termios	term;
 
-	if (signal(SIGINT, catch_kill) == SIG_ERR)
-		return (EXIT_FAILURE);
-	if (signal(SIGQUIT, catch_kill) == SIG_ERR)
-		return (EXIT_FAILURE);
+	set_signals(DEFAULT);
 	tcgetattr(0, &term);
 	term.c_lflag &= ~ECHOCTL;
 	tcsetattr(0, TCSANOW, &term);

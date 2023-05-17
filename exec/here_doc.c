@@ -12,57 +12,69 @@
 
 #include "../minishell.h"
 
-static int	check_end_heredoc(const char *str, const char *end_token)
+void	heredoc_catch_kill(int sig)
 {
-	size_t	strlen;
-	size_t	end_token_len;
-
-	strlen = ft_strlen(str) - 1;
-	end_token_len = ft_strlen(end_token);
-	if ((strlen == end_token_len) && ft_strncmp(str, end_token, strlen) == 0)
-		return (1);
-	return (0);
+	if (sig == SIGINT)
+	{
+		g_sh->pipe_exit = 1;
+		rl_on_new_line();
+		rl_replace_line("", 0);
+	}
 }
 
 void	here_doc(char *end_token)
 {
 	t_pipex	*p;
 	char	*str;
+	char	*prompt;
 
+	set_signals(SIG_HERE);
 	p = g_sh->pipex;
 	p->here_doc = ft_open(TMP_FILE, HEREDOC_FLAGS, 0644);
+	prompt = ft_strjoin(end_token, "> ");
+	if (!prompt)
+		ft_exit(EXIT_GNL_FAILURE);
 	while (1)
 	{
-		str = get_next_line(STDIN_FILENO);
+		str = readline(prompt);
 		if (!str)
-			ft_exit(EXIT_MALLOC_FAILURE);
-		if (check_end_heredoc(str, end_token))
 			break ;
-		ft_putstr_fd(str, p->here_doc);
-		ft_free(str);
+		if (compare_keys(str, end_token))
+			break ;
+		ft_putendl_fd(str, p->here_doc);
+		free(str);
 	}
-	ft_free(str);
+	free(str);
+	free(prompt);
 	ft_close(&p->here_doc);
+	set_signals(DEFAULT);
 }
 
 void	ft_here_doc_exp(char *end_token)
 {
 	t_pipex	*p;
 	char	*str;
+	char	*prompt;
 
+	set_signals(SIG_HERE);
 	p = g_sh->pipex;
 	p->here_doc = ft_open(TMP_FILE, HEREDOC_FLAGS, 0644);
+	prompt = ft_strjoin(end_token, "> ");
+	if (!prompt)
+		ft_exit(EXIT_GNL_FAILURE);
 	while (1)
 	{
-		str = get_next_line(STDIN_FILENO);
+		str = readline(prompt);
 		if (!str)
-			ft_exit(EXIT_MALLOC_FAILURE);
-		if (check_end_heredoc(str, end_token))
+			break ;
+		if (compare_keys(str, end_token))
 			break ;
 		expand_heredoc(&str);
-		ft_putstr_fd(str, p->here_doc);
-		ft_free(str);
+		ft_putendl_fd(str, p->here_doc);
+		free(str);
 	}
-	ft_free(str);
+	free(str);
+	free(prompt);
 	ft_close(&p->here_doc);
+	set_signals(DEFAULT);
 }

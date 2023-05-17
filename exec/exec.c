@@ -14,6 +14,7 @@
 
 static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 {
+	set_signals(CHILD);
 	p->infile = open_infile(cmd);
 	p->outfile = open_outfile(cmd);
 	close_pipes_children(pos, p);
@@ -46,6 +47,8 @@ void	exec_cmds(void)
 			return ;
 		if (p->pids[i] == 0)
 			children(i, cmd, p);
+		else
+			set_signals(PARENT);
 		close_pipes_parent(i, p);
 		cmd = cmd->next;
 		i++;

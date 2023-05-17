@@ -67,24 +67,17 @@ int	main(int argc, char **argv, char **env)
 	init_shell(argv, env);
 	if (init_signals())
 		ft_exit(EXIT_SIGNAL_FAILURE);
-	t_env	*tmp;
-	tmp = g_sh->env;
-	while (tmp)
-	{
-		printf("%s == %s\n", tmp->key, tmp->value);
-		tmp = tmp->next;
-	}
 	while (1)
 	{
-		g_sh->str = readline("\033[0;95mDopeorge$>\033[0;39m");
+		g_sh->str = readline("\033[0;95mDopeorge$>\033[0;39m ");
 		if (!g_sh->str)
 			ft_exit(EXIT_SUCCESS);
 		if (*g_sh->str)
 			add_history(g_sh->str);
 		lexer(g_sh->str);
-		print_cmd();
 		if (g_sh->cmd)
 			ft_pipex();
+		set_signals(DEFAULT);
 		ft_free(g_sh->str);
 	}
 	return (0);

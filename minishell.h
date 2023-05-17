@@ -29,6 +29,7 @@
 # include "lexer/lexer.h"
 # include "builtins/builtins.h"
 # include "linked_lists/linked_lists.h"
+# include "sig/sig.h"
 
 /*********************    MACROS       ************************/
 
