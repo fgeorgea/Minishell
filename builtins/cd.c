@@ -14,7 +14,7 @@
 
 static void	ch_env_dir(char *current_dir, char *new_dir)
 {
-	if (get_env_value("PWD"))
+	if (get_env_struct("PWD"))
 		change_env_value("PWD", new_dir);
 	else
 		add_pwd(current_dir, new_dir);
@@ -77,10 +77,26 @@ static int	ft_chdir(const char *dir)
 {
 	char	*current_dir;
 	char	*new_dir;
+	char	*tmp;
 
-	current_dir = getcwd(NULL, 0);
-	if (!current_dir)
-		return (cd_crash_handler(dir));
+	if (dir[0] == '/')
+	{
+		tmp = get_env_value("PWD");
+		if (!tmp)
+			current_dir = 0;
+		else
+		{
+			current_dir = ft_strdup(get_env_value("PWD"));
+			if (!current_dir)
+				ft_exit(EXIT_MALLOC_FAILURE);
+		}
+	}
+	else
+	{
+		current_dir = getcwd(NULL, 0);
+		if (!current_dir)
+			return (cd_crash_handler(dir));
+	}
 	if (chdir(dir) == -1)
 	{
 		ft_free(current_dir);
