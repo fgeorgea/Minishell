@@ -69,9 +69,16 @@ t_redir	*get_in_redir(t_redir **redirection)
 			here_doc(redir->key);
 		if (redir->mode == HEREDOC_EXP)
 			ft_here_doc_exp(redir->key);
+		if (redir->mode == IN && !file_exist(redir->key))
+		{
+			print_err(NULL, redir->key, ": file not found\n");
+			exit(1);
+		}
 		if (redir->mode == HEREDOC || redir->mode == IN || redir->mode == HEREDOC_EXP)
 			last = redir;
 		redir = redir->next;
+		if (g_sh->here_doc_status)
+			return (0);
 	}
 	return (last);
 }

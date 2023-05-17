@@ -40,6 +40,8 @@ typedef struct s_shell
 {
 	char	*name;
 	int		pipe_exit;
+	int		here_doc_status;
+	int		is_child;
 	char	*str;
 
 	int		s_err;

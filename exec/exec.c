@@ -15,7 +15,10 @@
 static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 {
 	set_signals(CHILD);
+	g_sh->is_child = CHILD;
 	p->infile = open_infile(cmd);
+	if (g_sh->here_doc_status)
+		exit(EXIT_SUCCESS);
 	p->outfile = open_outfile(cmd);
 	close_pipes_children(pos, p);
 	if (pos == 0)

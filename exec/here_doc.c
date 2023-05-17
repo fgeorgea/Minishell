@@ -47,7 +47,7 @@ void	here_doc(char *end_token)
 	free(str);
 	free(prompt);
 	ft_close(&p->here_doc);
-	set_signals(DEFAULT);
+	set_signals(g_sh->is_child);
 }
 
 void	ft_here_doc_exp(char *end_token)
@@ -76,5 +76,5 @@ void	ft_here_doc_exp(char *end_token)
 	free(str);
 	free(prompt);
 	ft_close(&p->here_doc);
-	set_signals(DEFAULT);
+	set_signals(g_sh->is_child);
 }

@@ -40,6 +40,7 @@ void	catch_here_sigint(int sig)
 {
 	(void)sig;
 	close(0);
+	g_sh->here_doc_status = 1;
 }
 
 void	set_signals(int state)

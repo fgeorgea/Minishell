@@ -15,6 +15,7 @@ LEX				= lexer/
 EXEC			= exec/
 BUILTINS 		= builtins/
 LINKED_LISTS	= linked_lists/
+SIG				= sig/
 
 SRCS	=	$(MAIN)main.c \
 			$(MAIN)free.c \
@@ -60,6 +61,7 @@ SRCS	=	$(MAIN)main.c \
 			$(LEX)parser.c \
 			$(LEX)new_expander.c \
 			$(LEX)expander_utils.c \
+			$(SIG)signal.c
 
 OBJS	=	${SRCS:.c=.o}
 

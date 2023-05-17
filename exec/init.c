@@ -59,6 +59,8 @@ void	init_struct_pipex(void)
 	p->pipefd = NULL;
 	g_sh->pipe_exit = 0;
 	p->is_in_child = 0;
+	g_sh->here_doc_status = 0;
+	g_sh->is_child = PARENT;
 	p->nbr_cmds = lstsize_cmd();
 	p->nbr_pipe = p->nbr_cmds - 1;
 	p->nbr_fork = p->nbr_cmds;
