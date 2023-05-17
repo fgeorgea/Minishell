@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 18:30:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/17 14:06:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define EXIT_PWD_FAILURE 12
 # define EXIT_DUP_FAILURE 13
 # define CD_RM "cd: error retrieving current directory: getcwd: cannot access\
-parent directories"
+ parent directories"
 
 /*********************     FUNCTION    ************************/
 
@@ -47,6 +47,11 @@ void	exit_builtin(const char **arg);
 
 // CD_C
 void	cd_builtin(const char *str);
+
+// CD_UTILS_C
+void	ch_dir_str(char *dir, int *i, int *j);
+void	add_oldpwd(char *current_dir, char *new_dir);
+void	add_pwd(char *current_dir, char *new_dir);
 
 // CALL_BUILTIN_C
 int		is_builtin(const char *cmd);

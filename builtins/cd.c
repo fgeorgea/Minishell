@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 18:41:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/17 14:15:58 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,11 @@ static void	ch_env_dir(char *current_dir, char *new_dir)
 	if (get_env_value("PWD"))
 		change_env_value("PWD", new_dir);
 	else
-	{
-		ft_lstadd_back_env(&g_sh->env,
-			ft_lstnew_env(ft_strdup("PWD"), new_dir));
-	}
+		add_pwd(current_dir, new_dir);
 	if (get_env_struct("OLDPWD"))
 		change_env_value("OLDPWD", current_dir);
 	else
-	{
-		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(ft_strdup("OLDPWD"),
-				current_dir));
-	}
-	ft_free(current_dir);
-	ft_free(new_dir);
+		add_oldpwd(current_dir, new_dir);
 }
 
 static int	test_access(char *str)
@@ -39,41 +31,17 @@ static int	test_access(char *str)
 	char	*dir;
 
 	dir = ft_strdup(str);
+	if (!dir)
+		ft_exit(EXIT_MALLOC_FAILURE);
 	i = ft_strlen(dir) - 1;
 	j = 0;
-	while (i >= 0)
-	{
-		if (dir[i] == '/')
-		{
-			if (dir[i + 1] == '.' && dir[i + 2] == '\0')
-				dir[i] = 0;
-			else if (dir[i + 1] == '.' && dir[i + 2] == '.' && dir[i + 3] == '\0')
-			{
-				dir[i] = 0;
-				j++;
-			}
-			else
-				break ;
-		}
-		i--;
-	}
-	while (i >= 0)
-	{
-		if (dir[i] == '/')
-		{
-			dir[i] = '\0';
-			j--;
-			if (j == 0)
-				break ;
-		}
-		i--;
-	}
-	if (chdir(dir) != - 1)
+	ch_dir_str(dir, &i, &j);
+	if (chdir(dir) != -1)
 	{
 		change_env_value("PWD", dir);
 		return (1);
 	}
-	free(dir);
+	ft_free(dir);
 	return (0);
 }
 
@@ -102,7 +70,6 @@ static int	cd_crash_handler(const char *dir)
 	ret = test_access(new_pwd);
 	if (!ret)
 		perror(CD_RM);
-	printf("%d\n", ret);
 	return (ret);
 }
 

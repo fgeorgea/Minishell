@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 19:57:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:47:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_env	*ft_lstnew_env(char *key, char *value)
 	{
 		ft_free(key);
 		ft_free(value);
-		ft_exit(EXIT_MALLOC_FAILURE);
+		return (NULL);
 	}
 	new->key = key;
 	new->value = value;
