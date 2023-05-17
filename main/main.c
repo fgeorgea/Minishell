@@ -12,55 +12,6 @@
 
 #include "../minishell.h"
 
-void	print_cmd(void)
-{
-	t_cmd	*tmp;
-	t_redir	*temp;
-	int		i;
-
-	tmp = g_sh->cmd;
-	if (!tmp)
-	{
-		printf("No CMD\n");
-		return ;
-	}
-	while (tmp)
-	{
-		i = 1;
-		printf("CMD: %s\nARG: ", tmp->cmd[0]);
-		while (tmp->cmd[i])
-		{
-			printf("%s, ", tmp->cmd[i]);
-			i++;
-		}
-		printf("\n");
-		temp = tmp->redir;
-		if (!temp)
-			printf("No REDIR\n");
-		else
-		{
-			printf("REDIR: ");
-			while (temp)
-			{
-				if (temp->mode == OUT)
-					printf("OUT ");
-				else if (temp->mode == IN)
-					printf("IN ");
-				else if (temp->mode == OUT_APP)
-					printf("OUT_APP ");
-				else if (temp->mode == HEREDOC)
-					printf("HEREDOC ");
-				else
-					printf("HEREDOC_EXP ");
-				printf("%s, ", temp->key);
-				temp = temp->next;
-			}
-			printf("\n");
-		}
-		tmp = tmp->next;
-	}
-}
-
 int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
