@@ -3,34 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 01:33:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:38:43 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	check_valid_export(const char *str)
+static int	check_valid_key(const char *str)
 {
 	size_t	i;
-	size_t	len;
 
 	i = 0;
-	len = 0;
 	if (!ft_isalpha(str[0]) && str[0] != '_')
 		return (0);
-	while (str[len] && (str[len] != '=' && str[len] != '+'))
-		len++;
-	if (!str[len] || (str[len] == '+' && str[len + 1] != '='))
-		return (0);
-	while (i < len)
+	while (str[i] && str[i] != '+' && str[i] != '=')
 	{
-		if (!ft_isalnum(str[i]) && str[i] != '_')
+		if (!ft_isalnum(str[i]))
 			return (0);
 		i++;
 	}
+	if (str[i] && str[i] == '+' && str[i + 1] != '=')
+		return (0);
 	return (1);
 }
 
@@ -93,6 +89,8 @@ static void	check_append(const char *str)
 	size_t	i;
 
 	i = 0;
+	if (!ft_strchr(str, '='))
+		return ;
 	while (str[i] != '=')
 		i++;
 	if (str[i - 1] == '+')
@@ -114,7 +112,7 @@ void	export_builtin(const char **strs)
 	i = 0;
 	while (strs[i])
 	{
-		if (check_valid_export(strs[i]))
+		if (check_valid_key(strs[i]))
 			check_append(strs[i]);
 		else
 		{
