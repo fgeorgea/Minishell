@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/18 18:26:17 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:38:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	ft_strcmp(const char *s1, const char *s2)
 	return (s1[i] - s2[i]);
 }
 
+// Sorts the env array in ascii order with the keys.
 void	sort_env_ascii(void)
 {
 	t_env	*env;
@@ -68,6 +69,10 @@ void	sort_env_ascii(void)
 	lst_to_array(&g_sh->env);
 }
 
+/*
+	Prints the env like so: key="value"
+	'!' -> If a value is set to NULL, it will only print 'key='
+*/
 void	print_export(void)
 {
 	t_env	*env;

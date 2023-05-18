@@ -6,12 +6,16 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 23:35:18 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:42:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/*
+	Create all out redirections and returns the last OUT redir node.
+	Returns NULL if there is no OUT redir.
+*/
 static t_redir	*get_out_redir(t_redir **redirection)
 {
 	int		tmp_fd;
@@ -39,6 +43,10 @@ static t_redir	*get_out_redir(t_redir **redirection)
 	return (last);
 }
 
+/*
+	Opens the outfile and returns the file descriptor.
+	Returns -1 if there is no redir.
+*/
 int	open_outfile(t_cmd *cmd)
 {
 	int		fd;
@@ -54,6 +62,12 @@ int	open_outfile(t_cmd *cmd)
 	return (fd);
 }
 
+/*
+	Opens every heredoc if there are any.
+	Returns the last IN redir.
+	Returns NULL if there is no IN redir.
+	'!' ->exits if there is a non existing infile input.
+*/
 t_redir	*get_in_redir(t_redir **redirection)
 {
 	t_redir	*redir;
@@ -83,6 +97,12 @@ t_redir	*get_in_redir(t_redir **redirection)
 	return (last);
 }
 
+/*
+	Opens the eventual infile.
+	Returns the infile fd.
+	Return 0 if there is no IN redir.
+	'!' -> exits if the file does not exist.
+*/
 int	open_infile(t_cmd *cmd)
 {
 	int		fd;

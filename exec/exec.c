@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/18 14:46:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:29:32 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// All the child execution goes in here.
 static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 {
 	set_signals(CHILD);
@@ -31,6 +32,7 @@ static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 	ft_execve(cmd->cmd, p->env_array);
 }
 
+// This function is the main execution LOOP.
 void	exec_cmds(void)
 {
 	size_t	i;

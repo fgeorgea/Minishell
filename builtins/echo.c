@@ -6,12 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:08:51 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 20:12:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:33:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// Checks whether there is a '-n' option or not.
 static int	is_newline_option(const char *str)
 {
 	size_t	i;

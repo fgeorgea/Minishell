@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 15:34:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:43:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ size_t	arraylen(const char **array)
 	return (i);
 }
 
+
+// Compares 2 strings with strncmp and strings length.
 int	compare_keys(const char *key, const char *needle)
 {
 	size_t	key_len;

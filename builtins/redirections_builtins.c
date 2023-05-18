@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_builtins.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:06:31 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 17:54:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:32:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	get_infile_builtin(t_cmd *cmd)
 		fd = ft_open(TMP_FILE, IN_FLAGS, -1);
 	return (fd);
 }
-
+// Set up redirection for single builtin cmd.
 int	builtin_redirection(void)
 {
 	t_pipex	*p;
@@ -79,6 +79,7 @@ int	builtin_redirection(void)
 	return (1);
 }
 
+// Duplicates the STDOUT fd to restore it later.
 int	ft_dup(int fildes)
 {
 	int	dup_stdout;

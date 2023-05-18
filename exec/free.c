@@ -6,12 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:21:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/13 16:33:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:41:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// Sets pointer to NULL after being freed.
 void	ft_free(void *ptr)
 {
 	if (!ptr)
@@ -62,6 +63,7 @@ void	ft_free_array(char **array)
 	ft_free(array);
 }
 
+// Delete heredoc tmp file.
 void	delete_tmp_file(void)
 {
 	if (access(TMP_FILE, F_OK) != -1)

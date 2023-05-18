@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 16:56:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:21:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void	ft_dup2(int file1, int file2)
 	if (success == -1)
 		ft_exit(EXIT_DUP2_FAILURE);
 }
+
+/*
+	Waits for the child proccesses to finish.
+	Will not proceed if:
+	- There is more than 1 cmd and it is a builtin.
+	- There are no PATHS.
+	Will set the exit code properly by using the status of waitpid.
+*/
 
 void	ft_waitpid(void)
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/18 16:13:31 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/19 01:53:54 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ SRCS	=	$(MAIN)main.c \
 			$(EXEC)expand_heredoc.c \
 			$(LINKED_LISTS)linked_list_env.c \
 			$(LINKED_LISTS)linked_list_cmd.c \
-			$(LINKED_LISTS)linked_list_redir.c \
 			$(BUILTINS)echo.c \
 			$(BUILTINS)env.c \
 			$(BUILTINS)pwd.c \
@@ -94,4 +93,4 @@ fclean:	clean
 
 re:	fclean all
 
-.PHONY:	re clean fclean all libft
+.PHONY:	re clean fclean all

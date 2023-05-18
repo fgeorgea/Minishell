@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/18 16:14:51 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:34:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// Checks if there is only 1 (digit only) arg.
 static int	is_valid_exit(const char **args)
 {
 	size_t	i;

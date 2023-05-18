@@ -6,12 +6,16 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 23:37:32 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:41:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/*
+	ADD_SLASH will add a '/' at the end of every PATH strings.
+	'!' -> Does nothing if there are no PATH strings.
+*/
 static void	add_slash(t_pipex *p)
 {
 	size_t	i;
@@ -34,6 +38,11 @@ static void	add_slash(t_pipex *p)
 	}
 }
 
+
+/*
+	Splits the PATH env string into an array of strings.
+	'!' -> Does nothing if there are no PATH strings.
+*/
 static void	init_paths(t_pipex *p)
 {
 	char	*paths;

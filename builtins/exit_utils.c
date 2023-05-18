@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:05:36 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/18 18:43:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:35:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// Skips the ' ' and '+'
 void	skip_white_space(char **arg)
 {
 	size_t	i;
@@ -29,6 +30,7 @@ void	skip_white_space(char **arg)
 	arg[0] = new_arg;
 }
 
+// Exits the program if the first arg is non numeric.
 void	exit_non_numeric_arg(const char *str)
 {
 	print_err("exit: ", str, ": numeric argument required\n");

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/18 14:51:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:40:35 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// Will find the right path for the external cmd to replace the '_' env value.
 static void	cat_cmd_for_underscore(char **cmd)
 {
 	size_t	i;
@@ -31,6 +32,11 @@ static void	cat_cmd_for_underscore(char **cmd)
 	return ;
 }
 
+/*
+	Updates the '_' env value. Which is the last argument of the last cmd.
+	If the cmd does not have any arg, the value will be the path of the cmd.
+	'!' -> It is set to empty if there are pipes/multiple cmds.
+*/
 void	update_last_cmd(const char **cmd)
 {
 	int	array_len;
@@ -50,6 +56,11 @@ void	update_last_cmd(const char **cmd)
 	lst_to_array(&g_sh->env);
 }
 
+/*
+	Checks if a cmd is a builtin or an external cmd.
+	If it is a builtin, it will execute manually.
+	Otherwise, it will find the right path for the external cmd.
+*/
 void	check_cmd(char **cmd)
 {
 	if (is_builtin(cmd[0]))
@@ -57,6 +68,12 @@ void	check_cmd(char **cmd)
 	found_cmd(cmd);
 }
 
+/*
+	Checks cmd is builtin and executes it outside of child -
+	only if there is one cmd.
+	Checks if there are PATHS, will print an error if an -
+	external cmd is called with no PATH to find it.
+*/
 int	check_builtins_n_missing_path(t_pipex *p, t_cmd *cmd)
 {
 	if (is_builtin(cmd->cmd[0]) && p->nbr_pipe == 0)

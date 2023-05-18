@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 14:15:58 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:33:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// This will basically change the PWD and OLDPWD of the env.
 static void	ch_env_dir(char *current_dir, char *new_dir)
 {
 	if (get_env_struct("PWD"))

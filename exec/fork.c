@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 15:08:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:41:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/*
+	Will fork the main process. 
+	- Returns 1 if the fork is successful.
+	- Returns 0 if the fork fails, and prints an error.
+*/
 int	ft_fork(size_t pos)
 {
 	t_pipex	*p;
@@ -31,7 +36,7 @@ int	ft_fork(size_t pos)
 pid_t	*create_fork_array(const t_pipex *p)
 {
 	pid_t	*array;
-
+	
 	if (p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
 		return (NULL);
 	array = calloc(sizeof(pid_t), (p->nbr_fork));

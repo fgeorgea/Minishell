@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_pipes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 12:11:01 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/12 18:37:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:43:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	close_middle_child(size_t pos, t_pipex *p)
 		ft_close(&p->pipefd[pos][1]);
 }
 
+// Closes all useless pipes in the parent after the children.
 void	close_pipes_parent(size_t pos, t_pipex *p)
 {
 	if (pos == 0)
@@ -54,6 +55,8 @@ void	close_pipes_parent(size_t pos, t_pipex *p)
 		close_middle_child(pos, p);
 }
 
+
+// Closes all useless pipes in the children.
 void	close_pipes_children(size_t pos, t_pipex *p)
 {
 	if (pos == 0 && p->nbr_pipe > 0)
