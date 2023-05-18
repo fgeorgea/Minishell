@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/18 14:43:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:52:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,21 @@
 
 int	does_cmd_exist(const char *str)
 {
-	if (access(str, F_OK | X_OK) != -1)
-		return (1);
-	else
+	int	tmp_fd;
+
+	tmp_fd = open((char *)str, O_WRONLY, -1);
+	if (errno == EISDIR)
+	{
+		ft_close(&tmp_fd);
+		print_err((char *)str, NULL, ": is a directory\n");
+		g_sh->pipe_exit = 126;
 		return (0);
+	}
+	ft_close(&tmp_fd);
+	if (access(str, F_OK | X_OK) == -1)
+		return (0);
+	else
+		return (1);
 }
 
 int	file_exist(const char *str)
@@ -74,9 +85,10 @@ int	found_cmd(char **cmd)
 			return (1);
 		if (i == p->nbr_paths - 1)
 		{
-			
 			if (is_relative_path(cmd[0]) && does_cmd_exist(cmd[0]))
 				return (1);
+			if (errno == EISDIR)
+				return (0);
 			if (!is_relative_path(cmd[0]))
 				print_err(cmd[0], NULL, ": Command not found\n");
 			else

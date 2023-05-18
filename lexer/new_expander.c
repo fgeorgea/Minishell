@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:49:42 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 16:14:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:26:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 			if (i[3] || i[0] != skip_quotes(t->word, i[0]))
 				i[3] = !i[3];
 		}
-		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1]) && t->word[i[0] + 1])
+		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1]) && t->word[i[0] + 1] && t->word[i[0] + 1] != '\'' && t->word[i[0] + 1] != '"')
 		{
 			expand_split(&curr, t, head, i);
 			t = curr->content;

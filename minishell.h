@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/14 16:46:03 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:43:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <string.h>
 # include <signal.h>
 # include <termios.h>
+# include <errno.h>
 # include "LIBFT/libft.h"
 # include "structs.h"
 # include "exec/pipex.h"
