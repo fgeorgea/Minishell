@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/18 14:34:39 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/18 16:13:31 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS	=	$(MAIN)main.c \
 			$(BUILTINS)call_builtin.c \
 			$(BUILTINS)redirections_builtins.c \
 			$(BUILTINS)exit.c \
+			$(BUILTINS)exit_utils.c \
 			$(LEX)lexer.c \
 			$(LEX)lexer_utils.c \
 			$(LEX)shell_split.c \

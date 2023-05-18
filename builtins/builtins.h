@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 14:06:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:13:21 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void	unset_builtin(const char **vars);
 
 // EXIT_C
 void	exit_builtin(const char **arg);
+
+// EXIT_UTILS_C
+void	skip_white_space(char **arg);
+void	exit_non_numeric_arg(const char *str);
 
 // CD_C
 void	cd_builtin(const char *str);

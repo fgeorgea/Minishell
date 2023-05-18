@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/15 00:33:53 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:14:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,23 @@
 static int	is_valid_exit(const char **args)
 {
 	size_t	i;
-	size_t	array_len;
 
-	array_len = arraylen(args);
-	if (array_len > 1)
+	i = 1;
+	if (!ft_isdigit(args[0][0]) && args[0][0] != '-')
+		exit_non_numeric_arg(args[0]);
+	while (args[0][i])
+	{
+		if (!ft_isdigit(args[0][i]))
+			exit_non_numeric_arg(args[0]);
+		i++;
+	}
+	if (arraylen(args) > 1)
 	{
 		g_sh->pipe_exit = 1;
 		print_err("exit: ", NULL, "too many arguments\n");
 		return (0);
 	}
-	i = 0;
-	while (args[0][i])
-	{
-		if (!ft_isdigit(args[0][i]))
-		{
-			print_err("exit: ", args[0], ": numeric argument required\n");
-			ft_free_global();
-			exit(255);
-		}
-		i++;
-	}
 	return (1);
-}
-
-static int	ft_isspace(char c)
-{
-	if (c == ' ' || (c >= '\t' && c <= '\r'))
-		return (1);
-	return (0);
 }
 
 static const char	*ft_getsign(const char *str, int *is_neg)
@@ -56,45 +45,65 @@ static const char	*ft_getsign(const char *str, int *is_neg)
 	return (str);
 }
 
-static long long int	ft_atolli(const char *str)
+static long int	ft_atol(const char *str)
 {
-	int				is_neg;
-	long long int	nbr;
-	long long int	tmp;
+	int			is_neg;
+	long int	nbr;
 
 	is_neg = 1;
 	if (!str)
 		return (0);
 	is_neg = 1;
 	nbr = 0;
-	tmp = 0;
-	while (ft_isspace(*str))
-		str++;
 	str = ft_getsign(str, &is_neg);
 	while (*str >= '0' && *str <= '9')
 	{
 		nbr *= 10;
 		nbr += *str - 48;
-		if (nbr < tmp && is_neg == 1)
-			return (-1);
-		if (nbr < tmp && is_neg == -1)
-			return (0);
-		tmp = nbr;
 		str++;
 	}
 	return (nbr * is_neg);
 }
 
+static int	has_overflow(const char *str)
+{
+	int		arg_len;
+	char	*long_max;
+	char	*long_min;
+
+	long_max = "9223372036854775807";
+	long_min = "-9223372036854775808";
+	arg_len = ft_strlen(str);
+	if (str[0] != '-')
+	{
+		if (arg_len > 19)
+			return (1);
+		if ((ft_strncmp(str, long_max, 19) > 0) && arg_len == 19)
+			return (1);
+	}
+	if (str[0] == '-')
+	{
+		if (arg_len > 20)
+			return (1);
+		if ((ft_strncmp(str, long_min, 20) > 0) && arg_len == 20)
+			return (1);
+	}
+	return (0);
+}
+
 void	exit_builtin(const char **arg)
 {
-	long long int	status;
+	long int	status;
 
 	status = 0;
 	if (!arg || !*arg)
-		ft_exit(status);
+		ft_exit(0);
+	skip_white_space((char **)arg);
 	if (!is_valid_exit(arg))
 		return ;
-	status = ft_atolli(arg[0]);
+	if (has_overflow((arg[0])))
+		exit_non_numeric_arg(arg[0]);
+	status = ft_atol(arg[0]);
 	ft_free_global();
 	exit((unsigned char)status);
 }
