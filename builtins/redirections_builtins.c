@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:06:31 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 14:09:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:41:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	get_infile_builtin(t_cmd *cmd)
 		return (0);
 	if (!file_exist(redir->key) && redir->mode == IN)
 	{
-		print_err(NULL, redir->key, ": file not found", 1);
+		print_err(NULL, redir->key, NSFOD, 1);
 		return (-1);
 	}
 	if (redir->mode == IN)
@@ -57,6 +57,29 @@ static int	get_infile_builtin(t_cmd *cmd)
 		fd = ft_open(TMP_FILE, IN_FLAGS, -1);
 	return (fd);
 }
+
+// Duplicates the STDOUT fd to restore it later.
+int	ft_dup(int fildes)
+{
+	int	dup_stdout;
+
+	if (g_sh->pipex->nbr_fork > 0)
+		return (-2);
+	dup_stdout = dup(fildes);
+	if (dup_stdout == -1)
+		ft_exit(EXIT_DUP_FAILURE);
+	return (dup_stdout);
+}
+
+void	restore_stdout(int dup_stdout)
+{
+	if (g_sh->pipex->nbr_fork > 0)
+		return ;
+	if (close(STDOUT_FILENO) == -1)
+		ft_exit(EXIT_CLOSE_FAILURE);
+	link_files(dup_stdout, STDOUT_FILENO);
+}
+
 // Set up redirection for single builtin cmd.
 int	builtin_redirection(void)
 {
@@ -75,27 +98,10 @@ int	builtin_redirection(void)
 	p->outfile = open_outfile(cmd);
 	if (p->outfile > 0)
 		link_files(p->outfile, STDOUT_FILENO);
+	else if (p->outfile == -1)
+	{
+		perror(NULL);
+		return (0);
+	}
 	return (1);
-}
-
-// Duplicates the STDOUT fd to restore it later.
-int	ft_dup(int fildes)
-{
-	int	dup_stdout;
-
-	if (g_sh->pipex->nbr_cmds > 1)
-		return (-2);
-	dup_stdout = dup(fildes);
-	if (dup_stdout == -1)
-		ft_exit(EXIT_DUP_FAILURE);
-	return (dup_stdout);
-}
-
-void	restore_stdout(int dup_stdout)
-{
-	if (g_sh->pipex->nbr_cmds > 1)
-		return ;
-	if (close(STDOUT_FILENO) == -1)
-		ft_exit(EXIT_CLOSE_FAILURE);
-	link_files(dup_stdout, STDOUT_FILENO);
 }

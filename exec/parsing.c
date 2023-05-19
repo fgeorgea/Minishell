@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 15:29:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:36:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	does_cmd_exist(const char *str)
 	{
 		ft_close(&tmp_fd);
 		print_err((char *)str, NULL, ": is a directory", 126);
+		exit_only_child(126);
 		return (0);
 	}
 	ft_close(&tmp_fd);

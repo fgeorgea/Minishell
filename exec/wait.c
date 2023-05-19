@@ -6,17 +6,19 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:45:41 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 13:56:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 19:32:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	proceed_wait_for_child(t_pipex *p)
+// Will set the exit code properly by using the status of waitpid.
+static void	save_exit_code(int status)
 {
-	if (p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
-		return (0);
-	return (1);
+	if (g_sh->pipe_exit != 0)
+		return ;
+	g_sh->pipe_exit = status;
+	g_sh->pipe_exit /= 256;
 }
 
 /*
@@ -24,7 +26,6 @@ static int	proceed_wait_for_child(t_pipex *p)
 	Will not proceed if:
 	- There is more than 1 cmd and it is a builtin.
 	- There are no PATHS.
-	Will set the exit code properly by using the status of waitpid.
 */
 void	ft_waitpid(void)
 {
@@ -35,9 +36,9 @@ void	ft_waitpid(void)
 
 	i = 0;
 	p = g_sh->pipex;
-	p->is_in_child = 1;
-	if (!proceed_wait_for_child(p))
+	if (p->nbr_fork == 0)
 		return ;
+	p->is_in_child = 1;
 	while ((i < p->nbr_fork) && p->pids[i] && p->pids[i] != -1)
 	{
 		success = waitpid(p->pids[i], &status, 0);
@@ -46,8 +47,5 @@ void	ft_waitpid(void)
 		i++;
 	}
 	p->is_in_child = 0;
-	if (g_sh->pipe_exit != 0)
-		return ;
-	g_sh->pipe_exit = status;
-	g_sh->pipe_exit /= 256;
+	save_exit_code(status);
 }

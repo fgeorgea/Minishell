@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 15:29:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 16:00:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,11 @@ void	check_cmd(char **cmd)
 	Checks if there are PATHS, will print an error if an -
 	external cmd is called with no PATH to find it.
 */
-int	check_builtins_n_missing_path(t_pipex *p, t_cmd *cmd)
+int	check_builtins(t_pipex *p, t_cmd *cmd)
 {
-	if (is_builtin(cmd->cmd[0]) && p->nbr_pipe == 0)
+	if (is_builtin(cmd->cmd[0]) && p->nbr_cmds == 1)
 	{
 		exec_builtin(cmd->cmd[0], (const char **)cmd->cmd);
-		return (1);
-	}
-	if (!(is_builtin(cmd->cmd[0])) && (p->nbr_paths == 0))
-	{
-		print_err(cmd->cmd[0], NULL, NSFOD, 1);
 		return (1);
 	}
 	return (0);

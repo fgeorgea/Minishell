@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 15:29:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 20:31:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	exec_cmds(void);
 // EXEC_UTILS_C
 void	check_cmd(char **cmd);
 void	update_last_cmd(const char **cmd);
-int		check_builtins_n_missing_path(t_pipex *p, t_cmd *cmd);
+int		check_builtins(t_pipex *p, t_cmd *cmd);
 
 // PIPE_C
 void	ft_pipe(size_t pos);
@@ -113,9 +113,11 @@ void	ft_free(void *ptr);
 // PROTECTIONS_C
 void	ft_close(int *fd);
 void	ft_dup2(int file1, int file2);
-void	ft_waitpid(void);
-int		ft_open(char *file, int flags, int perm);
+int		ft_open(char *file, int mode, int perm);
 void	ft_execve(char *const *argv, char *const *envp);
+
+// WAIT_C
+void	ft_waitpid(void);
 
 // ENV_C
 void	lst_to_array(t_env **lst);
@@ -131,5 +133,6 @@ t_redir	*get_in_redir(t_redir **redirection);
 // UTILS_C
 size_t	arraylen(const char **array);
 int		compare_keys(const char *key, const char *needle);
+void	exit_only_child(int exit_code);
 
 #endif

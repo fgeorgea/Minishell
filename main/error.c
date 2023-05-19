@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/19 14:05:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:57:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	print_err(char *cmd, char *input, char *message, int exit_status)
 		ft_putstr_fd(input, 2);
 	if (message)
 		ft_putstr_fd(message, 2);
-	ft_putstr_fd("\n", 2);
 	if (exit_status != -1)
 		g_sh->pipe_exit = exit_status;
 }
