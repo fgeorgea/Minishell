@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/14 16:24:17 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:08:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,7 @@ void	unset_builtin(const char **vars)
 		if (is_valid_key(vars[i]) && !compare_keys(vars[i], "_"))
 			delete_var_env(vars[i]);
 		if (!is_valid_key(vars[i]))
-		{
-			print_err("unset: `", vars[i], "': not a valid identifier\n");
-			g_sh->pipe_exit = 1;
-		}
+			print_err("unset: `", (char *)vars[i], "': not a valid identifier", 1);
 		i++;
 	}
 	lst_to_array(&g_sh->env);

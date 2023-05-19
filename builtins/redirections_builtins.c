@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_builtins.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:06:31 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:32:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:09:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ static int	get_infile_builtin(t_cmd *cmd)
 		return (0);
 	if (!file_exist(redir->key) && redir->mode == IN)
 	{
-		print_err(NULL, redir->key, ": file not found\n");
-		g_sh->pipe_exit = 1;
+		print_err(NULL, redir->key, ": file not found", 1);
 		return (-1);
 	}
 	if (redir->mode == IN)

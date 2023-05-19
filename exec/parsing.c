@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:30:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:29:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	does_cmd_exist(const char *str)
 	if (errno == EISDIR)
 	{
 		ft_close(&tmp_fd);
-		print_err((char *)str, NULL, ": is a directory\n");
-		g_sh->pipe_exit = 126;
+		print_err((char *)str, NULL, ": is a directory", 126);
 		return (0);
 	}
 	ft_close(&tmp_fd);
@@ -91,9 +90,9 @@ int	found_cmd(char **cmd)
 			if (errno == EISDIR)
 				return (0);
 			if (!is_relative_path(cmd[0]))
-				print_err(cmd[0], NULL, ": Command not found\n");
+				print_err(cmd[0], NULL, CNF, 127);
 			else
-				print_err(cmd[0], NULL, ": No such file or directory\n");
+				print_err(cmd[0], NULL, NSFOD, 127);
 			exit(127);
 		}
 		i++;

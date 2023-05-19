@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/18 19:43:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:03:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		init_signals(void);
 void	ft_free_env(void);
 void	ft_free_global(void);
 void	ft_exit(int status);
-void	print_err(const char *cmd, const char *input, const char *message);
+void	print_err(char *cmd, char *input, char *message, int exit_status);
 void	lexer(char *str);
 int		skip_quotes(char *str, int i);
 int		get_next_pipe(char *str, int i);

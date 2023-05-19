@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:33:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:29:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static int	ft_chdir(const char *dir)
 	if (chdir(dir) == -1)
 	{
 		ft_free(current_dir);
-		print_err("cd: ", dir, ": No such file or directory\n");
+		print_err("cd: ", (char *)dir, NSFOD, 1);
 		return (0);
 	}
 	new_dir = getcwd(NULL, 0);
@@ -128,8 +128,7 @@ void	cd_builtin(const char *str)
 	dir = get_env_value("HOME");
 	if (!dir)
 	{
-		print_err("cd: ", NULL, "HOME not set\n");
-		g_sh->pipe_exit = 1;
+		print_err("cd: ", NULL, "HOME not set", 1);
 		return ;
 	}
 	if (!ft_chdir(dir))

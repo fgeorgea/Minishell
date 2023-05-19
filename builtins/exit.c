@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:34:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:39:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ static int	is_valid_exit(const char **args)
 	}
 	if (arraylen(args) > 1)
 	{
-		g_sh->pipe_exit = 1;
-		print_err("exit: ", NULL, "too many arguments\n");
+		print_err("exit: ", NULL, "too many arguments", 1);
 		return (0);
 	}
 	return (1);
@@ -98,7 +97,10 @@ void	exit_builtin(const char **arg)
 
 	status = 0;
 	if (!arg || !*arg)
+	{
+		ft_putstr_fd("exit\n", 2);
 		ft_exit(0);
+	}
 	skip_white_space((char **)arg);
 	if (!is_valid_exit(arg))
 		return ;
@@ -106,5 +108,6 @@ void	exit_builtin(const char **arg)
 		exit_non_numeric_arg(arg[0]);
 	status = ft_atol(arg[0]);
 	ft_free_global();
+	ft_putstr_fd("exit\n", 2);
 	exit((unsigned char)status);
 }

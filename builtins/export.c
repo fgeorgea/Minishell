@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:39:48 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:09:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,7 @@ void	export_builtin(const char **strs)
 			check_append(strs[i]);
 		else
 		{
-			print_err("export: `", strs[i], "': not a valid identifier\n");
-			g_sh->pipe_exit = 1;
+			print_err("export: `", (char *)strs[i], "': not a valid identifier", 1);
 		}
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:40:35 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:29:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	check_builtins_n_missing_path(t_pipex *p, t_cmd *cmd)
 	}
 	if (!(is_builtin(cmd->cmd[0])) && (p->nbr_paths == 0))
 	{
-		print_err(cmd->cmd[0], NULL, ": No such file or directory\n");
+		print_err(cmd->cmd[0], NULL, NSFOD, 1);
 		return (1);
 	}
 	return (0);

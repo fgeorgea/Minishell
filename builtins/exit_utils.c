@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:05:36 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:35:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:10:33 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	skip_white_space(char **arg)
 // Exits the program if the first arg is non numeric.
 void	exit_non_numeric_arg(const char *str)
 {
-	print_err("exit: ", str, ": numeric argument required\n");
+	print_err("exit: ", (char *)str, ": numeric argument required", 255);
 	ft_free_global();
 	exit(255);
 }

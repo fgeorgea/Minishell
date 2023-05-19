@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/18 14:44:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:29:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define EXIT_WAITPID_FAILURE 9
 # define EXIT_GNL_FAILURE 10
 # define EXIT_EXECVE_FAILURE 11
+# define NSFOD ": No such file or directory"
+# define CNF ": Command not found"
 
 # define IN_FLAGS O_RDONLY
 # define HEREDOC_FLAGS (O_WRONLY | O_CREAT | O_TRUNC)
