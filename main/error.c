@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/19 18:57:14 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/20 00:59:05 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	print_err(char *cmd, char *input, char *message, int exit_status)
 		ft_putstr_fd(message, 2);
 	if (exit_status != -1)
 		g_sh->pipe_exit = exit_status;
+	if (g_sh->pipe_exit != 0)
+		perror(NULL);
 }
 
 void	ft_exit(int status)

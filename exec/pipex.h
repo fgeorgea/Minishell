@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 20:31:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/20 01:58:06 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,12 @@ void	last_child(size_t pos, const t_pipex *p);
 void	middle_child(size_t pos, const t_pipex *p);
 
 // FORK_UTILS_C
+void	ft_dup2(int file1, int file2);
 void	link_files(int fildes, int fildes2);
 
 // EXEC_C
 void	exec_cmds(void);
+void	ft_execve(char *const *argv, char *const *envp);
 
 // EXEC_UTILS_C
 void	check_cmd(char **cmd);
@@ -112,9 +114,8 @@ void	ft_free(void *ptr);
 
 // PROTECTIONS_C
 void	ft_close(int *fd);
-void	ft_dup2(int file1, int file2);
-int		ft_open(char *file, int mode, int perm);
-void	ft_execve(char *const *argv, char *const *envp);
+int		ft_open(char *file, int flags, int perm);
+int		ft_open_redir(char *file, int mode, int perm);
 
 // WAIT_C
 void	ft_waitpid(void);

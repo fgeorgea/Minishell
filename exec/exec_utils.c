@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 16:00:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/20 01:56:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,16 @@ int	check_builtins(t_pipex *p, t_cmd *cmd)
 		return (1);
 	}
 	return (0);
+}
+
+void	ft_execve(char *const *argv, char *const *envp)
+{
+	int	success;
+
+	success = execve(argv[0], argv, envp);
+	if (success == -1)
+	{
+		g_sh->pipe_exit = 1;
+		exit_only_child(1);
+	}
 }

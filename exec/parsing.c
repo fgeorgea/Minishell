@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 19:36:25 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/20 02:07:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	does_cmd_exist(const char *str)
 	if (errno == EISDIR)
 	{
 		ft_close(&tmp_fd);
-		print_err((char *)str, NULL, ": is a directory", 126);
-		exit_only_child(126);
+		print_err((char *)str, ": ", NULL, 126);
+		exit(126);
 		return (0);
 	}
 	ft_close(&tmp_fd);
