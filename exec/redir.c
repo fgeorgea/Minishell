@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 17:33:03 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:04:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ static t_redir	*get_out_redir(t_redir **redirection)
 	last = NULL;
 	while (redir)
 	{
-		if (last && (redir->mode == OUT || redir->mode == OUT_APP))
-			test_redir_open(last->key, redir->mode, 0644);
-		if ((redir->mode == OUT || redir->mode == OUT_APP))
+		if (redir->mode == OUT || redir->mode == OUT_APP)
+		{
+			test_redir_open(redir->key, redir->mode, 0644);
 			last = redir;
+		}
 		redir = redir->next;
 	}
 	return (last);

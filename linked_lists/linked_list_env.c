@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 23:39:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:51:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ void	ft_lstadd_back_env(t_env **lst, t_env *new)
 {
     t_env	*last;
 
-	if (!new || !lst)
+	if (!lst)
 		return ;
+	if (!new)
+		ft_exit(EXIT_MALLOC_FAILURE);
 	if (!*lst)
 	{
 		*lst = new;

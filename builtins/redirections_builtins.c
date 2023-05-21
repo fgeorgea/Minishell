@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:06:31 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 17:57:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:08:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ static t_redir	*get_out_redir_builtin(t_redir **redirection)
 		{
 			if (!test_redir_open(redir->key, redir->mode, 0644))
 				return (redir);
-		}
-		if ((redir->mode == OUT || redir->mode == OUT_APP))
 			last = redir;
+		}
 		redir = redir->next;
 	}
 	return (last);

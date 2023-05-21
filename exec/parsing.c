@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/20 02:07:23 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:42:58 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	does_cmd_exist(const char *str)
 	if (errno == EISDIR)
 	{
 		ft_close(&tmp_fd);
-		print_err((char *)str, ": ", NULL, 126);
-		exit(126);
+		print_perror((char *)str, ": ", 126);
 		return (0);
 	}
 	ft_close(&tmp_fd);
@@ -94,7 +93,7 @@ int	found_cmd(char **cmd)
 				print_err(cmd[0], NULL, CNF, 127);
 			else
 				print_err(cmd[0], NULL, NSFOD, 127);
-			exit(127);
+			exit(g_sh->pipe_exit);
 		}
 		i++;
 	}
