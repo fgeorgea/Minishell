@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/21 20:37:32 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:43:02 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ void	init_shell(char **argv, char **env)
 	g_sh->pipe_exit = 0;
 	init_env(env);
 	if_env_not_set();
-	printf("%s\n", get_env_value("SHLVL"));
-	init_shell_lvl();
-	printf("%s\n", get_env_value("SHLVL"));
-	// else
-		// create_sh_lvl();
+	if (get_env_struct("SHLVL"))
+		init_shell_lvl();
+	else
+		create_sh_lvl();
 }
 
 int	init_signals(void)
