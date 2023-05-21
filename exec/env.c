@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/20 21:21:31 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:27:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	change_env_value(const char *key, const char *new_value)
 }
 
 
-// It will return a reference to a specific node based on a given key.
+// Returns a reference to a specific node based on a given key.
 t_env	*get_env_struct(const char *key)
 {
 	t_env	*env;

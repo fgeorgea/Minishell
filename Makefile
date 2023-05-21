@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/21 17:48:52 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/21 20:10:26 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SIG				= sig/
 SRCS	=	$(MAIN)main.c \
 			$(MAIN)free.c \
 			$(MAIN)init.c \
+			$(MAIN)init_utils.c \
 			$(MAIN)error.c \
 			$(EXEC)exec.c \
 			$(EXEC)wait.c \

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 18:51:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 19:35:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,22 @@ int	lstsize_env(t_env **lst)
 	return (i);
 }
 
-static t_env	*ft_lstlast_env(t_env *lst)
+static t_env	*ft_lstlast_env(t_env **lst)
 {
-	if (!lst)
+	t_env	*env;
+	
+	if (!lst || !*lst)
 		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	env = *lst;
+	while (env->next)
+		env = env->next;
+	return (env);
 }
 
 void	ft_lstadd_back_env(t_env **lst, t_env *new)
 {
     t_env	*last;
 
-	if (!lst)
-		return ;
 	if (!new)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	if (!*lst)
@@ -62,7 +63,7 @@ void	ft_lstadd_back_env(t_env **lst, t_env *new)
 	}
 	else
 	{
-		last = ft_lstlast_env(*lst);
+		last = ft_lstlast_env(lst);
 		last->next = new;
 	}
 }
@@ -71,6 +72,12 @@ t_env	*ft_lstnew_env(char *key, char *value)
 {
     t_env	*new;
 
+	if (!key || !value)
+	{
+		ft_free(key);
+		ft_free(value);
+		return (NULL);
+	}
 	new = malloc(sizeof(t_env));
 	if (!new)
 	{
