@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/19 14:03:38 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/20 20:51:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,5 @@ int		skip_quotes(char *str, int i);
 int		get_next_pipe(char *str, int i);
 char	**shell_split(char *str, char *sep, int s);
 void	ft_free_cmd(void);
-
+void	print_perror(char *str1, char *str2, int exit_status);
 #endif

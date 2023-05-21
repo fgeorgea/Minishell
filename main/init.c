@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 17:08:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/20 21:21:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ void	init_shell(char **argv, char **env)
 		}
 		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, var));
 	}
-	init_shell_lvl();
 	if (!g_sh->env)
 		ft_exit(EXIT_MALLOC_FAILURE);
 }

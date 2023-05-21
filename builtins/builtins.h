@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/18 16:13:21 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:48:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ int		is_builtin(const char *cmd);
 void	exec_builtin(const char *cmd, const char **arg);
 
 // REDIRECTIONS_BUILTINS_C
+int		builtin_redirection(void);
+
+// RESTORE_STDOUT_C
 void	restore_stdout(int dup_stdout);
 int		ft_dup(int fildes);
-int		builtin_redirection(void);
 
 #endif

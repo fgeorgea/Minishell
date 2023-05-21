@@ -6,24 +6,25 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/20 01:06:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:33:03 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	test_redir_open(char *file, int mode, int perm)
+int	test_redir_open(char *file, int mode, int perm)
 {
 	int	fd;
 
 	fd = ft_open_redir(file, mode, perm);
 	if (fd == -1)
 	{
-		print_err(file, ": ", NULL, 1);
+		print_perror(file, ": ", 1);
 		exit_only_child(1);
+		return (0);
 	}
-	else
-		ft_close(&fd);
+	ft_close(&fd);
+	return (1);
 }
 
 /*
@@ -120,7 +121,7 @@ int	open_infile(t_cmd *cmd)
 	fd = ft_open_redir(redir->key, redir->mode, 0644);
 	if (fd == -1)
 	{
-		print_err(redir->key, ": ", NULL, 1);
+		print_perror(redir->key, ": ", 1);
 		exit_only_child(1);
 	}
 	return (fd);
