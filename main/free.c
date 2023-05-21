@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 16:13:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:47:04 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,10 @@ void	ft_free_env(void)
 void	ft_free_cmd(void)
 {
 	void	*tmp;
-	int		i;
 
 	while (g_sh->cmd)
 	{
-		i = 0;
-		if (g_sh->cmd->cmd)
-		{
-			while (g_sh->cmd->cmd[i])
-			{
-				ft_free(g_sh->cmd->cmd[i]);
-				i++;
-			}
-			ft_free(g_sh->cmd->cmd);
-		}
+		ft_free_array(g_sh->cmd->cmd);
 		while (g_sh->cmd->redir)
 		{
 			if (g_sh->cmd->redir->key)
