@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 19:35:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:54:46 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	lstsize_env(t_env **lst)
 static t_env	*ft_lstlast_env(t_env **lst)
 {
 	t_env	*env;
-	
+
 	if (!lst || !*lst)
 		return (NULL);
 	env = *lst;
@@ -52,7 +52,7 @@ static t_env	*ft_lstlast_env(t_env **lst)
 
 void	ft_lstadd_back_env(t_env **lst, t_env *new)
 {
-    t_env	*last;
+	t_env	*last;
 
 	if (!new)
 		ft_exit(EXIT_MALLOC_FAILURE);
@@ -70,7 +70,7 @@ void	ft_lstadd_back_env(t_env **lst, t_env *new)
 
 t_env	*ft_lstnew_env(char *key, char *value)
 {
-    t_env	*new;
+	t_env	*new;
 
 	if (!key || !value)
 	{
@@ -87,6 +87,6 @@ t_env	*ft_lstnew_env(char *key, char *value)
 	}
 	new->key = key;
 	new->value = value;
-    new->next = NULL;
+	new->next = NULL;
 	return (new);
 }

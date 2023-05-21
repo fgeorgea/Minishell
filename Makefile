@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/21 20:10:26 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/21 20:51:31 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,11 +87,11 @@ ${NAME}:	$(LIBFT) ${OBJS}
 	${CC} ${CFLAGS} -o ${NAME} -ILIBFT -LLIBFT -lft ${READL} ${OBJS}
 
 clean:
-	rm -f ${OBJS}
+	rm -rf ${OBJS}
 	make -C LIBFT/ clean
 
 fclean:	clean
-	rm -f ${NAME}
+	rm -rf ${NAME}
 	make -C LIBFT/ fclean
 
 re:	fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:09:38 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 16:41:50 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:55:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*get_here_exp_value(char *str, int *i, char *var)
 {
 	char	*value;
 
-	if (var[0] == '?' && var[1] =='\0')
+	if (var[0] == '?' && var[1] == '\0')
 	{
 		i[2] = 1;
 		value = ft_itoa(g_sh->pipe_exit);

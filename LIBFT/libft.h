@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:22:27 by dpeyrat           #+#    #+#             */
-/*   Updated: 2023/05/13 17:26:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:47:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *l, void *(*f)(void *), void (*d)(void *));
 int				ft_lstsize(t_list *lst);
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
-
 int				convert_str(t_conv *conv, char *str);
 int				convert_percent(t_conv *conv);
 int				convert_char(t_conv *conv, int n);
@@ -105,11 +104,10 @@ int				ft_iscontained(char *str, char c);
 int				ft_printf(const char *str, ...);
 char			*get_next_line(int fd);
 char			*ft_strndup(char *str, int n);
-int     		ft_printf_fd(int fd, const char *str, ...);
-size_t  		ft_printchar(char c, int fd);
-size_t  		ft_printstr(char *str, int fd);
-size_t  		ft_printnbr(long int nb, int fd);
-void    		ft_printhex(unsigned int nbr, char *base, size_t *len, int fd);
-size_t  		ft_nbrlen(long int nb);
-size_t  		ft_printptr(unsigned long int nb, int fd);
+size_t			ft_printchar(char c, int fd);
+size_t			ft_printstr(char *str, int fd);
+size_t			ft_printnbr(long int nb, int fd);
+void			ft_printhex(unsigned int nbr, char *base, size_t *len, int fd);
+size_t			ft_nbrlen(long int nb);
+size_t			ft_printptr(unsigned long int nb, int fd);
 #endif

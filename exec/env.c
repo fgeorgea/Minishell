@@ -6,12 +6,11 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:27:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:55:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 
 // This function will replace a value paired with a key in the env lst.
 void	change_env_value(const char *key, const char *new_value)
@@ -33,7 +32,6 @@ void	change_env_value(const char *key, const char *new_value)
 	env->value = tmp;
 }
 
-
 // Returns a reference to a specific node based on a given key.
 t_env	*get_env_struct(const char *key)
 {
@@ -48,7 +46,6 @@ t_env	*get_env_struct(const char *key)
 	}
 	return (NULL);
 }
-
 
 // It will return a string, which is the value paired with the given key.
 char	*get_env_value(const char *key)

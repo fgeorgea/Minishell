@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/20 21:16:50 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:56:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	add_slash(t_pipex *p)
 		i++;
 	}
 }
-
 
 /*
 	Splits the PATH env string into an array of strings.

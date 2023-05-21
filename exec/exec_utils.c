@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/20 01:56:22 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:49:41 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	cat_cmd_for_underscore(char **cmd)
 			return ;
 		if ((i == p->nbr_paths - 1)
 			&& (is_relative_path(cmd[0]) && does_cmd_exist(cmd[0])))
-				return ;
+			return ;
 		i++;
 	}
 	return ;

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 12:11:01 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:43:51 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:49:19 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	close_pipes_parent(size_t pos, t_pipex *p)
 	else if (pos > 0 && pos < p->nbr_pipe)
 		close_middle_child(pos, p);
 }
-
 
 // Closes all useless pipes in the children.
 void	close_pipes_children(size_t pos, t_pipex *p)
