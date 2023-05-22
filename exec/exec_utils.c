@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:49:41 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:48:03 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,12 @@ static void	cat_cmd_for_underscore(char **cmd)
 
 	i = 0;
 	p = g_sh->pipex;
-	while (p->paths[i])
+	while (p->paths && p->paths[i])
 	{
 		if (try_cat_path_cmd(cmd, i))
 			return ;
-		if ((i == p->nbr_paths - 1)
-			&& (is_relative_path(cmd[0]) && does_cmd_exist(cmd[0])))
-			return ;
 		i++;
 	}
-	return ;
 }
 
 /*
@@ -65,7 +61,13 @@ void	check_cmd(char **cmd)
 {
 	if (is_builtin(cmd[0]))
 		exec_builtin(cmd[0], (const char **)cmd);
-	found_cmd(cmd);
+	if (g_sh->pipex->nbr_paths > 0)
+		found_cmd(cmd);
+	else if (!does_cmd_exist(cmd[0]))
+	{
+		print_perror(cmd[0], ": ", 127);
+		exit(127);
+	}
 }
 
 /*

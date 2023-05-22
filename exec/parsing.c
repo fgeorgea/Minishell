@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 18:42:58 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:46:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	does_cmd_exist(const char *str)
 	int	tmp_fd;
 
 	tmp_fd = open((char *)str, O_WRONLY, -1);
-	if (errno == EISDIR)
+	if (tmp_fd == -1 && errno == EISDIR)
 	{
-		ft_close(&tmp_fd);
 		print_perror((char *)str, ": ", 126);
+		exit_only_child(126);
 		return (0);
 	}
 	ft_close(&tmp_fd);
@@ -79,7 +79,7 @@ int	found_cmd(char **cmd)
 
 	i = 0;
 	p = g_sh->pipex;
-	while (p->paths[i])
+	while (p->paths && p->paths[i])
 	{
 		if (try_cat_path_cmd(cmd, i))
 			return (1);
