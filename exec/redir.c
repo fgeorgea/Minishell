@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/23 18:21:06 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/23 23:44:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_redir	*get_out_redir(t_redir **redirection)
 		if (redir->mode == OUT || redir->mode == OUT_APP)
 		{
 			if (!test_redir_open(redir->key, redir->mode, 0644))
-				return (NULL);
+				return (redir);
 			last = redir;
 		}
 		redir = redir->next;
@@ -62,13 +62,9 @@ int	open_outfile(t_cmd *cmd)
 	t_redir	*redir;
 
 	redir = get_out_redir(&cmd->redir);
-	if (!redir && g_sh->pipe_exit == 0)
+	if (!redir)
 		return (0);
-	if (!redir && g_sh->pipe_exit == 1)
-		return (-1);
 	fd = ft_open_redir(redir->key, redir->mode, 0644);
-	if (fd == -1)
-		print_err(redir->key, ": ", NULL, 1);
 	return (fd);
 }
 
@@ -95,7 +91,7 @@ t_redir	*get_in_redir(t_redir **redirection)
 		if (redir->mode == IN)
 		{
 			if (!test_redir_open(redir->key, IN, 0644))
-				return (NULL);
+				return (redir);
 		}
 		if (redir->mode != OUT && redir->mode != OUT_APP)
 			last = redir;
@@ -117,12 +113,8 @@ int	open_infile(t_cmd *cmd)
 	t_redir	*redir;
 
 	redir = get_in_redir(&cmd->redir);
-	if (!redir && g_sh->pipe_exit == 0)
+	if (!redir)
 		return (0);
-	if (!redir && g_sh->pipe_exit == 1)
-		return (-1);
 	fd = ft_open_redir(redir->key, redir->mode, 0644);
-	if (fd == -1)
-		print_perror(redir->key, ": ", 1);
 	return (fd);
 }
