@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 17:37:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:17:45 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ int		open_outfile(t_cmd *cmd);
 int		open_infile(t_cmd *cmd);
 t_redir	*get_in_redir(t_redir **redirection);
 int		test_redir_open(char *file, int mode, int perm);
+
+// REDIR_UTILS_C
+int		setup_redir(t_cmd *cmd, t_pipex *p);
 
 // UTILS_C
 size_t	arraylen(const char **array);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:48:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:46:41 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	delete_var_env(const char *var)
 	t_env	*previous;
 
 	env = g_sh->env;
-	if (!get_env_value(var))
+	if (!get_env_struct(var))
 		return ;
 	if (compare_keys(var, env->key))
 	{

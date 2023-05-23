@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fork_utils.c                                       :+:      :+:    :+:   */
+/*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 19:42:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/23 18:03:10 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/05/23 18:21:17 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	link_files(int fildes, int fildes2)
+int	setup_redir(t_cmd *cmd, t_pipex *p)
 {
-	ft_dup2(fildes, fildes2);
-	ft_close(&fildes);
-}
-
-void	ft_dup2(int file1, int file2)
-{
-	int	success;
-
-	success = dup2(file1, file2);
-	if (success == -1)
-	{
-		g_sh->pipe_exit = 1;
-		exit_only_child(1);
-	}
+	p->infile = open_infile(cmd);
+	if (p->infile < 0)
+		return (0);
+	if (g_sh->here_doc_status)
+		return (0);
+	p->outfile = open_outfile(cmd);
+	if (p->outfile < 0)
+		return (0);
+	return (1);
 }

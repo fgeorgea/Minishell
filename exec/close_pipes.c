@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_pipes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 12:11:01 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:49:19 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:30:32 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,25 @@ void	close_pipes_parent(size_t pos, t_pipex *p)
 		close_last_child(p);
 	else if (pos > 0 && pos < p->nbr_pipe)
 		close_middle_child(pos, p);
+	if (p->infile)
+		ft_close(&p->infile);
+	if (p->outfile)
+		ft_close(&p->outfile);
 }
 
 // Closes all useless pipes in the children.
 void	close_pipes_children(size_t pos, t_pipex *p)
 {
-	if (pos == 0 && p->nbr_pipe > 0)
+	if (p->nbr_pipe <= 0)
+		return ;
+	if (pos == 0)
 		ft_close(&p->pipefd[0][0]);
-	if (pos == 0 && p->outfile > 0 && p->nbr_pipe > 0)
+	if (pos == 0 && p->outfile > 0)
 		ft_close(&p->pipefd[0][1]);
-	if (pos == p->nbr_pipe && p->nbr_pipe > 0 && p->infile > 0)
+	if (pos == p->nbr_pipe && p->infile > 0)
 		ft_close(&p->pipefd[pos - 1][0]);
+	if (pos < p->nbr_pipe && pos > 0)
+		ft_close(&p->pipefd[pos][0]);
 	if (pos < p->nbr_pipe && pos > 0 && p->infile > 0)
 		ft_close(&p->pipefd[pos - 1][0]);
 	if (pos < p->nbr_pipe && pos > 0 && p->outfile > 0)

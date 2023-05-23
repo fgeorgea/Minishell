@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:56:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:21:06 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	test_redir_open(char *file, int mode, int perm)
 	if (fd == -1)
 	{
 		print_perror(file, ": ", 1);
-		exit_only_child(1);
 		return (0);
 	}
 	ft_close(&fd);
@@ -44,7 +43,8 @@ static t_redir	*get_out_redir(t_redir **redirection)
 	{
 		if (redir->mode == OUT || redir->mode == OUT_APP)
 		{
-			test_redir_open(redir->key, redir->mode, 0644);
+			if (!test_redir_open(redir->key, redir->mode, 0644))
+				return (NULL);
 			last = redir;
 		}
 		redir = redir->next;
@@ -62,14 +62,13 @@ int	open_outfile(t_cmd *cmd)
 	t_redir	*redir;
 
 	redir = get_out_redir(&cmd->redir);
-	if (!redir)
+	if (!redir && g_sh->pipe_exit == 0)
 		return (0);
+	if (!redir && g_sh->pipe_exit == 1)
+		return (-1);
 	fd = ft_open_redir(redir->key, redir->mode, 0644);
 	if (fd == -1)
-	{
 		print_err(redir->key, ": ", NULL, 1);
-		exit_only_child(1);
-	}
 	return (fd);
 }
 
@@ -77,7 +76,6 @@ int	open_outfile(t_cmd *cmd)
 	Opens every heredoc if there are any.
 	Returns the last IN redir.
 	Returns NULL if there is no IN redir.
-	'!' ->exits if there is a non existing infile input.
 */
 t_redir	*get_in_redir(t_redir **redirection)
 {
@@ -95,7 +93,10 @@ t_redir	*get_in_redir(t_redir **redirection)
 		if (redir->mode == HEREDOC_EXP)
 			ft_here_doc_exp(redir->key);
 		if (redir->mode == IN)
-			test_redir_open(redir->key, IN, 0644);
+		{
+			if (!test_redir_open(redir->key, IN, 0644))
+				return (NULL);
+		}
 		if (redir->mode != OUT && redir->mode != OUT_APP)
 			last = redir;
 		redir = redir->next;
@@ -109,7 +110,6 @@ t_redir	*get_in_redir(t_redir **redirection)
 	Opens the eventual infile.
 	Returns the infile fd.
 	Return 0 if there is no IN redir.
-	'!' -> exits if the file does not exist.
 */
 int	open_infile(t_cmd *cmd)
 {
@@ -117,13 +117,12 @@ int	open_infile(t_cmd *cmd)
 	t_redir	*redir;
 
 	redir = get_in_redir(&cmd->redir);
-	if (!redir || !redir->key)
+	if (!redir && g_sh->pipe_exit == 0)
 		return (0);
+	if (!redir && g_sh->pipe_exit == 1)
+		return (-1);
 	fd = ft_open_redir(redir->key, redir->mode, 0644);
 	if (fd == -1)
-	{
 		print_perror(redir->key, ": ", 1);
-		exit_only_child(1);
-	}
 	return (fd);
 }

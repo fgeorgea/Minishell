@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/21 20:51:31 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/23 17:45:51 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS	=	$(MAIN)main.c \
 			$(EXEC)pipex.c \
 			$(EXEC)env.c \
 			$(EXEC)redir.c \
+			$(EXEC)redir_utils.c \
 			$(EXEC)protections.c \
 			$(EXEC)expand_heredoc.c \
 			$(LINKED_LISTS)linked_list_env.c \
