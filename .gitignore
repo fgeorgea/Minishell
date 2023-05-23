@@ -7,3 +7,7 @@ minishell
 */*.vscode
 *.a
 */*.a
+outfile
+infile
+testfile
+test
