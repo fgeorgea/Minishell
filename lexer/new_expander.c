@@ -145,7 +145,7 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 			if (i[3] || i[0] != skip_quotes(t->word, i[0]))
 				i[3] = !i[3];
 		}
-		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1]) && t->word[i[0] + 1] && t->word[i[0] + 1] != '\'' && t->word[i[0] + 1] != '"')
+		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1]) && t->word[i[0] + 1] && (t->word[i[0] + 1] != '"' || !i[3]))
 		{
 			expand_split(&curr, t, head, i);
 			t = curr->content;

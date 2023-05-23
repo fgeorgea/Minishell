@@ -12,95 +12,37 @@
 
 #include "../minishell.h"
 
-int	get_token_wc(char *str, char *sep)
+t_list	*insert_word_token(t_list *current, t_list *head, char *str, char **arr)
 {
-	int	i;
-	int	wc;
+	t_token	*content;
+	t_list	*tmp;
 
-	wc = 0;
-	i = 0;
-	while (str[i])
+	content = malloc(sizeof(t_token));
+	if (!content)
 	{
-		if (is_in_sep(str[i], sep))
-			wc++;
-		while (is_in_sep(str[i], sep))
-			i++;
-		if (str[i])
-			wc++;
-		while (!is_in_sep(str[i], sep) && str[i])
-		{
-			if (str[i] == '"' || str[i] == '\'')
-				i = skip_quotes(str, i);
-			i++;
-		}
-		if (is_in_sep(str[i], sep))
-			wc++;
-		while (is_in_sep(str[i], sep))
-			i++;
+		ft_lstclear(&head, &free);
+		ft_free_array(arr);
+		ft_exit(EXIT_MALLOC_FAILURE);
 	}
-	return (wc);
-}
-
-char	**shell_split_token(char *str, char *sep)
-{
-	char	**arr;
-	int		wc;
-	int		i;
-	int		j;
-
-	wc = get_token_wc(str, sep);
-	arr = malloc(sizeof(char *) * (wc + 1));
-	if (!arr)
-		return (0);
-	i = 0;
-	wc = 0;
-	while (str[i])
+	tmp = malloc(sizeof(t_list));
+	if (!tmp)
 	{
-		if (is_in_sep(str[i], sep))
-		{
-			j = i;
-			while (is_in_sep(str[i], sep) && str[i])
-				i++;
-			arr[wc] = ft_strndup(&str[j], i - j);
-			if (!arr[wc])
-				return (free_split(arr));
-			wc++;
-		}
-		if (str[i])
-			j = i;
-		else
-			break ;
-		while (!is_in_sep(str[i], sep) && str[i])
-		{
-			if (str[i] == '"' || str[i] == '\'')
-				i = skip_quotes(str, i);
-			i++;
-		}
-		arr[wc] = ft_strndup(&str[j], i - j);
-		if (!arr[wc])
-			return (free_split(arr));
-		wc++;
-		if (is_in_sep(str[i], sep))
-		{
-			j = i;
-			while (is_in_sep(str[i], sep) && str[i])
-				i++;
-			arr[wc] = ft_strndup(&str[j], i - j);
-			if (!arr[wc])
-				return (free_split(arr));
-			wc++;
-		}
+		free(content);
+		ft_lstclear(&head, &free);
+		ft_free_array(arr);
+		ft_exit(EXIT_MALLOC_FAILURE);
 	}
-	arr[wc] = 0;
-	return (arr);
+	content->word = str;
+	tmp->content = content;
+	tmp->next = current->next;
+	current->next = tmp;
+	return (tmp);
 }
 
 t_list	*split_token(t_list *current, t_list *head)
 {
 	char	**arr;
 	t_token	*tmp;
-	t_list	*temp;
-	t_list	*temp2;
 	int		i;
 
 	tmp = current->content;
@@ -112,39 +54,10 @@ t_list	*split_token(t_list *current, t_list *head)
 	}
 	i = 1;
 	ft_free(tmp->word);
-	ft_free(tmp);
-	current->content = 0;
-	tmp = malloc(sizeof(t_token));
-	if (!tmp)
-	{
-		ft_lstclear(&head, &free_token);
-		ft_free_array(arr);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
 	tmp->word = arr[0];
-	current->content = tmp;
 	while (arr[i])
 	{
-		tmp = malloc(sizeof(t_token));
-		if (!tmp)
-		{
-			ft_lstclear(&head, &free_token);
-			ft_free_array(arr);
-			ft_exit(EXIT_MALLOC_FAILURE);
-		}
-		tmp->word = arr[i];
-		temp = ft_lstnew(tmp);
-		if (!temp)
-		{
-			ft_lstclear(&head, &free_token);
-			ft_free_array(arr);
-			ft_free(tmp);
-			ft_exit(EXIT_MALLOC_FAILURE);
-		}
-		temp2 = current->next;
-		current->next = temp;
-		current = current->next;
-		current->next = temp2;
+		current = insert_word_token(current, head, arr[i], arr);
 		i++;
 	}
 	ft_free(arr);
