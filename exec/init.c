@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:56:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:07:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	init_struct_pipex(void)
 	p->pids = NULL;
 	p->pipefd = NULL;
 	g_sh->pipe_exit = 0;
+	g_sh->old_exit = 0;
 	p->is_in_child = 0;
 	g_sh->here_doc_status = 0;
 	p->infile = -1;

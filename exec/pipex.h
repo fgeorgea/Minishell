@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/23 18:17:45 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:08:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,12 @@ t_redir	*get_in_redir(t_redir **redirection);
 int		test_redir_open(char *file, int mode, int perm);
 
 // REDIR_UTILS_C
-int		setup_redir(t_cmd *cmd, t_pipex *p);
+void	setup_redir(t_cmd *cmd, t_pipex *p);
 
 // UTILS_C
 size_t	arraylen(const char **array);
 int		compare_keys(const char *key, const char *needle);
 void	exit_only_child(int exit_code);
+void	set_exit(int exit_code);
 
 #endif
