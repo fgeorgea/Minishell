@@ -66,6 +66,8 @@ SRCS	=	$(MAIN)main.c \
 			$(LEX)new_expander.c \
 			$(LEX)expander_utils.c \
 			$(LEX)tokenize_utils.c \
+			$(LEX)redir_parser.c \
+			$(LEX)arg_parser.c \
 			$(SIG)signal.c \
 
 OBJS	=	${SRCS:.c=.o}

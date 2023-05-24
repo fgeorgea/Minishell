@@ -50,5 +50,8 @@ void	expand(t_token *t, t_list *head);
 t_list	*split_space(t_list *curr, t_list *head);
 int		has_token(t_token *t);
 char	**shell_split_token(char *str, char *sep);
+t_list	*new_redir(t_list *curr, t_list **prev, t_list **head);
+void	add_cmd_arg(t_list **head, int n, t_list *curr);
+void	check_token_syntax(t_token *curr, t_token *next);
 
 #endif

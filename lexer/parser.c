@@ -34,25 +34,6 @@ void	new_cmd(t_list *head)
 	}
 }
 
-void	add_redir(t_redir *redir)
-{
-	t_cmd	*tmp;
-	t_redir	*temp;
-
-	tmp = g_sh->cmd;
-	while (tmp->next)
-		tmp = tmp->next;
-	if (tmp->redir == 0)
-		tmp->redir = redir;
-	else
-	{
-		temp = tmp->redir;
-		while (temp->next)
-			temp = temp->next;
-		temp->next = redir;
-	}
-}
-
 void	set_token_err(char *token)
 {
 	if (token[0] == '>' && token[1] == '>')
@@ -76,7 +57,8 @@ void	check_token_syntax(t_token *curr, t_token *next)
 	i = ft_strlen(curr->word);
 	if (i == 1 && (next == 0 || !next->token))
 		return ;
-	if (i == 2 && (curr->word[0] == curr->word[1] || curr->word[1] == '|') && (next == 0 || !next->token))
+	if (i == 2 && (curr->word[0] == curr->word[1]
+			|| curr->word[1] == '|') && (next == 0 || !next->token))
 		return ;
 	if (i == 1)
 		set_token_err(next->word);
@@ -90,121 +72,6 @@ void	check_token_syntax(t_token *curr, t_token *next)
 		set_token_err(&curr->word[1]);
 }
 
-int	get_redir_mode(t_token *token, t_token *next)
-{
-	if (token->word[0] == '>' && token->word[1] == '>')
-		return (OUT_APP);
-	if (token->word[0] == '<' && token->word[1] == '<' && next->quotes)
-		return (HEREDOC);
-	if (token->word[0] == '<' && token->word[1] == '<')
-		return (HEREDOC_EXP);
-	if (token->word[0] == '>')
-		return (OUT);
-	return (IN);
-}
-
-t_list	*new_redir(t_list *curr, t_list **prev, t_list **head)
-{
-	t_token	*content;
-	t_redir	*new;
-	t_list	*ret;
-
-	if (!curr->next)
-	{
-		g_sh->s_err = S_ERR_NL;
-		content = 0;
-	}
-	else
-		content = curr->next->content;
-	check_token_syntax(curr->content, content);
-	if (g_sh->s_err)
-		return (curr);
-	new = malloc(sizeof(t_redir));
-	if (!new)
-	{
-		ft_lstclear(head, &free_token);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	new->next = 0;
-	new->mode = get_redir_mode(curr->content, curr->next->content);
-	new->key = content->word;
-	add_redir(new);
-	if (curr == *prev)
-	{
-		*head = curr->next->next;
-		*prev = *head;
-		ret = *head;
-	}
-	else
-	{
-		(*prev)->next = curr->next->next;
-		ret = (*prev)->next;
-	}
-	ft_free(curr->next->content);
-	ft_free(curr->next);
-	free_token(curr->content);
-	ft_free(curr);
-	return (ret);
-}
-
-void	add_cmd_arg(t_list **head, int n, t_list *curr)
-{
-	int		i;
-	t_token	*t;
-	t_list	*tmp;
-	t_cmd	*cmd;
-	char	*str;
-
-	if (n == 0)
-	{
-		if (curr)
-			g_sh->s_err = S_ERR_PIPE;
-		else
-			g_sh->s_err = S_ERR_NL;
-		return ;
-	}
-	cmd = g_sh->cmd;
-	while (cmd->next)
-		cmd = cmd->next;
-	cmd->cmd = ft_calloc(n + 1, sizeof(char *));
-	if (!cmd->cmd)
-	{
-		ft_lstclear(head, &free_token);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	i = 0;
-	while (i < n)
-	{
-		t = (*head)->content;
-		tmp = (*head);
-		*head = (*head)->next;
-		ft_free(tmp);
-		cmd->cmd[i] = t->word;
-		ft_free(t);
-		i++;
-	}
-	if (*head == NULL)
-		return ;
-	t = (*head)->content;
-	i = ft_strlen(t->word);
-	if (i == 1)
-	{
-		tmp = (*head);
-		*head = (*head)->next;
-		ft_free(tmp);
-		free_token(t);
-		return ;
-	}
-	str = ft_strdup(&t->word[1]);
-	if (!str)
-	{
-		ft_lstclear(head, &free_token);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	ft_free(t->word);
-	t->word = str;
-}
-
 void	parse_intra_pipe(t_list **head, t_list **curr, int *i)
 {
 	t_token	*tmp;
@@ -212,7 +79,8 @@ void	parse_intra_pipe(t_list **head, t_list **curr, int *i)
 
 	prev = *head;
 	tmp = (*curr)->content;
-	while (g_sh->s_err == NO_S_ERR && *curr && !(tmp->token && *tmp->word == '|'))
+	while (g_sh->s_err == NO_S_ERR && *curr
+		&& !(tmp->token && *tmp->word == '|'))
 	{
 		if (tmp->token)
 		{
