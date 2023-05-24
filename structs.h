@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:08:00 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:07:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:26:43 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_shell
 {
 	char	*name;
 	int		pipe_exit;
-	int		old_exit;
+	int		is_exit_lst_cmd;
 	int		here_doc_status;
 	int		is_child;
 	char	*str;

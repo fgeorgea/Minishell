@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:08:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:31:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,6 @@ size_t	arraylen(const char **array);
 int		compare_keys(const char *key, const char *needle);
 void	exit_only_child(int exit_code);
 void	set_exit(int exit_code);
+void	set_lst_cmd(int pos);
 
 #endif

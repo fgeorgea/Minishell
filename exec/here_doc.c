@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/20 01:04:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:14:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	heredoc_catch_kill(int sig)
 {
 	if (sig == SIGINT)
 	{
-		g_sh->pipe_exit = 1;
+		set_exit(1);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 	}

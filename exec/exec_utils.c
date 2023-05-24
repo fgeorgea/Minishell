@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/22 13:48:03 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:45:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	check_builtins(t_pipex *p, t_cmd *cmd)
 {
 	if (is_builtin(cmd->cmd[0]) && p->nbr_cmds == 1)
 	{
+		g_sh->is_exit_lst_cmd = 1;
 		exec_builtin(cmd->cmd[0], (const char **)cmd->cmd);
 		return (1);
 	}
@@ -93,7 +94,7 @@ void	ft_execve(char *const *argv, char *const *envp)
 	success = execve(argv[0], argv, envp);
 	if (success == -1)
 	{
-		g_sh->pipe_exit = 1;
+		set_exit(1);
 		exit_only_child(1);
 	}
 }

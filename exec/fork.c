@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:57:22 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:12:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_fork(size_t pos)
 	p->pids[pos] = fork();
 	if (p->pids[pos] == -1)
 	{
-		g_sh->pipe_exit = 1;
+		set_exit(1);
 		close_all_pipes();
 		perror("Minishell: fork");
 		return (0);

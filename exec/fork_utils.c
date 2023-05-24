@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 19:42:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/23 18:03:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:14:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_dup2(int file1, int file2)
 	success = dup2(file1, file2);
 	if (success == -1)
 	{
-		g_sh->pipe_exit = 1;
+		set_exit(1);
 		exit_only_child(1);
 	}
 }

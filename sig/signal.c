@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:56:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/23 14:02:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:13:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	catch_sigint(int sig)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
-		g_sh->pipe_exit = 1;
+		set_exit(1);
 	}
 	else
 	{
-		g_sh->pipe_exit = 130;
+		set_exit(130);
 	}
 }
 
@@ -33,7 +33,7 @@ void	catch_sigquit(int sig)
 {
 	(void)sig;
 	write(1, "Quit: 3\n", 8);
-	g_sh->pipe_exit = 131;
+	set_exit(131);
 }
 
 void	catch_here_sigint(int sig)
