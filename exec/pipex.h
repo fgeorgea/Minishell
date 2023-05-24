@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 18:18:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:50:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define EXIT_GNL_FAILURE 10
 # define EXIT_EXECVE_FAILURE 11
 # define NSFOD ": No such file or directory"
-# define CNF ": Command not found"
+# define CNF ": command not found"
 
 # define IN_FLAGS O_RDONLY
 # define HEREDOC_FLAGS (O_WRONLY | O_CREAT | O_TRUNC)
@@ -71,7 +71,7 @@ int		try_cat_path_cmd(char **cmd, size_t pos);
 
 // PARSE_CMD_UTILS_C
 int		is_relative_path(const char *cmd);
-int		try_catch_cmd(char **cmd);
+void	try_catch_cmd(char **cmd);
 
 // FORK_C
 int		ft_fork(size_t pos);

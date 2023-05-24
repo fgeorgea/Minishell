@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:45:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:27:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	cat_cmd_for_underscore(char **cmd)
 
 	i = 0;
 	p = g_sh->pipex;
+	if (!cmd[0][0])
+		return ;
 	while (p->paths && p->paths[i])
 	{
 		if (try_cat_path_cmd(cmd, i))
@@ -38,9 +40,9 @@ void	update_last_cmd(const char **cmd)
 	int	array_len;
 
 	array_len = 0;
-	if (!cmd || !*cmd)
+	if (!cmd)
 		return ;
-	if (g_sh->pipex->nbr_cmds > 1)
+	if (g_sh->pipex->nbr_cmds > 1 || !*cmd)
 	{
 		change_env_value("_", "");
 		return ;

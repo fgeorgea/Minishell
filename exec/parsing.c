@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 18:19:15 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:28:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	does_cmd_exist(const char *str)
 {
-	int	tmp_fd;
+	// int	tmp_fd;
 
-	tmp_fd = open((char *)str, O_RDONLY, -1);
-	if (tmp_fd == -1 && errno == EISDIR)
-	{
-		print_perror((char *)str, ": ", 126);
-		exit_only_child(126);
-		return (0);
-	}
-	ft_close(&tmp_fd);
+	// tmp_fd = open((char *)str, O_RDONLY, -1);
+	// if (tmp_fd == -1 && errno == EISDIR)
+	// {
+	// 	print_perror((char *)str, ": ", 126);
+	// 	exit_only_child(126);
+	// 	return (0);
+	// }
+	// ft_close(&tmp_fd);
 	if (access(str, F_OK | X_OK) == -1)
 		return (0);
 	else
@@ -65,11 +65,17 @@ int	found_cmd(char **cmd)
 
 	i = 0;
 	p = g_sh->pipex;
+	if (cmd[0][0] == '\0')
+	{
+		print_err(cmd[0], NULL, CNF, 127);
+		exit(g_sh->pipe_exit);
+	}
 	while (p->paths && p->paths[i])
 	{
 		if (try_cat_path_cmd(cmd, i))
 			return (1);
 		i++;
 	}
-	return (try_catch_cmd(cmd));
+	try_catch_cmd(cmd);
+	return (1);
 }
