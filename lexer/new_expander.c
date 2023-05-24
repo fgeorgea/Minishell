@@ -267,7 +267,23 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 	return (curr);
 }
 
-void	expander(t_list *head, t_list *curr)
+void	remove_current_word(t_list **head, t_list **curr, t_list *last)
+{
+	if (*curr == *head)
+	{
+		*head = (*curr)->next;
+		free_token((*curr)->content);
+		free(*curr);
+		*curr = *head;
+		return ;
+	}
+	last->next = (*curr)->next;
+	free_token((*curr)->content);
+	free(*curr);
+	*curr = last->next;
+}
+
+void	expander(t_list **head, t_list *curr)
 {
 	t_list	*last;
 	t_token	*content;
@@ -280,18 +296,23 @@ void	expander(t_list *head, t_list *curr)
 		v = has_variable(content->word);
 		content->quotes = has_quotes(content->word);
 		if (v && content->quotes && is_heredoc(last))
-			trim_quotes(content, head);
+			trim_quotes(content, *head);
 		else if (v && content->quotes)
-			curr = ex_trim_split(curr, content, head);
+			curr = ex_trim_split(curr, content, *head);
 		else if (v && !is_heredoc(last))
 		{
-			expand(content, head);
+			expand(content, *head);
 			if (has_space(content->word))
-				curr = split_space(curr, head);
+				curr = split_space(curr, *head);
 		}
 		else if (content->quotes)
-			trim_quotes(content, head);
-		last = curr;
-		curr = curr->next;
+			trim_quotes(content, *head);
+		if (!(*content->word) && !content->quotes)
+			remove_current_word(head, &curr, last);
+		else
+		{
+			last = curr;
+			curr = curr->next;
+		}
 	}
 }
