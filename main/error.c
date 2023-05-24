@@ -44,10 +44,6 @@ void	ft_exit(int status)
 	rl_clear_history();
 	if (status != EXIT_SUCCESS)
 		perror(g_sh->name);
-	else
-	{
-		write(1, "exit\n", 5);
-	}
 	ft_free_global();
 	exit(status);
 }
