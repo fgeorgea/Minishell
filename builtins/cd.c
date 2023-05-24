@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 15:29:24 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:12:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	cd_builtin(const char *str)
 	if (str && !compare_keys(str, "~"))
 	{
 		if (!ft_chdir(str))
-			g_sh->pipe_exit = 1;
+			set_exit(1);
 		return ;
 	}
 	dir = get_env_value("HOME");
@@ -132,5 +132,5 @@ void	cd_builtin(const char *str)
 		return ;
 	}
 	if (!ft_chdir(dir))
-		g_sh->pipe_exit = 1;
+		set_exit(1);
 }

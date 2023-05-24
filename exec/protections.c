@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   protections.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/20 01:55:28 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:13:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_open(char *file, int flags, int perm)
 	else
 		fd = open(file, flags, perm);
 	if (fd == -1)
-		g_sh->pipe_exit = -1;
+		set_exit(1);
 	return (fd);
 }
 
@@ -42,7 +42,7 @@ int	ft_open_redir(char *file, int mode, int perm)
 	else
 		fd = open(file, mode, perm);
 	if (fd == -1)
-		g_sh->pipe_exit = 1;
+		set_exit(1);
 	return (fd);
 }
 
@@ -52,7 +52,7 @@ void	ft_close(int *fd)
 		return ;
 	if (close(*fd) == -1)
 	{
-		g_sh->pipe_exit = 1;
+		set_exit(1);
 		exit_only_child(1);
 	}
 	*fd = -2;

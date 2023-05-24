@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 11:44:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:46:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	exec_cmds(void)
 	update_last_cmd((const char **)cmd->cmd);
 	while (cmd)
 	{
+		set_lst_cmd(i);
 		ft_pipe(i);
 		setup_redir(cmd, p);
 		if (!ft_fork(i))

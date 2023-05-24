@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/24 15:09:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:14:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_err(char *cmd, char *input, char *message, int exit_code)
 		ft_putstr_fd(message, 2);
 	ft_putstr_fd("\n", 2);
 	if (exit_code != -1)
-		g_sh->pipe_exit = exit_code;
+		set_exit(exit_code);
 }
 
 void	print_perror(char *str1, char *str2, int exit_status)
@@ -34,7 +34,7 @@ void	print_perror(char *str1, char *str2, int exit_status)
 	if (str2)
 		ft_putstr_fd(str2, 2);
 	if (exit_status != -1)
-		g_sh->pipe_exit = exit_status;
+		set_exit(exit_status);
 	if (g_sh->pipe_exit != 0)
 		perror(NULL);
 }
