@@ -18,8 +18,7 @@ char	*get_var_key(char *str, int *i, t_list *head)
 
 	i[1] = i[0];
 	i[0]++;
-	while (str[i[0]] != ' ' && str[i[0]] != '\''
-		&& str[i[0]] && str[i[0]] != '"' && str[i[0]] != '?')
+	while (ft_isalnum(str[i[0]]) || str[i[0]] == '_')
 		i[0]++;
 	if (str[i[0]] == '?')
 		i[2] = i[0] + 1;
