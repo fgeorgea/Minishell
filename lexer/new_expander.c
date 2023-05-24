@@ -135,8 +135,8 @@ int	join_first_last(t_list *head, t_list *curr, int *i, t_list *last)
 		return (EXIT_MALLOC_FAILURE);
 	}
 	t = last->content;
-	i[0] = ft_strlen(t->word);
-	tmp3 = ft_strjoin(t->word, &t->word[i[2]]);
+	i[0] = ft_strlen(t->word) - 1;
+	tmp3 = ft_strjoin(t->word, &tmp[i[2]]);
 	if (!tmp3)
 	{
 		free(tmp2);
@@ -171,7 +171,7 @@ int	join_value_split(char *value, t_list **curr, int *i, t_list *new)
 	(*curr)->next = new->next;
 	free(new);
 	*curr = ft_lstlast(*curr);
-	new->next = tmp;
+	(*curr)->next = tmp;
 	return (EXIT_SUCCESS);
 }
 
