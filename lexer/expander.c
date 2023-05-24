@@ -19,9 +19,12 @@ char	*get_var_key(char *str, int *i, t_list *head)
 	i[1] = i[0];
 	i[0]++;
 	while (str[i[0]] != ' ' && str[i[0]] != '\''
-		&& str[i[0]] && str[i[0]] != '"')
+		&& str[i[0]] && str[i[0]] != '"' && str[i[0]] != '?')
 		i[0]++;
-	i[2] = i[0];
+	if (str[i[0]] == '?')
+		i[2] = i[0] + 1;
+	else
+		i[2] = i[0];
 	tmp = ft_strndup(&str[i[1] + 1], i[2] - i[1] - 1);
 	if (!tmp)
 	{

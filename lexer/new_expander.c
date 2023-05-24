@@ -122,6 +122,25 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 	}
 }
 
+void	handle_quotes_etp(t_token *t, int *i)
+{
+	if (t->word[i[0]] == '\'' && !i[3])
+	{
+		i[5] = i[0];
+		i[0] = skip_quotes(t->word, i[0]);
+		i[0] = skip_trim(t->word, i);
+	}
+	else if (t->word[i[0]] == '"')
+	{
+		if (i[3])
+			i[0] = skip_trim(t->word, i);
+		else
+			i[5] = i[0];
+		if (i[3] || i[0] != skip_quotes(t->word, i[0]))
+			i[3] = !i[3];
+	}
+}
+
 t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 {
 	int		i[10];
@@ -130,21 +149,8 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 	i[3] = 0;
 	while (t->word[i[0]])
 	{
-		if (t->word[i[0]] == '\'' && !i[3])
-		{
-			i[5] = i[0];
-			i[0] = skip_quotes(t->word, i[0]);
-			i[0] = skip_trim(t->word, i);
-		}
-		else if (t->word[i[0]] == '"')
-		{
-			if (i[3])
-				i[0] = skip_trim(t->word, i);
-			else
-				i[5] = i[0];
-			if (i[3] || i[0] != skip_quotes(t->word, i[0]))
-				i[3] = !i[3];
-		}
+		if (t->word[i[0]] == '"' || t->word[i[0]] == '\'')
+			handle_quotes_etp(t, i);
 		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1]) && t->word[i[0] + 1] && (t->word[i[0] + 1] != '"' || !i[3]))
 		{
 			expand_split(&curr, t, head, i);
@@ -155,27 +161,22 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 	return (curr);
 }
 
-void	expander(t_list *head)
+void	expander(t_list *head, t_list *curr)
 {
-	t_list	*curr;
 	t_list	*last;
 	t_token	*content;
 	int		v;
 
-	curr = head;
 	last = 0;
 	while (curr)
 	{
 		content = curr->content;
 		v = has_variable(content->word);
 		content->quotes = has_quotes(content->word);
-		if (v && content->quotes)
-		{
-			if (is_heredoc(last))
-				trim_quotes(content, head);
-			else
-				curr = ex_trim_split(curr, content, head);
-		}
+		if (v && content->quotes && is_heredoc(last))
+			trim_quotes(content, head);
+		else if (v && content->quotes)
+			curr = ex_trim_split(curr, content, head);
 		else if (v && !is_heredoc(last))
 		{
 			expand(content, head);

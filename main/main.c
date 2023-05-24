@@ -22,7 +22,10 @@ int	main(int argc, char **argv, char **env)
 	{
 		g_sh->str = readline("\033[0;95mDopeorge$>\033[0;39m ");
 		if (!g_sh->str)
+		{
+			ft_printf("exit\n");
 			ft_exit(EXIT_SUCCESS);
+		}
 		if (*g_sh->str)
 			add_history(g_sh->str);
 		lexer(g_sh->str);
