@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 16:08:51 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:33:01 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:31:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	echo_builtin(const char **strs)
 	i = 0;
 	if (!strs || !*strs)
 	{
-		printf("\n");
+		write(1, "\n", 1);
 		return ;
 	}
 	while (strs[i] && is_newline_option(strs[i]))
@@ -47,11 +47,11 @@ void	echo_builtin(const char **strs)
 	}
 	while (strs[i])
 	{
-		printf("%s", strs[i]);
+		ft_putstr_fd((char *)strs[i], 1);
 		if (strs[i + 1])
-			printf(" ");
+			write(1, " ", 1);
 		i++;
 	}
 	if (print_nl)
-		printf("\n");
+		write(1, "\n", 1);
 }

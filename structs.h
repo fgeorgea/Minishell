@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:08:00 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 13:09:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:07:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_env
 	char			*key;
 	char			*value;
 	struct s_env	*next;
-}			t_env;
+}		t_env;
 
 # include "exec/pipex.h"
 
@@ -40,6 +40,7 @@ typedef struct s_shell
 {
 	char	*name;
 	int		pipe_exit;
+	int		old_exit;
 	int		here_doc_status;
 	int		is_child;
 	char	*str;

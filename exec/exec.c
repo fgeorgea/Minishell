@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/23 18:18:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 11:44:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 {
 	set_signals(CHILD);
 	g_sh->is_child = CHILD;
+	if (p->infile < 0 || p->outfile < 0)
+		exit(1);
+	if (g_sh->here_doc_status)
+		exit(0);
 	close_pipes_children(pos, p);
 	if (pos == 0)
 		first_child(p);
@@ -44,15 +48,13 @@ void	exec_cmds(void)
 	while (cmd)
 	{
 		ft_pipe(i);
-		if (setup_redir(cmd, p))
-		{
-			if (!ft_fork(i))
-				return ;
-			if (p->pids[i] == 0)
-				children(i, cmd, p);
-			else
-				set_signals(PARENT);
-		}
+		setup_redir(cmd, p);
+		if (!ft_fork(i))
+			return ;
+		if (p->pids[i] == 0)
+			children(i, cmd, p);
+		else
+			set_signals(PARENT);
 		close_pipes_parent(i, p);
 		cmd = cmd->next;
 		i++;

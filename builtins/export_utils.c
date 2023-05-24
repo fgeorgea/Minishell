@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:38:14 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:31:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void	print_export(void)
 	while (env)
 	{
 		if (env->value)
-			printf("declare -x %s=\"%s\"\n", env->key, env->value);
+			ft_printf("declare -x %s=\"%s\"\n", env->key, env->value);
 		else
-			printf("declare -x %s\n", env->key);
+			ft_printf("declare -x %s\n", env->key);
 		env = env->next;
 	}
 }
