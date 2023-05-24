@@ -60,6 +60,7 @@ t_shell	*g_sh;
 // MAIN_C
 char	*readline(const char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
+void	rl_clear_history (void);
 
 // INIT_C
 void	init_shell(char **argv, char **env);
