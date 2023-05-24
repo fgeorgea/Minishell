@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 14:09:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:33:43 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int	check_valid_key(const char *str)
 	size_t	i;
 
 	i = 0;
-	if (!ft_isalpha(str[0]) && str[0] != '_')
+	if (!(ft_isalpha(str[0]) || str[0] == '_'))
 		return (0);
 	while (str[i] && str[i] != '+' && str[i] != '=')
 	{
-		if (!ft_isalnum(str[i]))
+		if (!ft_isalnum(str[i]) && str[i] != '_')
 			return (0);
 		i++;
 	}
@@ -117,7 +117,7 @@ void	export_builtin(const char **strs)
 			check_append(strs[i]);
 		else
 		{
-			print_err("export: `", (char *)strs[i], "': not a valid identifier", 1);
+			print_err("export: `", (char *)strs[i], NAVI, 1);
 		}
 		i++;
 	}

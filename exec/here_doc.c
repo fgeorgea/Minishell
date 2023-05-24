@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:14:24 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:33:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	here_doc(char *end_token)
 	free(str);
 	free(prompt);
 	ft_close(&p->here_doc);
-	set_signals(g_sh->is_child);
+	set_signals(DEFAULT);
 }
 
 void	ft_here_doc_exp(char *end_token)
@@ -76,5 +76,5 @@ void	ft_here_doc_exp(char *end_token)
 	free(str);
 	free(prompt);
 	ft_close(&p->here_doc);
-	set_signals(g_sh->is_child);
+	set_signals(DEFAULT);
 }

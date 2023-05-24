@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/22 13:46:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:19:15 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	does_cmd_exist(const char *str)
 {
 	int	tmp_fd;
 
-	tmp_fd = open((char *)str, O_WRONLY, -1);
+	tmp_fd = open((char *)str, O_RDONLY, -1);
 	if (tmp_fd == -1 && errno == EISDIR)
 	{
 		print_perror((char *)str, ": ", 126);
@@ -57,20 +57,6 @@ int	try_cat_path_cmd(char **cmd, size_t pos)
 	return (1);
 }
 
-int	is_relative_path(const char *cmd)
-{
-	size_t	i;
-
-	i = 0;
-	while (cmd[i])
-	{
-		if (cmd[i] == '/')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 // Will try to replace cmd with path to cmd if it exists.
 int	found_cmd(char **cmd)
 {
@@ -83,19 +69,7 @@ int	found_cmd(char **cmd)
 	{
 		if (try_cat_path_cmd(cmd, i))
 			return (1);
-		if (i == p->nbr_paths - 1)
-		{
-			if (is_relative_path(cmd[0]) && does_cmd_exist(cmd[0]))
-				return (1);
-			if (errno == EISDIR)
-				return (0);
-			if (!is_relative_path(cmd[0]))
-				print_err(cmd[0], NULL, CNF, 127);
-			else
-				print_err(cmd[0], NULL, NSFOD, 127);
-			exit(g_sh->pipe_exit);
-		}
 		i++;
 	}
-	return (0);
+	return (try_catch_cmd(cmd));
 }

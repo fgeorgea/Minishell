@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/21 20:12:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:36:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define HEREDOC_EXP 4
 
 # ifdef NULL
-#  undef NULL  
+#  undef NULL
 #  define NULL 0
 # else
 #  define NULL 0
@@ -60,7 +60,7 @@ t_shell	*g_sh;
 // MAIN_C
 char	*readline(const char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
-void	rl_clear_history (void);
+void	rl_clear_history(void);
 
 // INIT_C
 void	init_shell(char **argv, char **env);

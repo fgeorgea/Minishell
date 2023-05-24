@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:31:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:18:44 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,16 @@ void	ft_pipex(void);
 // INIT_C
 void	init_struct_pipex(void);
 
-// PARSING_C
+// PARSE_CMD_C
 int		found_cmd(char **cmd);
 int		file_exist(const char *str);
 int		does_cmd_exist(const char *str);
 int		try_cat_path_cmd(char **cmd, size_t pos);
+
+// PARSE_CMD_UTILS_C
 int		is_relative_path(const char *cmd);
+int		try_catch_cmd(char **cmd);
+
 // FORK_C
 int		ft_fork(size_t pos);
 pid_t	*create_fork_array(const t_pipex *p);
