@@ -69,6 +69,8 @@ SRCS	=	$(MAIN)main.c \
 			$(LEX)tokenize_utils.c \
 			$(LEX)redir_parser.c \
 			$(LEX)arg_parser.c \
+			$(LEX)expand_trim_split.c \
+			$(LEX)join_value_split.c \
 			$(SIG)signal.c \
 
 OBJS	=	${SRCS:.c=.o}
