@@ -90,3 +90,24 @@ void	add_pwd(char *current_dir, char *new_dir)
 	}
 	ft_lstadd_back_env(&g_sh->env, new_node);
 }
+
+int	test_access(char *str)
+{
+	int		i;
+	int		j;
+	char	*dir;
+
+	dir = ft_strdup(str);
+	if (!dir)
+		ft_exit(EXIT_MALLOC_FAILURE);
+	i = ft_strlen(dir) - 1;
+	j = 0;
+	ch_dir_str(dir, &i, &j);
+	if (chdir(dir) != -1)
+	{
+		change_env_value("PWD", dir);
+		return (1);
+	}
+	ft_free(dir);
+	return (0);
+}

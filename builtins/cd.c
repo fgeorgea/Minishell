@@ -25,27 +25,6 @@ static void	ch_env_dir(char *current_dir, char *new_dir)
 		add_oldpwd(current_dir, new_dir);
 }
 
-static int	test_access(char *str)
-{
-	int		i;
-	int		j;
-	char	*dir;
-
-	dir = ft_strdup(str);
-	if (!dir)
-		ft_exit(EXIT_MALLOC_FAILURE);
-	i = ft_strlen(dir) - 1;
-	j = 0;
-	ch_dir_str(dir, &i, &j);
-	if (chdir(dir) != -1)
-	{
-		change_env_value("PWD", dir);
-		return (1);
-	}
-	ft_free(dir);
-	return (0);
-}
-
 static int	cd_crash_handler(const char *dir)
 {
 	char	*tmp;
@@ -74,10 +53,30 @@ static int	cd_crash_handler(const char *dir)
 	return (ret);
 }
 
+static int	ft_chdir_2(const char *dir, char *current_dir)
+{
+	char	*new_dir;
+
+	if (chdir(dir) == -1)
+	{
+		ft_free(current_dir);
+		print_err("cd: ", (char *)dir, NSFOD, 1);
+		return (0);
+	}
+	new_dir = getcwd(NULL, 0);
+	if (!new_dir)
+	{
+		ft_free(current_dir);
+		return (0);
+	}
+	ch_env_dir(current_dir, new_dir);
+	lst_to_array(&g_sh->env);
+	return (1);
+}
+
 static int	ft_chdir(const char *dir)
 {
 	char	*current_dir;
-	char	*new_dir;
 	char	*tmp;
 
 	if (dir[0] == '/')
@@ -98,21 +97,7 @@ static int	ft_chdir(const char *dir)
 		if (!current_dir)
 			return (cd_crash_handler(dir));
 	}
-	if (chdir(dir) == -1)
-	{
-		ft_free(current_dir);
-		print_err("cd: ", (char *)dir, NSFOD, 1);
-		return (0);
-	}
-	new_dir = getcwd(NULL, 0);
-	if (!new_dir)
-	{
-		ft_free(current_dir);
-		return (0);
-	}
-	ch_env_dir(current_dir, new_dir);
-	lst_to_array(&g_sh->env);
-	return (1);
+	return (ft_chdir_2(dir, current_dir));
 }
 
 void	cd_builtin(const char *str)

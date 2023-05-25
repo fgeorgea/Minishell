@@ -57,6 +57,7 @@ void	cd_builtin(const char *str);
 void	ch_dir_str(char *dir, int *i, int *j);
 void	add_oldpwd(char *current_dir, char *new_dir);
 void	add_pwd(char *current_dir, char *new_dir);
+int		test_access(char *str);
 
 // CALL_BUILTIN_C
 int		is_builtin(const char *cmd);
