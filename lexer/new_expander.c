@@ -289,6 +289,17 @@ void	remove_current_word(t_list **head, t_list **curr, t_list *last)
 	*curr = last->next;
 }
 
+void	update_curr(t_list **head, t_list **curr, t_list **last, t_token *t)
+{
+	if (!(*t->word) && !t->quotes)
+		remove_current_word(head, curr, *last);
+	else
+	{
+		*last = *curr;
+		*curr = (*curr)->next;
+	}
+}
+
 void	expander(t_list **head, t_list *curr)
 {
 	t_list	*last;
@@ -313,12 +324,6 @@ void	expander(t_list **head, t_list *curr)
 		}
 		else if (content->quotes)
 			trim_quotes(content, *head);
-		if (!(*content->word) && !content->quotes)
-			remove_current_word(head, &curr, last);
-		else
-		{
-			last = curr;
-			curr = curr->next;
-		}
+		update_curr(head, &curr, &last, content);
 	}
 }
