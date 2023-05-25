@@ -60,18 +60,30 @@ void	fill_in_arg(t_list **head, t_cmd *cmd, int n)
 	}
 }
 
-void	add_cmd_arg(t_list **head, int n, t_list *curr)
+int	check_empty_cmd_s_err(t_list *curr, int n)
 {
-	t_cmd	*cmd;
-
 	if (n == 0)
 	{
 		if (curr)
 			g_sh->s_err = S_ERR_PIPE;
 		else
 			g_sh->s_err = S_ERR_NL;
-		return ;
+		return (1);
 	}
+	if (curr && !curr->next)
+	{
+		g_sh->s_err = S_ERR_NL;
+		return (1);
+	}
+	return (0);
+}
+
+void	add_cmd_arg(t_list **head, int n, t_list *curr)
+{
+	t_cmd	*cmd;
+
+	if (check_empty_cmd_s_err(curr, n))
+		return ;
 	cmd = g_sh->cmd;
 	while (cmd->next)
 		cmd = cmd->next;
