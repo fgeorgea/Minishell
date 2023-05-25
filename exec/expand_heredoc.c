@@ -16,7 +16,8 @@ char	*get_here_exp_var(char *str, int *i)
 {
 	char	*var;
 
-	while (str[i[0]] && str[i[0]] != '"' && str[i[0]] != '\'' && !ft_iswhitespace(str[i[0]]))
+	while (str[i[0]] && str[i[0]] != '"'
+		&& str[i[0]] != '\'' && !ft_iswhitespace(str[i[0]]))
 		i[0]++;
 	var = ft_strndup(&str[i[1] + 1], i[0] - i[1] - 1);
 	if (!var)
@@ -83,7 +84,8 @@ char	*insert_exp_heredoc(char *str, char *var, char *value, int *i)
 {
 	char	*new;
 
-	new = malloc(sizeof(char) * (ft_strlen(str) + ft_strlen(value) - ft_strlen(var)));
+	new = malloc(sizeof(char) * (ft_strlen(str)
+				+ ft_strlen(value) - ft_strlen(var)));
 	ft_free(var);
 	if (!new)
 	{
@@ -108,7 +110,9 @@ void	expand_heredoc(char **str)
 	i[0] = 0;
 	while ((*str)[i[0]])
 	{
-		if ((*str)[i[0]] == '$' && (*str)[i[0] + 1] && (*str)[i[0] + 1] != '"' && (*str)[i[0] + 1] != '\'' && !ft_iswhitespace((*str)[i[0] + 1]))
+		if ((*str)[i[0]] == '$' && (*str)[i[0] + 1]
+			&& (*str)[i[0] + 1] != '"' && (*str)[i[0] + 1] != '\''
+			&& !ft_iswhitespace((*str)[i[0] + 1]))
 		{
 			i[1] = i[0];
 			var = get_here_exp_var(*str, i);
