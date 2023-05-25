@@ -12,27 +12,6 @@
 
 #include "../minishell.h"
 
-char	*get_var_key(char *str, int *i, t_list *head)
-{
-	char	*tmp;
-
-	i[1] = i[0];
-	i[0]++;
-	while (ft_isalnum(str[i[0]]) || str[i[0]] == '_')
-		i[0]++;
-	if (str[i[0]] == '?')
-		i[2] = i[0] + 1;
-	else
-		i[2] = i[0];
-	tmp = ft_strndup(&str[i[1] + 1], i[2] - i[1] - 1);
-	if (!tmp)
-	{
-		ft_lstclear(&head, &free_token);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	return (tmp);
-}
-
 static void	copy_value(t_token *t, char *value, char *tmp, int *i)
 {
 	int	j;
@@ -81,6 +60,21 @@ int	insert_value(t_token *t, char *key, char *value, int *i)
 	return (0);
 }
 
+static char	*get_pipe_exit(int *i, char *tmp, t_list *head)
+{
+	char	*value;
+
+	i[4] = 1;
+	value = ft_itoa(g_sh->pipe_exit);
+	if (!value)
+	{
+		ft_free(tmp);
+		ft_lstclear(&head, &free_token);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	return (value);
+}
+
 void static	expand_var(t_token *t, int *i, t_list *head)
 {
 	char	*tmp;
@@ -88,20 +82,14 @@ void static	expand_var(t_token *t, int *i, t_list *head)
 
 	tmp = get_var_key(t->word, i, head);
 	if (tmp[0] == '?' && tmp[1] == '\0')
-	{
-		i[4] = 1;
-		value = ft_itoa(g_sh->pipe_exit);
-		if (!value)
-		{
-			ft_free(tmp);
-			ft_lstclear(&head, &free_token);
-			ft_exit(EXIT_MALLOC_FAILURE);
-		}
-	}
+		value = get_pipe_exit(i, tmp, head);
 	else
 	{
 		i[4] = 0;
-		value = get_env_value(tmp);
+		if (tmp[0] == '0')
+			value = g_sh->name;
+		else
+			value = get_env_value(tmp);
 	}
 	if (insert_value(t, tmp, value, i))
 	{
@@ -133,8 +121,8 @@ void	expand(t_token *t, t_list *head)
 			if (i[3] || i[0] != skip_quotes(t->word, i[0]))
 				i[3] = !i[3];
 		}
-		if (t->word[i[0]] == '$' && t->word[i[0] + 1] != ' '
-			&& t->word[i[0] + 1])
+		if (t->word[i[0]] == '$' && (ft_isalnum(t->word[i[0] + 1])
+				|| t->word[i[0] + 1] == '_' || t->word[i[0] + 1] == '?'))
 			expand_var(t, i, head);
 		i[0]++;
 	}

@@ -190,6 +190,11 @@ char	*get_key_value(char *key, int *i, t_list *head)
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
 	}
+	else if (key[0] == '0')
+	{
+		i[4] = 0;
+		value = g_sh->name;
+	}
 	else
 	{
 		i[4] = 0;
@@ -256,8 +261,9 @@ t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
 	{
 		if (t->word[i[0]] == '"' || t->word[i[0]] == '\'')
 			handle_quotes_etp(t, i);
-		else if (t->word[i[0]] == '$' && !ft_iswhitespace(t->word[i[0] + 1])
-			&& t->word[i[0] + 1] && (t->word[i[0] + 1] != '"' || !i[3]))
+		else if (t->word[i[0]] == '$' && (ft_isalnum(t->word[i[0] + 1])
+				|| t->word[i[0] + 1] == '?' || t->word[i[0] + 1] == '_'
+				|| (t->word[i[0] + 1] == '"' && !i[3])))
 		{
 			expand_split(&curr, t, head, i);
 			t = curr->content;

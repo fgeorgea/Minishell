@@ -73,3 +73,27 @@ int	has_variable(char *str)
 	}
 	return (0);
 }
+
+char	*get_var_key(char *str, int *i, t_list *head)
+{
+	char	*tmp;
+
+	i[1] = i[0];
+	i[0]++;
+	if (!ft_isdigit(str[i[0]]))
+	{
+		while (ft_isalnum(str[i[0]]) || str[i[0]] == '_')
+			i[0]++;
+	}
+	if (i[1] + 1 == i[0])
+		i[2] = i[0] + 1;
+	else
+		i[2] = i[0];
+	tmp = ft_strndup(&str[i[1] + 1], i[2] - i[1] - 1);
+	if (!tmp)
+	{
+		ft_lstclear(&head, &free_token);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	return (tmp);
+}
