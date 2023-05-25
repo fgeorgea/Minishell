@@ -23,11 +23,11 @@ void	pwd_builtin(void)
 	pwd = getcwd(NULL, 0);
 	if (pwd)
 	{
-		ft_printf("%s\n", pwd);
+		printf("%s\n", pwd);
 		return ;
 	}
 	pwd = get_env_value("PWD");
 	if (!pwd)
 		set_exit(1);
-	ft_printf("%s\n", pwd);
+	printf("%s\n", pwd);
 }

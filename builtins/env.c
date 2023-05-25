@@ -21,7 +21,7 @@ void	env_builtin(void)
 	while (env)
 	{
 		if (env->value)
-			ft_printf("%s=%s\n", env->key, env->value);
+			printf("%s=%s\n", env->key, env->value);
 		env = env->next;
 	}
 }

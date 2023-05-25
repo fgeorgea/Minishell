@@ -78,7 +78,7 @@ int	main(int argc, char **argv, char **env)
 		g_sh->str = readline("\033[0;95mDopeorge$>\033[0;39m ");
 		if (!g_sh->str)
 		{
-			ft_printf("exit\n");
+			printf("exit\n");
 			ft_exit(EXIT_SUCCESS);
 		}
 		if (*g_sh->str)
