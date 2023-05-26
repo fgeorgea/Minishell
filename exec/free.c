@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:21:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 01:41:08 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:37:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	ft_free_array(char **array)
 }
 
 // Delete heredoc tmp file.
-void	delete_tmp_file(void)
+void	delete_tmp_file(char *file)
 {
-	if (access(TMP_FILE, F_OK) != -1)
-		unlink(TMP_FILE);
+	if (access(file, F_OK) != -1)
+		unlink(file);
 }

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 14:58:35 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 18:01:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 	if (!cmd->cmd)
 		exit(0);
 	check_cmd(cmd->cmd);
+	unlink(p->hd_tmp);
+	free(p->hd_tmp);
 	ft_execve(cmd->cmd, p->env_array);
 }
 
@@ -51,6 +53,9 @@ void	exec_cmds(void)
 	update_last_cmd((const char **)cmd->cmd);
 	while (cmd)
 	{
+		setup_heredoc(cmd->redir, i);
+		if (g_sh->here_doc_status)
+			break ;
 		set_lst_cmd(i);
 		ft_pipe(i);
 		setup_redir(cmd->redir, p);

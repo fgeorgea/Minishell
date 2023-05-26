@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 01:31:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:13:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:40:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	ft_open_redir(char *file, int mode, int perm)
 	if (mode == IN)
 		fd = open(file, IN_FLAGS, perm);
 	else if (mode == HEREDOC)
-		fd = open(TMP_FILE, IN, perm);
+		fd = open(g_sh->pipex->hd_tmp, IN, perm);
 	else if (mode == HEREDOC_EXP)
-		fd = open(TMP_FILE, IN, perm);
+		fd = open(g_sh->pipex->hd_tmp, IN, perm);
 	else if (mode == OUT)
 		fd = open(file, OUT_FLAGS, perm);
 	else if (mode == OUT_APP)

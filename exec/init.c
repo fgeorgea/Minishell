@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 14:59:58 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:41:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	init_struct_pipex(void)
 	p->env_array = NULL;
 	p->pids = NULL;
 	p->pipefd = NULL;
+	p->hd_tmp = NULL;
 	g_sh->pipe_exit = 0;
 	g_sh->is_exit_lst_cmd = 0;
 	p->is_in_child = 0;

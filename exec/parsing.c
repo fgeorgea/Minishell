@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/25 15:05:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 18:28:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	does_cmd_exist(const char *str)
 {
-	// int	tmp_fd;
+	int	tmp_fd;
 
-	// tmp_fd = open((char *)str, O_RDONLY, -1);
-	// if (tmp_fd == -1 && errno == EISDIR)
-	// {
-	// 	print_perror((char *)str, ": ", 126);
-	// 	exit_only_child(126);
-	// 	return (0);
-	// }
-	// ft_close(&tmp_fd);
+	tmp_fd = open((char *)str, O_WRONLY, -1);
+	if (tmp_fd == -1 && errno == EISDIR)
+	{
+		print_err((char *)str, NULL, ": is a directory\n", 126);
+		exit_only_child(126);
+		return (0);
+	}
+	ft_close(&tmp_fd);
 	if (access(str, F_OK | X_OK) == -1)
 		return (0);
 	else

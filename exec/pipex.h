@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 15:10:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:10:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define DUP2_ERR "An error occured on dup2 function\n"
 # define CLOSE_ERR "An error occured on close function\n"
 # define FORK_ERR "An error occured on the fork function\n"
-# define TMP_FILE "../.here_doc_tmp"
 # define EXIT_OPEN_FAILURE 4
 # define EXIT_CLOSE_FAILURE 5
 # define EXIT_FORK_FAILURE 6
@@ -45,6 +44,8 @@ typedef struct s_pipex
 	int		outfile;
 	int		here_doc;
 	int		is_in_child;
+	int		dup_stdin;
+	char	*hd_tmp;
 	size_t	nbr_cmds;
 	size_t	nbr_pipe;
 	size_t	nbr_fork;
@@ -112,7 +113,7 @@ void	expand_heredoc(char **str);
 // FREE_C
 void	ft_free_array(char **array);
 void	ft_free_array_pos(void **array, int pos);
-void	delete_tmp_file(void);
+void	delete_tmp_file(char *file);
 void	free_pipex(void);
 void	ft_free(void *ptr);
 
@@ -133,9 +134,13 @@ void	change_env_value(const char *key, const char *new_value);
 // REDIR_C
 int		test_redir_open(char *file, int mode, int perm);
 void	setup_redir(t_redir *redirection, t_pipex *p);
+void	setup_heredoc(t_redir *redirection, int pos);
 
 // REDIR_UTILS_C
 int		is_out_redir(int redir_mode);
+void	restore_stdin(int dup_stdout);
+void	create_hd_name(int pos);
+void	unlink_all_tmp(void);
 
 // UTILS_C
 size_t	arraylen(const char **array);

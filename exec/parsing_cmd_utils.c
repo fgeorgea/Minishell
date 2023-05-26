@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:55:44 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 19:21:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 18:21:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@ int	is_relative_path(const char *cmd)
 	}
 	return (0);
 }
-
-// static int	is_file_dir(char *str)
-// {
-// 	int	tmp_fd;
-
-// 	tmp_fd = open(str, O_RDONLY);
-// 	if (tmp_fd == -1 && errno == EISDIR)
-// 		return (1);
-// 	return (0);
-// }
 
 void	try_catch_cmd(char **cmd)
 {

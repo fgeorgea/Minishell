@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 16:33:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:42:45 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,37 @@ void	heredoc_catch_kill(int sig)
 	}
 }
 
+static int	compare_endtoken(char *end_token, char *str)
+{
+	int	strlen;
+
+	strlen = ft_strlen(str) - 1;
+	if (ft_strncmp(str, end_token, strlen) == 0)
+		return (1);
+	return (0);
+}
+
 void	here_doc(char *end_token)
 {
 	t_pipex	*p;
 	char	*str;
-	char	*prompt;
 
 	set_signals(SIG_HERE);
 	p = g_sh->pipex;
-	p->here_doc = ft_open(TMP_FILE, HEREDOC_FLAGS, 0644);
-	prompt = ft_strjoin(end_token, "> ");
-	if (!prompt)
-		ft_exit(EXIT_GNL_FAILURE);
+	p->here_doc = ft_open(p->hd_tmp, HEREDOC_FLAGS, 0644);
 	while (1)
 	{
-		str = readline(prompt);
+		ft_putstr_fd(end_token, 1);
+		write(1, "> ", 2);
+		str = get_next_line(p->dup_stdin);
 		if (!str)
 			break ;
-		if (compare_keys(str, end_token))
+		if (compare_endtoken(end_token, str))
 			break ;
-		ft_putendl_fd(str, p->here_doc);
+		ft_putstr_fd(str, p->here_doc);
 		free(str);
 	}
 	free(str);
-	free(prompt);
 	ft_close(&p->here_doc);
 	set_signals(DEFAULT);
 }
@@ -54,27 +61,24 @@ void	ft_here_doc_exp(char *end_token)
 {
 	t_pipex	*p;
 	char	*str;
-	char	*prompt;
 
 	set_signals(SIG_HERE);
 	p = g_sh->pipex;
-	p->here_doc = ft_open(TMP_FILE, HEREDOC_FLAGS, 0644);
-	prompt = ft_strjoin(end_token, "> ");
-	if (!prompt)
-		ft_exit(EXIT_GNL_FAILURE);
+	p->here_doc = ft_open(p->hd_tmp, HEREDOC_FLAGS, 0644);
 	while (1)
 	{
-		str = readline(prompt);
+		ft_putstr_fd(end_token, 1);
+		write(1, "> ", 2);
+		str = get_next_line(p->dup_stdin);
 		if (!str)
 			break ;
-		if (compare_keys(str, end_token))
+		if (compare_endtoken(end_token, str))
 			break ;
 		expand_heredoc(&str);
-		ft_putendl_fd(str, p->here_doc);
+		ft_putstr_fd(str, p->here_doc);
 		free(str);
 	}
 	free(str);
-	free(prompt);
 	ft_close(&p->here_doc);
 	set_signals(DEFAULT);
 }

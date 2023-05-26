@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:56:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/24 15:13:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:28:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void	catch_sigquit(int sig)
 void	catch_here_sigint(int sig)
 {
 	(void)sig;
-	close(0);
+	restore_stdin(g_sh->pipex->dup_stdin);
 	g_sh->here_doc_status = 1;
+	write(1, "\n", 1);
 }
 
 void	set_signals(int state)
