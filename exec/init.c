@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 19:24:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:30:46 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	init_struct_pipex(void)
 	g_sh->is_exit_lst_cmd = 0;
 	p->is_in_child = 0;
 	g_sh->here_doc_status = 0;
-	p->infile = -1;
-	p->outfile = -1;
+	p->infile = 0;
+	p->outfile = 0;
 	g_sh->is_child = PARENT;
 	p->nbr_cmds = lstsize_cmd();
 	p->nbr_pipe = p->nbr_cmds - 1;

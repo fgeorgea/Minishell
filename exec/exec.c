@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 11:50:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:30:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	exec_cmds(void)
 	{
 		set_lst_cmd(i);
 		ft_pipe(i);
-		setup_redir(cmd, p);
+		setup_redir(cmd->redir, p);
 		if (!ft_fork(i))
 			return ;
 		if (p->pids[i] == 0)
