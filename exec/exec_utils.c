@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 19:27:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:42:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	check_cmd(char **cmd)
 */
 int	check_builtins(t_pipex *p, t_cmd *cmd)
 {
-	if (is_builtin(cmd->cmd[0]) && p->nbr_cmds == 1)
+	if (cmd->cmd && is_builtin(cmd->cmd[0]) && p->nbr_cmds == 1)
 	{
 		g_sh->is_exit_lst_cmd = 1;
 		exec_builtin(cmd->cmd[0], (const char **)cmd->cmd);
