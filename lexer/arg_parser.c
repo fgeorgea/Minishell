@@ -60,8 +60,22 @@ void	fill_in_arg(t_list **head, t_cmd *cmd, int n)
 	}
 }
 
+int	check_empty_cmd_redir(void)
+{
+	t_cmd	*cmd;
+
+	cmd = g_sh->cmd;
+	while (cmd->next)
+		cmd = cmd->next;
+	if (cmd->redir == 0)
+		return (1);
+	return (0);
+}
+
 int	check_empty_cmd_s_err(t_list *curr, int n)
 {
+	if (!check_empty_cmd_redir())
+		return (0);
 	if (n == 0)
 	{
 		if (curr)
