@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:15:38 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/24 13:15:48 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:04:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ int	check_empty_cmd_redir(void)
 
 int	check_empty_cmd_s_err(t_list *curr, int n)
 {
-	if (!check_empty_cmd_redir())
-		return (0);
 	if (n == 0)
 	{
+		if (!check_empty_cmd_redir())
+			return (1);
 		if (curr)
 			g_sh->s_err = S_ERR_PIPE;
 		else

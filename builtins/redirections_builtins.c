@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_builtins.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:06:31 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/23 23:44:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:52:28 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ int	builtin_redirection(void)
 	if (p->nbr_fork > 0)
 		return (1);
 	cmd = g_sh->cmd;
-	p->infile = open_infile(cmd);
-	if (p->infile == -1)
+	setup_redir(cmd->redir, p);
+	if (p->infile < 0 || p->outfile < 0)
 		return (0);
-	ft_close(&p->infile);
-	p->outfile = open_outfile(cmd);
-	if (p->outfile == -1)
-		return (0);
-	else if (p->outfile > 0)
+	if (p->infile > 0)
+		ft_close(&p->infile);
+	if (p->outfile > 0)
 		link_files(p->outfile, STDOUT_FILENO);
 	return (1);
 }

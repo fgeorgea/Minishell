@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 14:30:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:59:58 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	init_struct_pipex(void)
 	g_sh->is_child = PARENT;
 	p->nbr_cmds = lstsize_cmd();
 	p->nbr_pipe = p->nbr_cmds - 1;
-	if (p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
+	if (g_sh->cmd->cmd && p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
 		p->nbr_fork = 0;
 	else
 		p->nbr_fork = p->nbr_cmds;

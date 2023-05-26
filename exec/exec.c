@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 14:30:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:58:35 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 		middle_child(pos, p);
 	if (!cmd->cmd)
 		exit(EXIT_SUCCESS);
+	if (!cmd->cmd)
+		exit(0);
 	check_cmd(cmd->cmd);
 	ft_execve(cmd->cmd, p->env_array);
 }

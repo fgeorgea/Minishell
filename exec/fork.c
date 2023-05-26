@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:12:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:48:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ pid_t	*create_fork_array(const t_pipex *p)
 {
 	pid_t	*array;
 
-	if (p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
+	if (g_sh->cmd->cmd && p->nbr_cmds == 1 && is_builtin(g_sh->cmd->cmd[0]))
 		return (NULL);
 	array = calloc(sizeof(pid_t), (p->nbr_fork));
 	if (!array)

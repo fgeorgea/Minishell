@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/25 15:04:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:01:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,22 @@ void	print_cmd(void)
 	while (tmp)
 	{
 		i = 1;
-		printf("CMD: %s\n", tmp->cmd[0]);
-		if (!tmp->cmd[1])
-			printf("No ARGS");
-		else
-			printf("ARGS: ");
-		while (tmp->cmd[i])
+		if (tmp->cmd)
 		{
-			printf("%s", tmp->cmd[i]);
-			if (tmp->cmd[i + 1])
-				printf(", ");
-			i++;
+			printf("CMD: %s\n", tmp->cmd[0]);
+			if (!tmp->cmd[1])
+				printf("No ARGS");
+			else
+				printf("ARGS: ");
+			while (tmp->cmd[i])
+			{
+				printf("%s", tmp->cmd[i]);
+				if (tmp->cmd[i + 1])
+					printf(", ");
+				i++;
+			}
+			printf("\n");
 		}
-		printf("\n");
 		temp = tmp->redir;
 		if (!temp)
 			printf("No REDIR\n");
@@ -84,7 +87,7 @@ int	main(int argc, char **argv, char **env)
 		if (*g_sh->str)
 			add_history(g_sh->str);
 		lexer(g_sh->str);
-		//print_cmd();
+		print_cmd();
 		if (g_sh->cmd)
 			ft_pipex();
 		set_signals(DEFAULT);

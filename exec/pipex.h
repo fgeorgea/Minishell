@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 14:38:45 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:10:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,14 +131,10 @@ t_env	*get_env_struct(const char *needle);
 void	change_env_value(const char *key, const char *new_value);
 
 // REDIR_C
-int		open_outfile(t_cmd *cmd);
-int		open_infile(t_cmd *cmd);
-t_redir	*get_in_redir(t_redir **redirection);
 int		test_redir_open(char *file, int mode, int perm);
+void	setup_redir(t_redir *redirection, t_pipex *p);
 
 // REDIR_UTILS_C
-//void	setup_redir(t_cmd *cmd, t_pipex *p);
-void	setup_redir(t_redir *redirection, t_pipex *p);
 int		is_out_redir(int redir_mode);
 
 // UTILS_C
