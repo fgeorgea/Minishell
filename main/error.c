@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/24 15:14:16 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:24:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void	print_perror(char *str1, char *str2, int exit_status)
 		ft_putstr_fd(str2, 2);
 	if (exit_status != -1)
 		set_exit(exit_status);
-	if (g_sh->pipe_exit != 0)
-		perror(NULL);
+	perror(NULL);
 }
 
 void	ft_exit(int status)

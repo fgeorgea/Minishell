@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 16:30:32 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:18:43 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 void	setup_redir(t_cmd *cmd, t_pipex *p)
 {
 	p->infile = open_infile(cmd);
-	p->outfile = open_outfile(cmd);
+	if (p->infile >= 0)
+		p->outfile = open_outfile(cmd);
+	else
+		p->outfile = 0;
 }

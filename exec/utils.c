@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:58:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:48:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@ void	set_exit(int exit_code)
 
 void	set_lst_cmd(int pos)
 {
-	int	nbr_cmds;
-
-	nbr_cmds = lstsize_cmd();
-	if (pos == nbr_cmds - 1)
+	if (pos == (int)g_sh->pipex->nbr_cmds - 1)
 		g_sh->is_exit_lst_cmd = 1;
 }

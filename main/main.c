@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/21 20:42:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:04:12 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main(int argc, char **argv, char **env)
 		if (*g_sh->str)
 			add_history(g_sh->str);
 		lexer(g_sh->str);
-		print_cmd();
+		//print_cmd();
 		if (g_sh->cmd)
 			ft_pipex();
 		set_signals(DEFAULT);
