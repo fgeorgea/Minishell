@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 18:15:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:30:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,12 @@ static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 }
 
 // This function is the main execution LOOP.
-void	exec_cmds(void)
+void	exec_cmds(t_pipex *p, t_cmd *cmd)
 {
 	size_t	i;
-	t_pipex	*p;
-	t_cmd	*cmd;
 
 	i = 0;
-	p = g_sh->pipex;
-	cmd = g_sh->cmd;
-	if (is_single_builtin(p, cmd))
+	if (is_single_builtin())
 		return ;
 	update_last_cmd((const char **)cmd->cmd);
 	while (cmd)

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 17:08:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:34:18 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,6 @@
 # define HEREDOC_FLAGS (O_WRONLY | O_CREAT | O_TRUNC)
 # define OUT_FLAGS (O_WRONLY | O_TRUNC | O_CREAT)
 # define OUT_APP_FLAGS (O_WRONLY | O_APPEND | O_CREAT)
-
-/*********************      STRUCTS    ************************/
-
-typedef struct s_pipex
-{
-	int		infile;
-	int		outfile;
-	int		here_doc;
-	int		is_in_child;
-	int		dup_stdin;
-	char	*hd_tmp;
-	size_t	nbr_cmds;
-	size_t	nbr_pipe;
-	size_t	nbr_fork;
-	size_t	nbr_paths;
-	char	**paths;
-	char	**env_array;
-	int		**pipefd;
-	pid_t	*pids;
-}		t_pipex;
 
 /*********************    FUNCTIONS    ************************/
 
@@ -84,13 +64,13 @@ void	ft_dup2(int file1, int file2);
 void	link_files(int fildes, int fildes2);
 
 // EXEC_C
-void	exec_cmds(void);
+void	exec_cmds(t_pipex *p, t_cmd *cmd);
 void	ft_execve(char *const *argv, char *const *envp);
 
 // EXEC_UTILS_C
 void	check_cmd(char **cmd);
 void	update_last_cmd(const char **cmd);
-int		is_single_builtin(t_pipex *p, t_cmd *cmd);
+int		is_single_builtin(void);
 
 // PIPE_C
 void	ft_pipe(size_t pos);

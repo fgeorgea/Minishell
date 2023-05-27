@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 16:48:45 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:25:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@
 # define IN 2
 # define HEREDOC 3
 # define HEREDOC_EXP 4
-
 
 // PROMPT COLORS
 # define BLUE "\033[0;94m"

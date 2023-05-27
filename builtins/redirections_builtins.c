@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:06:31 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 18:17:53 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:25:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	builtin_redirection(void)
 	cmd = g_sh->cmd;
 	setup_heredoc(cmd->redir, 0);
 	if (g_sh->here_doc_status)
-			return (0);
+		return (0);
 	setup_redir(cmd->redir, p);
 	if (p->infile < 0 || p->outfile < 0)
 		return (0);

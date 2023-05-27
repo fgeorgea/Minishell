@@ -6,12 +6,11 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 17:36:01 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:25:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 
 //	Adds a '/' at the end of every PATH strings.
 static void	add_slash(t_pipex *p)
@@ -35,7 +34,6 @@ static void	add_slash(t_pipex *p)
 		i++;
 	}
 }
-
 
 //	Splits the PATH env string into an array of strings.
 static void	init_paths(t_pipex *p)

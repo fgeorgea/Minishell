@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 17:58:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:28:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,13 @@ void	check_cmd(char **cmd)
 }
 
 // If there is only 1 cmd and it is a builtin, -> exec outside of child.
-int	is_single_builtin(t_pipex *p, t_cmd *cmd)
+int	is_single_builtin(void)
 {
+	t_pipex	*p;
+	t_cmd	*cmd;
+
+	p = g_sh->pipex;
+	cmd = g_sh->cmd;
 	if (cmd->cmd && is_builtin(cmd->cmd[0]) && p->nbr_cmds == 1)
 	{
 		g_sh->is_exit_lst_cmd = 1;

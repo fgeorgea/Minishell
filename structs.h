@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:08:00 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:26:43 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:33:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,23 @@ typedef struct s_env
 	struct s_env	*next;
 }		t_env;
 
-# include "exec/pipex.h"
+typedef struct s_pipex
+{
+	int		infile;
+	int		outfile;
+	int		here_doc;
+	int		is_in_child;
+	int		dup_stdin;
+	char	*hd_tmp;
+	size_t	nbr_cmds;
+	size_t	nbr_pipe;
+	size_t	nbr_fork;
+	size_t	nbr_paths;
+	char	**paths;
+	char	**env_array;
+	int		**pipefd;
+	pid_t	*pids;
+}		t_pipex;
 
 typedef struct s_shell
 {
