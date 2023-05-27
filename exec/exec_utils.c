@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 11:42:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:14:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@ static void	cat_cmd_for_underscore(char **cmd)
 	}
 }
 
-/*
-	Updates the '_' env value. Which is the last argument of the last cmd.
-	If the cmd does not have any arg, the value will be the path of the cmd.
-	'!' -> It is set to empty if there are pipes/multiple cmds.
-*/
+
+// Updates the '_' env value, which is the last argument of the last cmd.
 void	update_last_cmd(const char **cmd)
 {
 	int	array_len;
@@ -62,7 +59,10 @@ void	update_last_cmd(const char **cmd)
 void	check_cmd(char **cmd)
 {
 	if (is_builtin(cmd[0]))
+	{
 		exec_builtin(cmd[0], (const char **)cmd);
+		exit(g_sh->pipe_exit);
+	}
 	if (g_sh->pipex->nbr_paths > 0)
 		found_cmd(cmd);
 	else if (!does_cmd_exist(cmd[0]))
@@ -72,13 +72,8 @@ void	check_cmd(char **cmd)
 	}
 }
 
-/*
-	Checks cmd is builtin and executes it outside of child -
-	only if there is one cmd.
-	Checks if there are PATHS, will print an error if an -
-	external cmd is called with no PATH to find it.
-*/
-int	check_builtins(t_pipex *p, t_cmd *cmd)
+// If there is only 1 cmd and it is a builtin, -> exec outside of child.
+int	is_single_builtin(t_pipex *p, t_cmd *cmd)
 {
 	if (cmd->cmd && is_builtin(cmd->cmd[0]) && p->nbr_cmds == 1)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 17:25:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:18:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,18 @@ void	unlink_all_tmp(void)
 	}
 	free(g_sh->pipex->hd_tmp);
 	g_sh->pipex->hd_tmp = NULL;
+}
+
+int	test_redir_open(char *file, int mode, int perm)
+{
+	int	fd;
+
+	fd = ft_open_redir(file, mode, perm);
+	if (fd == -1)
+	{
+		print_perror(file, ": ", 1);
+		return (0);
+	}
+	ft_close(&fd);
+	return (1);
 }

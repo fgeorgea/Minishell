@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 01:25:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:12:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_execve(char *const *argv, char *const *envp);
 // EXEC_UTILS_C
 void	check_cmd(char **cmd);
 void	update_last_cmd(const char **cmd);
-int		check_builtins(t_pipex *p, t_cmd *cmd);
+int		is_single_builtin(t_pipex *p, t_cmd *cmd);
 
 // PIPE_C
 void	ft_pipe(size_t pos);

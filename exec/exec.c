@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 18:01:38 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:12:41 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	exec_cmds(void)
 	i = 0;
 	p = g_sh->pipex;
 	cmd = g_sh->cmd;
-	if (check_builtins(p, cmd))
+	if (is_single_builtin(p, cmd))
 		return ;
 	update_last_cmd((const char **)cmd->cmd);
 	while (cmd)

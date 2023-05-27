@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 11:48:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:15:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	exit_only_child(int exit_code)
 		exit(exit_code);
 }
 
+// Sets the exit code by checking if we are on the last cmd.
 void	set_exit(int exit_code)
 {
 	if (g_sh->is_exit_lst_cmd)
