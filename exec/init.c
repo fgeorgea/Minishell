@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 16:41:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:38:06 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	add_slash(t_pipex *p)
 			ft_free_array_pos((void **)p->paths, i);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
-		ft_free(p->paths[i]);
+		ft_free((void **)&p->paths[i]);
 		p->paths[i] = new_str;
 		i++;
 	}

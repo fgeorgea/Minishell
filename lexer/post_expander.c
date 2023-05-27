@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   post_expander.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:46:12 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 16:15:17 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:56:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_list	*new_token_list(char *word, t_list *head, char **a, t_list *n)
 	{
 		ft_lstclear(&head, &free_token);
 		ft_free_array(a);
-		ft_free(content);
+		ft_free((void **)&content);
 		ft_lstclear(&n, &free);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
@@ -71,14 +71,14 @@ t_list	*split_space(t_list *curr, t_list *head)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	tmp = get_split_space_list(arr, head);
-	ft_free(content->word);
-	ft_free(content);
+	ft_free((void **)&content->word);
+	ft_free((void **)&content);
 	temp = tmp;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = curr->next;
 	curr->next = temp->next;
 	curr->content = temp->content;
-	ft_free(temp);
+	ft_free((void **)&temp);
 	return (tmp);
 }

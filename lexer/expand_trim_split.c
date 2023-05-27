@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_trim_split.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:19:14 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/25 13:19:24 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:55:20 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 		if (insert_value(t, key, value, i))
 		{
 			if (i[4])
-				ft_free(value);
+				ft_free((void **)&value);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
@@ -34,7 +34,7 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 		if (join_value_split(value, curr, i, 0))
 		{
 			if (i[4])
-				ft_free(value);
+				ft_free((void **)&value);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}

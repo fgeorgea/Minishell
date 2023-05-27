@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:11:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/24 13:12:08 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:56:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ t_list	*remove_redir_list(t_list *curr, t_list **head, t_list **prev)
 		(*prev)->next = curr->next->next;
 		ret = (*prev)->next;
 	}
-	ft_free(curr->next->content);
-	ft_free(curr->next);
+	ft_free((void **)&curr->next->content);
+	ft_free((void **)&curr->next);
 	free_token(curr->content);
-	ft_free(curr);
+	ft_free((void **)&curr);
 	return (ret);
 }
 

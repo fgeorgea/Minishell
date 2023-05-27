@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:43:04 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 18:28:01 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:39:33 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	does_cmd_exist(const char *str)
 	tmp_fd = open((char *)str, O_WRONLY, -1);
 	if (tmp_fd == -1 && errno == EISDIR)
 	{
-		print_err((char *)str, NULL, ": is a directory\n", 126);
+		print_err((char *)str, NULL, ": is a directory", 126);
 		exit_only_child(126);
 		return (0);
 	}
@@ -49,10 +49,10 @@ int	try_cat_path_cmd(char **cmd, size_t pos)
 		ft_exit(EXIT_MALLOC_FAILURE);
 	if (!does_cmd_exist(str))
 	{
-		ft_free(str);
+		ft_free((void **)&str);
 		return (0);
 	}
-	ft_free(cmd[0]);
+	ft_free((void **)&cmd[0]);
 	cmd[0] = str;
 	return (1);
 }

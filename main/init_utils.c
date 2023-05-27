@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:08:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:26:58 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:35:12 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	init_shell_lvl(void)
 		if (compare_keys(env->key, "SHLVL"))
 		{
 			v = ft_atoi(env->value);
-			ft_free(env->value);
+			ft_free((void **)&env->value);
 			if (v < 0 || v >= 1000)
 				env->value = ft_strdup("0");
 			else if (v == 999)

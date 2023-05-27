@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 17:33:43 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:49:32 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	add_var_to_env_app(const char *str, size_t pos)
 	value = ft_strdup(&str[pos + 1]);
 	if (!value)
 	{
-		ft_free(key);
+		ft_free((void **)&key);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	env = get_env_struct(key);
@@ -54,8 +54,8 @@ static void	add_var_to_env_app(const char *str, size_t pos)
 		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, value));
 		return ;
 	}
-	ft_free(key);
-	ft_free(value);
+	ft_free((void **)&key);
+	ft_free((void **)&value);
 }
 
 static void	add_var_to_env(const char *str, size_t pos)
@@ -70,7 +70,7 @@ static void	add_var_to_env(const char *str, size_t pos)
 	value = ft_strdup(&str[pos + 1]);
 	if (!value)
 	{
-		ft_free(key);
+		ft_free((void **)&key);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	env = get_env_struct(key);
@@ -81,8 +81,8 @@ static void	add_var_to_env(const char *str, size_t pos)
 		ft_lstadd_back_env(&g_sh->env, ft_lstnew_env(key, value));
 		return ;
 	}
-	ft_free(key);
-	ft_free(value);
+	ft_free((void **)&key);
+	ft_free((void **)&value);
 }
 
 static void	check_append(const char *str)

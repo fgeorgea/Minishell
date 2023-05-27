@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/21 20:43:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:34:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	init_env(char **env)
 		key = ft_strndup(env[i], j);
 		value = ft_strdup(&env[i][j + 1]);
 		if (!value)
-			ft_free(key);
+			ft_free((void **)&key);
 		new_node = ft_lstnew_env(key, value);
 		if (!new_node)
 			ft_exit(EXIT_MALLOC_FAILURE);

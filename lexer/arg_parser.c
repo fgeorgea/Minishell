@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:15:38 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/26 15:04:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:55:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	remove_pipe_token(t_list **head)
 	{
 		tmp = (*head);
 		*head = (*head)->next;
-		ft_free(tmp);
+		ft_free((void **)&tmp);
 		free_token(t);
 		return ;
 	}
@@ -37,7 +37,7 @@ void	remove_pipe_token(t_list **head)
 		ft_lstclear(head, &free_token);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
-	ft_free(t->word);
+	ft_free((void **)&t->word);
 	t->word = str;
 }
 
@@ -53,9 +53,9 @@ void	fill_in_arg(t_list **head, t_cmd *cmd, int n)
 		t = (*head)->content;
 		tmp = (*head);
 		*head = (*head)->next;
-		ft_free(tmp);
+		ft_free((void **)&tmp);
 		cmd->cmd[i] = t->word;
-		ft_free(t);
+		ft_free((void **)&t);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:30:10 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:54:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:41:58 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	del_one_env(t_env *env)
 {
 	if (!env)
 		return ;
-	ft_free(env->key);
-	ft_free(env->value);
-	ft_free(env);
+	ft_free((void **)&env->key);
+	ft_free((void **)&env->value);
+	ft_free((void **)&env);
 }
 
 int	lstsize_env(t_env **lst)
@@ -72,17 +72,11 @@ t_env	*ft_lstnew_env(char *key, char *value)
 {
 	t_env	*new;
 
-	if (!key || !value)
-	{
-		ft_free(key);
-		ft_free(value);
-		return (NULL);
-	}
 	new = malloc(sizeof(t_env));
-	if (!new)
+	if (!key || !value || !new)
 	{
-		ft_free(key);
-		ft_free(value);
+		ft_free((void **)&key);
+		ft_free((void **)&value);
 		return (NULL);
 	}
 	new->key = key;

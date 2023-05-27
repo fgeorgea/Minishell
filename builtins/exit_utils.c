@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:05:36 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/19 14:10:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:50:28 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	skip_white_space(char **arg)
 	new_arg = ft_strdup(&arg[0][i]);
 	if (!new_arg)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	ft_free(arg[0]);
+	ft_free((void **)&arg[0]);
 	arg[0] = new_arg;
 }
 

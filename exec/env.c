@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/21 20:55:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:48:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	change_env_value(const char *key, const char *new_value)
 		if (!tmp)
 			ft_exit(EXIT_MALLOC_FAILURE);
 	}
-	ft_free(env->value);
+	ft_free((void **)&env->value);
 	env->value = tmp;
 }
 
@@ -74,11 +74,11 @@ static void	join_key_value(t_env *lst, char **array)
 		array[i] = ft_strjoin(tmp, lst->value);
 		if (!array[i])
 		{
-			ft_free(tmp);
+			ft_free((void **)&tmp);
 			ft_free_array_pos((void **)array, i);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}
-		ft_free(tmp);
+		ft_free((void **)&tmp);
 		i++;
 		lst = lst->next;
 	}

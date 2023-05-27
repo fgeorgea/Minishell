@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 17:10:16 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:25:04 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	ft_free_array(char **array);
 void	ft_free_array_pos(void **array, int pos);
 void	delete_tmp_file(char *file);
 void	free_pipex(void);
-void	ft_free(void *ptr);
+void	ft_free(void **ptr);
 
 // PROTECTIONS_C
 void	ft_close(int *fd);

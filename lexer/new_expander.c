@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_expander.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:49:42 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/18 19:26:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:55:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*get_key_value(char *key, int *i, t_list *head)
 		value = ft_itoa(g_sh->pipe_exit);
 		if (!value)
 		{
-			ft_free(key);
+			ft_free((void **)&key);
 			ft_lstclear(&head, &free_token);
 			ft_exit(EXIT_MALLOC_FAILURE);
 		}

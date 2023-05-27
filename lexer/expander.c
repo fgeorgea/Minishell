@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:23:31 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 16:13:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:57:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ int	insert_value(t_token *t, char *key, char *value, int *i)
 
 	tmp = malloc(sizeof(char) * (ft_strlen(t->word)
 				+ ft_strlen(value) - ft_strlen(key)));
-	ft_free(key);
+	ft_free((void **)&key);
 	if (!tmp)
 	{
 		if (i[4])
-			ft_free(value);
+			ft_free((void **)&value);
 		return (EXIT_MALLOC_FAILURE);
 	}
 	copy_value(t, value, tmp, i);
 	if (i[4])
-		ft_free(value);
-	ft_free(t->word);
+		ft_free((void **)&value);
+	ft_free((void **)&t->word);
 	t->word = tmp;
 	return (0);
 }
@@ -68,7 +68,7 @@ static char	*get_pipe_exit(int *i, char *tmp, t_list *head)
 	value = ft_itoa(g_sh->pipe_exit);
 	if (!value)
 	{
-		ft_free(tmp);
+		ft_free((void **)tmp);
 		ft_lstclear(&head, &free_token);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}

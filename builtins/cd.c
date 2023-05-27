@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:12:08 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:43:04 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static int	cd_crash_handler(const char *dir)
 	new_pwd = ft_strjoin(tmp, dir);
 	if (!new_pwd)
 	{
-		ft_free(tmp);
+		ft_free((void **)&tmp);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
-	ft_free(tmp);
+	ft_free((void **)&tmp);
 	change_env_value("OLDPWD", get_env_value("PWD"));
 	change_env_value("PWD", new_pwd);
 	ret = test_access(new_pwd);
@@ -59,14 +59,14 @@ static int	ft_chdir_2(const char *dir, char *current_dir)
 
 	if (chdir(dir) == -1)
 	{
-		ft_free(current_dir);
+		ft_free((void **)&current_dir);
 		print_err("cd: ", (char *)dir, NSFOD, 1);
 		return (0);
 	}
 	new_dir = getcwd(NULL, 0);
 	if (!new_dir)
 	{
-		ft_free(current_dir);
+		ft_free((void **)&current_dir);
 		return (0);
 	}
 	ch_env_dir(current_dir, new_dir);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:53:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 16:14:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:52:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	free_token(void *t)
 	t_token	*token;
 
 	token = t;
-	ft_free(token->word);
-	ft_free(token);
+	ft_free((void **)&token->word);
+	ft_free((void **)&token);
 }
 
 void	display_syntax_err(void)

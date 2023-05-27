@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:14:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/17 14:16:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 01:43:36 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ void	add_oldpwd(char *current_dir, char *new_dir)
 	old_tmp = ft_strdup("OLDPWD");
 	if (!old_tmp)
 	{
-		ft_free(current_dir);
-		ft_free(new_dir);
+		ft_free((void **)&current_dir);
+		ft_free((void **)&new_dir);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	new_node = ft_lstnew_env(old_tmp, current_dir);
 	if (!new_node)
 	{
-		ft_free(new_dir);
+		ft_free((void **)&new_dir);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	ft_lstadd_back_env(&g_sh->env, new_node);
@@ -78,14 +78,14 @@ void	add_pwd(char *current_dir, char *new_dir)
 	old_tmp = ft_strdup("PWD");
 	if (!old_tmp)
 	{
-		ft_free(current_dir);
-		ft_free(new_dir);
+		ft_free((void **)&current_dir);
+		ft_free((void **)&new_dir);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	new_node = ft_lstnew_env(old_tmp, new_dir);
 	if (!new_node)
 	{
-		ft_free(current_dir);
+		ft_free((void **)&current_dir);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	ft_lstadd_back_env(&g_sh->env, new_node);
@@ -108,6 +108,6 @@ int	test_access(char *str)
 		change_env_value("PWD", dir);
 		return (1);
 	}
-	ft_free(dir);
+	ft_free((void **)&dir);
 	return (0);
 }
