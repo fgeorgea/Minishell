@@ -6,13 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 01:48:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:42:36 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// This function will replace a value paired with a key in the env lst.
+// Replaces a value paired with a key in the env.
 void	change_env_value(const char *key, const char *new_value)
 {
 	t_env	*env;
@@ -47,7 +47,7 @@ t_env	*get_env_struct(const char *key)
 	return (NULL);
 }
 
-// It will return a string, which is the value paired with the given key.
+// Returns the value paired with the given key in the env.
 char	*get_env_value(const char *key)
 {
 	t_env	*env;
@@ -85,10 +85,7 @@ static void	join_key_value(t_env *lst, char **array)
 	array[i] = NULL;
 }
 
-/*
-	LST_TO_ARRAY will convert the ENV linked list into an array of strings.
-	It joins the key with the value with a '=' for each node of the list.
-*/
+// Converts the env linked list to an array of strings.
 void	lst_to_array(t_env **lst)
 {
 	char	**array;

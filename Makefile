@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/05/27 00:58:58 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/05/27 03:06:47 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,12 @@ SRCS	=	$(MAIN)main.c \
 			$(EXEC)wait.c \
 			$(EXEC)exec_utils.c \
 			$(EXEC)fork.c \
-			$(EXEC)fork_utils.c \
+			$(EXEC)link_fd.c \
 			$(EXEC)free.c \
 			$(EXEC)here_doc.c \
 			$(EXEC)init.c \
-			$(EXEC)parsing.c \
-			$(EXEC)parsing_cmd_utils.c \
+			$(EXEC)parse_cmd.c \
+			$(EXEC)parse_cmd_err.c \
 			$(EXEC)pipe.c \
 			$(EXEC)close_pipes.c \
 			$(EXEC)utils.c \

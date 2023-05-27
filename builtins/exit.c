@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 19:09:03 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:43:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static long int	ft_atol(const char *str)
 	return (nbr * is_neg);
 }
 
+// Checks if the exit arg overflows LONG MIN/MAX.
 static int	has_overflow(const char *str)
 {
 	int		arg_len;

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:30:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 03:13:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	create_hd_name(int pos)
 	char	*base;
 	char	*num;
 
-	free(g_sh->pipex->hd_tmp);
+	ft_free((void **)&g_sh->pipex->hd_tmp);
 	base = "/tmp/.hd_msh_";
 	num = ft_itoa(pos);
 	g_sh->pipex->hd_tmp = ft_strjoin(base, num);
-	free(num);
+	ft_free((void **)&num);
 	if (!g_sh->pipex->hd_tmp)
 		ft_exit(EXIT_MALLOC_FAILURE);
 }
@@ -52,7 +52,7 @@ void	unlink_all_tmp(void)
 	i = 0;
 	while (i < g_sh->pipex->nbr_cmds)
 	{
-		free(g_sh->pipex->hd_tmp);
+		ft_free((void **)&g_sh->pipex->hd_tmp);
 		num = ft_itoa(i);
 		g_sh->pipex->hd_tmp = ft_strjoin(base, num);
 		free(num);
@@ -60,7 +60,7 @@ void	unlink_all_tmp(void)
 			unlink((const char *)g_sh->pipex->hd_tmp);
 		i++;
 	}
-	free(g_sh->pipex->hd_tmp);
+	ft_free((void **)&g_sh->pipex->hd_tmp);
 	g_sh->pipex->hd_tmp = NULL;
 }
 
