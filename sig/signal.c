@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:56:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 16:55:28 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:15:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	catch_here_sigint(int sig)
 	(void)sig;
 	restore_stdin(g_sh->pipex->dup_stdin);
 	g_sh->here_doc_status = 1;
+	set_exit(1);
 	write(1, "\n", 1);
 }
 
