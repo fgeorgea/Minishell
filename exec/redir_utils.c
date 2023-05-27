@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:18:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:30:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	create_hd_name(int pos)
 
 void	unlink_all_tmp(void)
 {
-	char *base;
-	char *num;
+	char	*base;
+	char	*num;
 	size_t	i;
 
 	if (!g_sh->pipex)

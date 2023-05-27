@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:14:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:29:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	cat_cmd_for_underscore(char **cmd)
 		i++;
 	}
 }
-
 
 // Updates the '_' env value, which is the last argument of the last cmd.
 void	update_last_cmd(const char **cmd)

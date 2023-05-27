@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:24:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 02:29:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	save_redir_fds(t_redir *last_in, t_redir *last_out)
 void	setup_redir(t_redir *redirection, t_pipex *p)
 {
 	t_redir	*redir;
-	t_redir *last_in;
+	t_redir	*last_in;
 	t_redir	*last_out;
 
 	p->infile = 0;
