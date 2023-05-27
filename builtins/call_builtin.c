@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:11:25 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:22:33 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ void	exec_builtin(const char *cmd, const char **arg)
 {
 	int	dup_stdout;
 
-	dup_stdout = ft_dup(STDOUT_FILENO);
 	update_last_cmd(arg);
+	dup_stdout = ft_dup(STDOUT_FILENO);
 	if (!builtin_redirection())
+	{
+		set_exit(1);
 		return ;
+	}
 	if (compare_keys(cmd, "cd"))
 		cd_builtin(arg[1]);
 	else if (compare_keys(cmd, "echo"))
