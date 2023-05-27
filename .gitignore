@@ -11,3 +11,5 @@ outfile
 infile
 testfile
 test
+tester/
+tester/*
