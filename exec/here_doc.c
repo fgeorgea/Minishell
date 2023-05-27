@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 16:42:45 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:43:19 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	here_doc(char *end_token)
 
 	set_signals(SIG_HERE);
 	p = g_sh->pipex;
-	p->here_doc = ft_open(p->hd_tmp, HEREDOC_FLAGS, 0644);
+	p->here_doc = ft_open(p->hd_tmp, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (1)
 	{
 		ft_putstr_fd(end_token, 1);
@@ -64,7 +64,7 @@ void	ft_here_doc_exp(char *end_token)
 
 	set_signals(SIG_HERE);
 	p = g_sh->pipex;
-	p->here_doc = ft_open(p->hd_tmp, HEREDOC_FLAGS, 0644);
+	p->here_doc = ft_open(p->hd_tmp, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (1)
 	{
 		ft_putstr_fd(end_token, 1);

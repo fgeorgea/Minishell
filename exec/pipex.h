@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 18:34:18 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:43:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@
 # define EXIT_EXECVE_FAILURE 9
 # define NSFOD ": No such file or directory"
 # define CNF ": command not found"
-
-# define IN_FLAGS O_RDONLY
-# define HEREDOC_FLAGS (O_WRONLY | O_CREAT | O_TRUNC)
-# define OUT_FLAGS (O_WRONLY | O_TRUNC | O_CREAT)
-# define OUT_APP_FLAGS (O_WRONLY | O_APPEND | O_CREAT)
 
 /*********************    FUNCTIONS    ************************/
 

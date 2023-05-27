@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 18:25:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:45:17 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,6 @@
 # define BLUE "\033[0;94m"
 # define RED "\033[0;91m"
 # define ENDC "\033[0;39m"
-
-# ifdef NULL
-#  undef NULL
-#  define NULL 0
-# else
-#  define NULL 0
-# endif
 
 /*********************      STRUCTS    ************************/
 
