@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_cmd_utils.c                                :+:      :+:    :+:   */
+/*   parse_cmd_err.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:55:44 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 18:21:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:56:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// Checks wheter the cmd is a relative path or not.
 int	is_relative_path(const char *cmd)
 {
 	size_t	i;
@@ -34,5 +35,5 @@ void	try_catch_cmd(char **cmd)
 		print_err(cmd[0], NULL, CNF, 127);
 	else
 		print_err(cmd[0], NULL, NSFOD, 127);
-	exit(g_sh->pipe_exit);
+	exit_only_child(g_sh->pipe_exit);
 }

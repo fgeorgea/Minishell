@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:29:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:39:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	setup_redir(t_redir *redirection, t_pipex *p)
 
 	p->infile = 0;
 	p->outfile = 0;
+	if (!redirection)
+		return ;
 	redir = redirection;
 	last_in = NULL;
 	last_out = NULL;

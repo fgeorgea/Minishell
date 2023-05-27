@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 03:13:01 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:38:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	restore_stdin(int dup_stdin)
 	link_files(dup_stdin, STDIN_FILENO);
 }
 
+// Creates heredoc_tmp file name with cmd position.
 void	create_hd_name(int pos)
 {
 	char	*base;
@@ -40,6 +41,7 @@ void	create_hd_name(int pos)
 		ft_exit(EXIT_MALLOC_FAILURE);
 }
 
+// Will delete all heredoc tmp files.
 void	unlink_all_tmp(void)
 {
 	char	*base;

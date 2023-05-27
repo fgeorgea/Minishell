@@ -6,13 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:21:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 01:54:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:57:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// Sets pointer to NULL after being freed.
+// Sets pointer to NULL after freeing it.
 void	ft_free(void **ptr)
 {
 	free(*ptr);

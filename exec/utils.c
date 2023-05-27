@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:15:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:56:03 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void	exit_only_child(int exit_code)
 	t_pipex	*p;
 
 	p = g_sh->pipex;
-	if (p->nbr_fork > 0)
-		exit(exit_code);
+	if (p->nbr_fork <= 0)
+		return ;
+	ft_free_global();
+	exit(exit_code);
 }
 
 // Sets the exit code by checking if we are on the last cmd.

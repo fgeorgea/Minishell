@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/25 16:24:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:30:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,39 @@ void	print_perror(char *str1, char *str2, int exit_status)
 	perror(NULL);
 }
 
+static void	print_exit_err(int status)
+{
+	if (status == EXIT_SUCCESS)
+		return ;
+	else if (status == EXIT_MALLOC_FAILURE)
+		print_err("MALLOC crash !", NULL, NULL, status);
+	else if (status == EXIT_SIGNAL_FAILURE)
+		print_err("SIGNAL crash !", NULL, NULL, status);
+	else if (status == EXIT_OPEN_FAILURE)
+		print_err("OPEN crash !", NULL, NULL, status);
+	else if (status == EXIT_CLOSE_FAILURE)
+		print_err("CLOSE crash !", NULL, NULL, status);
+	else if (status == EXIT_PIPE_FAILURE)
+		print_err("PIPE crash !", NULL, NULL, status);
+	else if (status == EXIT_DUP2_FAILURE)
+		print_err("DUP2 crash !", NULL, NULL, status);
+	else if (status == EXIT_WAITPID_FAILURE)
+		print_err("WAITPID crash !", NULL, NULL, status);
+	else if (status == EXIT_EXECVE_FAILURE)
+		print_err("EXECVE crash !", NULL, NULL, status);
+	else if (status == EXIT_PWD_FAILURE)
+		print_err("PWD crash !", NULL, NULL, status);
+	else if (status == EXIT_DUP_FAILURE)
+		print_err("DUP crash !", NULL, NULL, status);
+	else
+		print_perror(NULL, NULL, status);
+}
+
 void	ft_exit(int status)
 {
 	rl_clear_history();
 	if (status != EXIT_SUCCESS)
-		perror(g_sh->name);
+		print_exit_err(status);
 	ft_free_global();
 	exit(status);
 }

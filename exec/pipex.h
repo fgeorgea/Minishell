@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:12:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:08:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@
 # define FORK_ERR "An error occured on the fork function\n"
 # define EXIT_OPEN_FAILURE 4
 # define EXIT_CLOSE_FAILURE 5
-# define EXIT_FORK_FAILURE 6
-# define EXIT_PIPE_FAILURE 7
-# define EXIT_DUP2_FAILURE 8
-# define EXIT_WAITPID_FAILURE 9
-# define EXIT_GNL_FAILURE 10
-# define EXIT_EXECVE_FAILURE 11
+# define EXIT_PIPE_FAILURE 6
+# define EXIT_DUP2_FAILURE 7
+# define EXIT_WAITPID_FAILURE 8
+# define EXIT_EXECVE_FAILURE 9
 # define NSFOD ": No such file or directory"
 # define CNF ": command not found"
 

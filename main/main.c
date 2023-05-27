@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 02:34:19 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 16:50:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		if (g_sh->pipe_exit == 0)
-			g_sh->str = readline("\033[0;94mDopeorge$>\033[0;39m ");
+			g_sh->str = readline(BLUE"Dopeorge$> "ENDC);
 		else
-			g_sh->str = readline("\033[0;91mDopeorge$>\033[0;39m ");
+			g_sh->str = readline(RED"Dopeorge$> "ENDC);
 		if (!g_sh->str)
 		{
 			printf("exit\n");

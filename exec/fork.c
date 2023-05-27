@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:58:54 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/26 14:48:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:53:14 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-	Will fork the main process. 
-	- Returns 1 if the fork is successful.
-	- Returns 0 if the fork fails, and prints an error.
-*/
+// Protected versin of the fork function.
 int	ft_fork(size_t pos)
 {
 	t_pipex	*p;
@@ -25,9 +21,9 @@ int	ft_fork(size_t pos)
 	p->pids[pos] = fork();
 	if (p->pids[pos] == -1)
 	{
-		set_exit(1);
 		close_all_pipes();
-		perror("Minishell: fork");
+		print_perror("fork", ": ", 1);
+		g_sh->pipe_exit = 1;
 		return (0);
 	}
 	return (1);

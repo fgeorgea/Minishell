@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:29:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:58:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,11 @@ void	ft_execve(char *const *argv, char *const *envp)
 	int	success;
 
 	success = execve(argv[0], argv, envp);
-	if (success == -1)
+	if (success == -1 && errno == EACCES)
 	{
-		set_exit(1);
-		exit_only_child(1);
+		print_perror(argv[0], ": ", 126);
+		exit_only_child(126);
 	}
+	else if (success == -1)
+		ft_exit(EXIT_EXECVE_FAILURE);
 }

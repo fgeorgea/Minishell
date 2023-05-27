@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:56:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/26 17:28:38 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 16:55:28 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ void	catch_sigint(int sig)
 	write(1, "\n", 1);
 	if (!g_sh->pipex || !g_sh->pipex->is_in_child)
 	{
+		set_exit(1);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
-		set_exit(1);
 	}
 	else
-	{
 		set_exit(130);
-	}
 }
 
 void	catch_sigquit(int sig)

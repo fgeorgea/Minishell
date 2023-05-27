@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:12:41 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:57:43 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 	set_signals(CHILD);
 	g_sh->is_child = CHILD;
 	if (p->infile < 0 || p->outfile < 0)
-		exit(1);
+		exit_only_child(EXIT_FAILURE);
 	if (g_sh->here_doc_status)
-		exit(0);
+		ft_exit(EXIT_SUCCESS);
 	close_pipes_children(pos, p);
 	if (pos == 0)
 		first_child(p);
@@ -29,12 +29,10 @@ static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 	else
 		middle_child(pos, p);
 	if (!cmd->cmd)
-		exit(EXIT_SUCCESS);
-	if (!cmd->cmd)
-		exit(0);
+		exit_only_child(EXIT_SUCCESS);
 	check_cmd(cmd->cmd);
 	unlink(p->hd_tmp);
-	free(p->hd_tmp);
+	ft_free((void **)&p->hd_tmp);
 	ft_execve(cmd->cmd, p->env_array);
 }
 

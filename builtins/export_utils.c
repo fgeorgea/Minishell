@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 01:50:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:34:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,8 @@ void	sort_env_ascii(void)
 	lst_to_array(&g_sh->env);
 }
 
-/*
-	Prints the env like so: key="value"
-	'!' -> If a value is set to NULL, it will only print 'key='
-*/
+
+//	Prints the env like so: key="value"
 void	print_export(void)
 {
 	t_env	*env;
@@ -82,10 +80,7 @@ void	print_export(void)
 	env = g_sh->env;
 	while (env)
 	{
-		if (env->value)
-			printf("declare -x %s=\"%s\"\n", env->key, env->value);
-		else
-			printf("declare -x %s\n", env->key);
+		printf("declare -x %s=\"%s\"\n", env->key, env->value);
 		env = env->next;
 	}
 }

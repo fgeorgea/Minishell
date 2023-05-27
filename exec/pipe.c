@@ -6,12 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/16 01:34:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:37:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// Protected version of pipe function.
 void	ft_pipe(size_t pos)
 {
 	t_pipex	*p;
