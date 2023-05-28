@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   join_value_split.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:20:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/25 13:20:42 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:47:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*word_list_from_arr(char **arr, t_list *head, int i)
 		new = ft_lstnew(t);
 		if (!new)
 		{
-			free(t);
+			ft_free((void **)&t);
 			ft_lstclear(&head, &free);
 			return (0);
 		}
@@ -43,10 +43,10 @@ t_list	*word_list_from_arr(char **arr, t_list *head, int i)
 
 int	jfl_free_r(t_token *t, t_list *head, char *tmp2, char *tmp3)
 {
-	free(t->word);
+	ft_free((void **)&t->word);
 	t->word = tmp3;
 	t = head->content;
-	free(t->word);
+	ft_free((void **)&t->word);
 	t->word = tmp2;
 	return (0);
 }
@@ -95,7 +95,7 @@ int	join_value_split(char *value, t_list **curr, int *i, t_list *new)
 		ft_free_array(arr);
 		return (EXIT_MALLOC_FAILURE);
 	}
-	free(arr);
+	ft_free((void **)&arr);
 	if (join_first_last(new, *curr, i, ft_lstlast(new)))
 		return (EXIT_MALLOC_FAILURE);
 	t = new->content;
@@ -103,7 +103,7 @@ int	join_value_split(char *value, t_list **curr, int *i, t_list *new)
 	(*curr)->content = t;
 	tmp = (*curr)->next;
 	(*curr)->next = new->next;
-	free(new);
+	ft_free((void **)&new);
 	*curr = ft_lstlast(*curr);
 	(*curr)->next = tmp;
 	return (EXIT_SUCCESS);

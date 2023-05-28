@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_expander.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:49:42 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 01:55:54 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:48:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	remove_current_word(t_list **head, t_list **curr, t_list *last)
 	{
 		*head = (*curr)->next;
 		free_token((*curr)->content);
-		free(*curr);
+		ft_free((void **)&*curr);
 		*curr = *head;
 		return ;
 	}
 	last->next = (*curr)->next;
 	free_token((*curr)->content);
-	free(*curr);
+	ft_free((void **)&*curr);
 	*curr = last->next;
 }
 

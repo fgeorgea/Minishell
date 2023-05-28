@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 17:38:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:46:21 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	unlink_all_tmp(void)
 		ft_free((void **)&g_sh->pipex->hd_tmp);
 		num = ft_itoa(i);
 		g_sh->pipex->hd_tmp = ft_strjoin(base, num);
-		free(num);
+		ft_free((void **)&num);
 		if (g_sh->pipex->hd_tmp)
 			unlink((const char *)g_sh->pipex->hd_tmp);
 		i++;
