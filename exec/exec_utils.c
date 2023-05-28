@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 18:28:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:13:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	cat_cmd_for_underscore(char **cmd)
 	p = g_sh->pipex;
 	if (!cmd[0][0])
 		return ;
-	while (p->paths && p->paths[i])
+	while (p->paths && p->paths[i] && errno != EISDIR)
 	{
-		if (try_cat_path_cmd(cmd, i))
+		if (try_cat_path_cmd_underscore(cmd, i))
 			return ;
 		i++;
 	}

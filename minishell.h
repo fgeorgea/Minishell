@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 18:45:17 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:20:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@
 # define IN 2
 # define HEREDOC 3
 # define HEREDOC_EXP 4
-
-// PROMPT COLORS
-# define BLUE "\033[0;94m"
-# define RED "\033[0;91m"
-# define ENDC "\033[0;39m"
 
 /*********************      STRUCTS    ************************/
 
