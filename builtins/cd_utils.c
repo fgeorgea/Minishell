@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:14:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 01:43:36 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:08:36 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int	test_access(char *str)
 	if (chdir(dir) != -1)
 	{
 		change_env_value("PWD", dir);
+		ft_free((void **)&dir);
 		return (1);
 	}
 	ft_free((void **)&dir);

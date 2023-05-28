@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:17:30 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/24 15:12:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:58:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	pwd_builtin(void)
 	if (pwd)
 	{
 		printf("%s\n", pwd);
+		ft_free((void **)&pwd);
 		return ;
 	}
 	pwd = get_env_value("PWD");

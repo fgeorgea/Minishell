@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 12:55:29 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/28 18:11:38 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:11:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	exit_only_child(int exit_code)
 	p = g_sh->pipex;
 	if (p->nbr_fork <= 0)
 		return ;
-	ft_free_global();
 	exit(exit_code);
 }
 

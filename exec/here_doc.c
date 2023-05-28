@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 18:43:19 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:10:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	here_doc(char *end_token)
 		if (compare_endtoken(end_token, str))
 			break ;
 		ft_putstr_fd(str, p->here_doc);
-		free(str);
+		ft_free((void **)&str);
 	}
-	free(str);
+	ft_free((void **)&str);
 	ft_close(&p->here_doc);
 	set_signals(DEFAULT);
 }
@@ -76,9 +76,9 @@ void	ft_here_doc_exp(char *end_token)
 			break ;
 		expand_heredoc(&str);
 		ft_putstr_fd(str, p->here_doc);
-		free(str);
+		ft_free((void **)&str);
 	}
-	free(str);
+	ft_free((void **)&str);
 	ft_close(&p->here_doc);
 	set_signals(DEFAULT);
 }
