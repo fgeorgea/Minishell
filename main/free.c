@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/29 12:04:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:59:33 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	free_pipex(void)
 
 void	ft_free_global(void)
 {
+	rl_clear_history();
 	unlink_all_tmp();
 	if (g_sh)
 	{
