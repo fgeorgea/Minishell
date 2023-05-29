@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:55:44 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/28 18:48:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:46:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	try_catch_cmd(char **cmd)
 		return ;
 	if (!is_relative_path(cmd[0]))
 		print_err(cmd[0], NULL, CNF, 127);
-	else
+	else if (is_relative_path(cmd[0]) && access(cmd[0], F_OK))
 		print_err(cmd[0], NULL, NSFOD, 127);
+	else
+		print_err(cmd[0], NULL, ": Permission denied", 126);
 	exit_only_child(g_sh->pipe_exit);
 }
