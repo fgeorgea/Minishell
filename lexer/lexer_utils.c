@@ -62,6 +62,7 @@ void	display_syntax_err(void)
 		ft_putstr_fd(": syntax error near unexpected token `|'\n", 2);
 	else
 		ft_putstr_fd(": unknown syntax error\n", 2);
+	g_sh->pipe_exit = 258;
 }
 
 int	is_heredoc(t_list *last)
