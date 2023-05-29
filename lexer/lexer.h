@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:42:11 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/04 19:39:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 14:21:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define S_ERR_HERE 5
 # define S_ERR_RW 6
 # define S_ERR_PIPE 7
+# define S_ERR_TRIPLE 8
 
 typedef struct s_token
 {

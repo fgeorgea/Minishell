@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 17:53:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 01:52:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 14:23:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	display_syntax_err(void)
 		ft_putstr_fd(": syntax error near unexpected token `<>'\n", 2);
 	else if (g_sh->s_err == S_ERR_PIPE)
 		ft_putstr_fd(": syntax error near unexpected token `|'\n", 2);
+	else if (g_sh->s_err == S_ERR_TRIPLE)
+		ft_putstr_fd(": syntax error near unexpected token `<<<'\n", 2);
 	else
 		ft_putstr_fd(": unknown syntax error\n", 2);
 	g_sh->pipe_exit = 258;

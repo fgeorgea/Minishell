@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:14:55 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/16 16:16:43 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 14:23:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ void	new_cmd(t_list *head)
 
 void	set_token_err(char *token)
 {
-	if (token[0] == '>' && token[1] == '>')
+	if (token[0] == '<' && token[1] == '<' && token[2] == '<')
+		g_sh->s_err = S_ERR_TRIPLE;
+	else if (token[0] == '>' && token[1] == '>')
 		g_sh->s_err = S_ERR_APP;
 	else if (token[0] == '<' && token[1] == '<')
 		g_sh->s_err = S_ERR_HERE;

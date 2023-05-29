@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:15:27 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/12 13:15:37 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/05/29 14:00:36 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,16 @@ int	has_quotes(char *str)
 int	has_variable(char *str)
 {
 	int	i;
+	int	q;
 
 	i = 0;
+	q = 0;
 	while (str[i])
 	{
-		if (str[i] == '\'')
+		if (str[i] == '\'' && !q)
 			i = skip_quotes(str, i);
+		if (str[i] == '"')
+			q = !q;
 		if (str[i] == '$' && str[i + 1] && str[i + 1] != ' ')
 			return (1);
 		i++;
