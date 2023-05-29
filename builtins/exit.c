@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 13:17:29 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:29:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,7 @@ void	exit_builtin(const char **arg)
 	status = 0;
 	ft_putstr_fd("exit\n", 2);
 	if (!arg || !*arg)
-	{
-		ft_putstr_fd("exit\n", 2);
 		ft_exit(0);
-	}
 	skip_white_space((char **)arg);
 	if (!is_valid_exit(arg))
 		return ;
