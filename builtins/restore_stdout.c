@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   restore_stdout.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 17:47:19 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 11:32:18 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:55:50 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_dup(int fildes)
 // Restores STDOUT after single builtin redirection occured.
 void	restore_stdout(int dup_stdout)
 {
-	if (g_sh->pipex->nbr_fork > 0 || dup_stdout < 0)
+	if (g_sh->pipex->nbr_fork > 0 || dup_stdout < 3)
 		return ;
 	if (close(STDOUT_FILENO) == -1)
 		ft_exit(EXIT_CLOSE_FAILURE);

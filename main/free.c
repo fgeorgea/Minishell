@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/29 11:35:08 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:04:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,6 @@ void	free_pipex(void)
 	if (!g_sh->pipex)
 		return ;
 	p = g_sh->pipex;
-	unlink_all_tmp();
-	restore_stdin(p->dup_stdin);
-	restore_stdout(p->dup_stdout);
 	close_all_pipes();
 	ft_free_array(p->paths);
 	ft_free_array(p->env_array);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 11:32:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 12:03:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_out_redir(int redir_mode)
 
 void	restore_stdin(int dup_stdin)
 {
-	if (dup_stdin < 0)
+	if (dup_stdin < 3)
 		return ;
 	if (close(STDIN_FILENO) == -1)
 		ft_exit(EXIT_CLOSE_FAILURE);
@@ -48,24 +48,24 @@ void	unlink_all_tmp(void)
 {
 	char	*base;
 	char	*num;
+	char	*hd_tmp;
 	size_t	i;
+	size_t	nbr_cmds;
 
-	if (!g_sh->pipex)
-		return ;
 	base = "/tmp/.hd_msh_";
 	i = 0;
-	while (i < g_sh->pipex->nbr_cmds)
+	nbr_cmds = lstsize_cmd();
+	while (i < nbr_cmds)
 	{
-		ft_free((void **)&g_sh->pipex->hd_tmp);
 		num = ft_itoa(i);
-		g_sh->pipex->hd_tmp = ft_strjoin(base, num);
+		hd_tmp = ft_strjoin(base, num);
 		ft_free((void **)&num);
-		if (g_sh->pipex->hd_tmp)
-			unlink((const char *)g_sh->pipex->hd_tmp);
+		if (hd_tmp)
+			unlink((const char *)hd_tmp);
+		ft_free((void **)&hd_tmp);
 		i++;
 	}
-	ft_free((void **)&g_sh->pipex->hd_tmp);
-	g_sh->pipex->hd_tmp = NULL;
+	ft_free((void **)&hd_tmp);
 }
 
 int	test_redir_open(char *file, int mode, int perm)
