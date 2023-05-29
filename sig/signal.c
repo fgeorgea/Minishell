@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:56:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 18:15:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:27:36 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,11 @@ void	catch_sigint(int sig)
 	write(1, "\n", 1);
 	if (!g_sh->pipex || !g_sh->pipex->is_in_child)
 	{
-		set_exit(1);
+		g_sh->pipe_exit = 1;
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
 	}
-	else
-		set_exit(130);
-}
-
-void	catch_sigquit(int sig)
-{
-	(void)sig;
-	write(1, "Quit: 3\n", 8);
-	set_exit(131);
 }
 
 void	catch_here_sigint(int sig)
@@ -39,7 +30,7 @@ void	catch_here_sigint(int sig)
 	(void)sig;
 	restore_stdin(g_sh->pipex->dup_stdin);
 	g_sh->here_doc_status = 1;
-	set_exit(1);
+	g_sh->pipe_exit = 1;
 	write(1, "\n", 1);
 }
 
@@ -58,7 +49,7 @@ void	set_signals(int state)
 	else if (state == PARENT)
 	{
 		signal(SIGINT, catch_sigint);
-		signal(SIGQUIT, catch_sigquit);
+		signal(SIGQUIT, SIG_IGN);
 	}
 	else if (state == CHILD)
 	{
