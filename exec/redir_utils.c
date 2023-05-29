@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 12:03:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 20:29:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	unlink_all_tmp(void)
 	base = "/tmp/.hd_msh_";
 	i = 0;
 	nbr_cmds = lstsize_cmd();
+	hd_tmp = NULL;
 	while (i < nbr_cmds)
 	{
 		num = ft_itoa(i);
