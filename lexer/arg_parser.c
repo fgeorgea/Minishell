@@ -72,12 +72,15 @@ int	check_empty_cmd_redir(void)
 	return (0);
 }
 
-int	check_empty_cmd_s_err(t_list *curr, int n)
+int	check_empty_cmd_s_err(t_list *curr, int n, t_list **head)
 {
 	if (n == 0)
 	{
 		if (!check_empty_cmd_redir())
+		{
+			remove_pipe_token(head);
 			return (1);
+		}
 		if (curr)
 			g_sh->s_err = S_ERR_PIPE;
 		else
@@ -96,7 +99,7 @@ void	add_cmd_arg(t_list **head, int n, t_list *curr)
 {
 	t_cmd	*cmd;
 
-	if (check_empty_cmd_s_err(curr, n))
+	if (check_empty_cmd_s_err(curr, n, head))
 		return ;
 	cmd = g_sh->cmd;
 	while (cmd->next)
