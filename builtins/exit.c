@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 02:43:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 13:17:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	exit_builtin(const char **arg)
 	long int	status;
 
 	status = 0;
+	ft_putstr_fd("exit\n", 2);
 	if (!arg || !*arg)
 	{
 		ft_putstr_fd("exit\n", 2);
@@ -109,6 +110,5 @@ void	exit_builtin(const char **arg)
 		exit_non_numeric_arg(arg[0]);
 	status = ft_atol(arg[0]);
 	ft_free_global();
-	ft_putstr_fd("exit\n", 2);
 	exit((unsigned char)status);
 }
