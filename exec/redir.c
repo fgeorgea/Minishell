@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 17:39:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:29:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	setup_heredoc(t_redir *redirection, int pos)
 	redir = redirection;
 	create_hd_name(pos);
 	g_sh->pipex->dup_stdin = dup(STDIN_FILENO);
+	if (g_sh->pipex->dup_stdin == -1)
+		ft_exit(EXIT_DUP_FAILURE);
 	while (redir && !g_sh->here_doc_status)
 	{
 		if (redir->mode == HEREDOC)

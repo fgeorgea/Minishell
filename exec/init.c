@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 18:25:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:34:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static void	set_base_values(t_pipex *p)
 	p->infile = 0;
 	p->outfile = 0;
 	p->nbr_paths = 0;
+	p->dup_stdin = -1;
+	p->dup_stdout = -1;
 	g_sh->is_child = PARENT;
 	p->nbr_cmds = lstsize_cmd();
 	p->nbr_pipe = p->nbr_cmds - 1;

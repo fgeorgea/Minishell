@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:44:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/28 19:46:21 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:32:05 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	is_out_redir(int redir_mode)
 
 void	restore_stdin(int dup_stdin)
 {
+	if (dup_stdin < 0)
+		return ;
 	if (close(STDIN_FILENO) == -1)
 		ft_exit(EXIT_CLOSE_FAILURE);
 	link_files(dup_stdin, STDIN_FILENO);

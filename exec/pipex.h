@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/28 18:13:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:30:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	setup_heredoc(t_redir *redirection, int pos);
 
 // REDIR_UTILS_C
 int		is_out_redir(int redir_mode);
-void	restore_stdin(int dup_stdout);
+void	restore_stdin(int dup_stdin);
 void	create_hd_name(int pos);
 void	unlink_all_tmp(void);
 

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:08:00 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 18:33:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:33:57 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_pipex
 	int		here_doc;
 	int		is_in_child;
 	int		dup_stdin;
+	int		dup_stdout;
 	char	*hd_tmp;
 	size_t	nbr_cmds;
 	size_t	nbr_pipe;

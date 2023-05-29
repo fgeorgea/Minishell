@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   underscore_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:12:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/28 18:14:24 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:06:01 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	does_cmd_exist_underscore(const char *str)
 	int	tmp_fd;
 
 	tmp_fd = open((char *)str, O_WRONLY, -1);
-	if (tmp_fd == -1)
+	if (tmp_fd == -1 && errno == EISDIR)
 		return (0);
 	ft_close(&tmp_fd);
 	if (access(str, F_OK | X_OK) == -1)

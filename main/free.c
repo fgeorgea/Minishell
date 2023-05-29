@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 18:02:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/29 11:35:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	free_pipex(void)
 		return ;
 	p = g_sh->pipex;
 	unlink_all_tmp();
+	restore_stdin(p->dup_stdin);
+	restore_stdout(p->dup_stdout);
 	close_all_pipes();
 	ft_free_array(p->paths);
 	ft_free_array(p->env_array);
