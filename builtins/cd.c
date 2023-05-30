@@ -25,46 +25,6 @@ static void	ch_env_dir(char *current_dir, char *new_dir)
 		add_oldpwd(current_dir, new_dir);
 }
 
-static char	*cd_crash_join(const char *dir)
-{
-	char *str;
-
-	if ((dir[0] == '.' && dir[1] == '.' && !dir[2]) || (dir[0] == '.' && !dir[0]))
-	{
-		if (ft_strlen(dir) == 2)
-			str = ft_strjoin(get_env_value("PWD"), "/..");
-		else
-			str = ft_strjoin(get_env_value("PWD"), "/.");
-		if (!str)
-			ft_exit(EXIT_MALLOC_FAILURE);
-		return (str);
-	}
-	str = ft_strdup(get_env_value("PWD"));
-	if (!str)
-		ft_exit(EXIT_MALLOC_FAILURE);
-	return (str);
-}
-
-static int	cd_crash_handler(const char *dir)
-{
-	char	*new_pwd;
-	int		ret;
-
-	if (!get_env_value("PWD"))
-	{
-		print_err(CD_RM, NULL, NULL, 1);
-		return (0);
-	}
-	new_pwd = cd_crash_join(dir);
-	change_env_value("OLDPWD", get_env_value("PWD"));
-	change_env_value("PWD", new_pwd);
-	ret = test_access(new_pwd);
-	if (!ret)
-		perror(CD_RM);
-	ft_free((void **)&new_pwd);
-	return (ret);
-}
-
 static int	ft_chdir_2(const char *dir, char *current_dir)
 {
 	char	*new_dir;

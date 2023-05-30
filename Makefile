@@ -49,6 +49,7 @@ SRCS	=	$(MAIN)main.c \
 			$(BUILTINS)pwd.c \
 			$(BUILTINS)cd.c \
 			$(BUILTINS)cd_utils.c \
+			$(BUILTINS)cd_crash_utils.c \
 			$(BUILTINS)unset.c \
 			$(BUILTINS)export.c \
 			$(BUILTINS)export_utils.c \
