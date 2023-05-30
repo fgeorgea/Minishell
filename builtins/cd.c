@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 17:35:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/30 15:46:39 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ static int	cd_crash_handler(const char *dir)
 	int		ret;
 
 	if (!get_env_value("PWD"))
+	{
+		print_err(CD_RM, NULL, NULL, 1);
 		return (0);
+	}
 	new_pwd = cd_crash_join(dir);
 	change_env_value("OLDPWD", get_env_value("PWD"));
 	change_env_value("PWD", new_pwd);
@@ -80,8 +83,6 @@ static int	ft_chdir_2(const char *dir, char *current_dir)
 	}
 	ch_env_dir(current_dir, new_dir);
 	lst_to_array(&g_sh->env);
-	ft_free((void **)&current_dir);
-	ft_free((void **)&new_dir);
 	return (1);
 }
 
@@ -124,7 +125,7 @@ void	cd_builtin(const char *str)
 	dir = get_env_value("HOME");
 	if (!dir)
 	{
-		print_err("cd: ", NULL, "HOME not set", 1);
+		print_err("cd: HOME not set", NULL, NULL, 1);
 		return ;
 	}
 	if (!ft_chdir(dir))
