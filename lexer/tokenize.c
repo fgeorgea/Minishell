@@ -12,7 +12,8 @@
 
 #include "../minishell.h"
 
-t_list	*insert_word_token(t_list *current, t_list *head, char *str, char **arr)
+/*t_list	*insert_word_token(t_list *current,
+t_list *head, char *str, char **arr)
 {
 	t_token	*content;
 	t_list	*tmp;
@@ -61,6 +62,74 @@ t_list	*split_token(t_list *current, t_list *head)
 		i++;
 	}
 	ft_free((void **)&arr);
+	return (current->next);
+}*/
+
+static t_list	*new_node_tokenize(char **arr, t_list *head, int i, t_list *new)
+{
+	t_list	*tmp;
+	t_token	*content;
+
+	content = ft_calloc(1, sizeof(t_token));
+	if (!content)
+	{
+		ft_lstclear(&head, &free_token);
+		ft_lstclear(&new, &free);
+		ft_free_array(arr);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	tmp = ft_lstnew(content);
+	if (!tmp)
+	{
+		free(content);
+		ft_lstclear(&head, &free_token);
+		ft_lstclear(&new, &free);
+		ft_free_array(arr);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	content->word = arr[i];
+	return (tmp);
+}
+
+static t_list	*arr_to_list_tokenize(char **arr, t_list *head)
+{
+	t_list	*new;
+	t_list	*tmp;
+	int		i;
+
+	i = 0;
+	new = 0;
+	while (arr[i])
+	{
+		tmp = new_node_tokenize(arr, head, i, new);
+		ft_lstadd_back(&new, tmp);
+		i++;
+	}
+	return (new);
+}
+
+t_list	*split_token(t_list *current, t_list *head)
+{
+	char	**arr;
+	t_token	*tmp;
+	t_list	*new;
+	t_list	*temp;
+
+	tmp = current->content;
+	arr = shell_split_token(tmp->word, "|<>");
+	if (!arr)
+	{
+		ft_lstclear(&head, &free_token);
+		ft_exit(EXIT_MALLOC_FAILURE);
+	}
+	new = arr_to_list_tokenize(arr, head);
+	temp = current->next;
+	free_token(tmp);
+	current->content = new->content;
+	current->next = new->next;
+	free(new);
+	current = ft_lstlast(current);
+	current->next = temp;
 	return (current->next);
 }
 
