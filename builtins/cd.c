@@ -72,22 +72,38 @@ static int	ft_chdir(const char *dir)
 	return (ft_chdir_2(dir, current_dir));
 }
 
+char	*get_cd_special_dir(const char *str)
+{
+	char	*dir;
+
+	if (!str || compare_keys(str, "~"))
+	{
+		dir = get_env_value("HOME");
+		if (!dir)
+			print_err("cd: HOME not set", NULL, NULL, 1);
+	}
+	else
+	{
+		dir = get_env_value("OLDPWD");
+		if (!dir)
+			print_err("cd: OLDPWD not set", NULL, NULL, 1);
+	}
+	return (dir);
+}
+
 void	cd_builtin(const char *str)
 {
 	char	*dir;
 
-	if (str && !compare_keys(str, "~"))
+	if (str && !compare_keys(str, "~") && !compare_keys(str, "-"))
 	{
 		if (!ft_chdir(str))
 			set_exit(1);
 		return ;
 	}
-	dir = get_env_value("HOME");
+	dir = get_cd_special_dir(str);
 	if (!dir)
-	{
-		print_err("cd: HOME not set", NULL, NULL, 1);
 		return ;
-	}
 	if (!ft_chdir(dir))
 		set_exit(1);
 }

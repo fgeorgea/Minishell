@@ -29,6 +29,11 @@ void	pwd_builtin(void)
 	}
 	pwd = get_env_value("PWD");
 	if (!pwd)
+	{
+		ft_putstr_fd("Minishell: pwd: error retrieving current directory:", 2);
+		ft_putstr_fd(" getcwd: cannot access parent directories\n", 2);
 		set_exit(1);
-	printf("%s\n", pwd);
+	}
+	else
+		printf("%s\n", pwd);
 }
