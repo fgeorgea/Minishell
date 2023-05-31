@@ -75,7 +75,6 @@ int	test_access(char *str)
 	return (0);
 }
 
-
 char	*get_cd_special_dir(const char *str)
 {
 	char	*dir;

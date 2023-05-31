@@ -85,6 +85,12 @@ void	cd_builtin(const char *str)
 	dir = get_cd_special_dir(str);
 	if (!dir)
 		return ;
+	if (!dir[0])
+	{
+		if (str && compare_keys(str, "-"))
+			write(1, "\n", 1);
+		return ;
+	}
 	if (!ft_chdir(dir))
 		set_exit(1);
 }
