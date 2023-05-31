@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 18:25:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:24:56 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,19 @@ void	sort_env_ascii(void)
 	lst_to_array(&g_sh->env);
 }
 
+void	add_var_to_env_null(const char *key)
+{
+	t_env	*new;
+
+	new = ft_calloc(1, sizeof(t_env));
+	if (!new)
+		ft_exit(EXIT_MALLOC_FAILURE);
+	new->key = ft_strdup(key);
+	if (!new->key)
+		ft_exit(EXIT_MALLOC_FAILURE);
+	ft_lstadd_back_env(&g_sh->env, new);
+}
+
 //	Prints the env like so: key="value"
 void	print_export(void)
 {
@@ -79,7 +92,10 @@ void	print_export(void)
 	env = g_sh->env;
 	while (env)
 	{
-		printf("declare -x %s=\"%s\"\n", env->key, env->value);
+		if (env->value)
+			printf("declare -x %s=\"%s\"\n", env->key, env->value);
+		else
+			printf("declare -x %s\n", env->key);
 		env = env->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 01:49:32 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:20:44 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,11 @@ static void	check_append(const char *str)
 
 	i = 0;
 	if (!ft_strchr(str, '='))
+	{
+		if (!get_env_struct(str))
+			add_var_to_env_null(str);
 		return ;
+	}
 	while (str[i] != '=')
 		i++;
 	if (str[i - 1] == '+')
@@ -116,9 +120,7 @@ void	export_builtin(const char **strs)
 		if (check_valid_key(strs[i]))
 			check_append(strs[i]);
 		else
-		{
 			print_err("export: `", (char *)strs[i], NAVI, 1);
-		}
 		i++;
 	}
 	lst_to_array(&g_sh->env);

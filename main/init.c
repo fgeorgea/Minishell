@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 03:14:36 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:03:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,28 @@ static void	init_env(char **env)
 	}
 }
 
+void static	init_oldpwd(void)
+{
+	t_env	*oldpwd;
+
+	oldpwd = get_env_struct("OLDPWD");
+	if (oldpwd)
+	{
+		free(oldpwd->value);
+		oldpwd->value = NULL;
+	}
+	else
+	{
+		oldpwd = ft_calloc(1, sizeof(t_env));
+		if (!oldpwd)
+			ft_exit(EXIT_MALLOC_FAILURE);
+		oldpwd->key = ft_strdup("OLDPWD");
+		ft_lstadd_back_env(&g_sh->env, oldpwd);
+		if (!oldpwd->key)
+			ft_exit(EXIT_MALLOC_FAILURE);
+	}
+}
+
 void	init_shell(char **argv, char **env)
 {
 	g_sh = malloc(sizeof(t_shell));
@@ -51,6 +73,7 @@ void	init_shell(char **argv, char **env)
 	g_sh->pipe_exit = 0;
 	init_env(env);
 	if_env_not_set();
+	init_oldpwd();
 	if (get_env_struct("SHLVL"))
 		init_shell_lvl();
 	else

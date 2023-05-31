@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/30 15:44:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:56:18 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,21 @@ static void	join_key_value(t_env *lst, char **array)
 	char	*tmp;
 
 	i = 0;
+	tmp = NULL;
 	while (lst)
 	{
-		tmp = ft_strjoin(lst->key, "=");
-		array[i] = ft_strjoin(tmp, lst->value);
-		if (!array[i])
+		if (lst->value)
 		{
+			tmp = ft_strjoin(lst->key, "=");
+			array[i] = ft_strjoin(tmp, lst->value);
 			ft_free((void **)&tmp);
-			ft_free_array_pos((void **)array, i);
-			ft_exit(EXIT_MALLOC_FAILURE);
+			if (!array[i])
+			{
+				ft_free_array_pos((void **)array, i);
+				ft_exit(EXIT_MALLOC_FAILURE);
+			}
+			i++;
 		}
-		ft_free((void **)&tmp);
-		i++;
 		lst = lst->next;
 	}
 	array[i] = NULL;
@@ -89,15 +92,21 @@ static void	join_key_value(t_env *lst, char **array)
 void	lst_to_array(t_env **lst)
 {
 	char	**array;
-	int		lstsize;
 	t_env	*env;
+	size_t	size;
 
-	lstsize = lstsize_env(lst);
 	env = *lst;
+	size = 0;
+	while (env)
+	{
+		if (env->value)
+			size++;
+		env = env->next;
+	}
 	ft_free_array(g_sh->pipex->env_array);
-	array = malloc(sizeof(char *) * (lstsize + 1));
+	array = malloc(sizeof(char *) * (size + 1));
 	if (!array)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	join_key_value(env, array);
+	join_key_value(*lst, array);
 	g_sh->pipex->env_array = array;
 }
