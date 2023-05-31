@@ -12,43 +12,6 @@
 
 #include "../minishell.h"
 
-static void	ch_dir_str2(char *dir, int *i, int *j)
-{
-	while (*i >= 0)
-	{
-		if (dir[*i] == '/')
-		{
-			dir[*i] = '\0';
-			*j = *j - 1;
-			if (*j == 0)
-				break ;
-		}
-		*i = *i - 1;
-	}
-}
-
-void	ch_dir_str(char *dir, int *i, int *j)
-{
-	while (i >= 0)
-	{
-		if (dir[*i] == '/')
-		{
-			if (dir[*i + 1] == '.' && dir[*i + 2] == '\0')
-				dir[*i] = 0;
-			else if (dir[*i + 1] == '.'
-				&& dir[*i + 2] == '.' && dir[*i + 3] == '\0')
-			{
-				dir[*i] = 0;
-				*j = *j + 1;
-			}
-			else
-				break ;
-		}
-		*i = *i - 1;
-	}
-	ch_dir_str2(dir, i, j);
-}
-
 void	add_oldpwd(char *current_dir, char *new_dir)
 {
 	char	*old_tmp;
@@ -110,4 +73,24 @@ int	test_access(char *str)
 	}
 	ft_free((void **)&dir);
 	return (0);
+}
+
+
+char	*get_cd_special_dir(const char *str)
+{
+	char	*dir;
+
+	if (!str || compare_keys(str, "~"))
+	{
+		dir = get_env_value("HOME");
+		if (!dir)
+			print_err("cd: HOME not set", NULL, NULL, 1);
+	}
+	else
+	{
+		dir = get_env_value("OLDPWD");
+		if (!dir)
+			print_err("cd: OLDPWD not set", NULL, NULL, 1);
+	}
+	return (dir);
 }

@@ -12,6 +12,43 @@
 
 #include "../minishell.h"
 
+static void	ch_dir_str2(char *dir, int *i, int *j)
+{
+	while (*i >= 0)
+	{
+		if (dir[*i] == '/')
+		{
+			dir[*i] = '\0';
+			*j = *j - 1;
+			if (*j == 0)
+				break ;
+		}
+		*i = *i - 1;
+	}
+}
+
+void	ch_dir_str(char *dir, int *i, int *j)
+{
+	while (i >= 0)
+	{
+		if (dir[*i] == '/')
+		{
+			if (dir[*i + 1] == '.' && dir[*i + 2] == '\0')
+				dir[*i] = 0;
+			else if (dir[*i + 1] == '.'
+				&& dir[*i + 2] == '.' && dir[*i + 3] == '\0')
+			{
+				dir[*i] = 0;
+				*j = *j + 1;
+			}
+			else
+				break ;
+		}
+		*i = *i - 1;
+	}
+	ch_dir_str2(dir, i, j);
+}
+
 static char	*cd_crash_join(const char *dir)
 {
 	char	*str;
