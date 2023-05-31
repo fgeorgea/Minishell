@@ -54,7 +54,7 @@ static char	*cd_crash_join(const char *dir)
 	char	*str;
 
 	if ((dir[0] == '.' && dir[1] == '.' && !dir[2])
-		|| (dir[0] == '.' && !dir[0]))
+		|| (dir[0] == '.' && !dir[1]))
 	{
 		if (ft_strlen(dir) == 2)
 			str = ft_strjoin(get_env_value("PWD"), "/..");
