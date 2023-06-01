@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:45:41 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 17:29:28 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:54:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	save_exit_code(int status)
 		write(2, "Quit: 3\n", 8);
 		status = 131 * 256;
 	}
+	else if (g_sh->here_doc_status)
+		status = 256;
 	g_sh->pipe_exit = status / 256;
 }
 
@@ -40,6 +42,7 @@ void	ft_waitpid(void)
 
 	i = 0;
 	p = g_sh->pipex;
+	status = 0;
 	if (p->nbr_fork == 0)
 		return ;
 	p->is_in_child = 1;
