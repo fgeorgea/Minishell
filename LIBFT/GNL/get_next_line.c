@@ -3,121 +3,134 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:31:36 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/02/07 12:32:52 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:45:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strndup(char *str, int n)
+static char	*ft_strdup_gnl(char *s1, int *check_nl)
 {
+	int		len;
 	int		i;
-	char	*dst;
+	char	*res;
 
+	len = 0;
+	i = -1;
+	while (s1[len])
+	{
+		if (s1[len] == '\n')
+		{
+			len++;
+			break ;
+		}
+		len++;
+	}
+	res = malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (NULL);
+	while (++i < len)
+		res[i] = s1[i];
+	res[i] = '\0';
+	if (len > 0 && res[i - 1] == '\n')
+		*check_nl = i - 1;
+	return (res);
+}
+
+static char	*ft_strjoin_gnl(char *s1, char *s2, int *check_nl)
+{
+	char	*str;
+	int		i;
+	int		j;
+	int		len;
+
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
-		return (0);
+	{
+		free(s1);
+		return (NULL);
+	}
 	i = 0;
-	while (str[i])
-		i++;
-	if (i > n)
-		i = n;
-	dst = malloc(sizeof(char) * (i + 1));
-	if (!dst)
-		return (0);
+	j = -1;
+	while (s1[++j])
+		str[i++] = s1[j];
+	free(s1);
+	j = -1;
+	while (s2[++j])
+		str[i++] = s2[j];
+	str[i] = '\0';
+	if (len > 0 && str [i - 1] == '\n')
+		*check_nl = 0;
+	return (str);
+}
+
+static int	check_eol(char *str)
+{
+	size_t	i;
+
 	i = 0;
-	while (str[i] && i < n)
+	if (!str)
+		return (-1);
+	while (i < BUFFER_SIZE)
 	{
-		dst[i] = str[i];
+		if (str[i] == '\n' || str[i] == '\0')
+			return (i + 1);
 		i++;
 	}
-	dst[i] = 0;
-	return (dst);
+	return (i);
 }
 
-char	*nl_found(char **leftover, int i)
+static char	*get_line(char *line, char *tmp, int *check_nl, int fd)
 {
-	char	*temp;
-	char	*new_left;
-
-	temp = ft_strndup(*leftover, i + 1);
-	if (!temp)
-		return (0);
-	new_left = ft_strdup(&(*leftover)[i + 1]);
-	if (!new_left)
-	{
-		free(temp);
-		return (0);
-	}
-	free(*leftover);
-	*leftover = new_left;
-	return (temp);
-}
-
-char	*end_file(char **leftover)
-{
-	char	*temp;
-
-	if (!*leftover)
-		return (0);
-	temp = *leftover;
-	*leftover = 0;
-	if (!temp[0])
-	{
-		free(temp);
-		return (0);
-	}
-	return (temp);
-}
-
-int	ft_read(char **leftover, int fd)
-{
-	int		ret;
+	int		byte_read;
 	char	buff[BUFFER_SIZE + 1];
-	char	*old_left;
+	int		size_to_add;
 
-	ret = read(fd, buff, BUFFER_SIZE);
-	if (ret == -1)
-		return (0);
-	buff[ret] = 0;
-	old_left = *leftover;
-	*leftover = ft_strjoin(old_left, buff);
-	if (!(*leftover))
+	while (*check_nl == -1)
 	{
-		*leftover = old_left;
-		return (0);
+		ft_bzero(buff, BUFFER_SIZE + 1);
+		byte_read = read(fd, buff, BUFFER_SIZE);
+		if (byte_read == -1)
+		{
+			free(line);
+			ft_bzero(tmp, BUFFER_SIZE + 1);
+			return (NULL);
+		}
+		size_to_add = check_eol(buff);
+		ft_strlcpy(tmp, &buff[size_to_add], BUFFER_SIZE + 1);
+		ft_strlcpy(buff, buff, size_to_add + 1);
+		line = ft_strjoin_gnl(line, buff, check_nl);
+		if (byte_read == 0)
+		{
+			ft_bzero(tmp, BUFFER_SIZE + 1);
+			break ;
+		}
 	}
-	free(old_left);
-	return (ret);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*leftover[OPEN_MAX];
-	int			ret;
-	int			i;
+	static char	tmp[BUFFER_SIZE + 1];
+	char		*line;
+	int			check_nl;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1)
-		return (0);
-	if (!leftover[fd])
-		leftover[fd] = ft_strdup("");
-	if (!leftover[fd])
-		return (0);
-	ret = BUFFER_SIZE;
-	while (1)
-	{
-		i = -1;
-		while (leftover[fd] && leftover[fd][++i])
-		{
-			if (leftover[fd][i] == '\n')
-				return (nl_found(&leftover[fd], i));
-		}
-		if (ret != BUFFER_SIZE)
-			return (end_file(&leftover[fd]));
-		else
-			ret = ft_read(&leftover[fd], fd);
+	if ((fd < 0 || fd >= OPEN_MAX) || BUFFER_SIZE <= 0)
+		return (NULL);
+	check_nl = -1;
+	line = ft_strdup_gnl(tmp, &check_nl);
+	if (!line)
+		return (NULL);
+	ft_strlcpy(tmp, &tmp[check_nl + 1], BUFFER_SIZE + 1);
+	line = get_line(line, tmp, &check_nl, fd);
+	if (!line || line[0] == '\0')
+	{	
+		free(line);
+		return (NULL);
 	}
-	return (0);
+	return (line);
 }

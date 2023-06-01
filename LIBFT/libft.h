@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:22:27 by dpeyrat           #+#    #+#             */
-/*   Updated: 2023/05/21 20:47:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:44:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,5 @@ size_t			ft_printnbr(long int nb, int fd);
 void			ft_printhex(unsigned int nbr, char *base, size_t *len, int fd);
 size_t			ft_nbrlen(long int nb);
 size_t			ft_printptr(unsigned long int nb, int fd);
+char			*ft_strndup(char *str, int n);
 #endif
