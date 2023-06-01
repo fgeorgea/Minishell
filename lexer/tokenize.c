@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:44:22 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 01:53:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:26:05 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ static t_list	*arr_to_list_tokenize(char **arr, t_list *head)
 		ft_lstadd_back(&new, tmp);
 		i++;
 	}
+	free(arr);
 	return (new);
 }
 
