@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/30 15:46:39 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:53:27 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	ch_env_dir(char *current_dir, char *new_dir)
 		change_env_value("OLDPWD", current_dir);
 	else
 		add_oldpwd(current_dir, new_dir);
+	ft_free((void **)&current_dir);
+	ft_free((void **)&new_dir);
 }
 
 static int	ft_chdir_2(const char *dir, char *current_dir)
