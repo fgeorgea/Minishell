@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   call_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 11:35:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/01 22:15:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	exec_builtin(const char *cmd, const char **arg)
 	else if (compare_keys(cmd, "echo"))
 		echo_builtin(&arg[1]);
 	else if (compare_keys(cmd, "env"))
-		env_builtin();
+		env_builtin(&arg[1]);
 	else if (compare_keys(cmd, "exit"))
 		exit_builtin(&arg[1]);
 	else if (compare_keys(cmd, "unset"))

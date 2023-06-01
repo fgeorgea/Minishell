@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/31 12:14:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/01 22:16:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 void	echo_builtin(const char **strs);
 
 // ENV_C
-void	env_builtin(void);
+void	env_builtin(const char **arg);
 
 // EXPORT_C
 void	export_builtin(const char **strs);
