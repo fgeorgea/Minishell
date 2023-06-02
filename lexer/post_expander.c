@@ -57,7 +57,7 @@ static t_list	*get_split_space_list(char **arr, t_list *head)
 	return (new_head);
 }
 
-t_list	*split_space(t_list *curr, t_list *head)
+t_list	*split_space(t_list *curr, t_list *head, t_token **t)
 {
 	char	**arr;
 	t_token	*content;
@@ -81,5 +81,6 @@ t_list	*split_space(t_list *curr, t_list *head)
 	curr->next = temp->next;
 	curr->content = temp->content;
 	ft_free((void **)&temp);
+	*t = tmp->content;
 	return (tmp);
 }

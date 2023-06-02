@@ -96,7 +96,7 @@ void	expander(t_list **head, t_list *curr)
 		{
 			expand(content, *head);
 			if (has_space(content->word))
-				curr = split_space(curr, *head);
+				curr = split_space(curr, *head, &content);
 		}
 		else if (content->quotes)
 			trim_quotes(content, *head);

@@ -48,7 +48,7 @@ int		skip_trim(char *str, int *i);
 int		is_heredoc(t_list *last);
 void	trim_quotes(t_token *t, t_list *head);
 void	expand(t_token *t, t_list *head);
-t_list	*split_space(t_list *curr, t_list *head);
+t_list	*split_space(t_list *curr, t_list *head, t_token **t);
 int		has_token(t_token *t);
 char	**shell_split_token(char *str, char *sep);
 t_list	*new_redir(t_list *curr, t_list **prev, t_list **head);
