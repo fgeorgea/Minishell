@@ -12,16 +12,16 @@
 
 #include "../minishell.h"
 
-void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
+void	expand_split(t_list **curr, t_token **t, t_list *head, int *i)
 {
 	char	*key;
 	char	*value;
 
-	key = get_var_key(t->word, i, head);
+	key = get_var_key((*t)->word, i, head);
 	value = get_key_value(key, i, head);
 	if (!has_space(value) || i[3])
 	{
-		if (insert_value(t, key, value, i))
+		if (insert_value(*t, key, value, i))
 		{
 			if (i[4])
 				ft_free((void **)&value);
@@ -31,7 +31,7 @@ void	expand_split(t_list **curr, t_token *t, t_list *head, int *i)
 	}
 	else
 	{
-		if (join_value_split(value, curr, i, 0))
+		if (join_value_split(value, curr, i, t))
 		{
 			if (i[4])
 				ft_free((void **)&value);
@@ -60,22 +60,22 @@ void	handle_quotes_etp(t_token *t, int *i)
 	}
 }
 
-t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head)
+t_list	*ex_trim_split(t_list *curr, t_token **t, t_list *head)
 {
 	int		i[10];
 
 	i[0] = 0;
 	i[3] = 0;
-	while (t->word[i[0]])
+	while ((*t)->word[i[0]])
 	{
-		if (t->word[i[0]] == '"' || t->word[i[0]] == '\'')
-			handle_quotes_etp(t, i);
-		else if (t->word[i[0]] == '$' && (ft_isalnum(t->word[i[0] + 1])
-				|| t->word[i[0] + 1] == '?' || t->word[i[0] + 1] == '_'
-				|| (t->word[i[0] + 1] == '"' && !i[3])))
+		if ((*t)->word[i[0]] == '"' || (*t)->word[i[0]] == '\'')
+			handle_quotes_etp(*t, i);
+		else if ((*t)->word[i[0]] == '$' && (ft_isalnum((*t)->word[i[0] + 1])
+				|| (*t)->word[i[0] + 1] == '?' || (*t)->word[i[0] + 1] == '_'
+				|| ((*t)->word[i[0] + 1] == '"' && !i[3])))
 		{
 			expand_split(&curr, t, head, i);
-			t = curr->content;
+			(*t) = curr->content;
 		}
 		i[0]++;
 	}

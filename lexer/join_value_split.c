@@ -80,10 +80,10 @@ int	join_first_last(t_list *head, t_list *curr, int *i, t_list *last)
 	return (jfl_free_r(t, head, tmp2, tmp3));
 }
 
-int	join_value_split(char *value, t_list **curr, int *i, t_list *new)
+int	join_value_split(char *value, t_list **curr, int *i, t_token **t)
 {
 	char	**arr;
-	t_token	*t;
+	t_list	*new;
 	t_list	*tmp;
 
 	arr = shell_split(value, "\040\011\012\013\014\015", 0);
@@ -98,9 +98,9 @@ int	join_value_split(char *value, t_list **curr, int *i, t_list *new)
 	ft_free((void **)&arr);
 	if (join_first_last(new, *curr, i, ft_lstlast(new)))
 		return (EXIT_MALLOC_FAILURE);
-	t = new->content;
+	*t = new->content;
 	free_token((*curr)->content);
-	(*curr)->content = t;
+	(*curr)->content = *t;
 	tmp = (*curr)->next;
 	(*curr)->next = new->next;
 	ft_free((void **)&new);
