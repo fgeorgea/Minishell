@@ -91,7 +91,7 @@ void	expander(t_list **head, t_list *curr)
 		if (v && content->quotes && is_heredoc(last))
 			trim_quotes(content, *head);
 		else if (v && content->quotes)
-			curr = ex_trim_split(curr, content, *head);
+			curr = ex_trim_split(curr, &content, *head);
 		else if (v && !is_heredoc(last))
 		{
 			expand(content, *head);

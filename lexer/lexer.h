@@ -54,8 +54,8 @@ char	**shell_split_token(char *str, char *sep);
 t_list	*new_redir(t_list *curr, t_list **prev, t_list **head);
 void	add_cmd_arg(t_list **head, int n, t_list *curr);
 void	check_token_syntax(t_token *curr, t_token *next);
-int		join_value_split(char *value, t_list **curr, int *i, t_list *new);
-t_list	*ex_trim_split(t_list *curr, t_token *t, t_list *head);
+int		join_value_split(char *value, t_list **curr, int *i, t_token **t);
+t_list	*ex_trim_split(t_list *curr, t_token **t, t_list *head);
 char	*get_key_value(char *key, int *i, t_list *head);
 
 #endif
