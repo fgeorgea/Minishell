@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/01 13:53:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/02 16:32:28 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@ static void	ch_env_dir(char *current_dir, char *new_dir)
 {
 	if (get_env_struct("PWD"))
 		change_env_value("PWD", new_dir);
-	else
-		add_pwd(current_dir, new_dir);
-	if (get_env_struct("OLDPWD"))
+	if (get_env_struct("OLDPWD") && get_env_struct("PWD"))
 		change_env_value("OLDPWD", current_dir);
-	else
-		add_oldpwd(current_dir, new_dir);
 	ft_free((void **)&current_dir);
 	ft_free((void **)&new_dir);
 }
@@ -93,6 +89,8 @@ void	cd_builtin(const char *str)
 			write(1, "\n", 1);
 		return ;
 	}
+	if (str && compare_keys(str, "-"))
+		ft_putendl_fd(dir, 1);
 	if (!ft_chdir(dir))
 		set_exit(1);
 }

@@ -6,53 +6,11 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:14:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/01 13:57:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/02 16:23:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void	add_oldpwd(char *current_dir, char *new_dir)
-{
-	char	*old_tmp;
-	t_env	*new_node;
-
-	old_tmp = ft_strdup("OLDPWD");
-	if (!old_tmp)
-	{
-		ft_free((void **)&current_dir);
-		ft_free((void **)&new_dir);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	new_node = ft_lstnew_env(old_tmp, current_dir);
-	if (!new_node)
-	{
-		ft_free((void **)&new_dir);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	ft_lstadd_back_env(&g_sh->env, new_node);
-}
-
-void	add_pwd(char *current_dir, char *new_dir)
-{
-	char	*old_tmp;
-	t_env	*new_node;
-
-	old_tmp = ft_strdup("PWD");
-	if (!old_tmp)
-	{
-		ft_free((void **)&current_dir);
-		ft_free((void **)&new_dir);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	new_node = ft_lstnew_env(old_tmp, new_dir);
-	if (!new_node)
-	{
-		ft_free((void **)&current_dir);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	ft_lstadd_back_env(&g_sh->env, new_node);
-}
 
 int	test_access(char *str)
 {
