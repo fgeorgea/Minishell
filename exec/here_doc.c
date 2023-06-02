@@ -27,6 +27,8 @@ static int	compare_endtoken(char *end_token, char *str)
 	int	strlen;
 
 	strlen = ft_strlen(str) - 1;
+	if (strlen != (int)ft_strlen(end_token))
+		return (0);
 	if (ft_strncmp(str, end_token, strlen) == 0)
 		return (1);
 	return (0);

@@ -70,6 +70,8 @@ void	ft_exit(int status)
 {
 	if (status != EXIT_SUCCESS)
 		print_exit_err(status);
+	else if (g_sh)
+		status = g_sh->pipe_exit;
 	ft_free_global();
 	exit(status);
 }

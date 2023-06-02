@@ -53,6 +53,7 @@ static t_list	*get_split_space_list(char **arr, t_list *head)
 		ft_lstadd_back(&new_head, tmp);
 		i++;
 	}
+	free(arr[i]);
 	return (new_head);
 }
 
