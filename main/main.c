@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/01 21:51:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/02 16:38:43 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int argc, char **argv, char **env)
 		if (!g_sh->str)
 		{
 			printf("exit\n");
-			ft_exit(EXIT_SUCCESS);
+			ft_exit(EXIT_CTRL_D);
 		}
 		if (*g_sh->str)
 			add_history(g_sh->str);

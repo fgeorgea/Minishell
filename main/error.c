@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:29:40 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/29 12:59:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/02 16:39:21 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ static void	print_exit_err(int status)
 
 void	ft_exit(int status)
 {
-	if (status != EXIT_SUCCESS)
+	if (status != EXIT_SUCCESS && status != EXIT_CTRL_D)
 		print_exit_err(status);
-	else if (g_sh)
+	else if (status == EXIT_CTRL_D && g_sh)
 		status = g_sh->pipe_exit;
 	ft_free_global();
 	exit(status);
