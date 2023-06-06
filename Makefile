@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/06/06 12:33:34 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/06/07 00:58:21 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,3 +106,4 @@ fclean:	clean
 re:	fclean all
 
 .PHONY:	re clean fclean all
+
