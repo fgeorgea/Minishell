@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:45:41 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/01 11:54:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:42:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ void	ft_waitpid(void)
 		i++;
 	}
 	p->is_in_child = 0;
-	save_exit_code(status);
+	if (p->pids[i] == -1)
+		g_sh->pipe_exit = 1;
+	else
+		save_exit_code(status);
 }
