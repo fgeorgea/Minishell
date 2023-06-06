@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:45:41 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/06 10:42:24 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:51:34 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_waitpid(void)
 	if (p->nbr_fork == 0)
 		return ;
 	p->is_in_child = 1;
-	while ((i < p->nbr_fork) && p->pids[i] && p->pids[i] != -1)
+	while (i < p->nbr_fork && p->pids[i] && p->pids[i] != -1)
 	{
 		success = waitpid(p->pids[i], &status, 0);
 		if (success == -1)
@@ -54,7 +54,7 @@ void	ft_waitpid(void)
 		i++;
 	}
 	p->is_in_child = 0;
-	if (p->pids[i] == -1)
+	if (i < p->nbr_fork && p->pids[i] == -1)
 		g_sh->pipe_exit = 1;
 	else
 		save_exit_code(status);

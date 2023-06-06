@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/01 22:08:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:22:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	children(size_t pos, t_cmd *cmd, t_pipex *p)
 	if (!cmd->cmd)
 		exit_only_child(EXIT_SUCCESS);
 	check_cmd(cmd->cmd);
-	unlink(p->hd_tmp);
+	if (p->hd_tmp)
+		unlink(p->hd_tmp);
 	ft_free((void **)&p->hd_tmp);
 	ft_execve(cmd->cmd, p->env_array);
 }
