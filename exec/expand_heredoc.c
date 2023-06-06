@@ -16,13 +16,20 @@ char	*get_here_exp_var(char *str, int *i)
 {
 	char	*var;
 
-	while (str[i[0]] && str[i[0]] != '"'
-		&& str[i[0]] != '\'' && !ft_iswhitespace(str[i[0]]))
-		i[0]++;
-	var = ft_strndup(&str[i[1] + 1], i[0] - i[1] - 1);
+	i[0]++;
+	if (!ft_isdigit(str[i[0]]))
+	{
+		while (ft_isalnum(str[i[0]]) || str[i[0]] == '_')
+			i[0]++;
+	}
+	if (i[1] + 1 == i[0])
+		i[2] = i[0] + 1;
+	else
+		i[2] = i[0];
+	var = ft_strndup(&str[i[1] + 1], i[2] - i[1] - 1);
 	if (!var)
 	{
-		ft_free((void **)&str);
+		free(str);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	return (var);
@@ -34,7 +41,7 @@ char	*get_here_exp_value(char *str, int *i, char *var)
 
 	if (var[0] == '?' && var[1] == '\0')
 	{
-		i[2] = 1;
+		i[3] = 1;
 		value = ft_itoa(g_sh->pipe_exit);
 		if (!value)
 		{
@@ -45,8 +52,11 @@ char	*get_here_exp_value(char *str, int *i, char *var)
 	}
 	else
 	{
-		i[2] = 0;
-		value = get_env_value(var);
+		i[3] = 0;
+		if (var[0] == '0')
+			value = g_sh->name;
+		else
+			value = get_env_value(var);
 	}
 	return (value);
 }
@@ -64,7 +74,7 @@ void	copy_value_here_exp(char *str, char *value, int *i, char *new)
 		j++;
 	}
 	k = 0;
-	while (value[k])
+	while (value && value[k])
 	{
 		new[j + k] = value[k];
 		k++;
@@ -90,29 +100,28 @@ char	*insert_exp_heredoc(char *str, char *var, char *value, int *i)
 	if (!new)
 	{
 		ft_free((void **)&str);
-		if (i[2])
+		if (i[3])
 			ft_free((void **)&value);
 		ft_exit(EXIT_MALLOC_FAILURE);
 	}
 	copy_value_here_exp(str, value, i, new);
 	ft_free((void **)&str);
-	if (i[2])
+	if (i[3])
 		ft_free((void **)&value);
 	return (new);
 }
 
 void	expand_heredoc(char **str)
 {
-	int		i[3];
+	int		i[4];
 	char	*var;
 	char	*value;
 
 	i[0] = 0;
 	while ((*str)[i[0]])
 	{
-		if ((*str)[i[0]] == '$' && (*str)[i[0] + 1]
-			&& (*str)[i[0] + 1] != '"' && (*str)[i[0] + 1] != '\''
-			&& !ft_iswhitespace((*str)[i[0] + 1]))
+		if ((*str)[i[0]] == '$' && (ft_isalnum((*str)[i[0] + 1])
+				|| (*str)[i[0] + 1] == '_' || (*str)[i[0] + 1] == '?'))
 		{
 			i[1] = i[0];
 			var = get_here_exp_var(*str, i);
