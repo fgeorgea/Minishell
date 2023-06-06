@@ -89,7 +89,7 @@ char	*get_var_key(char *str, int *i, t_list *head)
 		while (ft_isalnum(str[i[0]]) || str[i[0]] == '_')
 			i[0]++;
 	}
-	if (i[1] + 1 == i[0])
+	if (i[1] + 1 == i[0] && (ft_isdigit(str[i[0]]) || str[i[0]] == '?'))
 		i[2] = i[0] + 1;
 	else
 		i[2] = i[0];
