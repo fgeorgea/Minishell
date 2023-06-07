@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 12:33:10 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:26:19 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
-
-/*********************      MACROS     ************************/
-
-# define EXIT_PWD_FAILURE 12
-# define EXIT_DUP_FAILURE 13
-# define CD_RM "cd: error retrieving current directory: getcwd: cannot access\
- parent directories"
-# define NAVI "': not a valid identifier"
-
-/*********************     FUNCTION    ************************/
 
 // ECHO_C
 void	echo_builtin(const char **strs);

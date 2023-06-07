@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/07 18:40:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:15:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_free_global(void)
 		ft_free_env();
 		free_pipex();
 		free_readline();
-		free(g_sh->prompt);
+		ft_free((void **)&g_sh->prompt);
 		ft_free((void **)&g_sh->config_file);
 		ft_free((void **)&g_sh);
 	}

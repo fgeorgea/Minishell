@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:42:11 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/29 14:21:53 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:24:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
-
-# define NO_S_ERR 0
-# define S_ERR_NL 1
-# define S_ERR_OUT 2
-# define S_ERR_IN 3
-# define S_ERR_APP 4
-# define S_ERR_HERE 5
-# define S_ERR_RW 6
-# define S_ERR_PIPE 7
-# define S_ERR_TRIPLE 8
 
 typedef struct s_token
 {
@@ -57,5 +47,9 @@ void	check_token_syntax(t_token *curr, t_token *next);
 int		join_value_split(char *value, t_list **curr, int *i, t_token **t);
 t_list	*ex_trim_split(t_list *curr, t_token **t, t_list *head);
 char	*get_key_value(char *key, int *i, t_list *head);
+void	lexer(char *str);
+int		skip_quotes(char *str, int i);
+int		get_next_pipe(char *str, int i);
+char	**shell_split(char *str, char *sep, int s);
 
 #endif

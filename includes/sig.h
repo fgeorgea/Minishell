@@ -13,13 +13,6 @@
 #ifndef SIG_H
 # define SIG_H
 
-# include "../minishell.h"
-
-# define DEFAULT 0
-# define SIG_HERE 1
-# define PARENT 2
-# define CHILD 3
-
 void	set_signals(int state);
 
 #endif

@@ -3,33 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 11:57:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:25:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
-
-/*********************      MACROS     ************************/
-
-# define PIPE_ERR "An error occured on the pipe function\n"
-# define WAITPID_ERR "An error occured on waitpid function\n"
-# define DUP2_ERR "An error occured on dup2 function\n"
-# define CLOSE_ERR "An error occured on close function\n"
-# define FORK_ERR "An error occured on the fork function\n"
-# define EXIT_OPEN_FAILURE 4
-# define EXIT_CLOSE_FAILURE 5
-# define EXIT_PIPE_FAILURE 6
-# define EXIT_DUP2_FAILURE 7
-# define EXIT_WAITPID_FAILURE 8
-# define EXIT_EXECVE_FAILURE 9
-# define NSFOD ": No such file or directory"
-# define CNF ": command not found"
-
-/*********************    FUNCTIONS    ************************/
 
 // PIPEX_C
 void	ft_pipex(void);
