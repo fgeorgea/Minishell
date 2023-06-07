@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 18:38:24 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 11:29:52 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 03:31:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	setup_heredoc(t_redir *redirection, int pos)
 {
 	t_redir	*redir;
 
-	if (!redirection)
-		return ;
-	if (!has_heredoc(redirection))
+	if (!redirection || !has_heredoc(redirection))
 		return ;
 	redir = redirection;
 	create_hd_name(pos);
