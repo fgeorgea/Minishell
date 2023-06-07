@@ -3,72 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/02 16:38:43 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:08:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-// void	print_cmd(void)
-// {
-// 	t_cmd	*tmp;
-// 	t_redir	*temp;
-// 	int		i;
-
-// 	tmp = g_sh->cmd;
-// 	if (!tmp)
-// 	{
-// 		printf("No CMD\n");
-// 		return ;
-// 	}
-// 	while (tmp)
-// 	{
-// 		i = 1;
-// 		if (tmp->cmd)
-// 		{
-// 			printf("CMD: %s\n", tmp->cmd[0]);
-// 			if (!tmp->cmd[1])
-// 				printf("No ARGS");
-// 			else
-// 				printf("ARGS: ");
-// 			while (tmp->cmd[i])
-// 			{
-// 				printf("%s", tmp->cmd[i]);
-// 				if (tmp->cmd[i + 1])
-// 					printf(", ");
-// 				i++;
-// 			}
-// 			printf("\n");
-// 		}
-// 		temp = tmp->redir;
-// 		if (!temp)
-// 			printf("No REDIR\n");
-// 		else
-// 		{
-// 			printf("REDIR: ");
-// 			while (temp)
-// 			{
-// 				if (temp->mode == OUT)
-// 					printf("OUT ");
-// 				else if (temp->mode == IN)
-// 					printf("IN ");
-// 				else if (temp->mode == OUT_APP)
-// 					printf("OUT_APP ");
-// 				else if (temp->mode == HEREDOC)
-// 					printf("HEREDOC ");
-// 				else
-// 					printf("HEREDOC_EXP ");
-// 				printf("%s, ", temp->key);
-// 				temp = temp->next;
-// 			}
-// 			printf("\n");
-// 		}
-// 		tmp = tmp->next;
-// 	}
-// }
 
 int	main(int argc, char **argv, char **env)
 {
@@ -78,19 +20,13 @@ int	main(int argc, char **argv, char **env)
 		ft_exit(EXIT_SIGNAL_FAILURE);
 	while (1)
 	{
-		g_sh->str = readline("\033[0;94mDopeorge$> \033[0;39m");
-		if (!g_sh->str)
-		{
-			printf("exit\n");
-			ft_exit(EXIT_CTRL_D);
-		}
-		if (*g_sh->str)
-			add_history(g_sh->str);
+		ft_readline();
+		ft_add_history();
 		lexer(g_sh->str);
-		if (g_sh->cmd)
-			ft_pipex();
+		ft_pipex();
 		set_signals(DEFAULT);
 		ft_free((void **)&g_sh->str);
+		ft_free((void **)&g_sh->prompt);
 	}
 	return (0);
 }

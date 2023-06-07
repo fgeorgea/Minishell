@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/02 16:38:26 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:08:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ t_shell	*g_sh;
 char	*readline(const char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
+
+// PROMPT_C
+void	ft_add_history(void);
+void	ft_readline(void);
 
 // INIT_C
 void	init_shell(char **argv, char **env);

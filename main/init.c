@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/31 13:03:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:08:07 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	init_shell(char **argv, char **env)
 	g_sh->cmd = NULL;
 	g_sh->env = NULL;
 	g_sh->str = NULL;
+	g_sh->prompt = NULL;
 	g_sh->pipex = NULL;
 	g_sh->name = &argv[0][2];
 	g_sh->pipe_exit = 0;

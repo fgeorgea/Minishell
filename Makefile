@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/06/07 00:58:21 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/06/07 02:04:34 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ LINKED_LISTS	= linked_lists/
 SIG				= sig/
 
 SRCS	=	$(MAIN)main.c \
+			$(MAIN)prompt.c \
 			$(MAIN)free.c \
 			$(MAIN)init.c \
 			$(MAIN)init_utils.c \
@@ -85,7 +86,7 @@ CC		= gcc
 
 READL	= -L/usr/local/lib -I/usr/local/include -lreadline -L $(shell brew --prefix readline)/lib -I $(shell brew --prefix readline)/include
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g
 
 all:	${NAME}
 

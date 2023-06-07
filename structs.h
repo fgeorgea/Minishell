@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:08:00 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 11:33:57 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 01:40:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_shell
 	int		here_doc_status;
 	int		is_child;
 	char	*str;
+	char	*prompt;
 
 	int		s_err;
 
