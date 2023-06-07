@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/07 12:18:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:27:02 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,24 @@ char	*readline(const char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
 
+
+// ENV_C
+void	init_env(char **env);
+void	init_oldpwd(void);
+void	if_env_not_set(void);
+void	create_sh_lvl(void);
+void	init_shell_lvl(void);
+
 // PROMPT_C
 void	ft_add_history(void);
-void	ft_readline(void);
+void	create_config_str(void);
+void	create_prompt(void);
 
 // ALIAS_C
 void	init_aliases(void);
 
 // INIT_C
+void	ft_readline(void);
 void	init_shell(char **argv, char **env);
 int		init_signals(void);
 
@@ -87,4 +97,5 @@ void	lexer(char *str);
 int		skip_quotes(char *str, int i);
 int		get_next_pipe(char *str, int i);
 char	**shell_split(char *str, char *sep, int s);
+
 #endif

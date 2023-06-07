@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:08:00 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 01:40:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 18:42:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ typedef struct s_env
 	struct s_env	*next;
 }		t_env;
 
+typedef struct s_prompt
+{
+	char	*prompt;
+	char	*dir;
+	char	*start;
+	char	*end;
+}		t_prompt;
+
 typedef struct s_pipex
 {
 	int		infile;
@@ -55,19 +63,20 @@ typedef struct s_pipex
 
 typedef struct s_shell
 {
-	char	*name;
-	int		pipe_exit;
-	int		is_exit_lst_cmd;
-	int		here_doc_status;
-	int		is_child;
-	char	*str;
-	char	*prompt;
+	char		*name;
+	int			pipe_exit;
+	int			is_exit_lst_cmd;
+	int			here_doc_status;
+	int			is_child;
+	char		*str;
+	char		*config_file;
 
-	int		s_err;
+	int			s_err;
 
-	t_cmd	*cmd;
-	t_env	*env;
-	t_pipex	*pipex;
+	t_cmd		*cmd;
+	t_env		*env;
+	t_prompt	*prompt;
+	t_pipex		*pipex;
 }			t_shell;
 
 #endif

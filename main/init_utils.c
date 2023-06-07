@@ -6,76 +6,17 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:08:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 12:37:46 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:22:03 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	if_env_not_set(void)
+void	create_config_str(void)
 {
-	char	*key;
-	char	*value;
-	t_env	*new_node;
-
-	if (!get_env_struct("_"))
-	{
-		key = ft_strdup("_");
-		value = ft_strdup("minishell");
-		new_node = ft_lstnew_env(key, value);
-		if (!new_node)
-			ft_exit(EXIT_MALLOC_FAILURE);
-		ft_lstadd_back_env(&g_sh->env, new_node);
-	}
-	if (!get_env_struct("PWD"))
-	{
-		key = ft_strdup("PWD");
-		value = getcwd(NULL, 0);
-		new_node = ft_lstnew_env(key, value);
-		if (!new_node)
-			ft_exit(EXIT_MALLOC_FAILURE);
-		ft_lstadd_back_env(&g_sh->env, new_node);
-	}
-}
-
-void	create_sh_lvl(void)
-{
-	t_env	*new_node;
-	char	*key;
-	char	*value;
-
-	key = ft_strdup("SHLVL");
-	value = ft_strdup("1");
-	new_node = ft_lstnew_env(key, value);
-	if (!new_node)
+	g_sh->config_file = ft_strjoin(get_env_value("HOME"), "/.minishellrc");
+	if (!g_sh->config_file)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	ft_lstadd_back_env(&g_sh->env, new_node);
-}
-
-void	init_shell_lvl(void)
-{
-	t_env	*env;
-	int		v;
-
-	env = g_sh->env;
-	while (env)
-	{
-		if (compare_keys(env->key, "SHLVL"))
-		{
-			v = ft_atoi(env->value);
-			ft_free((void **)&env->value);
-			if (v < 0 || v >= 1000)
-				env->value = ft_strdup("0");
-			else if (v == 999)
-				env->value = ft_strdup("");
-			else
-				env->value = ft_itoa(v + 1);
-			if (!env->value)
-				ft_exit(EXIT_MALLOC_FAILURE);
-			return ;
-		}
-		env = env->next;
-	}
 }
 
 void	print_welcome_message(void)
