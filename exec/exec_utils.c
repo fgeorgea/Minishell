@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 12:05:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:38:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	is_single_builtin(void)
 
 	p = g_sh->pipex;
 	cmd = g_sh->cmd;
-	if ((cmd->cmd && p->nbr_cmds == 1) && (is_builtin(cmd->cmd[0]) || is_directory(cmd->cmd[0])))
+	if ((cmd->cmd && p->nbr_cmds == 1)
+		&& (is_builtin(cmd->cmd[0]) || is_directory(cmd->cmd[0])))
 	{
 		g_sh->is_exit_lst_cmd = 1;
 		if (is_directory(cmd->cmd[0]))

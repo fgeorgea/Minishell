@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:08:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 03:44:27 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:37:46 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ void	print_welcome_message(void)
 	printf("@@@@@@@,(#((##(#/%%******(*,@@@@@@@@@@@@@@@@@@@@@@@\n");
 	printf("@@@@@@@@*/***,@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
 	printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
-	printf("\nWelcome to Dorian and Felix's shell, as salty as butter ! - May 2023\n");
+	printf("\nWelcome to Dorian and Felix's shell");
+	printf(", as salty as butter ! - May 2023\n");
 }

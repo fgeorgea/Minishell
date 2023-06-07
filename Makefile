@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/06/07 11:57:46 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/06/07 12:38:34 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SIG				= sig/
 
 SRCS	=	$(MAIN)main.c \
 			$(MAIN)prompt.c \
+			$(MAIN)alias.c \
 			$(MAIN)free.c \
 			$(MAIN)init.c \
 			$(MAIN)init_utils.c \

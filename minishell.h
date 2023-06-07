@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/07 03:29:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:18:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ void	rl_clear_history(void);
 // PROMPT_C
 void	ft_add_history(void);
 void	ft_readline(void);
+
+// ALIAS_C
+void	init_aliases(void);
 
 // INIT_C
 void	init_shell(char **argv, char **env);

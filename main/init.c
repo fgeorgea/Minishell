@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/07 02:08:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:34:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	init_shell(char **argv, char **env)
 	g_sh->pipe_exit = 0;
 	init_env(env);
 	if_env_not_set();
+	init_aliases();
 	init_oldpwd();
 	if (get_env_struct("SHLVL"))
 		init_shell_lvl();

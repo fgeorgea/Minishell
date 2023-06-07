@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/01 22:16:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:33:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	env_builtin(const char **arg);
 
 // EXPORT_C
 void	export_builtin(const char **strs);
+void	add_var_to_env(const char *str, size_t pos);
+int		check_valid_key(const char *str);
 
 // EXPORT_UTILS_C
 void	sort_env_ascii(void);

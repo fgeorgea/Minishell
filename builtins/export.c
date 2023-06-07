@@ -6,13 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:54:57 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/31 12:20:44 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:33:02 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	check_valid_key(const char *str)
+int	check_valid_key(const char *str)
 {
 	size_t	i;
 
@@ -58,7 +58,7 @@ static void	add_var_to_env_app(const char *str, size_t pos)
 	ft_free((void **)&value);
 }
 
-static void	add_var_to_env(const char *str, size_t pos)
+void	add_var_to_env(const char *str, size_t pos)
 {
 	t_env	*env;
 	char	*key;
