@@ -6,13 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:19:14 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 01:55:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:58:02 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	expand_split(t_list **curr, t_token **t, t_list *head, int *i)
+static void	expand_split(t_list **curr, t_token **t, t_list *head, int *i)
 {
 	char	*key;
 	char	*value;
@@ -41,7 +41,7 @@ void	expand_split(t_list **curr, t_token **t, t_list *head, int *i)
 	}
 }
 
-void	handle_quotes_etp(t_token *t, int *i)
+static void	handle_quotes_etp(t_token *t, int *i)
 {
 	if (t->word[i[0]] == '\'' && !i[3])
 	{

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   join_value_split.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:20:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/28 19:47:51 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:01:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_list	*word_list_from_arr(char **arr, t_list *head, int i)
+static t_list	*word_list_from_arr(char **arr, t_list *head, int i)
 {
 	t_list	*new;
 	t_token	*t;
@@ -41,7 +41,7 @@ t_list	*word_list_from_arr(char **arr, t_list *head, int i)
 	return (head);
 }
 
-int	jfl_free_r(t_token *t, t_list *head, char *tmp2, char *tmp3)
+static int	jfl_free_r(t_token *t, t_list *head, char *tmp2, char *tmp3)
 {
 	ft_free((void **)&t->word);
 	t->word = tmp3;
@@ -51,7 +51,7 @@ int	jfl_free_r(t_token *t, t_list *head, char *tmp2, char *tmp3)
 	return (0);
 }
 
-int	join_first_last(t_list *head, t_list *curr, int *i, t_list *last)
+static int	join_first_last(t_list *head, t_list *curr, int *i, t_list *last)
 {
 	char	*tmp;
 	char	*tmp2;

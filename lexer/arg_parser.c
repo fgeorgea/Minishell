@@ -6,13 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:15:38 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 01:55:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:38:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	remove_pipe_token(t_list **head)
+static void	remove_pipe_token(t_list **head)
 {
 	char	*str;
 	t_token	*t;
@@ -41,7 +41,7 @@ void	remove_pipe_token(t_list **head)
 	t->word = str;
 }
 
-void	fill_in_arg(t_list **head, t_cmd *cmd, int n)
+static void	fill_in_arg(t_list **head, t_cmd *cmd, int n)
 {
 	int		i;
 	t_token	*t;
@@ -60,7 +60,7 @@ void	fill_in_arg(t_list **head, t_cmd *cmd, int n)
 	}
 }
 
-int	check_empty_cmd_redir(void)
+static int	check_empty_cmd_redir(void)
 {
 	t_cmd	*cmd;
 
@@ -72,7 +72,7 @@ int	check_empty_cmd_redir(void)
 	return (0);
 }
 
-int	check_empty_cmd_s_err(t_list *curr, int n, t_list **head)
+static int	check_empty_cmd_s_err(t_list *curr, int n, t_list **head)
 {
 	if (n == 0)
 	{

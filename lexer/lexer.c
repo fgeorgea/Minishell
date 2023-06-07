@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:16:09 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 01:51:55 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:45:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	create_token_list(int i, t_list **head, char **arr)
 	ft_lstadd_back(head, temp);
 }
 
-t_list	*pre_token(char *str)
+static t_list	*pre_token(char *str)
 {
 	int		i;
 	t_list	*head;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_expander.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:49:42 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/28 19:48:08 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:59:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*get_key_value(char *key, int *i, t_list *head)
 	return (value);
 }
 
-void	remove_current_word(t_list **head, t_list **curr, t_list *last)
+static void	remove_current_word(t_list **head, t_list **curr, t_list *last)
 {
 	if (*curr == *head)
 	{
@@ -65,7 +65,7 @@ void	remove_current_word(t_list **head, t_list **curr, t_list *last)
 	*curr = last->next;
 }
 
-void	update_curr(t_list **head, t_list **curr, t_list **last, t_token *t)
+static void	update_curr(t_list **head, t_list **curr, t_list **last, t_token *t)
 {
 	if (!(*t->word) && !t->quotes)
 		remove_current_word(head, curr, *last);

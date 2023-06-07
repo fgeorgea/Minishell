@@ -3,67 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:44:22 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/01 13:26:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:44:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/*t_list	*insert_word_token(t_list *current,
-t_list *head, char *str, char **arr)
-{
-	t_token	*content;
-	t_list	*tmp;
-
-	content = malloc(sizeof(t_token));
-	if (!content)
-	{
-		ft_lstclear(&head, &free);
-		ft_free_array(arr);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	tmp = malloc(sizeof(t_list));
-	if (!tmp)
-	{
-		ft_free((void **)&content);
-		ft_lstclear(&head, &free);
-		ft_free_array(arr);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	content->word = str;
-	tmp->content = content;
-	tmp->next = current->next;
-	current->next = tmp;
-	return (tmp);
-}
-
-t_list	*split_token(t_list *current, t_list *head)
-{
-	char	**arr;
-	t_token	*tmp;
-	int		i;
-
-	tmp = current->content;
-	arr = shell_split_token(tmp->word, "|<>");
-	if (!arr)
-	{
-		ft_lstclear(&head, &free_token);
-		ft_exit(EXIT_MALLOC_FAILURE);
-	}
-	i = 1;
-	ft_free((void **)&tmp->word);
-	tmp->word = arr[0];
-	while (arr[i])
-	{
-		current = insert_word_token(current, head, arr[i], arr);
-		i++;
-	}
-	ft_free((void **)&arr);
-	return (current->next);
-}*/
 
 static t_list	*new_node_tokenize(char **arr, t_list *head, int i, t_list *new)
 {
@@ -109,7 +56,7 @@ static t_list	*arr_to_list_tokenize(char **arr, t_list *head)
 	return (new);
 }
 
-t_list	*split_token(t_list *current, t_list *head)
+static t_list	*split_token(t_list *current, t_list *head)
 {
 	char	**arr;
 	t_token	*tmp;

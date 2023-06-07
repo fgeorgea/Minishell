@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:23:31 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 01:57:23 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:01:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*get_pipe_exit(int *i, char *tmp, t_list *head)
 	return (value);
 }
 
-void static	expand_var(t_token *t, int *i, t_list *head)
+static void	expand_var(t_token *t, int *i, t_list *head)
 {
 	char	*tmp;
 	char	*value;

@@ -6,13 +6,13 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:11:59 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/27 01:56:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:06:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	get_redir_mode(t_token *token, t_token *next)
+static int	get_redir_mode(t_token *token, t_token *next)
 {
 	if (token->word[0] == '>' && token->word[1] == '>')
 		return (OUT_APP);
@@ -25,7 +25,8 @@ int	get_redir_mode(t_token *token, t_token *next)
 	return (IN);
 }
 
-void	add_redir(t_redir *new, t_list **head, t_list *curr, t_token *content)
+static void	
+	add_redir(t_redir *new, t_list **head, t_list *curr, t_token *content)
 {
 	t_cmd	*tmp;
 	t_redir	*temp;
@@ -51,7 +52,7 @@ void	add_redir(t_redir *new, t_list **head, t_list *curr, t_token *content)
 	}
 }
 
-t_list	*remove_redir_list(t_list *curr, t_list **head, t_list **prev)
+static t_list	*remove_redir_list(t_list *curr, t_list **head, t_list **prev)
 {
 	t_list	*ret;
 
