@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/06/07 02:04:34 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/06/07 11:57:46 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS	=	$(MAIN)main.c \
 			$(EXEC)protections.c \
 			$(EXEC)expand_heredoc.c \
 			$(EXEC)underscore_utils.c \
+			$(EXEC)cmd_utils.c \
 			$(LINKED_LISTS)linked_list_env.c \
 			$(LINKED_LISTS)linked_list_cmd.c \
 			$(BUILTINS)echo.c \
@@ -86,7 +87,7 @@ CC		= gcc
 
 READL	= -L/usr/local/lib -I/usr/local/include -lreadline -L $(shell brew --prefix readline)/lib -I $(shell brew --prefix readline)/include
 
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS	= -Wall -Wextra -Werror #-fsanitize=address -g
 
 all:	${NAME}
 

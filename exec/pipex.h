@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/29 11:30:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:57:12 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,9 @@ int		compare_keys(const char *key, const char *needle);
 void	exit_only_child(int exit_code);
 void	set_exit(int exit_code);
 void	set_lst_cmd(int pos);
+
+// CMD_UTILS_C
+int		is_directory(const char *str);
 
 // UNDERSCORE_UTILS_C
 int		try_cat_path_cmd_underscore(char **cmd, size_t pos);

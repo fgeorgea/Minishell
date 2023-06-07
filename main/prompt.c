@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 02:00:46 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 02:41:00 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:45:05 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*get_dir_prompt(void)
 	}
 	if (!dir)
 	{
-		dir = ft_strdup("Felixoux");
+		dir = ft_strdup("Demi-sel");
 		if (!dir)
 			ft_exit(EXIT_MALLOC_FAILURE);
 	}
