@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/07 02:47:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 03:29:12 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		init_signals(void);
 void	if_env_not_set(void);
 void	create_sh_lvl(void);
 void	init_shell_lvl(void);
+void	print_welcome_message(void);
 
 // FREE_C
 void	ft_free_env(void);

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/07 02:49:37 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 03:28:02 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
+	print_welcome_message();
 	init_shell(argv, env);
 	if (init_signals())
 		ft_exit(EXIT_SIGNAL_FAILURE);
