@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:37 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/07 01:43:14 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:47:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ void	free_pipex(void)
 	g_sh->pipex = NULL;
 }
 
+void	free_readline(void)
+{
+	ft_free((void **)&g_sh->str);
+	ft_free((void **)&g_sh->prompt);
+}
+
 void	ft_free_global(void)
 {
 	rl_clear_history();
@@ -75,8 +81,7 @@ void	ft_free_global(void)
 		ft_free_cmd();
 		ft_free_env();
 		free_pipex();
-		ft_free((void **)&g_sh->str);
-		ft_free((void **)&g_sh->prompt);
+		free_readline();
 		ft_free((void **)&g_sh);
 	}
 }

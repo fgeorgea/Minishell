@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:54:32 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/07 02:08:31 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:47:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_free_env(void);
 void	ft_free_global(void);
 void	ft_exit(int status);
 void	ft_free_cmd(void);
+void	free_readline(void);
 
 // ERROR_C
 void	print_err(char *cmd, char *input, char *message, int exit_status);

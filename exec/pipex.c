@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 01:15:49 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:49:47 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 // This function is the main pipeline for the execution.
 void	ft_pipex(void)
 {
-	if (!g_sh->cmd)
-		return ;
 	g_sh->pipex = malloc(sizeof(t_pipex));
 	if (!g_sh->pipex)
 		ft_exit(EXIT_MALLOC_FAILURE);
