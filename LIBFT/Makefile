@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/19 12:36:28 by dpeyrat           #+#    #+#              #
-#    Updated: 2023/06/01 13:45:19 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/06/08 12:00:45 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,11 @@ CFLAGS	= -Wall -Wextra -Werror
 all:		${NAME}
 
 .c.o:
-	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME):	${OBJS} ${P_OBJS} ${G_OBJS}
-	@ar rc ${NAME} ${OBJS} ${P_OBJS} ${G_OBJS}
-	@ranlib ${NAME}
+	ar rc ${NAME} ${OBJS} ${P_OBJS} ${G_OBJS}
+	ranlib ${NAME}
 
 clean:
 		@rm -f ${OBJS} ${P_OBJS} ${G_OBJS}
