@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:08:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 17:22:03 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:55:45 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void	create_config_str(void)
 {
-	g_sh->config_file = ft_strjoin(get_env_value("HOME"), "/.minishellrc");
+	char	*tmp;
+
+	tmp = get_env_value("HOME");
+	if (!tmp)
+		return ;
+	g_sh->config_file = ft_strjoin(tmp, "/.minishellrc");
 	if (!g_sh->config_file)
 		ft_exit(EXIT_MALLOC_FAILURE);
 }
