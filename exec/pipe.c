@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:57:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/27 17:37:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:33:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 // Protected version of pipe function.
-void	ft_pipe(size_t pos)
+int	ft_pipe(size_t pos)
 {
 	t_pipex	*p;
 
 	p = g_sh->pipex;
 	if (pos == p->nbr_pipe)
-		return ;
+		return (1);
 	if (pipe(p->pipefd[pos]) == -1)
-		ft_exit(EXIT_PIPE_FAILURE);
+		return (0);
+	return (1);
 }
 
 static int	*createmini_tab(void)

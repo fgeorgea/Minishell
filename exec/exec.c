@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 14:44:26 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 03:02:11 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:52:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	exec_cmds(t_pipex *p, t_cmd *cmd)
 		setup_heredoc(cmd->redir, i);
 		if (g_sh->here_doc_status)
 			break ;
-		ft_pipe(i);
+		if (!ft_pipe(i))
+			return ;
 		setup_redir(cmd->redir, p);
 		if (!ft_fork(i))
 			return ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/08 00:25:42 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:34:32 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	update_last_cmd(const char **cmd);
 int		is_single_builtin(void);
 
 // PIPE_C
-void	ft_pipe(size_t pos);
+int		ft_pipe(size_t pos);
 int		**create_pipe_array(const t_pipex *p);
 void	close_all_pipes(void);
 
