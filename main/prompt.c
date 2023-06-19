@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 02:00:46 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 18:32:33 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:32:30 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ static void	get_dir_prompt(void)
 static void	create_prompt_tips(void)
 {
 	char	*tmp;
+	char	*exit_status;
 
+	exit_status = NULL;
 	if (g_sh->pipe_exit == 0 && !g_sh->prompt->start)
 		g_sh->prompt->start = ft_strdup("\033[0;96m");
 	if (g_sh->pipe_exit != 0)
@@ -85,7 +87,9 @@ static void	create_prompt_tips(void)
 		g_sh->prompt->end = ft_strdup("$> \033[0;39m");
 	else
 	{
-		tmp = ft_strjoin(" (", ft_itoa(g_sh->pipe_exit));
+		exit_status = ft_itoa(g_sh->pipe_exit);
+		tmp = ft_strjoin(" (", exit_status);
+		ft_free((void **)&exit_status);
 		g_sh->prompt->end = ft_strjoin(tmp, ")$> \033[0;39m");
 		ft_free((void **)&tmp);
 	}
