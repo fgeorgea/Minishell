@@ -3,46 +3,126 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/11/19 12:36:28 by dpeyrat           #+#    #+#              #
-#    Updated: 2023/06/08 12:00:45 by fgeorgea         ###   ########.fr        #
+#    Created: 2022/10/03 11:47:36 by fgeorgea          #+#    #+#              #
+#    Updated: 2023/06/19 14:09:33 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= BASIC/ft_atoi.c BASIC/ft_bzero.c BASIC/ft_calloc.c BASIC/ft_isalnum.c BASIC/ft_iswhitespace.c BASIC/ft_isalpha.c BASIC/ft_isascii.c BASIC/ft_isdigit.c BASIC/ft_isprint.c BASIC/ft_itoa.c BASIC/ft_lstadd_back.c BASIC/ft_lstadd_front.c BASIC/ft_lstclear.c BASIC/ft_lstdelone.c BASIC/ft_lstiter.c BASIC/ft_lstlast.c BASIC/ft_lstmap.c BASIC/ft_lstnew.c BASIC/ft_lstsize.c BASIC/ft_memchr.c BASIC/ft_memcmp.c BASIC/ft_memcpy.c BASIC/ft_memmove.c BASIC/ft_memset.c BASIC/ft_putchar_fd.c BASIC/ft_putendl_fd.c BASIC/ft_putnbr_fd.c BASIC/ft_putstr_fd.c BASIC/ft_split.c BASIC/ft_strchr.c BASIC/ft_strdup.c BASIC/ft_strjoin.c BASIC/ft_strlcat.c BASIC/ft_strlcpy.c BASIC/ft_strlen.c BASIC/ft_strmapi.c BASIC/ft_strncmp.c BASIC/ft_strnstr.c BASIC/ft_strrchr.c BASIC/ft_strtrim.c BASIC/ft_substr.c BASIC/ft_tolower.c BASIC/ft_toupper.c BASIC/ft_striteri.c BASIC/ft_strndup.c
+NAME 		=	libft.a
+MATH		=	math/
+ARRAY		=	array/
+CHAR		=	char/
+INT			=	int/
+DISPLAY		=	display/
+LIST		=	list/
+STRING		=	string/
+MEMORY		=	memory/
+VARIADICS	=	variadics/
 
-PRINTF	= FT_PRINTF/ft_printf.c FT_PRINTF/ft_printf_utils.c FT_PRINTF/get_conv.c FT_PRINTF/CHAR/convert_char.c FT_PRINTF/INT/convert_addr.c FT_PRINTF/INT/convert_int.c FT_PRINTF/INT/convert_uint.c
+SRCS		=	$(STRING)ft_atoi.c \
+				$(STRING)ft_strlcpy.c \
+				$(STRING)ft_strlcat.c \
+				$(STRING)ft_strdup.c \
+	   			$(STRING)ft_substr.c \
+	  			$(STRING)ft_strjoin.c \
+				$(STRING)ft_strchr.c \
+				$(STRING)ft_strrchr.c \
+				$(STRING)ft_strnstr.c \
+				$(STRING)ft_strlen.c \
+	 	 		$(STRING)ft_strncmp.c \
+	   			$(STRING)ft_strtrim.c \
+	   			$(STRING)ft_strmapi.c \
+	   			$(STRING)ft_striteri.c \
+				$(STRING)ft_strcspn.c \
+				$(STRING)ft_strspn.c \
+				$(STRING)ft_strrev.c \
+				$(STRING)ft_strdup_reject.c \
+	   			$(STRING)ft_itoa.c \
+	   			$(STRING)ft_strndup.c \
+				$(CHAR)ft_isalnum.c \
+				$(CHAR)ft_isalpha.c \
+				$(CHAR)ft_isdigit.c \
+				$(CHAR)ft_isascii.c \
+				$(CHAR)ft_isprint.c \
+				$(CHAR)ft_toupper.c \
+				$(CHAR)ft_tolower.c \
+				$(CHAR)ft_ispunct.c \
+				$(CHAR)ft_isspace.c \
+				$(CHAR)ft_isxdigit.c \
+				$(CHAR)ft_iscntrl.c \
+				$(INT)ft_nbrlen.c \
+				$(MEMORY)ft_bzero.c \
+	   			$(MEMORY)ft_memset.c \
+	   			$(MEMORY)ft_memcpy.c \
+	   			$(MEMORY)ft_memmove.c \
+	  	 		$(MEMORY)ft_memchr.c \
+	   			$(MEMORY)ft_calloc.c \
+	   			$(MEMORY)ft_memcmp.c \
+				$(MEMORY)ft_free.c \
+				$(MEMORY)ft_realloc.c \
+				$(MEMORY)ft_var_free.c \
+				$(DISPLAY)ft_putchar.c \
+				$(DISPLAY)ft_putstr.c \
+				$(DISPLAY)ft_putendl.c \
+				$(DISPLAY)ft_putnbr.c \
+   	   			$(DISPLAY)ft_putchar_fd.c \
+   	   			$(DISPLAY)ft_putstr_fd.c \
+   	   			$(DISPLAY)ft_putendl_fd.c \
+   	   			$(DISPLAY)ft_putnbr_fd.c \
+				$(DISPLAY)ft_printf.c \
+				$(DISPLAY)ft_printf_utils.c \
+				$(DISPLAY)ft_printnbr.c \
+				$(DISPLAY)get_next_line.c \
+				$(LIST)ft_lstnew.c \
+				$(LIST)ft_lstadd_front.c \
+				$(LIST)ft_lstsize.c \
+				$(LIST)ft_lstlast.c \
+				$(LIST)ft_lstadd_back.c \
+				$(LIST)ft_lstdelone.c \
+				$(LIST)ft_lstclear.c \
+				$(LIST)ft_lstiter.c \
+				$(LIST)ft_lstmap.c \
+				$(MATH)ft_fabs.c \
+				$(MATH)ft_abs.c \
+				$(MATH)ft_ceil.c \
+				$(MATH)ft_floor.c \
+				$(MATH)ft_pow.c \
+				$(MATH)ft_sqrt.c \
+				$(MATH)ft_isprime.c \
+				$(MATH)ft_factorial.c \
+				$(ARRAY)ft_arraylen.c \
+				$(ARRAY)ft_array_rev.c \
+				$(ARRAY)ft_array_add.c \
+				$(ARRAY)ft_array_del.c \
+				$(ARRAY)ft_array_replace.c \
+				$(ARRAY)ft_array_get_value.c \
+	   			$(ARRAY)ft_split.c \
+	   			$(ARRAY)ft_split_charset.c \
+				$(ARRAY)ft_arraydup.c \
+				$(VARIADICS)ft_var_close.c \
 
-GNL		= GNL/get_next_line.c
+OBJS		 = 	$(SRCS:.c=.o)
 
-OBJS	= ${SRCS:.c=.o}
+CFLAGS		 =	-Wall -Wextra -Werror
 
-P_OBJS	= ${PRINTF:.c=.o}
-
-G_OBJS	= ${GNL:.c=.o}
-
-NAME	= libft.a
-
-CC		= gcc
-
-CFLAGS	= -Wall -Wextra -Werror
-
-all:		${NAME}
+RM			 =	rm -f
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	gcc $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):	${OBJS} ${P_OBJS} ${G_OBJS}
-	ar rc ${NAME} ${OBJS} ${P_OBJS} ${G_OBJS}
-	ranlib ${NAME}
+all:		$(NAME)
 
-clean:
-		@rm -f ${OBJS} ${P_OBJS} ${G_OBJS}
+$(NAME): 	$(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
-fclean:		clean
-		@rm -f ${NAME}
+clean: 
+	$(RM) $(OBJS)
 
-re:			fclean all
+fclean: 	clean
+	$(RM) $(NAME)
 
-.PHONY:		re clean fclean all
+re: fclean all
+
+.PHONY: all re clean fclean

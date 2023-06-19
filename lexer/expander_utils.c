@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:15:27 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/08 00:52:47 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:13:23 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	has_space(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (ft_iswhitespace(str[i]))
+		if (ft_isspace(str[i]))
 			return (1);
 		i++;
 	}
