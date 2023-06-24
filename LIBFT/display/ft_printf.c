@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 19:31:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/19 13:18:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 01:29:25 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static void	ft_check_type(int fd, va_list ap, char type, int *len)
+static void	ft_check_type(int fd, va_list *ap, char type, int *len)
 {
 	if (type == 'c')
-		*len += ft_printchar(fd, va_arg(ap, int));
+		*len += ft_printchar(fd, va_arg(*ap, int));
 	if (type == 's')
-		*len += ft_printstr(fd, va_arg(ap, char *));
+		*len += ft_printstr(fd, va_arg(*ap, char *));
 	if (type == 'p')
-		*len += ft_printptr(fd, va_arg(ap, unsigned long int));
+		*len += ft_printptr(fd, va_arg(*ap, unsigned long int));
 	if (type == 'd' || type == 'i')
-		*len += ft_printnbr(fd, va_arg(ap, int));
+		*len += ft_printnbr(fd, va_arg(*ap, int));
 	if (type == 'u')
-		*len += ft_printnbr(fd, va_arg(ap, unsigned int));
+		*len += ft_printnbr(fd, va_arg(*ap, unsigned int));
 	if (type == 'x')
-		ft_printhex(fd, va_arg(ap, unsigned int), "0123456789abcdef", len);
+		ft_printhex(fd, va_arg(*ap, unsigned int), "0123456789abcdef", len);
 	if (type == 'X')
-		ft_printhex(fd, va_arg(ap, unsigned int), "0123456789ABCDEF", len);
+		ft_printhex(fd, va_arg(*ap, unsigned int), "0123456789ABCDEF", len);
 	if (type == '%')
 		*len += ft_printchar(fd, '%');
 }
@@ -47,7 +47,7 @@ int	ft_printf(int fd, const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			ft_check_type(fd, ap, str[i + 1], &len);
+			ft_check_type(fd, &ap, str[i + 1], &len);
 			i++;
 		}
 		else

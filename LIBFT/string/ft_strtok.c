@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_strtok.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 18:26:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/24 18:28:12 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/23 18:03:08 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/23 18:15:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strndup(char *src, int n)
+char	*ft_strtok(char *src, const char *token)
 {
-	int		i;
+	size_t	i;
 	char	*str;
 
-	if (!src)
+	if (!src || !token)
 		return (NULL);
 	i = 0;
-	while (src[i])
+	while (src[i] && !ft_strchr(token, src[i]))
 		i++;
-	if (i > n)
-		i = n;
-	str = malloc(sizeof(char) * (i + 1));
+	if (!src[i])
+		return (ft_strdup(src));
+	str = ft_strdup(src);
 	if (!str)
-		return (0);
-	i = 0;
-	while (src[i] && i < n)
-	{
-		str[i] = src[i];
-		i++;
-	}
+		return (NULL);
+	src[i] = '\0';
 	str[i] = '\0';
 	return (str);
 }

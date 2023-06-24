@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:37:16 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/31 12:24:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 01:05:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,6 @@ void	join_values_app(char *key, char *s1, char *s2)
 	}
 	change_env_value(key, join_value);
 	ft_free((void **)&join_value);
-}
-
-static int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	while (s1[i] == s2[i])
-	{
-		if (s1[i] == '\0' && s2[i] == '\0')
-			return (0);
-		i++;
-	}
-	return (s1[i] - s2[i]);
 }
 
 // Sorts the env array in ascii order with the keys.

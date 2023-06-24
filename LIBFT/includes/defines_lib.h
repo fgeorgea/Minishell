@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   defines_lib.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 14:08:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/24 20:09:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/25 01:23:42 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#ifndef DEFINES_LIB_H
+# define DEFINES_LIB_H
 
-char	*ft_strchr(const char *str, int c)
-{
-	while (*str && *str != (char)c)
-		str++;
-	if (*str == (char)c)
-		return ((char *)str);
-	return (NULL);
-}
+# ifdef NULL
+#  undef NULL
+# endif
+# define NULL (void *)0
+
+# ifdef BUFFER_SIZE
+#  undef BUFFER_SIZE
+# endif
+# define BUFFER_SIZE 100
+
+# define PI 3.141592
+
+#endif

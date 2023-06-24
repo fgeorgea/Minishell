@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   array_lib.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 14:08:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/24 20:09:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/25 00:02:20 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/25 01:23:48 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#ifndef ARRAY_LIB_H
+# define ARRAY_LIB_H
 
-char	*ft_strchr(const char *str, int c)
-{
-	while (*str && *str != (char)c)
-		str++;
-	if (*str == (char)c)
-		return ((char *)str);
-	return (NULL);
-}
+size_t	ft_arraylen(void **array);
+void	ft_array_rev(void **array);
+void	**ft_array_add(void **src, void *new, int pos);
+void	**ft_array_del(void **src, int pos);
+void	**ft_array_replace(void **src, void *new, int pos);
+void	*ft_array_get_value(void **array, int pos);
+char	**ft_arraydup(char **src);
+
+#endif

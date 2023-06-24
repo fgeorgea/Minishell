@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_rad_to_deg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 13:49:09 by fgeorgea          #+#    #+#             */
-/*   Updated: 2022/10/12 18:30:33 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/21 11:50:48 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/21 12:16:38 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_bzero(void *s, size_t n)
+float	ft_rad_to_deg(float radian)
 {
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (i < n)
-	{
-		*(unsigned char *)(s + i) = 0;
-		i++;
-	}
+	return ((radian * 180) / PI);
 }

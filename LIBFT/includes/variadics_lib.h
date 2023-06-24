@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   variadics_lib.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 14:08:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/24 20:09:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/25 00:05:08 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/25 01:24:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#ifndef VARIADICS_LIB_H
+# define VARIADICS_LIB_H
 
-char	*ft_strchr(const char *str, int c)
-{
-	while (*str && *str != (char)c)
-		str++;
-	if (*str == (char)c)
-		return ((char *)str);
-	return (NULL);
-}
+int		ft_close_var(int size, ...);
+
+#endif

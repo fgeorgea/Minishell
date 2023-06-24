@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_crash_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopeyrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:58:31 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/05/30 17:58:53 by dopeyrat         ###   ########.fr       */
+/*   Updated: 2023/06/25 01:09:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ch_dir_str2(char *dir, int *i, int *j)
 
 void	ch_dir_str(char *dir, int *i, int *j)
 {
-	while (i >= 0)
+	while (*i >= 0)
 	{
 		if (dir[*i] == '/')
 		{

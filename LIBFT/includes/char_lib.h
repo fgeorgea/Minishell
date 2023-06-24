@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   char_lib.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 16:38:15 by fgeorgea          #+#    #+#             */
-/*   Updated: 2022/10/12 18:33:28 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/25 00:03:29 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/25 01:24:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#ifndef CHAR_LIB_H
+# define CHAR_LIB_H
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{
-	int	i;
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_ispunct(int c);
+int		ft_isspace(int c);
+int		ft_isxdigit(int c);
+int		ft_iscntrl(int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
 
-	if (!dst || !src)
-		return (NULL);
-	if (src < dst)
-	{
-		i = (int)len - 1;
-		while (i >= 0)
-		{
-			*(char *)(dst + i) = *(char *)(src + i);
-			i--;
-		}
-	}
-	else
-	{
-		i = 0;
-		while (i < (int)len)
-		{
-			*(char *)(dst + i) = *(char *)(src + i);
-			i++;
-		}
-	}
-	return (dst);
-}
+#endif

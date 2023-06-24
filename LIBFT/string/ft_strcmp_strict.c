@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp_strict.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 14:08:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/24 20:09:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/23 17:52:25 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/23 18:43:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strchr(const char *str, int c)
+int	ft_strcmp_strict(const char *s1, const char *s2)
 {
-	while (*str && *str != (char)c)
-		str++;
-	if (*str == (char)c)
-		return ((char *)str);
-	return (NULL);
+	size_t	len1;
+	size_t	len2;
+
+	if (!s1 || !s2)
+		return (0);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (len1 == len2 && ft_strncmp(s1, s2, len1) == 0)
+		return (1);
+	return (0);
 }

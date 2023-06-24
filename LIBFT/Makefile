@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 11:47:36 by fgeorgea          #+#    #+#              #
-#    Updated: 2023/06/19 14:09:33 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/06/25 01:26:15 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,28 @@ NAME 		=	libft.a
 MATH		=	math/
 ARRAY		=	array/
 CHAR		=	char/
-INT			=	int/
 DISPLAY		=	display/
 LIST		=	list/
 STRING		=	string/
 MEMORY		=	memory/
 VARIADICS	=	variadics/
 
-SRCS		=	$(STRING)ft_atoi.c \
+SRCS		=	$(CHAR)ft_isalnum.c \
+				$(CHAR)ft_isalpha.c \
+				$(CHAR)ft_isdigit.c \
+				$(CHAR)ft_isascii.c \
+				$(CHAR)ft_isprint.c \
+				$(CHAR)ft_toupper.c \
+				$(CHAR)ft_tolower.c \
+				$(CHAR)ft_ispunct.c \
+				$(CHAR)ft_isspace.c \
+				$(CHAR)ft_isxdigit.c \
+				$(CHAR)ft_iscntrl.c \
+				$(STRING)ft_atoi.c \
 				$(STRING)ft_strlcpy.c \
 				$(STRING)ft_strlcat.c \
 				$(STRING)ft_strdup.c \
+				$(STRING)ft_strndup.c \
 	   			$(STRING)ft_substr.c \
 	  			$(STRING)ft_strjoin.c \
 				$(STRING)ft_strchr.c \
@@ -40,26 +51,21 @@ SRCS		=	$(STRING)ft_atoi.c \
 				$(STRING)ft_strrev.c \
 				$(STRING)ft_strdup_reject.c \
 	   			$(STRING)ft_itoa.c \
-	   			$(STRING)ft_strndup.c \
-				$(CHAR)ft_isalnum.c \
-				$(CHAR)ft_isalpha.c \
-				$(CHAR)ft_isdigit.c \
-				$(CHAR)ft_isascii.c \
-				$(CHAR)ft_isprint.c \
-				$(CHAR)ft_toupper.c \
-				$(CHAR)ft_tolower.c \
-				$(CHAR)ft_ispunct.c \
-				$(CHAR)ft_isspace.c \
-				$(CHAR)ft_isxdigit.c \
-				$(CHAR)ft_iscntrl.c \
-				$(INT)ft_nbrlen.c \
-				$(MEMORY)ft_bzero.c \
-	   			$(MEMORY)ft_memset.c \
-	   			$(MEMORY)ft_memcpy.c \
-	   			$(MEMORY)ft_memmove.c \
-	  	 		$(MEMORY)ft_memchr.c \
-	   			$(MEMORY)ft_calloc.c \
-	   			$(MEMORY)ft_memcmp.c \
+	   			$(STRING)ft_strcmp_strict.c \
+	   			$(STRING)ft_strtok.c \
+	   			$(STRING)ft_strcmp.c \
+	   			$(STRING)ft_strpbrk.c \
+				$(STRING)ft_perror.c \
+				$(STRING)ft_strerror.c \
+				$(STRING)ft_strerror2.c \
+				$(STRING)ft_strerror3.c \
+				$(STRING)ft_bzero.c \
+	   			$(STRING)ft_memcpy.c \
+	   			$(STRING)ft_memset.c \
+	  	 		$(STRING)ft_memchr.c \
+	   			$(STRING)ft_memmove.c \
+	   			$(STRING)ft_memcmp.c \
+	   			$(STRING)ft_calloc.c \
 				$(MEMORY)ft_free.c \
 				$(MEMORY)ft_realloc.c \
 				$(MEMORY)ft_var_free.c \
@@ -84,6 +90,7 @@ SRCS		=	$(STRING)ft_atoi.c \
 				$(LIST)ft_lstclear.c \
 				$(LIST)ft_lstiter.c \
 				$(LIST)ft_lstmap.c \
+				$(MATH)ft_nbrlen.c \
 				$(MATH)ft_fabs.c \
 				$(MATH)ft_abs.c \
 				$(MATH)ft_ceil.c \
@@ -92,6 +99,8 @@ SRCS		=	$(STRING)ft_atoi.c \
 				$(MATH)ft_sqrt.c \
 				$(MATH)ft_isprime.c \
 				$(MATH)ft_factorial.c \
+				$(MATH)ft_rad_to_deg.c \
+				$(MATH)ft_deg_to_rad.c \
 				$(ARRAY)ft_arraylen.c \
 				$(ARRAY)ft_array_rev.c \
 				$(ARRAY)ft_array_add.c \
@@ -101,7 +110,7 @@ SRCS		=	$(STRING)ft_atoi.c \
 	   			$(ARRAY)ft_split.c \
 	   			$(ARRAY)ft_split_charset.c \
 				$(ARRAY)ft_arraydup.c \
-				$(VARIADICS)ft_var_close.c \
+				$(VARIADICS)ft_close_var.c \
 
 OBJS		 = 	$(SRCS:.c=.o)
 

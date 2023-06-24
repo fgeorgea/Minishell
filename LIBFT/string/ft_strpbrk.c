@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_var_close.c                                     :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 17:05:19 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/19 14:07:23 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/23 18:31:53 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/23 18:43:08 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_var_close(int size, ...)
+char	*ft_strpbrk(const char *str, const char *accept)
 {
-	va_list	ap;
-	int		*tmp_fd;
+	size_t	i;
+	size_t	j;
 
-	if (size <= 0)
-		return (0);
-	va_start(ap, size);
-	while (size >= 0)
+	i = 0;
+	if (!str || !accept)
+		return (NULL);
+	while (str[i])
 	{
-		tmp_fd = va_arg(ap, int *);
-		if (tmp_fd && *tmp_fd >= 0)
+		j = 0;
+		while (accept[j])
 		{
-			if (close(*tmp_fd) == -1)
-				return (size);
-			*tmp_fd = -2;
+			if (str[i] == accept[j])
+				return ((char *)&str[i]);
+			j++;
 		}
-		size--;
+		i++;
 	}
-	va_end(ap);
-	return (0);
+	return (NULL);
 }

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   math_lib.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 13:23:48 by fgeorgea          #+#    #+#             */
-/*   Updated: 2022/10/12 18:40:49 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/25 00:04:04 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/25 01:24:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#ifndef MATH_LIB_H
+# define MATH_LIB_H
 
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
+double	ft_fabs(double nbr);
+int		ft_abs(int nbr);
+double	ft_ceil(double nbr);
+double	ft_floor(double nbr);
+int		ft_pow(int nbr, int power);
+int		ft_sqrt(int nb);
+int		ft_isprime(int nb);
+int		ft_factorial(int nb);
+size_t	ft_nbrlen(long int nb);
+float	ft_rad_to_deg(float radian);
+float	ft_deg_to_rad(float degrees);
 
-	i = 0;
-	if (!b)
-		return (NULL);
-	while (i < len)
-	{
-		*(unsigned char *)(b + i) = (unsigned char)c;
-		i++;
-	}
-	return (b);
-}
+#endif

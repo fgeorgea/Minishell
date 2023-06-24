@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_deg_to_rad.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 13:54:13 by fgeorgea          #+#    #+#             */
-/*   Updated: 2022/10/12 18:33:10 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/21 11:56:56 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/21 12:16:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+float	ft_deg_to_rad(float degrees)
 {
-	size_t	i;
-
-	if (!dst || !src)
-		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
-		++i;
-	}
-	return (dst);
+	return ((degrees * PI) / 180);
 }

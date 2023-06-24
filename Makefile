@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/06/07 18:37:54 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/06/25 01:26:07 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ OBJS	=	${SRCS:.c=.o}
 
 NAME	= minishell
 
-LIBFT	= LIBFT/libft.a
+libft	= libft/libft.a
 
 CC		= gcc
 
@@ -93,19 +93,19 @@ CFLAGS	= -Wall -Wextra -Werror #-fsanitize=address -g
 
 all:	${NAME}
 
-$(LIBFT):
-	make -C LIBFT/
+$(libft):
+	make -C libft/
 
-${NAME}:	$(LIBFT) ${OBJS}
-	${CC} ${CFLAGS} -o ${NAME} -ILIBFT -LLIBFT -lft ${READL} ${OBJS}
+${NAME}:	$(libft) ${OBJS}
+	${CC} ${CFLAGS} -o ${NAME} -Ilibft -Llibft -lft ${READL} ${OBJS}
 
 clean:
 	rm -rf ${OBJS}
-	make -C LIBFT/ clean
+	make -C libft/ clean
 
 fclean:	clean
 	rm -rf ${NAME}
-	make -C LIBFT/ fclean
+	make -C libft/ fclean
 
 re:	fclean all
 
