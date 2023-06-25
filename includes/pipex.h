@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:55:55 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/16 16:34:32 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:00:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,6 @@ void	create_hd_name(int pos);
 void	unlink_all_tmp(void);
 
 // UTILS_C
-size_t	arraylen(const char **array);
-int		compare_keys(const char *key, const char *needle);
 void	exit_only_child(int exit_code);
 void	set_exit(int exit_code);
 void	set_lst_cmd(int pos);

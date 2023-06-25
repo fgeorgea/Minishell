@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:45:56 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/19 14:11:12 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:02:11 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	init_shell_lvl(void)
 	env = g_sh->env;
 	while (env)
 	{
-		if (compare_keys(env->key, "SHLVL"))
+		if (ft_strcmp_strict(env->key, "SHLVL"))
 		{
 			ft_atoi(env->value, &v);
 			ft_free((void **)&env->value);

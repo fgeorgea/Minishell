@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:17 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/02 16:32:28 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:07:35 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	cd_builtin(const char *str)
 {
 	char	*dir;
 
-	if (str && !compare_keys(str, "~") && !compare_keys(str, "-"))
+	if (str && !ft_strcmp_strict(str, "~") && !ft_strcmp_strict(str, "-"))
 	{
 		if (!ft_chdir(str))
 			set_exit(1);
@@ -85,11 +85,11 @@ void	cd_builtin(const char *str)
 		return ;
 	if (!dir[0])
 	{
-		if (str && compare_keys(str, "-"))
-			write(1, "\n", 1);
+		if (str && ft_strcmp_strict(str, "-"))
+			(void)write(1, "\n", 1);
 		return ;
 	}
-	if (str && compare_keys(str, "-"))
+	if (str && ft_strcmp_strict(str, "-"))
 		ft_putendl_fd(dir, 1);
 	if (!ft_chdir(dir))
 		set_exit(1);

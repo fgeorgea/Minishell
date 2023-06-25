@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/15 18:55:05 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 20:54:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_add_history(void)
 {
 	if (!g_sh->str || !*g_sh->str)
 		return ;
-	add_history(g_sh->str);
+	(void)add_history(g_sh->str);
 }
 
 static void	set_base_values(char **argv)

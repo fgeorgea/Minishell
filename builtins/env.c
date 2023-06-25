@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:11:20 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/01 22:17:16 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:04:53 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	env_builtin(const char **arg)
 	t_env	*env;
 
 	env = g_sh->env;
-	if (arraylen(arg) > 0)
+	if (ft_arraylen((void **)arg) > 0)
 	{
 		print_err((char *)arg[0], NSFOD, NULL, 127);
 		return ;
@@ -26,7 +26,7 @@ void	env_builtin(const char **arg)
 	while (env)
 	{
 		if (env->value)
-			printf("%s=%s\n", env->key, env->value);
+			(void)printf("%s=%s\n", env->key, env->value);
 		env = env->next;
 	}
 }

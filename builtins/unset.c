@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:29:11 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/23 13:46:41 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:02:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	delete_var_env(const char *var)
 	env = g_sh->env;
 	if (!get_env_struct(var))
 		return ;
-	if (compare_keys(var, env->key))
+	if (ft_strcmp_strict(var, env->key))
 	{
 		g_sh->env = g_sh->env->next;
 		del_one_env(env);
@@ -44,7 +44,7 @@ static void	delete_var_env(const char *var)
 	}
 	while (env->next)
 	{
-		if (compare_keys(env->next->key, var))
+		if (ft_strcmp_strict(env->next->key, var))
 			break ;
 		env = env->next;
 	}
@@ -65,7 +65,7 @@ void	unset_builtin(const char **vars)
 		return ;
 	while (vars[i])
 	{
-		if (is_valid_key(vars[i]) && !compare_keys(vars[i], "_"))
+		if (is_valid_key(vars[i]) && !ft_strcmp_strict(vars[i], "_"))
 			delete_var_env(vars[i]);
 		if (!is_valid_key(vars[i]))
 			print_err("unset: `", (char *)vars[i], NAVI, 1);

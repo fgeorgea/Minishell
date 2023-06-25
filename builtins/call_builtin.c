@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   call_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/01 22:15:31 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:01:59 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	is_builtin(const char *cmd)
 {
-	if (compare_keys(cmd, "cd") || compare_keys(cmd, "echo")
-		|| compare_keys(cmd, "env") || compare_keys(cmd, "exit")
-		|| compare_keys(cmd, "unset") || compare_keys(cmd, "pwd")
-		|| compare_keys(cmd, "export"))
+	if (ft_strcmp_strict(cmd, "cd") || ft_strcmp_strict(cmd, "echo")
+		|| ft_strcmp_strict(cmd, "env") || ft_strcmp_strict(cmd, "exit")
+		|| ft_strcmp_strict(cmd, "unset") || ft_strcmp_strict(cmd, "pwd")
+		|| ft_strcmp_strict(cmd, "export"))
 		return (1);
 	return (0);
 }
@@ -32,19 +32,19 @@ void	exec_builtin(const char *cmd, const char **arg)
 		restore_stdout(g_sh->pipex->dup_stdout);
 		return ;
 	}
-	if (compare_keys(cmd, "cd"))
+	if (ft_strcmp_strict(cmd, "cd"))
 		cd_builtin(arg[1]);
-	else if (compare_keys(cmd, "echo"))
+	else if (ft_strcmp_strict(cmd, "echo"))
 		echo_builtin(&arg[1]);
-	else if (compare_keys(cmd, "env"))
+	else if (ft_strcmp_strict(cmd, "env"))
 		env_builtin(&arg[1]);
-	else if (compare_keys(cmd, "exit"))
+	else if (ft_strcmp_strict(cmd, "exit"))
 		exit_builtin(&arg[1]);
-	else if (compare_keys(cmd, "unset"))
+	else if (ft_strcmp_strict(cmd, "unset"))
 		unset_builtin(&arg[1]);
-	else if (compare_keys(cmd, "pwd"))
+	else if (ft_strcmp_strict(cmd, "pwd"))
 		pwd_builtin();
-	else if (compare_keys(cmd, "export"))
+	else if (ft_strcmp_strict(cmd, "export"))
 		export_builtin(&arg[1]);
 	restore_stdout(g_sh->pipex->dup_stdout);
 }

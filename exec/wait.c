@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:45:41 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/06 11:51:34 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:08:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	save_exit_code(int status)
 		status = 130 * 256;
 	else if (status == SIGQUIT)
 	{
-		write(2, "Quit: 3\n", 8);
+		(void)write(2, "Quit: 3\n", 8);
 		status = 131 * 256;
 	}
 	else if (g_sh->here_doc_status)

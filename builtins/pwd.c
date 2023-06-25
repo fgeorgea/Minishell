@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:17:30 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/08 01:14:56 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:05:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	pwd_builtin(void)
 	pwd = getcwd(NULL, 0);
 	if (pwd)
 	{
-		printf("%s\n", pwd);
+		(void)printf("%s\n", pwd);
 		ft_free((void **)&pwd);
 		return ;
 	}
@@ -32,5 +32,5 @@ void	pwd_builtin(void)
 		set_exit(1);
 	}
 	else
-		printf("%s\n", pwd);
+		(void)printf("%s\n", pwd);
 }

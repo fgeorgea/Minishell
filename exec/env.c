@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:24:03 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/31 12:56:18 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:02:10 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_env	*get_env_struct(const char *key)
 	env = g_sh->env;
 	while (env)
 	{
-		if (compare_keys(key, env->key))
+		if (ft_strcmp_strict(key, env->key))
 			return (env);
 		env = env->next;
 	}
@@ -55,7 +55,7 @@ char	*get_env_value(const char *key)
 	env = g_sh->env;
 	while (env)
 	{
-		if (compare_keys(key, env->key))
+		if (ft_strcmp_strict(key, env->key))
 			return (env->value);
 		env = env->next;
 	}

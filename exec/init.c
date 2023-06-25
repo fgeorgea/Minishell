@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:11:34 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 16:24:04 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:04:00 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	init_paths(t_pipex *p)
 	p->paths = ft_split(paths, ':');
 	if (!p->paths)
 		ft_exit(EXIT_MALLOC_FAILURE);
-	p->nbr_paths = arraylen((const char **)p->paths);
+	p->nbr_paths = ft_arraylen((void **)p->paths);
 }
 
 static void	set_base_values(t_pipex *p)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:00:32 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/05/28 19:10:07 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:08:04 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	here_doc(char *end_token)
 	while (1)
 	{
 		ft_putstr_fd(end_token, 1);
-		write(1, "> ", 2);
+		(void)write(1, "> ", 2);
 		str = get_next_line(p->dup_stdin);
 		if (!str)
 			break ;
@@ -70,7 +70,7 @@ void	ft_here_doc_exp(char *end_token)
 	while (1)
 	{
 		ft_putstr_fd(end_token, 1);
-		write(1, "> ", 2);
+		(void)write(1, "> ", 2);
 		str = get_next_line(p->dup_stdin);
 		if (!str)
 			break ;

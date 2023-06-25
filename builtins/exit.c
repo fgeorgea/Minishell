@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 18:32:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 16:22:32 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:04:26 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	is_valid_exit(const char **args)
 			exit_non_numeric_arg(args[0]);
 		i++;
 	}
-	if (arraylen(args) > 1)
+	if (ft_arraylen((void **)args) > 1)
 	{
 		print_err("exit: ", NULL, "too many arguments", 1);
 		return (0);

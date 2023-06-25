@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 13:14:53 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/02 16:23:09 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:02:09 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*get_cd_special_dir(const char *str)
 {
 	char	*dir;
 
-	if (!str || compare_keys(str, "~"))
+	if (!str || ft_strcmp_strict(str, "~"))
 	{
 		dir = get_env_value("HOME");
 		if (!dir)

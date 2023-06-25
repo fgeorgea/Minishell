@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:54:35 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 12:38:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:03:29 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	update_last_cmd(const char **cmd)
 		change_env_value("_", "");
 		return ;
 	}
-	if (!is_builtin(cmd[0]) && arraylen(cmd) == 1)
+	if (!is_builtin(cmd[0]) && ft_arraylen((void **)cmd) == 1)
 		cat_cmd_for_underscore((char **)cmd);
-	array_len = arraylen(cmd);
+	array_len = ft_arraylen((void **)cmd);
 	change_env_value("_", cmd[array_len - 1]);
 	lst_to_array(&g_sh->env);
 }
