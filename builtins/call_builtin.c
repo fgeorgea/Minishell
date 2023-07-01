@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:47:02 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 21:01:59 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/07/01 04:23:49 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_builtin(const char *cmd)
 	if (ft_strcmp_strict(cmd, "cd") || ft_strcmp_strict(cmd, "echo")
 		|| ft_strcmp_strict(cmd, "env") || ft_strcmp_strict(cmd, "exit")
 		|| ft_strcmp_strict(cmd, "unset") || ft_strcmp_strict(cmd, "pwd")
-		|| ft_strcmp_strict(cmd, "export"))
+		|| ft_strcmp_strict(cmd, "export") || ft_strcmp_strict(cmd, "alias"))
 		return (1);
 	return (0);
 }
@@ -46,5 +46,7 @@ void	exec_builtin(const char *cmd, const char **arg)
 		pwd_builtin();
 	else if (ft_strcmp_strict(cmd, "export"))
 		export_builtin(&arg[1]);
+	else if (ft_strcmp_strict(cmd, "alias"))
+		alias_builtin(&arg[1]);
 	restore_stdout(g_sh->pipex->dup_stdout);
 }

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:43:26 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/25 20:54:40 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/07/01 04:28:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	init_shell(char **argv, char **env)
 	init_env(env);
 	if_env_not_set();
 	create_config_str();
-	init_aliases();
 	init_oldpwd();
 	if (get_env_struct("SHLVL"))
 		init_shell_lvl();

@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 01:11:45 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:09:02 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/07/01 04:24:45 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,8 @@ int		builtin_redirection(void);
 // RESTORE_STDOUT_C
 void	restore_stdout(int dup_stdout);
 int		ft_dup(int fildes);
+
+// ALIAS_C
+void	alias_builtin(const char **arg);
 
 #endif

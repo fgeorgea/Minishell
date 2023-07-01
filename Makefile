@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/06/25 01:26:07 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/07/01 04:20:58 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ SRCS	=	$(MAIN)main.c \
 			$(BUILTINS)restore_stdout.c \
 			$(BUILTINS)exit.c \
 			$(BUILTINS)exit_utils.c \
+			$(BUILTINS)alias.c \
 			$(LEX)lexer.c \
 			$(LEX)lexer_utils.c \
 			$(LEX)shell_split.c \
@@ -89,7 +90,7 @@ CC		= gcc
 
 READL	= -L/usr/local/lib -I/usr/local/include -lreadline -L $(shell brew --prefix readline)/lib -I $(shell brew --prefix readline)/include
 
-CFLAGS	= -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS	= -Wall -Wextra -Werror -Wpedantic#-fsanitize=address -g
 
 all:	${NAME}
 

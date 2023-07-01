@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:11:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/07 18:37:20 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/07/01 04:27:36 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	add_alias_to_env(char *str)
 	add_var_to_env((const char *)str, i);
 }
 
-void	init_aliases(void)
+void	update_aliases(void)
 {
 	int		fd_config;
 	char	*str;
@@ -53,4 +53,5 @@ void	init_aliases(void)
 		if (check_valid_key((const char *)str))
 			add_alias_to_env(str);
 	}
+	ft_close(&fd_config);
 }

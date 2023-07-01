@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 02:00:46 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/19 14:32:30 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/07/01 04:01:54 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	fetch_prompt_color(void)
 			break ;
 		free(str);
 	}
+	ft_close(&fd_config);
 	if (!str)
 		return ;
 	i = 0;

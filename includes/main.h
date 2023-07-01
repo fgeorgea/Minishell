@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 00:13:37 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:09:13 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/07/01 04:27:52 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	create_config_str(void);
 void	create_prompt(void);
 
 // ALIAS_C
-void	init_aliases(void);
+void	update_aliases(void);
 
 // INIT_C
 void	ft_readline(void);

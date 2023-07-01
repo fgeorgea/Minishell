@@ -6,7 +6,7 @@
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:53:52 by dopeyrat          #+#    #+#             */
-/*   Updated: 2023/06/25 01:10:58 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/07/01 04:28:24 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv, char **env)
 		ft_exit(EXIT_SIGNAL_FAILURE);
 	while (1)
 	{
+		update_aliases();
 		ft_readline();
 		ft_add_history();
 		lexer(g_sh->str);
