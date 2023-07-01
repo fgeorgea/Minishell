@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   file_lib.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
+/*   By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:32:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/28 03:49:57 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/28 19:32:16 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_LIB_H
-# define DEFINES_LIB_H
+#ifndef FILE_LIB_H
+# define FILE_LIB_H
 
-# ifdef NULL
-#  undef NULL
-# endif
-# define NULL (void *)0
-
-# ifdef BUFFER_SIZE
-#  undef BUFFER_SIZE
-# endif
-# define BUFFER_SIZE 100
-
-# define PI 3.141592
+int		ft_count_lines(int fd);
+char	**ft_file_to_array(const char *file, int fd);
+int		ft_count_char(const char *file);
+void	ft_cp(const char *file);
 
 #endif

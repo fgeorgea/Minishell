@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:32:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/27 02:45:38 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/27 02:49:55 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_LIB_H
-# define DEFINES_LIB_H
+#include "../libft.h"
 
-# ifdef NULL
-#  undef NULL
-# endif
-# define NULL (void *)0
+char	*ft_strcapitalize(const char *src)
+{
+	size_t	i;
+	char	*str;
 
-# ifdef BUFFER_SIZE
-#  undef BUFFER_SIZE
-# endif
-# define BUFFER_SIZE 100
-
-# define PI 3.141592
-
-#endif
+	if (!src)
+		return (NULL);
+	i = 0;
+	str = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!str)
+		return (NULL);
+	while (src[i])
+	{
+		str[i] = ft_toupper(src[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

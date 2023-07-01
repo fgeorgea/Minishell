@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrayrev.c                                      :+:      :+:    :+:   */
+/*   ft_array_rev.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 02:46:21 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/04 02:54:32 by fgeorgea         ###   ########.fr       */
+/*   Updated: 2023/06/28 04:08:37 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_arrayrev(void **array)
+void	ft_array_rev(void **array)
 {
 	size_t	i;
 	size_t	len;

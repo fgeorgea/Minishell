@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   ft_array_free.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:32:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/28 04:24:26 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/28 04:33:13 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_LIB_H
-# define DEFINES_LIB_H
+#include "../libft.h"
 
-# ifdef NULL
-#  undef NULL
-# endif
-# define NULL (void *)0
+void	*ft_array_free(char **array, int pos)
+{
+	int	i;
 
-# ifdef BUFFER_SIZE
-#  undef BUFFER_SIZE
-# endif
-# define BUFFER_SIZE 100
-
-# define PI 3.141592
-
-#endif
+	if (!array || !*array)
+		return (NULL);
+	i = 0;
+	if (pos != -1)
+	{
+		while (i < pos)
+		{
+			free(array[i]);
+			i++;
+		}
+	}
+	else
+	{
+		while (array[i])
+		{
+			free(array[i]);
+			i++;
+		}
+	}
+	free(array);
+	return (NULL);
+}

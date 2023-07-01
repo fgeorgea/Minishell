@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:32:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/26 02:09:51 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/26 02:10:40 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_LIB_H
-# define DEFINES_LIB_H
+#include "../libft.h"
 
-# ifdef NULL
-#  undef NULL
-# endif
-# define NULL (void *)0
+char	*ft_strcpy(char	*dest, char	*src)
+{
+	size_t	i;
 
-# ifdef BUFFER_SIZE
-#  undef BUFFER_SIZE
-# endif
-# define BUFFER_SIZE 100
-
-# define PI 3.141592
-
-#endif
+	if (!dest || !src)
+		return (NULL);
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   ft_strcount.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:32:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/27 02:14:09 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/27 02:23:33 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_LIB_H
-# define DEFINES_LIB_H
+#include "../libft.h"
 
-# ifdef NULL
-#  undef NULL
-# endif
-# define NULL (void *)0
+size_t	ft_strcount(const char *str, const char *substr)
+{
+	size_t	count;
+	char	*tmp;
 
-# ifdef BUFFER_SIZE
-#  undef BUFFER_SIZE
-# endif
-# define BUFFER_SIZE 100
-
-# define PI 3.141592
-
-#endif
+	if (!str || !substr)
+		return (0);
+	count = 0;
+	tmp = (char *)str;
+	while (1)
+	{
+		tmp = ft_strstr(tmp, substr);
+		if (!tmp)
+			break ;
+		tmp++;
+		count++;
+	}
+	return (count);
+}

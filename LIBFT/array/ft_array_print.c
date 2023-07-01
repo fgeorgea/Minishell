@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   ft_array_print.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:32:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/28 04:05:34 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/28 04:07:31 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_LIB_H
-# define DEFINES_LIB_H
+#include "../libft.h"
 
-# ifdef NULL
-#  undef NULL
-# endif
-# define NULL (void *)0
+void	ft_array_print(char **array)
+{
+	size_t	i;
 
-# ifdef BUFFER_SIZE
-#  undef BUFFER_SIZE
-# endif
-# define BUFFER_SIZE 100
-
-# define PI 3.141592
-
-#endif
+	if (!array || !*array)
+		return ;
+	i = 0;
+	ft_printf(1, "\nPRINT ARRAY\n");
+	while (array[i])
+	{
+		ft_printf(1, "%s\n", array[i]);
+		i++;
+	}
+	ft_printf(1, "END PRINT ARRAY\n");
+}

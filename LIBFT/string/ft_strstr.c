@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:32:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/26 02:03:50 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/26 02:06:22 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_LIB_H
-# define DEFINES_LIB_H
+#include "../libft.h"
 
-# ifdef NULL
-#  undef NULL
-# endif
-# define NULL (void *)0
+char	*ft_strstr(const char *haystack, const char *needle)
+{
+	const char	*h;
+	const char	*n;
 
-# ifdef BUFFER_SIZE
-#  undef BUFFER_SIZE
-# endif
-# define BUFFER_SIZE 100
-
-# define PI 3.141592
-
-#endif
+	if (!haystack || !needle)
+		return (NULL);
+	if (!*needle)
+		return ((char *)haystack);
+	while (*haystack)
+	{
+		h = haystack;
+		n = needle;
+		while (*n && *n == *h)
+		{
+			h++;
+			n++;
+		}
+		if (!*n)
+			return ((char *)haystack);
+		haystack++;
+	}
+	return (NULL);
+}

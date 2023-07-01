@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 00:01:18 by fgeorgea          #+#    #+#             */
-/*   Updated: 2023/06/25 01:32:43 by fgeorgea         ###   ########.fr       */
+/*   Created: 2023/06/26 02:28:23 by fgeorgea          #+#    #+#             */
+/*   Updated: 2023/06/26 02:28:51 by fgeorgea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_LIB_H
-# define DEFINES_LIB_H
+#include "../libft.h"
 
-# ifdef NULL
-#  undef NULL
-# endif
-# define NULL (void *)0
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
+{
+	size_t			i;
+	unsigned int	count;
 
-# ifdef BUFFER_SIZE
-#  undef BUFFER_SIZE
-# endif
-# define BUFFER_SIZE 100
-
-# define PI 3.141592
-
-#endif
+	i = 0;
+	if (!dest || !src)
+		return (NULL);
+	while (dest[i])
+		i++;
+	count = 0;
+	while (src[count] && count < nb)
+	{
+		dest[i] = src[count];
+		count++;
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

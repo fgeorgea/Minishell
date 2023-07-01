@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
+#    By: fgeorgea <fgeorgea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 11:47:36 by fgeorgea          #+#    #+#              #
-#    Updated: 2023/07/01 04:03:24 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/06/28 19:37:18 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ LIST		=	list/
 STRING		=	string/
 MEMORY		=	memory/
 VARIADICS	=	variadics/
+FILE		=	file/
 
 SRCS		=	$(CHAR)ft_isalnum.c \
 				$(CHAR)ft_isalpha.c \
@@ -66,6 +67,19 @@ SRCS		=	$(CHAR)ft_isalnum.c \
 	   			$(STRING)ft_memmove.c \
 	   			$(STRING)ft_memcmp.c \
 	   			$(STRING)ft_calloc.c \
+	   			$(STRING)ft_strstr.c \
+	   			$(STRING)ft_strcpy.c \
+	   			$(STRING)ft_strncpy.c \
+	   			$(STRING)ft_strreplace.c \
+	   			$(STRING)ft_strcat.c \
+	   			$(STRING)ft_strncat.c \
+	   			$(STRING)ft_arrayjoin.c \
+	   			$(STRING)ft_strinsert.c \
+	   			$(STRING)ft_strcount.c \
+	   			$(STRING)ft_struniq.c \
+	   			$(STRING)ft_strcapitalize.c \
+	   			$(STRING)ft_strtoupper.c \
+	   			$(STRING)ft_strtolower.c \
 				$(MEMORY)ft_free.c \
 				$(MEMORY)ft_realloc.c \
 				$(MEMORY)ft_var_free.c \
@@ -110,11 +124,17 @@ SRCS		=	$(CHAR)ft_isalnum.c \
 	   			$(ARRAY)ft_split.c \
 	   			$(ARRAY)ft_split_charset.c \
 				$(ARRAY)ft_arraydup.c \
+				$(ARRAY)ft_array_print.c \
+				$(ARRAY)ft_array_free.c \
 				$(VARIADICS)ft_close_var.c \
+				$(FILE)ft_count_char.c \
+				$(FILE)ft_count_lines.c \
+				$(FILE)ft_file_to_array.c \
+				$(FILE)ft_cp.c \
 
 OBJS		 = 	$(SRCS:.c=.o)
 
-CFLAGS		 =	-Wall -Wextra -Werror -Wpedantic
+CFLAGS		 =	-Wall -Wextra -Werror
 
 RM			 =	rm -f
 

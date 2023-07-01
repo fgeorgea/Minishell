@@ -6,7 +6,7 @@
 #    By: fgeorgea <fgeorgea@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 17:02:21 by dopeyrat          #+#    #+#              #
-#    Updated: 2023/07/01 04:20:58 by fgeorgea         ###   ########.fr        #
+#    Updated: 2023/07/01 04:40:54 by fgeorgea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRCS	=	$(MAIN)main.c \
 			$(BUILTINS)exit.c \
 			$(BUILTINS)exit_utils.c \
 			$(BUILTINS)alias.c \
+			$(BUILTINS)unalias.c \
 			$(LEX)lexer.c \
 			$(LEX)lexer_utils.c \
 			$(LEX)shell_split.c \
